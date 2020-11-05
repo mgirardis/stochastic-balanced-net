@@ -1,2 +1,2 @@
 
-GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.5 -Y 1.0 -theta 1.0 -N 100000 -simType static -p 0.8 -tTotal 10000 -tTrans 0 -outputFile output/glei_static_G0.2_g1.5_Y1_N100000.txt -nNeuSpikingData 1000
+GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.5 -Y 1.0 -theta 1.0 -N 100000 -simType aval -p 0.8 -tTotal 10000 -tTrans 0 -outputFile output/glei_aval_G0.2_g1.5_Y1_N100000.txt -nNeuSpikingData 1000

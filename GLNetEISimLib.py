@@ -48,6 +48,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
         for t in range(1,tTrans):
             if (rhoE[t-1] + rhoI[t-1]) < 1e-16:
                 XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
+                rhoE[t-1] = 1.0 / pN_fl
             for i in range(pN):
                 VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT)
                 rhoE[t] = rhoE[t] + XE[i]
@@ -77,6 +78,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     for t in range(1,Tmax):
         if (rhoE[t-1] + rhoI[t-1]) < 1e-16:
             XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
+            rhoE[t-1] = 1.0 / pN_fl
         for i in range(pN):
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT)
             rhoE[t] = rhoE[t] + XE[i]

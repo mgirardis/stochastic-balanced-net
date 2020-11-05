@@ -40,7 +40,7 @@ def main():
     parser.add_argument('-saveSpikingData', required=False, action='store_true', default=False, help='saves spiking data for simulation')
     parser.add_argument('-saveTxtFile', required=False, action='store_true', default=False, help='saves data in text as well as mat')
     parser.add_argument('-nNeuSpikingData', nargs=1, required=False, metavar='N_NEU_SPIKING', type=int, default=[10000], help='number of neurons to be recorded for spiking data')
-    parser.add_argument('-simType', nargs=1, required=False, metavar='SIM_TYPE', type=str, default=['static'], choices=['static', 'adapt'], help='type of simulation; adapt is the SOqC dynamics')
+    parser.add_argument('-simType', nargs=1, required=False, metavar='SIM_TYPE', type=str, default=['static'], choices=['static', 'adapt', 'aval'], help='type of simulation; adapt is the SOqC dynamics; aval = static network, seeding a spike everytime that activity dies off')
     parser.add_argument('-weightDynType', nargs=1, required=False, metavar='WDYN_TYPE', type=str, default=['simple'], choices=['simple', 'coupled'], help='simple: decrease inhibitory weight due to inhibitory activity; coupled: increase inhibitory weight due to excitatory activity')
 
     args = parser.parse_args()
@@ -106,6 +106,8 @@ def main():
         RunSimulation = GLNetEISimLib.RunSimulation_static
     elif simType == "adapt":
         RunSimulation = GLNetEISimLib.RunSimulation_adapt
+    elif simType == "aval":
+        RunSimulation = GLNetEISimLib.RunSimulation_aval
 
     print("* Running simulation...")
     start_time = time.monotonic()

@@ -1,3 +1,5 @@
+*.sh
+*.txt
 output
 err
 out
@@ -6,5 +8,3 @@ lines_to_run.txt
 old_run
 old_txt_run
 completed_runs
-*.sh
-*.txt

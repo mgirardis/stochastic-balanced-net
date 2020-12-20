@@ -25,6 +25,7 @@ def main():
     parser.add_argument('-theta', nargs=1, required=False, metavar='theta_PARAM', type=float, default=[1.0], help='theta neuron threshold')
     parser.add_argument('-N', nargs=1, required=False, metavar='N_PARAM', type=int, default=[10000], help='N total (ex+in) number of network elements')
     parser.add_argument('-p', nargs=1, required=False, metavar='p_PARAM', type=float, default=[0.8], help='fraction of excitatory elements')
+    parser.add_argument('-rPoisson', nargs=1, required=False, metavar='p_PARAM', type=float, default=[0.0], help='Poisson rate for external process over each excitatory neuron')
     parser.add_argument('-tTotal', nargs=1, required=False, metavar='TOTAL_TIME', type=int, default=[2000], help='total number of time steps to simulate')
     parser.add_argument('-tTrans', nargs=1, required=False, metavar='TRANSIENT_TIME', type=int, default=[1000], help='transient time (time steps to discard)')
     parser.add_argument('-VE0', nargs=1, required=False, metavar='MEAN_VE_INIT', type=float, default=[0.0], help='mean initial VE')
@@ -39,7 +40,7 @@ def main():
     parser.add_argument('-saveSpikingData', required=False, action='store_true', default=False, help='saves spiking data for simulation')
     parser.add_argument('-saveTxtFile', required=False, action='store_true', default=False, help='saves data in text as well as mat')
     parser.add_argument('-nNeuSpikingData', nargs=1, required=False, metavar='N_NEU_SPIKING', type=int, default=[10000], help='number of neurons to be recorded for spiking data')
-    parser.add_argument('-simType', nargs=1, required=False, metavar='SIM_TYPE', type=str, default=['static'], choices=['static', 'adapt', 'aval'], help='type of simulation; adapt is the SOqC dynamics; aval = static network, seeding a spike everytime that activity dies off')
+    parser.add_argument('-simType', nargs=1, required=False, metavar='SIM_TYPE', type=str, default=['static'], choices=['static', 'adapt', 'aval', 'adaptthresh'], help='type of simulation; adapt is the SOqC dynamics; adaptthresh only adapts thresholds (synapses are fixed); aval = static network, seeding a spike everytime that activity dies off')
     parser.add_argument('-weightDynType', nargs=1, required=False, metavar='WDYN_TYPE', type=str, default=['simple'], choices=['simple', 'coupled'], help='simple: decrease inhibitory weight due to inhibitory activity; coupled: increase inhibitory weight due to excitatory activity')
 
     args = parser.parse_args()
@@ -61,6 +62,8 @@ def main():
     uW = args.uW[0]
     tauTinv = 1.0/args.tauT[0]
     uT = args.uT[0]
+
+    rPoisson = args.rPoisson[0]
 
     # initial condition
     VE0 = args.VE0[0]
@@ -110,7 +113,7 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(N,tTrans,tTotal,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauWinv,uW,tauTinv,uT,saveSpikingData,nNeuronsSpk,weightDynType)
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(N,tTrans,tTotal,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauWinv,uW,tauTinv,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson)
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(timedelta(seconds=end_time - start_time)))
     rhomedE = numpy.mean(rhoE)

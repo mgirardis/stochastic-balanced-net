@@ -108,8 +108,8 @@ def main():
         RunSimulation = GLNetEISimLib.RunSimulation_static
     elif simType == "adapt":
         RunSimulation = GLNetEISimLib.RunSimulation_adapt
-    elif simType == "adapt":
-        RunSimulation = GLNetEISimLib.RunSimulation_adapt
+    elif simType == "adaptthresh":
+        RunSimulation = GLNetEISimLib.RunSimulation_adaptthresh
     elif simType == "aval":
         RunSimulation = GLNetEISimLib.RunSimulation_aval
     else:

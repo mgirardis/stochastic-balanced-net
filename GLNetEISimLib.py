@@ -191,7 +191,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     elif weightDynType == "coupled":
         weightAdapt = weightAdapt_increase
     else:
-        raise AttributeError('weightDynType is unknown')
+        raise ValueError('weightDynType is unknown')
 
     pN = int(p*N)
     qN = N - pN

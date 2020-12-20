@@ -108,8 +108,13 @@ def main():
         RunSimulation = GLNetEISimLib.RunSimulation_static
     elif simType == "adapt":
         RunSimulation = GLNetEISimLib.RunSimulation_adapt
+    elif simType == "adapt":
+        RunSimulation = GLNetEISimLib.RunSimulation_adapt
     elif simType == "aval":
         RunSimulation = GLNetEISimLib.RunSimulation_aval
+    else:
+        raise ValueError('unknown simType parameter')
+
 
     print("* Running simulation...")
     start_time = time.monotonic()

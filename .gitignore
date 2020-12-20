@@ -6,5 +6,6 @@ lines_to_run.txt
 old_run
 old_txt_run
 completed_runs
+git_example_commands.txt
 *.sh
 *.txt

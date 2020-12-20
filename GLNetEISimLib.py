@@ -1,4 +1,5 @@
 import random
+import numpy
 
 #pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str)
 #pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str)
@@ -9,6 +10,7 @@ import random
 #pythran export weightAdapt_increase(float, float, float, float, float, float)
 #pythran export PHI(float, float, float)
 #pythran export multvecelem(float list, float list)
+#pythran export PoissonProcess_firingprob(float)
 
 def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauWinv,uW,tauTinv,uT,saveSpikingData,nNeuronsSpk,weightDynType):
 
@@ -308,3 +310,6 @@ def PHI(V,theta,Gamma):
 
 def multvecelem(x,y):
     return [x[i]*yy for i,yy in enumerate(y)]
+
+def PoissonProcess_firingprob(r):
+    return 1.0-numpy.exp(-r) # probability of firing is constant

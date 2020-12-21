@@ -118,7 +118,8 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(N,tTrans,tTotal,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauWinv,uW,tauTinv,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson)
+#                                                                            (int, int, int, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float)
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(int(N),int(tTrans),int(tTotal),float(VE0),float(VE0Std),float(VI0),float(VI0Std),float(XE0),float(XE0Rand),float(XI0),float(XI0Rand),float(mu),float(theta),float(J),float(Gamma),float(I),float(Iext),float(g),float(p),float(q),float(A),float(tauWinv),float(uW),float(tauTinv),float(uT),bool(saveSpikingData),int(nNeuronsSpk),weightDynType,float(rPoisson))
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(timedelta(seconds=end_time - start_time)))
     rhomedE = numpy.mean(rhoE)

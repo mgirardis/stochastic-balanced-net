@@ -1,10 +1,11 @@
+import copy
 import collections
 
 def add_phasetrans_params(parser,**defaultValues):
-    parser.add_argument('-parName', nargs=1, required=False, metavar='NAME',  type=float, default=get_param_value('parName', defaultValues,['rPoisson']), help='name of the parameter to vary in [val1;val2]')
+    parser.add_argument('-parName', nargs=1, required=False, metavar='NAME',  type=str,   default=get_param_value('parName', defaultValues,['rPoisson']), help='name of the parameter to vary in [val1;val2]')
     parser.add_argument('-parVal1', nargs=1, required=False, metavar='VALUE', type=float, default=get_param_value('parVal1', defaultValues,[1.0e-6]),     help='simulate n values of the parameter in [val1;val2]')
     parser.add_argument('-parVal2', nargs=1, required=False, metavar='VALUE', type=float, default=get_param_value('parVal2', defaultValues,[1.0]),        help='simulate n values of the parameter in [val1;val2]')
-    parser.add_argument('-nPar',    nargs=1, required=False, metavar='VALUE', type=int,   default=get_param_value('nPar', defaultValues,[1.0]),           help='simulate n values of the parameter in [val1;val2]')
+    parser.add_argument('-nPar',    nargs=1, required=False, metavar='VALUE', type=int,   default=get_param_value('nPar', defaultValues,[10]),           help='simulate n values of the parameter in [val1;val2]')
     parser.add_argument('-parScale',nargs=1, required=False, metavar='NAME',  type=str,   default=get_param_value('parScale',defaultValues,['log']), choices=['log', 'linear'], help='log: use logspace(val1,val2,n); linear: use linspace(val1,val2,n)')
     return parser
 
@@ -42,15 +43,18 @@ def add_neuron_params(parser,**defaultValues):
     parser.add_argument('-saveTxtFile',     required=False, action='store_true', default=False, help='saves data in text as well as mat')
     return parser
 
-def get_sim_param_dict_for_pythran(args):
+def get_sim_param_struct_for_pythran(args):
+    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson
+    Y = float(args.Y[0])
+    theta = float(args.theta[0])
+    p = float(args.p[0])
     return structtype(
     mu = float(args.mu[0]),
     Gamma = float(args.Gamma[0]),
     J = float(args.J[0]),
     g = float(args.g[0]),
-    Y = float(args.Y[0]),
     Iext = float(args.Iext[0]),
-    theta = float(args.theta[0]),
+    theta = theta,
     I = float(Y * theta),
     A = float(args.A[0]),
     tauW = float(args.tauW[0]),
@@ -67,7 +71,7 @@ def get_sim_param_dict_for_pythran(args):
     XE0Rand = bool(args.XE0Rand),
     XI0Rand = bool(args.XI0Rand),
     N = int(args.N[0]),
-    p = float(args.p[0]),
+    p = p,
     q = float(1.0 - p),
     Tmax = int(args.tTotal[0]),
     tTrans = int(args.tTrans[0]),
@@ -75,13 +79,33 @@ def get_sim_param_dict_for_pythran(args):
     weightDynType =  args.weightDynType[0],
     nNeuronsSpk = int(args.nNeuSpikingData[0]))
 
-def get_phasetrans_param_dict(args):
-    return structtype(name=args.parName[0],range=get_param_range(args))
+def get_phasetrans_param_struct(args):
+    return structtype(parName=args.parName[0],parRange=get_param_range(args))
+
+def get_phasetrans_output_data_struct(nPoints,numpy=None):
+    if numpy is None:
+        import numpy
+    return structtype(avg_rhoE =numpy.zeros(nPoints),std_rhoE =numpy.zeros(nPoints),
+                      avg_rhoI =numpy.zeros(nPoints),std_rhoI =numpy.zeros(nPoints),
+                      avg_rho  =numpy.zeros(nPoints),std_rho  =numpy.zeros(nPoints),
+                      avg_gVar =numpy.zeros(nPoints),std_gVar =numpy.zeros(nPoints),
+                      avg_YVar =numpy.zeros(nPoints),std_YVar =numpy.zeros(nPoints),
+                      avg_Isyn =numpy.zeros(nPoints),std_Isyn =numpy.zeros(nPoints),
+                      avg_IsynE=numpy.zeros(nPoints),std_IsynE=numpy.zeros(nPoints),
+                      avg_IsynI=numpy.zeros(nPoints),std_IsynI=numpy.zeros(nPoints))
 
 def fix_args_lists_as_scalars(args):
-    for k,v in args.__dict__.items():
+    if type(args) is dict:
+        a = args
+    else:
+        a = args.__dict__
+    for k,v in a.items():
         if (type(v) is list) and (len(v) == 1):
-            args.__dict__[k] = v[0]
+            a[k] = v[0]
+    if type(args) is dict:
+        args = a
+    else:
+        args.__dict__ = a
     return args
 
 def get_param_range(args,numpy=None):
@@ -103,6 +127,9 @@ def get_param_value(paramName,args,default):
     if paramName in args.keys():
         return args[paramName]
     return default
+
+def namespace_to_structtype(a):
+    return structtype(**fix_args_lists_as_scalars(copy.deepcopy(a.__dict__)))
 
 class structtype(collections.MutableMapping):
     def __init__(self,**kwargs):

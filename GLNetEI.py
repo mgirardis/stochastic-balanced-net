@@ -3,7 +3,7 @@ import os
 import argparse
 import numpy
 import time
-import inputGLNet as inp
+import ioGLNet as io
 from datetime import timedelta
 from scipy.io import savemat
 import GLNetEISimLib
@@ -12,7 +12,7 @@ import GLNetEISimLib
 def main():
 
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
-    parser = inp.add_neuron_params(parser)
+    parser = io.add_neuron_params(parser)
     args = parser.parse_args()
 
     print("* Setting input parameters ...")

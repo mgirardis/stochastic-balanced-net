@@ -11,53 +11,20 @@ import GLNetEISimLib
 
 def main():
 
-    parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
-    parser = inp.add_neuron_params(parser)
+    parser = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
+    parser = inp.add_neuron_params(parser,outputFile=['glnet_phasetr.txt'])
+    parser = inp.add_phasetrans_params(parser)
     args = parser.parse_args()
 
     print("* Setting input parameters ...")
     print(str(args)[10:-1].replace(', ','\n'))
 
-    # model parameters
-    mu = args.mu[0] #0.0   #0.5
-    Gamma = args.Gamma[0] #1.0    #1.0
-    J = args.J[0] #10.0            # J = 2
-    g = args.g[0] #3.0      # 3   3.5    4.3    4.7    6
-    Y = args.Y[0] #1.2
-    Iext = args.Iext[0] #0.0
-    theta = args.theta[0] #1.0
-    I = Y * theta #2.4 - mu      #1.00001
-    A = args.A[0]
-    tauW = args.tauW[0]
-    uW = args.uW[0]
-    tauT = args.tauT[0]
-    uT = args.uT[0]
+    simParam = inp.get_sim_param_dict_for_pythran(args)
+    phasetrParam = inp.get_phasetrans_param_dict(args)
 
-    rPoisson = args.rPoisson[0]
-
-    # initial condition
-    VE0 = args.VE0[0]
-    VI0 = args.VI0[0]
-    VE0Std = args.VE0Std[0]
-    VI0Std = args.VI0Std[0]
-    XE0 = args.XE0[0]
-    XI0 = args.XI0[0]
-    XE0Rand = args.XE0Rand
-    XI0Rand = args.XI0Rand
-
-    # network parameters
-    N = args.N[0] #10000
-    p = args.p[0] #0.8
-    q = 1.0 - p
-
-    # simulation parameters
-    weightDynType = args.weightDynType[0]
+    # output parameters
     simType = args.simType[0]
-    tTotal = args.tTotal[0] #2000
-    tTrans = args.tTrans[0]
-    saveSpikingData = args.saveSpikingData
     saveTxtFile = args.saveTxtFile
-    nNeuronsSpk = args.nNeuSpikingData[0]
     outputFileName = args.outputFile[0]
     if not outputFileName.lower().endswith('.txt'):
         outputFileName += '.txt'
@@ -88,7 +55,7 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(int(N),int(tTrans),int(tTotal),float(VE0),float(VE0Std),float(VI0),float(VI0Std),float(XE0),bool(XE0Rand),float(XI0),bool(XI0Rand),float(mu),float(theta),float(J),float(Gamma),float(I),float(Iext),float(g),float(p),float(q),float(A),float(tauW),float(uW),float(tauT),float(uT),bool(saveSpikingData),int(nNeuronsSpk),weightDynType,float(rPoisson))
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(int(N),int(tTrans),int(tTotal),float(VE0),float(VE0Std),float(VI0),float(VI0Std),float(XE0),bool(XE0Rand),float(XI0),bool(XI0Rand),float(mu),float(theta),float(J),float(Gamma),float(I),float(Iext),float(g),float(p),float(q),float(A),float(tauWinv),float(uW),float(tauTinv),float(uT),bool(saveSpikingData),int(nNeuronsSpk),weightDynType,float(rPoisson))
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(timedelta(seconds=end_time - start_time)))
     rhomedE = numpy.mean(rhoE)

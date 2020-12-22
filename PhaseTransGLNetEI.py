@@ -3,6 +3,7 @@ import os
 import argparse
 import numpy
 import time
+import warnings
 import inputGLNet as inp
 from datetime import timedelta
 from scipy.io import savemat
@@ -31,6 +32,11 @@ def main():
     matFileName = outputFileName.replace('.txt','.mat')
     spkFileName = outputFileName.replace('.txt','_spkdata.txt')
 
+    if saveTxtFile:
+        warnings.warn('text file output is not supported')
+    if simParam.saveSpikingData:
+        warnings.warn('saving spiking data is not supported')
+
     if os.path.isfile(outputFileName):
         print("* Replacing ... %s" % outputFileName)
         os.remove(outputFileName)
@@ -55,7 +61,7 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(int(N),int(tTrans),int(tTotal),float(VE0),float(VE0Std),float(VI0),float(VI0Std),float(XE0),bool(XE0Rand),float(XI0),bool(XI0Rand),float(mu),float(theta),float(J),float(Gamma),float(I),float(Iext),float(g),float(p),float(q),float(A),float(tauWinv),float(uW),float(tauTinv),float(uT),bool(saveSpikingData),int(nNeuronsSpk),weightDynType,float(rPoisson))
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(timedelta(seconds=end_time - start_time)))
     rhomedE = numpy.mean(rhoE)
@@ -74,10 +80,6 @@ def main():
     fileHeader += ("rhoI_mean=%.8g" % rhomedI) + "\n"
     fileHeader += "****** Data columns:\n"
 
-    if saveTxtFile:
-        print("* Writing output file ... %s" % outputFileName)
-        numpy.savetxt(outputFileName, [list(v) for v in zip(range(tTrans,tTotal), rhoE, rhoI, rhoMean, excSynCurrent, inhSynCurrent, synCurrentNet, g_data, Y_data)], fmt="%d\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E", header=(fileHeader + "time\t rhoE\t rhoI\t rhoMean\t excSynCurr\t inhSynCurr\t netSynCurr\t g\t Y"))
-
     print("* Writing output file ... %s" % matFileName)
     matVars = vars(args)
     matVars.update({"W":W, "h":h, "rhoE_mean":rhomedE, "rhoI_mean":rhomedI})
@@ -85,15 +87,6 @@ def main():
     matVars.update({"excSynCurr": excSynCurrent, "inhSynCurr": inhSynCurrent, "netSynCurr": synCurrentNet})
     matVars.update({"gVar": g_data, "YVar": Y_data})
     savemat(matFileName,matVars,long_field_names=True)
-
-    if saveSpikingData:
-        if saveTxtFile:
-            print("* Writing spiking data file ... %s" % spkFileName)
-            numpy.savetxt(spkFileName, zip(range(tTrans,tTotal),*spkData), fmt="%1d", delimiter=' ', header=(fileHeader + "time\t neurons spkData"))
-
-        print("* Appending spiking data file ... %s" % matFileName)
-        matVars.update({"spkData":spkData})
-        savemat(matFileName,matVars,appendmat=True,long_field_names=True)
 
 if __name__ == '__main__':
     main()

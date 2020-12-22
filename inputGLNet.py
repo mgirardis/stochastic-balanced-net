@@ -1,3 +1,4 @@
+import collections
 
 def add_phasetrans_params(parser,**defaultValues):
     parser.add_argument('-parName', nargs=1, required=False, metavar='NAME',  type=float, default=get_param_value('parName', defaultValues,['rPoisson']), help='name of the parameter to vary in [val1;val2]')
@@ -42,7 +43,7 @@ def add_neuron_params(parser,**defaultValues):
     return parser
 
 def get_sim_param_dict_for_pythran(args):
-    return dict(
+    return structtype(
     mu = float(args.mu[0]),
     Gamma = float(args.Gamma[0]),
     J = float(args.J[0]),
@@ -103,17 +104,17 @@ def get_param_value(paramName,args,default):
         return args[paramName]
     return default
 
-class structtype():
+class structtype(collections.MutableMapping):
     def __init__(self,**kwargs):
         self.Set(**kwargs)
     def Set(self,**kwargs):
         self.__dict__.update(kwargs)
     def SetAttr(self,label,value):
         self.__dict__[label] = value
-    #def __repr__(self):
-    #    return 'struct|'+self.__dict__.__repr__()+'|' #str(['.'+k.__str__() + ': '+ v.__repr__() for k,v in self.__dict__.items()])
-    #def __str__(self):
-    #    return 'struct|'+self.__dict__.__str__()+'|' #str(['.'+k.__str__() + ': '+ v.__repr__() for k,v in self.__dict__.items()])
+    def __setitem__(self,label,value):
+        self.__dict__[label] = value
+    def __getitem__(self,label):
+        return self.__dict__[label]
     def __repr__(self):
         type_name = type(self).__name__
         arg_strings = []
@@ -132,3 +133,9 @@ class structtype():
         return sorted(self.__dict__.items())
     def _get_args(self):
         return []
+    def __delitem__(self,*args):
+        self.__dict__.__delitem__(*args)
+    def __len__(self):
+        return self.__dict__.__len__()
+    def __iter__(self):
+        return iter(self.__dict__)

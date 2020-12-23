@@ -109,9 +109,9 @@ def main():
     print("* Writing output file ... %s" % outputFileName)
     outVars.update(**outputParamValues)
     outVars.update(**phasetrParam)
-    scipy.io.savemat(outputFileName,outVars,long_field_names=True)
+    scipy.io.savemat(outputFileName,outVars,appendmat=True,long_field_names=True)
     if phasetrParam.saveTimeEvo:
-        scipy.io.savemat(outputFileName,outVarsT,appendmat=True,long_field_names=True)
+        scipy.io.savemat(outputFileName,{**outVars,**outVarsT},appendmat=True,long_field_names=True)
 
 if __name__ == '__main__':
     main()

@@ -7,6 +7,7 @@ def add_phasetrans_params(parser,**defaultValues):
     parser.add_argument('-parVal2', nargs=1, required=False, metavar='VALUE', type=float, default=get_param_value('parVal2', defaultValues,[1.0]),        help='simulate n values of the parameter in [val1;val2]')
     parser.add_argument('-nPar',    nargs=1, required=False, metavar='VALUE', type=int,   default=get_param_value('nPar', defaultValues,[10]),           help='simulate n values of the parameter in [val1;val2]')
     parser.add_argument('-parScale',nargs=1, required=False, metavar='NAME',  type=str,   default=get_param_value('parScale',defaultValues,['log']), choices=['log', 'linear'], help='log: use logspace(val1,val2,n); linear: use linspace(val1,val2,n)')
+    parser.add_argument('-saveTimeEvo', required=False, action='store_true', default=False, help='saves rho_EI(t) and IsynEI(t) for each parameter combination')
     return parser
 
 def add_neuron_params(parser,**defaultValues):
@@ -80,19 +81,7 @@ def get_sim_param_struct_for_pythran(args):
     nNeuronsSpk = int(args.nNeuSpikingData[0]))
 
 def get_phasetrans_param_struct(args):
-    return structtype(parName=args.parName[0],parRange=get_param_range(args))
-
-def get_phasetrans_output_data_struct(nPoints,numpy=None):
-    if numpy is None:
-        import numpy
-    return structtype(avg_rhoE =numpy.zeros(nPoints),std_rhoE =numpy.zeros(nPoints),
-                      avg_rhoI =numpy.zeros(nPoints),std_rhoI =numpy.zeros(nPoints),
-                      avg_rho  =numpy.zeros(nPoints),std_rho  =numpy.zeros(nPoints),
-                      avg_gVar =numpy.zeros(nPoints),std_gVar =numpy.zeros(nPoints),
-                      avg_YVar =numpy.zeros(nPoints),std_YVar =numpy.zeros(nPoints),
-                      avg_Isyn =numpy.zeros(nPoints),std_Isyn =numpy.zeros(nPoints),
-                      avg_IsynE=numpy.zeros(nPoints),std_IsynE=numpy.zeros(nPoints),
-                      avg_IsynI=numpy.zeros(nPoints),std_IsynI=numpy.zeros(nPoints))
+    return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo)
 
 def fix_args_lists_as_scalars(args):
     if type(args) is dict:

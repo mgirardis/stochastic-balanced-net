@@ -95,12 +95,14 @@ def main():
     rhomedI = numpy.mean(rhoI)
     W = (p-q*g)*J
     h = I - theta
+    N_rec_exc = int(p*nNeuronsSpk) # number of recorded excitatory neurons
     rhoMean = numpy.multiply(p,rhoE)+numpy.multiply(q,rhoI)
     synCurrentNet = numpy.subtract(excSynCurrent, inhSynCurrent)
 
     fileHeader  = "****** Parameters:\n"
     fileHeader += ("W=%.8g" % W) + "\n"
     fileHeader += ("h=%.8g" % h) + "\n"
+    fileHeader += ("number_recorded_Exc_neurons=%.8g" % N_rec_exc) + "\n"
     fileHeader += str(args)[10:-1].replace(', ','\n') + "\n"
     fileHeader += "****** Variables\n"
     fileHeader += ("rhoE_mean=%.8g" % rhomedE) + "\n"
@@ -116,13 +118,13 @@ def main():
     matVars.update({"W":W, "h":h, "rhoE_mean":rhomedE, "rhoI_mean":rhomedI})
     matVars.update({"time": range(tTrans,tTotal), "rhoE": rhoE, "rhoI": rhoI, "rhoMean": rhoMean})
     matVars.update({"excSynCurr": excSynCurrent, "inhSynCurr": inhSynCurrent, "netSynCurr": synCurrentNet})
-    matVars.update({"gVar": g_data, "YVar": Y_data})
+    matVars.update({"gVar": g_data, "YVar": Y_data, "N_rec_Exc": N_rec_exc})
     savemat(matFileName,matVars,long_field_names=True)
 
     if saveSpikingData:
         if saveTxtFile:
             print("* Writing spiking data file ... %s" % spkFileName)
-            numpy.savetxt(spkFileName, zip(range(tTrans,tTotal),*spkData), fmt="%1d", delimiter=' ', header=(fileHeader + "time\t neurons spkData"))
+            numpy.savetxt(spkFileName, spkData, fmt="%1d", delimiter=' ', header=(fileHeader + "time step\t neuron index"))
 
         print("* Appending spiking data file ... %s" % matFileName)
         matVars.update({"spkData":spkData})

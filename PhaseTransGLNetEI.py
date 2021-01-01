@@ -27,6 +27,7 @@ def main():
     outputParamValues = io.namespace_to_structtype(args)
     outputParamValues.W = W
     outputParamValues.h = h
+    outputParamValues.N_rec_Exc = int(simParam.p*simParam.nNeuronsSpk) # number of recorded excitatory neurons
     outputParamValues[phasetrParam.parName] = numpy.nan
 
     # output parameters

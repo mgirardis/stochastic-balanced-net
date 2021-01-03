@@ -41,6 +41,7 @@ def main():
         warnings.warn('text file output is not supported')
     if simParam.saveSpikingData:
         warnings.warn('saving spiking data is not supported')
+        simParam.saveSpikingData = False
 
     if os.path.isfile(outputFileName):
         print("* Replacing ... %s" % outputFileName)

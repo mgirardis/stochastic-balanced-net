@@ -41,6 +41,7 @@ def add_neuron_params(parser,**defaultValues):
     parser.add_argument('-XE0Rand',         required=False, action='store_true', default=False, help='generates random initial XE')
     parser.add_argument('-XI0Rand',         required=False, action='store_true', default=False, help='generates random initial XI')
     parser.add_argument('-saveSpikingData', required=False, action='store_true', default=False, help='saves spiking data for simulation')
+    parser.add_argument('-writeOnRun',      required=False, action='store_true', default=False, help='writes spiking data as txt file while program is running to save memory')
     parser.add_argument('-saveTxtFile',     required=False, action='store_true', default=False, help='saves data in text as well as mat')
     return parser
 
@@ -78,7 +79,9 @@ def get_sim_param_struct_for_pythran(args):
     tTrans = int(args.tTrans[0]),
     saveSpikingData = args.saveSpikingData,
     weightDynType =  args.weightDynType[0],
-    nNeuronsSpk = int(args.nNeuSpikingData[0]))
+    nNeuronsSpk = int(args.nNeuSpikingData[0]),
+    writeOnRun = args.writeOnRun,
+    spkFileName='')
 
 def get_phasetrans_param_struct(args):
     return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo)

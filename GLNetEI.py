@@ -39,9 +39,9 @@ def main():
     if os.path.isfile(matFileName):
         print("* Replacing ... %s" % matFileName)
         os.remove(matFileName)
-    if os.path.isfile(spkFileName):
-        print("* Replacing ... %s" % spkFileName)
-        os.remove(spkFileName)
+    if os.path.isfile(simParam.spkFileName):
+        print("* Replacing ... %s" % simParam.spkFileName)
+        os.remove(simParam.spkFileName)
 
     simType = args.simType[0]
     if simType == "static":
@@ -91,8 +91,8 @@ def main():
 
     if simParam.saveSpikingData and not simParam.writeOnRun:
         if saveTxtFile:
-            print("* Writing spiking data file ... %s" % spkFileName)
-            numpy.savetxt(spkFileName, spkData, fmt="%1d", delimiter=' ', header=(fileHeader + "time step\t neuron index"))
+            print("* Writing spiking data file ... %s" % simParam.spkFileName)
+            numpy.savetxt(simParam.spkFileName, spkData, fmt="%1d", delimiter=' ', header=(fileHeader + "time step\t neuron index"))
 
         print("* Appending spiking data file ... %s" % matFileName)
         matVars.update({"spkData":spkData})

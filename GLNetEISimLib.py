@@ -442,15 +442,15 @@ def multvecelem(x,y):
 def PoissonProcess_firingprob(r):
     return 1.0-numpy.exp(-r) # probability of firing is constant
 
-def save_spk_data_fake(s,t,k):
-    return s
+# def save_spk_data_fake(s,t,k):
+#     return s
 
-def save_spk_data(s,t,k):
-    # s -> list to append t_k
-    # t -> spike time index
-    # k -> neuron index that fired at t
-    s.append((t,k))
-    return s
+# def save_spk_data(s,t,k):
+#     # s -> list to append t_k
+#     # t -> spike time index
+#     # k -> neuron index that fired at t
+#     s.append((t,k))
+#     return s
 
 # def write_spk_data_fake(f,t,k):
 #     return

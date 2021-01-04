@@ -6,7 +6,7 @@ import numpy
 #pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export RunSimulation_static(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)#pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
+#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)

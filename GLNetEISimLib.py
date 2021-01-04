@@ -12,6 +12,12 @@ import numpy
 #pythran export PHI(float, float, float)
 #pythran export multvecelem(float list, float list)
 #pythran export PoissonProcess_firingprob(float)
+#pythran export save_spk_data_fake((int,int) list,int,int)
+#pythran export save_spk_data((int,int) list,int,int)
+
+# pythran does not support writing to txt files
+#nothing      pythran export write_spk_data_fake(f,t,k)
+#nothing      pythran export write_spk_data(f,t,k)
 
 def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauWinv = 1.0 / tauW
@@ -434,3 +440,22 @@ def multvecelem(x,y):
 
 def PoissonProcess_firingprob(r):
     return 1.0-numpy.exp(-r) # probability of firing is constant
+
+def save_spk_data_fake(s,t,k):
+    return s
+
+def save_spk_data(s,t,k):
+    # s -> list to append t_k
+    # t -> spike time index
+    # k -> neuron index that fired at t
+    s.append((t,k))
+    return s
+
+# def write_spk_data_fake(f,t,k):
+#     return
+
+# def write_spk_data(f,t,k):
+#     # f -> file handler
+#     # t -> spike time index
+#     # k -> neuron index that fired at t
+#     return

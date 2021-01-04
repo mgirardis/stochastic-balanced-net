@@ -58,15 +58,13 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(int(N),int(tTrans),int(tTotal),float(VE0),float(VE0Std),float(VI0),float(VI0Std),float(XE0),bool(XE0Rand),float(XI0),bool(XI0Rand),float(mu),float(theta),float(J),float(Gamma),float(I),float(Iext),float(g),float(p),float(q),float(A),float(tauW),float(uW),float(tauT),float(uT),bool(saveSpikingData),int(nNeuronsSpk),weightDynType,float(rPoisson))
     rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(datetime.timedelta(seconds=end_time - start_time)))
+
+    # calculatinig some physical quantities
     rhomedE = numpy.mean(rhoE)
     rhomedI = numpy.mean(rhoI)
-    #W = (p-q*g)*J
-    #h = I - theta
-    #N_rec_exc = int(p*nNeuronsSpk) # number of recorded excitatory neurons
     rhoMean = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)
     synCurrentNet = numpy.subtract(excSynCurrent, inhSynCurrent)
 

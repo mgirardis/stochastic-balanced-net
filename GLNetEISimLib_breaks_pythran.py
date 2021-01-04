@@ -1,9 +1,7 @@
 import random
 import numpy
 
-# the version pythran 0.9.8.post2 is generating a bunch of errors
-# 
-# for stable compilation, use pythran==0.9.6
+# it seems that using a list of tuples to store the spiking data is generating a lot of pythran errors
 
 #pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)

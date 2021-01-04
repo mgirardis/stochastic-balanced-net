@@ -91,7 +91,19 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
         #spkData[0] = XE[:pN_s] + XI[:qN_s]
         # spkData is a list of tuples
         # where each tuple records (time step, neuron index) for each firing
-        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = []
+        i = 0
+        while i < pN_s:
+            if XE[i]:
+                spkData.append([0,i])
+            i+=1
+        i = 0
+        while i < qN_s:
+            if XI[i] == 1:
+                spkData.append([0,i+pN_s])
+            i+=1
     else:
         spkData = [[]]
 
@@ -186,7 +198,19 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
         #spkData[0] = XE[:pN_s] + XI[:qN_s]
         # spkData is a list of tuples
         # where each tuple records (time step, neuron index) for each firing
-        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = []
+        i = 0
+        while i < pN_s:
+            if XE[i]:
+                spkData.append([0,i])
+            i+=1
+        i = 0
+        while i < qN_s:
+            if XI[i] == 1:
+                spkData.append([0,i+pN_s])
+            i+=1
     else:
         spkData = [[]]
 
@@ -293,7 +317,19 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
         #spkData[0] = XE[:pN_s] + XI[:qN_s]
         # spkData is a list of tuples
         # where each tuple records (time step, neuron index) for each firing
-        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = []
+        i = 0
+        while i < pN_s:
+            if XE[i]:
+                spkData.append([0,i])
+            i+=1
+        i = 0
+        while i < qN_s:
+            if XI[i] == 1:
+                spkData.append([0,i+pN_s])
+            i+=1
     else:
         spkData = [[]]
 
@@ -390,7 +426,19 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
         #spkData[0] = XE[:pN_s] + XI[:qN_s]
         # spkData is a list of tuples
         # where each tuple records (time step, neuron index) for each firing
-        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = []
+        i = 0
+        while i < pN_s:
+            if XE[i]:
+                spkData.append([0,i])
+            i+=1
+        i = 0
+        while i < qN_s:
+            if XI[i] == 1:
+                spkData.append([0,i+pN_s])
+            i+=1
     else:
         spkData = [[]]
 

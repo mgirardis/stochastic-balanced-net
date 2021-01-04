@@ -93,7 +93,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
         # where each tuple records (time step, neuron index) for each firing
         spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
-        spkData = []
+        spkData = [[]]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -188,7 +188,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
         # where each tuple records (time step, neuron index) for each firing
         spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
-        spkData = []
+        spkData = [[]]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -295,7 +295,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
         # where each tuple records (time step, neuron index) for each firing
         spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
-        spkData = []
+        spkData = [[]]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -392,7 +392,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
         # where each tuple records (time step, neuron index) for each firing
         spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
-        spkData = []
+        spkData = [[]]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]

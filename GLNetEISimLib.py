@@ -12,9 +12,10 @@ import numpy
 #pythran export PHI(float, float, float)
 #pythran export multvecelem(float list, float list)
 #pythran export PoissonProcess_firingprob(float)
-#pythran export save_spk_data_fake((int,int) list,int,int)
-#pythran export save_spk_data((int,int) list,int,int)
 
+#nothing: the below functions are generating a bunch of compiler errors
+#nothing pythran export save_spk_data_fake((int,int) list,int,int)
+#nothing pythran export save_spk_data((int,int) list,int,int)
 #nothing: pythran does not support writing to txt files
 #nothing      pythran export write_spk_data_fake(f,t,k)
 #nothing      pythran export write_spk_data(f,t,k)

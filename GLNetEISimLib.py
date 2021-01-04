@@ -87,8 +87,11 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        spkData[0] = XE[:pN_s] + XI[:qN_s]
+        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        #spkData[0] = XE[:pN_s] + XI[:qN_s]
+        # spkData is a list of tuples
+        # where each tuple records (time step, neuron index) for each firing
+        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
         spkData = []
 
@@ -107,13 +110,13 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean += thetaE[i]
             if saveSpikingData and (i < pN_s):
-                spkData[t][i] = XE[i]
+                spkData.append([t,i]) #spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean += thetaI[i]
             if saveSpikingData and (i < qN_s):
-                spkData[t][i+pN_s] = XI[i]
+                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         theta_data[t] = thetaMean/N_fl
@@ -179,8 +182,11 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        spkData[0] = XE[:pN_s] + XI[:qN_s]
+        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        #spkData[0] = XE[:pN_s] + XI[:qN_s]
+        # spkData is a list of tuples
+        # where each tuple records (time step, neuron index) for each firing
+        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
         spkData = []
 
@@ -197,12 +203,12 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if saveSpikingData and (i < pN_s):
-                spkData[t][i] = XE[i]
+                spkData.append([t,i]) #spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if saveSpikingData and (i < qN_s):
-                spkData[t][i+pN_s] = XI[i]
+                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop
@@ -283,8 +289,11 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        spkData[0] = XE[:pN_s] + XI[:qN_s]
+        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        #spkData[0] = XE[:pN_s] + XI[:qN_s]
+        # spkData is a list of tuples
+        # where each tuple records (time step, neuron index) for each firing
+        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
         spkData = []
 
@@ -306,13 +315,13 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean = thetaMean + thetaE[i]
             if saveSpikingData and (i < pN_s):
-                spkData[t][i] = XE[i]
+                spkData.append([t,i]) #spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean = thetaMean + thetaI[i]
             if saveSpikingData and (i < qN_s):
-                spkData[t][i+pN_s] = XI[i]
+                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         W_I_data[t] = W_I
@@ -377,8 +386,11 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        spkData[0] = XE[:pN_s] + XI[:qN_s]
+        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        #spkData[0] = XE[:pN_s] + XI[:qN_s]
+        # spkData is a list of tuples
+        # where each tuple records (time step, neuron index) for each firing
+        spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
     else:
         spkData = []
 
@@ -393,12 +405,12 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if saveSpikingData and (i < pN_s):
-                spkData[t][i] = XE[i]
+                spkData.append([t,i]) #spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if saveSpikingData and (i < qN_s):
-                spkData[t][i+pN_s] = XI[i]
+                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop

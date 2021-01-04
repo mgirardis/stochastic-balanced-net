@@ -15,7 +15,7 @@ import numpy
 #pythran export save_spk_data_fake((int,int) list,int,int)
 #pythran export save_spk_data((int,int) list,int,int)
 
-# pythran does not support writing to txt files
+#nothing: pythran does not support writing to txt files
 #nothing      pythran export write_spk_data_fake(f,t,k)
 #nothing      pythran export write_spk_data(f,t,k)
 

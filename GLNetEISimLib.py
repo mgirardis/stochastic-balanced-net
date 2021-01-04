@@ -96,7 +96,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
         spkData = []
         i = 0
         while i < pN_s:
-            if XE[i]:
+            if XE[i] == 1:
                 spkData.append([0,i])
             i+=1
         i = 0
@@ -203,7 +203,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
         spkData = []
         i = 0
         while i < pN_s:
-            if XE[i]:
+            if XE[i] == 1:
                 spkData.append([0,i])
             i+=1
         i = 0
@@ -322,7 +322,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
         spkData = []
         i = 0
         while i < pN_s:
-            if XE[i]:
+            if XE[i] == 1:
                 spkData.append([0,i])
             i+=1
         i = 0
@@ -431,7 +431,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
         spkData = []
         i = 0
         while i < pN_s:
-            if XE[i]:
+            if XE[i] == 1:
                 spkData.append([0,i])
             i+=1
         i = 0

@@ -1,10 +1,10 @@
 import random
 import numpy
 
-#pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_static(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float)
+#pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float)
+#pythran export RunSimulation_static(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float)
+#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float)
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)
@@ -13,14 +13,7 @@ import numpy
 #pythran export multvecelem(float list, float list)
 #pythran export PoissonProcess_firingprob(float)
 
-#nothing: the below functions are generating a bunch of compiler errors
-#nothing pythran export save_spk_data_fake((int,int) list,int,int)
-#nothing pythran export save_spk_data((int,int) list,int,int)
-#nothing: pythran does not support writing to txt files
-#nothing      pythran export write_spk_data_fake(f,t,k)
-#nothing      pythran export write_spk_data(f,t,k)
-
-def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson):
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -85,11 +78,8 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        spkData = [ (0,i) for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ (0,i+pN_s) for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        spkData[0] = XE[:pN_s] + XI[:qN_s]
     else:
         spkData = []
 
@@ -108,13 +98,13 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean += thetaE[i]
             if saveSpikingData and (i < pN_s):
-                spkData.append((t,i)) #spkData[t][i] = XE[i]
+                spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean += thetaI[i]
             if saveSpikingData and (i < qN_s):
-                spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         theta_data[t] = thetaMean/N_fl
@@ -122,7 +112,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
-def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson):
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -180,11 +170,8 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        spkData = [ (0,i) for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ (0,i+pN_s) for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        spkData[0] = XE[:pN_s] + XI[:qN_s]
     else:
         spkData = []
 
@@ -201,12 +188,12 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if saveSpikingData and (i < pN_s):
-                spkData.append((t,i)) #spkData[t][i] = XE[i]
+                spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if saveSpikingData and (i < qN_s):
-                spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop
@@ -214,7 +201,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
 
-def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson):
 
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
@@ -287,11 +274,8 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        spkData = [ (0,i) for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ (0,i+pN_s) for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        spkData[0] = XE[:pN_s] + XI[:qN_s]
     else:
         spkData = []
 
@@ -313,13 +297,13 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean = thetaMean + thetaE[i]
             if saveSpikingData and (i < pN_s):
-                spkData.append((t,i)) #spkData[t][i] = XE[i]
+                spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean = thetaMean + thetaI[i]
             if saveSpikingData and (i < qN_s):
-                spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         W_I_data[t] = W_I
@@ -328,7 +312,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*r for r in multvecelem(W_I_data,rhoI)],[r/J for r in W_I_data],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
-def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson):
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -384,11 +368,8 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        spkData = [ (0,i) for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ (0,i+pN_s) for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+        spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+        spkData[0] = XE[:pN_s] + XI[:qN_s]
     else:
         spkData = []
 
@@ -403,12 +384,12 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if saveSpikingData and (i < pN_s):
-                spkData.append((t,i)) #spkData[t][i] = XE[i]
+                spkData[t][i] = XE[i]
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if saveSpikingData and (i < qN_s):
-                spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                spkData[t][i+pN_s] = XI[i]
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop
@@ -441,22 +422,3 @@ def multvecelem(x,y):
 
 def PoissonProcess_firingprob(r):
     return 1.0-numpy.exp(-r) # probability of firing is constant
-
-# def save_spk_data_fake(s,t,k):
-#     return s
-
-# def save_spk_data(s,t,k):
-#     # s -> list to append t_k
-#     # t -> spike time index
-#     # k -> neuron index that fired at t
-#     s.append((t,k))
-#     return s
-
-# def write_spk_data_fake(f,t,k):
-#     return
-
-# def write_spk_data(f,t,k):
-#     # f -> file handler
-#     # t -> spike time index
-#     # k -> neuron index that fired at t
-#     return

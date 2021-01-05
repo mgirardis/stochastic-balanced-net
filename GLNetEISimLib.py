@@ -178,7 +178,6 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
 
     # running transient time
     if tTrans > 0:
-        dummyVar = 0.0
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
         rhoE[0] = float(sum(XE))/pN_fl
@@ -188,10 +187,10 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
                 XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
                 rhoE[t-1] = 1.0 / pN_fl
             for i in range(pN):
-                VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+                VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
                 rhoE[t] = rhoE[t] + XE[i]
             for i in range(qN):
-                VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+                VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
                 rhoI[t] = rhoI[t] + XI[i]
             rhoE[t] = rhoE[t]/pN_fl
             rhoI[t] = rhoI[t]/qN_fl
@@ -244,13 +243,13 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
             XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
             rhoE[t-1] = 1.0 / pN_fl
         for i in range(pN):
-            VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+            VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if i < pN_s:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+            VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if i < qN_s:
                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
@@ -438,7 +437,6 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
 
     # running transient time
     if tTrans > 0:
-        dummyVar = 0.0
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
         rhoE[0] = float(sum(XE))/pN_fl
@@ -446,10 +444,10 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
         for t in range(1,tTrans):
             #Iext = 0.0 # stimulus
             for i in range(pN):
-                VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+                VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
                 rhoE[t] = rhoE[t] + XE[i]
             for i in range(qN):
-                VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+                VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
                 rhoI[t] = rhoI[t] + XI[i]
             rhoE[t] = rhoE[t]/pN_fl
             rhoI[t] = rhoI[t]/qN_fl
@@ -500,13 +498,13 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
     for t in range(1,Tmax):
         #Iext = 0.0 # stimulus
         for i in range(pN):
-            VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+            VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if i < pN_s:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+            VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if i < qN_s:
                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]

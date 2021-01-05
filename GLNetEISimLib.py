@@ -83,7 +83,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     if saveSpikingData:
         if writeOnRun:
             print('*** writing file %s during simulation' % spkFileName)
-            spkData = [[]]
+            spkData = [(0,0)]
             spkTimeFile = open(spkFileName,'w')
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
@@ -110,7 +110,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
-        spkData = [[]]
+        spkData = [(0,0)]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -205,7 +205,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     if saveSpikingData:
         if writeOnRun:
             print('*** writing file %s during simulation' % spkFileName)
-            spkData = [[]]
+            spkData = [(0,0)]
             spkTimeFile = open(spkFileName,'w')
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
@@ -232,7 +232,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
-        spkData = [[]]
+        spkData = [(0,0)]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -339,7 +339,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     if saveSpikingData:
         if writeOnRun:
             print('*** writing file %s during simulation' % spkFileName)
-            spkData = [[]]
+            spkData = [(0,0)]
             spkTimeFile = open(spkFileName,'w')
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
@@ -366,7 +366,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
-        spkData = [[]]
+        spkData = [(0,0)]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]
@@ -463,7 +463,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
     if saveSpikingData:
         if writeOnRun:
             print('*** writing file %s during simulation' % spkFileName)
-            spkData = [[]]
+            spkData = [(0,0)]
             spkTimeFile = open(spkFileName,'w')
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
@@ -490,7 +490,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
-        spkData = [[]]
+        spkData = [(0,0)]
 
     # running main simulation
     rhoE = [0.0 for i in range(Tmax)]

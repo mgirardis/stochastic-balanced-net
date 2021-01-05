@@ -1,8 +1,6 @@
 import random
 import numpy
 
-# it seems that using a list of tuples to store the spiking data is generating a lot of pythran errors
-
 #pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export RunSimulation_static(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
@@ -14,13 +12,9 @@ import numpy
 #pythran export PHI(float, float, float)
 #pythran export multvecelem(float list, float list)
 #pythran export PoissonProcess_firingprob(float)
-
-#nothing: the below functions are generating a bunch of compiler errors
-#nothing pythran export save_spk_data_fake((int,int) list,int,int)
-#nothing pythran export save_spk_data((int,int) list,int,int)
-#nothing: pythran does not support writing to txt files
-#nothing      pythran export write_spk_data_fake(f,t,k)
-#nothing      pythran export write_spk_data(f,t,k)
+#pythran export save_spk_data_fake((int,int) list,int,int)
+#pythran export save_spk_data((int,int) list,int,int)
+#pythran export write_spk_data_fake(int,int)
 
 def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauWinv = 1.0 / tauW
@@ -87,24 +81,35 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
-        spkData = []
-        i = 0
-        while i < pN_s:
-            if XE[i] == 1:
-                spkData.append([0,i])
-            i+=1
-        i = 0
-        while i < qN_s:
-            if XI[i] == 1:
-                spkData.append([0,i+pN_s])
-            i+=1
+        if writeOnRun:
+            print('*** writing file %s during simulation' % spkFileName)
+            spkData = [[]]
+            spkTimeFile = open(spkFileName,'w')
+            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
+            save_spk_time = save_spk_data_fake
+        else:
+            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+            #spkData[0] = XE[:pN_s] + XI[:qN_s]
+            # spkData is a list of tuples
+            # where each tuple records (time step, neuron index) for each firing
+            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+            write_spk_time = write_spk_data_fake
+            save_spk_time = save_spk_data
+            spkData = []
+            i = 0
+            while i < pN_s:
+                if XE[i] == 1:
+                    spkData = save_spk_time(spkData,0,i)
+                i+=1
+            i = 0
+            while i < qN_s:
+                if XI[i] == 1:
+                    spkData = save_spk_time(spkData,0,i+pN_s)
+                i+=1
     else:
+        save_spk_time = save_spk_data_fake
+        write_spk_time = write_spk_data_fake
         spkData = [[]]
 
     # running main simulation
@@ -121,18 +126,22 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
             VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean += thetaE[i]
-            if saveSpikingData and (i < pN_s):
-                spkData.append([t,i]) #spkData[t][i] = XE[i]
+            if i < pN_s:
+                spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
+                write_spk_time(t,i)
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean += thetaI[i]
-            if saveSpikingData and (i < qN_s):
-                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
+            if i < qN_s:
+                spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                write_spk_time(t,i+pN_s)
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         theta_data[t] = thetaMean/N_fl
     # end of time loop
+    if saveSpikingData and writeOnRun:
+        spkTimeFile.close()
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
@@ -194,24 +203,35 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
-        spkData = []
-        i = 0
-        while i < pN_s:
-            if XE[i] == 1:
-                spkData.append([0,i])
-            i+=1
-        i = 0
-        while i < qN_s:
-            if XI[i] == 1:
-                spkData.append([0,i+pN_s])
-            i+=1
+        if writeOnRun:
+            print('*** writing file %s during simulation' % spkFileName)
+            spkData = [[]]
+            spkTimeFile = open(spkFileName,'w')
+            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
+            save_spk_time = save_spk_data_fake
+        else:
+            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+            #spkData[0] = XE[:pN_s] + XI[:qN_s]
+            # spkData is a list of tuples
+            # where each tuple records (time step, neuron index) for each firing
+            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+            write_spk_time = write_spk_data_fake
+            save_spk_time = save_spk_data
+            spkData = []
+            i = 0
+            while i < pN_s:
+                if XE[i] == 1:
+                    spkData = save_spk_time(spkData,0,i)
+                i+=1
+            i = 0
+            while i < qN_s:
+                if XI[i] == 1:
+                    spkData = save_spk_time(spkData,0,i+pN_s)
+                i+=1
     else:
+        save_spk_time = save_spk_data_fake
+        write_spk_time = write_spk_data_fake
         spkData = [[]]
 
     # running main simulation
@@ -226,16 +246,20 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
         for i in range(pN):
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
-            if saveSpikingData and (i < pN_s):
-                spkData.append([t,i]) #spkData[t][i] = XE[i]
+            if i < pN_s:
+                spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
+                write_spk_time(t,i)
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
-            if saveSpikingData and (i < qN_s):
-                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
+            if i < qN_s:
+                spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                write_spk_time(t,i+pN_s)
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop
+    if saveSpikingData and writeOnRun:
+        spkTimeFile.close()
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/theta for r in rhoE]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
@@ -313,24 +337,35 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
-        spkData = []
-        i = 0
-        while i < pN_s:
-            if XE[i] == 1:
-                spkData.append([0,i])
-            i+=1
-        i = 0
-        while i < qN_s:
-            if XI[i] == 1:
-                spkData.append([0,i+pN_s])
-            i+=1
+        if writeOnRun:
+            print('*** writing file %s during simulation' % spkFileName)
+            spkData = [[]]
+            spkTimeFile = open(spkFileName,'w')
+            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
+            save_spk_time = save_spk_data_fake
+        else:
+            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+            #spkData[0] = XE[:pN_s] + XI[:qN_s]
+            # spkData is a list of tuples
+            # where each tuple records (time step, neuron index) for each firing
+            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+            write_spk_time = write_spk_data_fake
+            save_spk_time = save_spk_data
+            spkData = []
+            i = 0
+            while i < pN_s:
+                if XE[i] == 1:
+                    spkData = save_spk_time(spkData,0,i)
+                i+=1
+            i = 0
+            while i < qN_s:
+                if XI[i] == 1:
+                    spkData = save_spk_time(spkData,0,i+pN_s)
+                i+=1
     else:
+        save_spk_time = save_spk_data_fake
+        write_spk_time = write_spk_data_fake
         spkData = [[]]
 
     # running main simulation
@@ -350,19 +385,23 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
             VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean = thetaMean + thetaE[i]
-            if saveSpikingData and (i < pN_s):
-                spkData.append([t,i]) #spkData[t][i] = XE[i]
+            if i < pN_s:
+                spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
+                write_spk_time(t,i)
         for i in range(qN):
             VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean = thetaMean + thetaI[i]
-            if saveSpikingData and (i < qN_s):
-                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
+            if i < qN_s:
+                spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                write_spk_time(t,i+pN_s)
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
         W_I_data[t] = W_I
         theta_data[t] = thetaMean/N_fl
     # end of time loop
+    if saveSpikingData and writeOnRun:
+        spkTimeFile.close()
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*r for r in multvecelem(W_I_data,rhoI)],[r/J for r in W_I_data],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
@@ -422,24 +461,35 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
-        #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-        #spkData[0] = XE[:pN_s] + XI[:qN_s]
-        # spkData is a list of tuples
-        # where each tuple records (time step, neuron index) for each firing
-        # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-        #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
-        spkData = []
-        i = 0
-        while i < pN_s:
-            if XE[i] == 1:
-                spkData.append([0,i])
-            i+=1
-        i = 0
-        while i < qN_s:
-            if XI[i] == 1:
-                spkData.append([0,i+pN_s])
-            i+=1
+        if writeOnRun:
+            print('*** writing file %s during simulation' % spkFileName)
+            spkData = [[]]
+            spkTimeFile = open(spkFileName,'w')
+            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
+            save_spk_time = save_spk_data_fake
+        else:
+            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+            #spkData[0] = XE[:pN_s] + XI[:qN_s]
+            # spkData is a list of tuples
+            # where each tuple records (time step, neuron index) for each firing
+            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
+            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+            write_spk_time = write_spk_data_fake
+            save_spk_time = save_spk_data
+            spkData = []
+            i = 0
+            while i < pN_s:
+                if XE[i] == 1:
+                    spkData = save_spk_time(spkData,0,i)
+                i+=1
+            i = 0
+            while i < qN_s:
+                if XI[i] == 1:
+                    spkData = save_spk_time(spkData,0,i+pN_s)
+                i+=1
     else:
+        save_spk_time = save_spk_data_fake
+        write_spk_time = write_spk_data_fake
         spkData = [[]]
 
     # running main simulation
@@ -452,16 +502,20 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
         for i in range(pN):
             VE[i],XE[i],dummyVar = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
-            if saveSpikingData and (i < pN_s):
-                spkData.append([t,i]) #spkData[t][i] = XE[i]
+            if i < pN_s:
+                spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
+                write_spk_time(t,i)
         for i in range(qN):
             VI[i],XI[i],dummyVar = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
-            if saveSpikingData and (i < qN_s):
-                spkData.append([t,i+pN_s]) #spkData[t][i+pN_s] = XI[i]
+            if i < qN_s:
+                spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
+                write_spk_time(t,i+pN_s)
         rhoE[t] = rhoE[t]/pN_fl
         rhoI[t] = rhoI[t]/qN_fl
     # end of time loop
+    if saveSpikingData and writeOnRun:
+        spkTimeFile.close()
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/theta for r in rhoE]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
@@ -491,3 +545,16 @@ def multvecelem(x,y):
 
 def PoissonProcess_firingprob(r):
     return 1.0-numpy.exp(-r) # probability of firing is constant
+
+def save_spk_data_fake(s,t,k):
+    return s
+
+def save_spk_data(s,t,k):
+    # s -> list to append t_k
+    # t -> spike time index
+    # k -> neuron index that fired at t
+    s.append((t,k))
+    return s
+
+def write_spk_data_fake(t,k):
+    return None

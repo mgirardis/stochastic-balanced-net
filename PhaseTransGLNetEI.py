@@ -34,7 +34,7 @@ def main():
     simType = args.simType[0]
     saveTxtFile = args.saveTxtFile
     outputFileName = args.outputFile[0]
-    if not outputFileName.lower().endswith('.txt'):
+    if outputFileName.lower().endswith('.txt'):
         outputFileName = outputFileName.replace('.txt','.mat')
     if not outputFileName.lower().endswith('.mat'):
         outputFileName += '.mat'

@@ -17,7 +17,6 @@ import numpy
 #pythran export write_spk_data_fake(int,int)
 
 def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
-    tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -146,7 +145,6 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
 def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
-    tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -271,6 +269,8 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
         weightAdapt = weightAdapt_increase
     else:
         raise ValueError('weightDynType is unknown')
+    if q == 0.0:
+        weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)

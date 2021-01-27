@@ -85,7 +85,7 @@ def main():
     matVars.update({"time": range(simParam.tTrans,simParam.Tmax), "rhoE": rhoE, "rhoI": rhoI, "rhoMean": rhoMean})
     matVars.update({"excSynCurr": excSynCurrent, "inhSynCurr": inhSynCurrent, "netSynCurr": synCurrentNet})
     matVars.update({"gVar": g_data, "YVar": Y_data, "N_rec_Exc": outputParamValues.N_rec_Exc})
-    scipy.io.savemat(matFileName,matVars,long_field_names=True)
+    scipy.io.savemat(matFileName,matVars,long_field_names=True,do_compression=True)
 
     if simParam.saveSpikingData and not simParam.writeOnRun:
         if saveTxtFile:
@@ -94,7 +94,7 @@ def main():
 
         print("* Appending spiking data file ... %s" % matFileName)
         matVars.update({"spkData":spkData})
-        scipy.io.savemat(matFileName,matVars,appendmat=True,long_field_names=True)
+        scipy.io.savemat(matFileName,matVars,appendmat=True,long_field_names=True,do_compression=True)
 
 if __name__ == '__main__':
     main()

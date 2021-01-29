@@ -29,7 +29,10 @@ def main():
     outputFileName = args.outputFile[0]
 
     if not outputFileName.lower().endswith('.txt'):
-        outputFileName += '.txt'
+        if outputFileName.lower().endswith('.mat'):
+            outputFileName = outputFileName.replace('.mat','.txt')
+        else:
+            outputFileName += '.txt'
     matFileName = outputFileName.replace('.txt','.mat')
     simParam.spkFileName = outputFileName.replace('.txt','_spkdata.txt')
 
@@ -95,6 +98,10 @@ def main():
         print("* Appending spiking data file ... %s" % matFileName)
         matVars.update({"spkData":spkData})
         scipy.io.savemat(matFileName,matVars,appendmat=True,long_field_names=True,do_compression=True)
+
+    if simParam.writeOnRun:
+        print('-#-')
+        print('spkFileName: %s'%simParam.spkFileName)
 
 if __name__ == '__main__':
     main()

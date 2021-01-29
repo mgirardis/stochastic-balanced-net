@@ -42,9 +42,11 @@ AA = numpy.unique(numpy.append(numpy.asarray((gg*10.0)*(1.0 + ttauw / ttau)),[30
 #exit()
 
 if numpy.isnan(tauw_val):
-    line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {4:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData 1000'
+    #line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {4:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -saveSpikingData -writeOnRun -nNeuSpikingData {3:d}'
+    line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {4:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData {3:d}'
 else:
-    line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {6:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_tauw{6:g}_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData 1000'
+    #line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {6:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_tauw{6:g}_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -saveSpikingData -writeOnRun -nNeuSpikingData {3:d}'
+    line = 'GLNetEI.py -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal 100000 -tTrans 5000 -tauT {4:.16f} -tauW {6:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_SOqC_tauw{6:g}_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData {3:d}'
 
 if runLocal:
     print('#!/bin/bash')

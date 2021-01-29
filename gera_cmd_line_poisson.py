@@ -15,7 +15,7 @@ tauw_val = args.tauw[0]
 is_lowrate_sim = args.lowrate
 
 J = 10.0
-
+    
 # intervalos completos de parametros (mas dah muito programa pra rodar com todas essas combinacoes)
 #GG = numpy.sort(list(numpy.linspace(0.15,1,5))+[0.2])
 #gg = 4.0-5.0/(GG*10.0) # the critical point values for each Gamma in GG and J=10, essentially these values should not make any difference
@@ -49,15 +49,19 @@ if is_lowrate_sim:
     rate1 = 1.0e-10
     rate2 = 1.0e-6
     tTotal = 1200000
+    lowrate_str = '_lowrate'
 else:
     rate1 = 1.0e-6
     rate2 = 1.0
     tTotal = 120000
+    lowrate_str = ''
 
 if numpy.isnan(tauw_val):
-    line = 'PhaseTransGLNetEI.py -parName rPoisson -parVal1 {6:g} -parVal2 {7:g} -nPar 20 -parScale log -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal {8:d} -tTrans 30000 -tauT {4:.16f} -tauW {4:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_pt_poisson_SOqC_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData 1000'
+    out_fname = 'output/glei_pt_poisson_SOqC_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}'+lowrate_str+'.txt'
+    line = 'PhaseTransGLNetEI.py -parName rPoisson -parVal1 {6:g} -parVal2 {7:g} -nPar 20 -parScale log -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal {8:d} -tTrans 30000 -tauT {4:.16f} -tauW {4:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile '+out_fname+' -weightDynType simple -nNeuSpikingData 1000'
 else:
-    line = 'PhaseTransGLNetEI.py -parName rPoisson -parVal1 {7:g} -parVal2 {8:g} -nPar 20 -parScale log -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal {9:d} -tTrans 30000 -tauT {4:.16f} -tauW {6:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile output/glei_pt_poisson_SOqC_tauw{6:g}_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}.txt -weightDynType simple -nNeuSpikingData 1000'
+    out_fname = 'output/glei_pt_poisson_SOqC_tauw{6:g}_A{5:g}_G{0:g}_g{1:g}_Y{2:g}_N{3:d}_tau{4:g}'+lowrate_str+'.txt'
+    line = 'PhaseTransGLNetEI.py -parName rPoisson -parVal1 {7:g} -parVal2 {8:g} -nPar 20 -parScale log -mu 0.0 -Gamma {0:.16f} -J 10.0 -g {1:.16f} -Y {2:.16f} -theta 1.0 -N {3:d} -simType adapt -p 0.8 -tTotal {9:d} -tTrans 30000 -tauT {4:.16f} -tauW {6:.16f} -uT 0.1 -uW 0.1 -A {5:.16f} -outputFile '+out_fname+' -weightDynType simple -nNeuSpikingData 1000'
 
 if runLocal:
     print('#!/bin/bash')

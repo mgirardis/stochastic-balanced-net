@@ -7,10 +7,13 @@ import ioGLNet as io
 import scipy.io
 import GLNetEISimLib
 import datetime
+import sys
 # import matplotlib.pyplot as plt
 
 def main():
 
+    # for debug
+    #sys.argv = 'python GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')[1:]
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
     parser = io.add_neuron_params(parser)
     args = parser.parse_args()

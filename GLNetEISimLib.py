@@ -242,18 +242,20 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
             rhoETemp = 1.0 / pN_fl
         for i in range(pN):
             VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoETemp,rhoITemp,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
-            rhoETemp += XE[i]
+            rhoE[t] += XE[i]
             if (i < pN_s) and XE[i]:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
             VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoETemp,rhoITemp,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
-            rhoITemp += XI[i]
+            rhoI[t] += XI[i]
             if (i < qN_s) and XI[i]:
                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
                 write_spk_time(t,i+pN_s)
-        rhoE[t] = rhoETemp/pN_fl
-        rhoI[t] = rhoITemp/qN_fl
+        rhoE[t] = rhoE[t]/pN_fl
+        rhoI[t] = rhoI[t]/qN_fl
+        rhoETemp = rhoE[t]
+        rhoITemp = rhoI[t]
     # end of time loop
     if saveSpikingData and writeOnRun:
         spkTimeFile.close()

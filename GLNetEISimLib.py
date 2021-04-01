@@ -21,6 +21,9 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     pN = int(p*N)
     qN = N - pN
 
+    XE0 = float(XE0)
+    XI0 = float(XI0)
+
     N_fl = float(N)
     pN_fl = float(pN)
     qN_fl = float(qN)
@@ -36,18 +39,18 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     if XE0Rand:
         XE = [random.randint(0,1) for i in range(pN)]
     else:
-        XE = [0 for i in range(pN)]
+        XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     thetaI = [theta for i in range(qN)]
     if XI0Rand:
         XI = [random.randint(0,1) for i in range(qN)]
     else:
-        XI = [0 for i in range(qN)]
+        XI = [XI0 for i in range(qN)]
 
     # setting initial condition
-    rhoETemp = 0.0
-    rhoITemp = 0.0
+    rhoETemp = float(sum(XE))/pN_fl
+    rhoITemp = float(sum(XI))/qN_fl
 
     thetaMean = theta
 
@@ -56,8 +59,8 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
         dummyVar = 0.0
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = float(sum(XE))/pN_fl
-        rhoI[0] = float(sum(XI))/qN_fl
+        rhoE[0] = rhoETemp
+        rhoI[0] = rhoITemp
         for t in range(1,tTrans):
             thetaMean = 0.0
             #Iext = 0.0 # stimulus
@@ -149,6 +152,9 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     pN = int(p*N)
     qN = N - pN
 
+    XE0 = float(XE0)
+    XI0 = float(XI0)
+
     pN_fl = float(pN)
     qN_fl = float(qN)
 
@@ -162,24 +168,24 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     if XE0Rand:
         XE = [random.randint(0,1) for i in range(pN)]
     else:
-        XE = [0 for i in range(pN)]
+        XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     if XI0Rand:
         XI = [random.randint(0,1) for i in range(qN)]
     else:
-        XI = [0 for i in range(qN)]
+        XI = [XI0 for i in range(qN)]
 
     # setting initial condition
-    rhoETemp = 0.0
-    rhoITemp = 0.0
+    rhoETemp = float(sum(XE))/pN_fl
+    rhoITemp = float(sum(XI))/qN_fl
 
     # running transient time
     if tTrans > 0:
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = float(sum(XE))/pN_fl
-        rhoI[0] = float(sum(XI))/qN_fl
+        rhoE[0] = rhoETemp
+        rhoI[0] = rhoITemp
         for t in range(1,tTrans):
             if (rhoE[t-1] + rhoI[t-1]) < 1e-16:
                 XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
@@ -278,6 +284,9 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     pN = int(p*N)
     qN = N - pN
 
+    XE0 = float(XE0)
+    XI0 = float(XI0)
+
     N_fl = float(N)
     pN_fl = float(pN)
     qN_fl = float(qN)
@@ -293,18 +302,18 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     if XE0Rand:
         XE = [float(random.randint(0,1)) for i in range(pN)]
     else:
-        XE = [0.0 for i in range(pN)]
+        XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     thetaI = [theta for i in range(qN)]
     if XI0Rand:
         XI = [float(random.randint(0,1)) for i in range(qN)]
     else:
-        XI = [0.0 for i in range(qN)]
+        XI = [XI0 for i in range(qN)]
 
     # setting initial conditions
-    rhoETemp = 0.0 
-    rhoITemp = 0.0 
+    rhoETemp = float(sum(XE))/pN_fl
+    rhoITemp = float(sum(XI))/qN_fl
     W_I = g*J
     thetaMean = theta
     
@@ -312,8 +321,8 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     if tTrans > 0:
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = float(sum(XE))/pN_fl
-        rhoI[0] = float(sum(XI))/qN_fl
+        rhoE[0] = rhoETemp
+        rhoI[0] = rhoITemp
         for t in range(1,tTrans):
             W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE[t-1],rhoI[t-1]) # both the E and I subnetworks receive the same inhibitory adapted input
             #Iext = 0.0 # stimulus
@@ -412,6 +421,9 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
     pN = int(p*N)
     qN = N - pN
 
+    XE0 = float(XE0)
+    XI0 = float(XI0)
+
     pN_fl = float(pN)
     qN_fl = float(qN)
 
@@ -425,24 +437,24 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
     if XE0Rand:
         XE = [random.randint(0,1) for i in range(pN)]
     else:
-        XE = [0 for i in range(pN)]
+        XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     if XI0Rand:
         XI = [random.randint(0,1) for i in range(qN)]
     else:
-        XI = [0 for i in range(qN)]
+        XI = [XI0 for i in range(qN)]
 
     # setting initial condition
-    rhoETemp = 0.0
-    rhoITemp = 0.0
+    rhoETemp = float(sum(XE))/pN_fl
+    rhoITemp = float(sum(XI))/qN_fl
 
     # running transient time
     if tTrans > 0:
         rhoE = [0.0 for i in range(tTrans)]
         rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = float(sum(XE))/pN_fl
-        rhoI[0] = float(sum(XI))/qN_fl
+        rhoE[0] = rhoETemp
+        rhoI[0] = rhoITemp
         for t in range(1,tTrans):
             #Iext = 0.0 # stimulus
             for i in range(pN):

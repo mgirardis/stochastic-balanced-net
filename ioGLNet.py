@@ -1,6 +1,22 @@
 import copy
 import collections
 
+"""
+
+HOW TO ADD A NEW SIMULATION PARAMETER
+
+1. add to one of the functions below ('add_..._params')
+
+2. if you need to pass it to a simulation,
+    add the parameter to either
+    get_sim_param_struct_for_pythran(args)
+    or
+    get_phasetrans_param_struct(args)
+    where the dict field must match the name of the input parameter in the simulation function
+
+
+"""
+
 def add_phasetrans_params(parser,**defaultValues):
     parser.add_argument('-parName', nargs=1, required=False, metavar='NAME',  type=str,   default=get_param_value('parName', defaultValues,['rPoisson']), help='name of the parameter to vary in [val1;val2]')
     parser.add_argument('-parVal1', nargs=1, required=False, metavar='VALUE', type=float, default=get_param_value('parVal1', defaultValues,[1.0e-6]),     help='simulate n values of the parameter in [val1;val2]')
@@ -34,12 +50,14 @@ def add_neuron_params(parser,**defaultValues):
     parser.add_argument('-VI0Std',          nargs=1, required=False, metavar='STD_VI_INIT',      type=float, default=get_param_value('VI0Std',          defaultValues,[0.0]),                  help='std dev for initial VI')
     parser.add_argument('-XE0',             nargs=1, required=False, metavar='XE_INIT',          type=int,   default=get_param_value('XE0',             defaultValues,[0]),                    help='init value for XE')
     parser.add_argument('-XI0',             nargs=1, required=False, metavar='XI_INIT',          type=int,   default=get_param_value('XI0',             defaultValues,[0]),                    help='init value for XI')
+    parser.add_argument('-fXE0',            nargs=1, required=False, metavar='fXE_INIT',         type=float, default=get_param_value('fXE0',            defaultValues,[0.5]),                  help='fraction of the E population that will have init value XE0')
+    parser.add_argument('-fXI0',            nargs=1, required=False, metavar='fXI_INIT',         type=float, default=get_param_value('fXI0',            defaultValues,[0.5]),                  help='fraction of the I population that will have init value XI0')
     parser.add_argument('-outputFile',      nargs=1, required=False, metavar='OUTPUT_FILE_NAME', type=str,   default=get_param_value('outputFile',      defaultValues,['glnet_dynamics.txt']), help='name of the output file')
     parser.add_argument('-nNeuSpikingData', nargs=1, required=False, metavar='N_NEU_SPIKING',    type=int,   default=get_param_value('nNeuSpikingData', defaultValues,[10000]),                help='number of neurons to be recorded for spiking data')
     parser.add_argument('-simType',         nargs=1, required=False, metavar='SIM_TYPE',         type=str,   default=get_param_value('simType',         defaultValues,['static']), choices=['static', 'adapt', 'aval', 'adaptthresh'], help='type of simulation; adapt is the SOqC dynamics; adaptthresh only adapts thresholds (synapses are fixed); aval = static network, seeding a spike everytime that activity dies off')
     parser.add_argument('-weightDynType',   nargs=1, required=False, metavar='WDYN_TYPE',        type=str,   default=get_param_value('weightDynType',   defaultValues,['simple']), choices=['simple', 'coupled'], help='simple: decrease inhibitory weight due to inhibitory activity; coupled: increase inhibitory weight due to excitatory activity')
-    parser.add_argument('-XE0Rand',         required=False, action='store_true', default=False, help='generates random initial XE')
-    parser.add_argument('-XI0Rand',         required=False, action='store_true', default=False, help='generates random initial XI')
+    parser.add_argument('-noXE0Rand',       required=False, action='store_true', default=False, help='if set, generates sequential initial XE given by XE0')
+    parser.add_argument('-noXI0Rand',       required=False, action='store_true', default=False, help='if set, generates sequential initial XI given by XI0')
     parser.add_argument('-saveSpikingData', required=False, action='store_true', default=False, help='saves spiking data for simulation')
     parser.add_argument('-writeOnRun',      required=False, action='store_true', default=False, help='writes spiking data as txt file while program is running to save memory')
     parser.add_argument('-saveTxtFile',     required=False, action='store_true', default=False, help='saves data in text as well as mat')
@@ -70,8 +88,10 @@ def get_sim_param_struct_for_pythran(args):
     VI0Std = float(args.VI0Std[0]),
     XE0 = float(args.XE0[0]),
     XI0 = float(args.XI0[0]),
-    XE0Rand = bool(args.XE0Rand),
-    XI0Rand = bool(args.XI0Rand),
+    fXE0 = float(args.fXE0[0]),
+    fXI0 = float(args.fXI0[0]),
+    XE0Rand = not bool(args.noXE0Rand),
+    XI0Rand = not bool(args.noXI0Rand),
     N = int(args.N[0]),
     p = p,
     q = float(1.0 - p),

@@ -1,10 +1,10 @@
 import random
 import numpy
 
-#pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_static(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
-#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, bool, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_static(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)
@@ -16,7 +16,7 @@ import numpy
 #pythran export save_spk_data((int,int) list,int,int)
 #pythran export write_spk_data_fake(int,int)
 
-def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -36,15 +36,19 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     # setting initial conditions
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     thetaE = [theta for i in range(pN)]
-    if XE0Rand:
-        XE = [random.randint(0,1) for i in range(pN)]
+    if (XE0 > 0) and XE0Rand:
+        XE = [0.0 for i in range(pN)]
+        for k in random.sample(range(pN),k=int(fXE0*pN)):
+            XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     thetaI = [theta for i in range(qN)]
-    if XI0Rand:
-        XI = [random.randint(0,1) for i in range(qN)]
+    if (XI0 > 0) and XI0Rand:
+        XI = [0.0 for i in range(qN)]
+        for k in random.sample(range(qN),k=int(fXI0*qN)):
+            XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
 
@@ -147,7 +151,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
-def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -165,14 +169,18 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
 
     # setting initial conditions
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
-    if XE0Rand:
-        XE = [random.randint(0,1) for i in range(pN)]
+    if (XE0 > 0) and XE0Rand:
+        XE = [0.0 for i in range(pN)]
+        for k in random.sample(range(pN),k=int(fXE0*pN)):
+            XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
-    if XI0Rand:
-        XI = [random.randint(0,1) for i in range(qN)]
+    if (XI0 > 0) and XI0Rand:
+        XI = [0.0 for i in range(qN)]
+        for k in random.sample(range(qN),k=int(fXI0*qN)):
+            XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
 
@@ -269,7 +277,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Ra
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
 
-def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
 
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
@@ -299,15 +307,19 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     # setting initial conditions
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     thetaE = [theta for i in range(pN)]
-    if XE0Rand:
-        XE = [float(random.randint(0,1)) for i in range(pN)]
+    if (XE0 > 0) and XE0Rand:
+        XE = [0.0 for i in range(pN)]
+        for k in random.sample(range(pN),k=int(fXE0*pN)):
+            XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     thetaI = [theta for i in range(qN)]
-    if XI0Rand:
-        XI = [float(random.randint(0,1)) for i in range(qN)]
+    if (XI0 > 0) and XI0Rand:
+        XI = [0.0 for i in range(qN)]
+        for k in random.sample(range(qN),k=int(fXI0*qN)):
+            XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
 
@@ -415,7 +427,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0R
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*r for r in multvecelem(W_I_data,rhoI)],[r/J for r in W_I_data],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
-def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
+def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -434,14 +446,18 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0
 
     # setting initial conditions
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
-    if XE0Rand:
-        XE = [random.randint(0,1) for i in range(pN)]
+    if (XE0 > 0) and XE0Rand:
+        XE = [0.0 for i in range(pN)]
+        for k in random.sample(range(pN),k=int(fXE0*pN)):
+            XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
-    if XI0Rand:
-        XI = [random.randint(0,1) for i in range(qN)]
+    if (XI0 > 0) and XI0Rand:
+        XI = [0.0 for i in range(qN)]
+        for k in random.sample(range(qN),k=int(fXI0*qN)):
+            XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
 

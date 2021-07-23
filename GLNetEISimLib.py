@@ -38,7 +38,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Ra
     thetaE = [theta for i in range(pN)]
     if (XE0 > 0) and XE0Rand:
         XE = [0.0 for i in range(pN)]
-        for k in random.sample(range(pN),k=int(fXE0*pN)):
+        for k in random.sample(range(pN),int(fXE0*pN)):
             XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
@@ -47,7 +47,7 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Ra
     thetaI = [theta for i in range(qN)]
     if (XI0 > 0) and XI0Rand:
         XI = [0.0 for i in range(qN)]
-        for k in random.sample(range(qN),k=int(fXI0*qN)):
+        for k in random.sample(range(qN),int(fXI0*qN)):
             XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
@@ -171,7 +171,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     if (XE0 > 0) and XE0Rand:
         XE = [0.0 for i in range(pN)]
-        for k in random.sample(range(pN),k=int(fXE0*pN)):
+        for k in random.sample(range(pN),int(fXE0*pN)):
             XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
@@ -179,7 +179,7 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     if (XI0 > 0) and XI0Rand:
         XI = [0.0 for i in range(qN)]
-        for k in random.sample(range(qN),k=int(fXI0*qN)):
+        for k in random.sample(range(qN),int(fXI0*qN)):
             XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
@@ -309,7 +309,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0
     thetaE = [theta for i in range(pN)]
     if (XE0 > 0) and XE0Rand:
         XE = [0.0 for i in range(pN)]
-        for k in random.sample(range(pN),k=int(fXE0*pN)):
+        for k in random.sample(range(pN),int(fXE0*pN)):
             XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
@@ -318,7 +318,7 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0
     thetaI = [theta for i in range(qN)]
     if (XI0 > 0) and XI0Rand:
         XI = [0.0 for i in range(qN)]
-        for k in random.sample(range(qN),k=int(fXI0*qN)):
+        for k in random.sample(range(qN),int(fXI0*qN)):
             XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]
@@ -448,7 +448,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     if (XE0 > 0) and XE0Rand:
         XE = [0.0 for i in range(pN)]
-        for k in random.sample(range(pN),k=int(fXE0*pN)):
+        for k in random.sample(range(pN),int(fXE0*pN)):
             XE[k] = 1.0
     else:
         XE = [XE0 for i in range(pN)]
@@ -456,7 +456,7 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     if (XI0 > 0) and XI0Rand:
         XI = [0.0 for i in range(qN)]
-        for k in random.sample(range(qN),k=int(fXI0*qN)):
+        for k in random.sample(range(qN),int(fXI0*qN)):
             XI[k] = 1.0
     else:
         XI = [XI0 for i in range(qN)]

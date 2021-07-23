@@ -1,7 +1,7 @@
 clearvars
 close all
 
-txt_files = dir('./output/*_spkdata.txt');
+txt_files = dir('./output_close_gc/*_spkdata.txt');
 
 for i = 1:numel(txt_files)
     fn_txt = fullfile(txt_files(i).folder,txt_files(i).name);

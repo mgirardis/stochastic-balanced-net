@@ -27,16 +27,17 @@ gg = 4.0-5.0/(GG*10.0) # the critical point values for each Gamma in GG and J=10
 NN = [ 1e5 ] # network size
 #NN = [ 1e4,1e5 ] # network size
 
-ttau = numpy.asarray([500.0,1000.0,2000.0,3000.0,5000.0,10000.0]) # [1000.0,10000.0]
+ttau = numpy.asarray([10000.0]) #numpy.asarray([500.0,1000.0,2000.0,3000.0,5000.0,10000.0]) # [1000.0,10000.0]
 #ttau = [50.0,100.0,150.0,200.0,250.0,500.0,1000.0] # small tau
 
 YY = [1.0] # Y values (external current) must be >= 1
 #YY = [1.0,1.01,1.001] # for small tau
 
 #AA = [30.0, 73.5]
-ttauw = ttau if numpy.isnan(tauw_val) else tauw_val
+ttauw = ttau if numpy.isnan(tauw_val) else (tauw_val if numpy.isscalar(tauw_val) else numpy.asarray(tauw_val))
 #print(ttauw/ttau)
-AA = numpy.unique(numpy.append(numpy.asarray((gg*10.0)*(1.0 + ttauw / ttau)),[30.0,40.0,50.0,60.0])) # eq 25 from the new paper
+
+AA = numpy.unique(numpy.append(numpy.asarray((gg*10.0)*(1.0 + ttauw / ttau)),[20.0,180.0,400.0,1550.0,2000.0])) # eq 25 from the new paper # [20.0,30.0,40.0,50.0,60.0,70.0,180.0,400.0] # [20.0,50.0,70.0,180.0,400.0]
 #AA = numpy.unique(numpy.asarray((gg*10.0)*(1.0 + ttauw / ttau))) # eq 25 from the new paper
 #print(AA)
 #exit()

@@ -25,8 +25,8 @@ def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Ra
     XI0 = float(XI0)
 
     N_fl = float(N)
-    pN_fl = float(pN)
-    qN_fl = float(qN)
+    pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
+    qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
@@ -159,8 +159,8 @@ def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,
     XE0 = float(XE0)
     XI0 = float(XI0)
 
-    pN_fl = float(pN)
-    qN_fl = float(qN)
+    pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
+    qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
@@ -296,8 +296,8 @@ def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0
     XI0 = float(XI0)
 
     N_fl = float(N)
-    pN_fl = float(pN)
-    qN_fl = float(qN)
+    pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
+    qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
@@ -436,8 +436,8 @@ def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI
     XE0 = float(XE0)
     XI0 = float(XI0)
 
-    pN_fl = float(pN)
-    qN_fl = float(qN)
+    pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
+    qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot

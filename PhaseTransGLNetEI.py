@@ -102,7 +102,7 @@ def main():
         in which, for sufficiently high input Poisson rate, the network activity decays to rhoE=0
         after some time of about 10^4 time steps or earlier for higher rates
         """
-        t_decay = get_decay_time_idx(rhoE,3000,50)
+        t_decay = get_decay_time_idx(rhoE,50)
         outVars.t_decay[k] = t_decay
         outVars.avg_rhoE[k],outVars.std_rhoE[k] = mean_std_before_decay(rhoE,t_decay=t_decay)
         outVars.avg_rhoI[k],outVars.std_rhoI[k] = mean_std_before_decay(rhoI,t_decay=t_decay)
@@ -132,7 +132,7 @@ def mean_std_before_decay(x,t0=0,t_decay=numpy.nan):
         t_decay = len(x)
     return numpy.mean(x[t0:t_decay]),numpy.std(x[t0:t_decay])
 
-def get_decay_time_idx(rho,dt=0,w_filter=50):
+def get_decay_time_idx(rho,w_filter=50):
     """
     apparently there can be metastable states in the adaptive threshold excitatory networks
     in which, for sufficiently high Poisson rate, the network activity decays to rhoE=0
@@ -146,7 +146,9 @@ def get_decay_time_idx(rho,dt=0,w_filter=50):
     rho_f = movingavg_filter(rho,w_filter)
     n = int(numpy.floor(t_zero/2.0))
     k = numpy.argmax(numpy.abs(numpy.diff(rho_f[:t_zero]))[-n:])
-    t_decay = k + n - dt
+    t_decay = k + n
+    dt = 2.2*numpy.abs(t_zero - t_decay)
+    t_decay -= dt
     if t_decay<100:
         t_decay = k+n
     return t_decay

@@ -140,7 +140,7 @@ def get_decay_time_idx(rho,dt=0,w_filter=50):
 
     dt -> time tolerance to be subtracted from the mean decay time
     """
-    t_zero = find_consecutive(rho<1.0e-10,100)
+    t_zero = find_consecutive(numpy.asarray(rho)<1.0e-10,100)
     if not t_zero:
         return numpy.nan
     rho_f = movingavg_filter(rho,w_filter)

@@ -7,6 +7,7 @@ import warnings
 import ioGLNet as io
 import datetime
 import scipy.io
+import scipy.signal
 import GLNetEISimLib
 # import matplotlib.pyplot as plt
 
@@ -69,7 +70,8 @@ def main():
                             avg_YVar =numpy.zeros(nPoints),std_YVar =numpy.zeros(nPoints),
                             avg_Isyn =numpy.zeros(nPoints),std_Isyn =numpy.zeros(nPoints),
                             avg_IsynE=numpy.zeros(nPoints),std_IsynE=numpy.zeros(nPoints),
-                            avg_IsynI=numpy.zeros(nPoints),std_IsynI=numpy.zeros(nPoints))
+                            avg_IsynI=numpy.zeros(nPoints),std_IsynI=numpy.zeros(nPoints),
+                            t_decay  =numpy.zeros(nPoints))
     
     outVarsT = []
     if phasetrParam.saveTimeEvo:
@@ -95,14 +97,21 @@ def main():
         synCurrentNet = numpy.subtract(excSynCurrent, inhSynCurrent)
 
         # saving output data
-        outVars.avg_rhoE[k],outVars.std_rhoE[k] = numpy.mean(rhoE),numpy.std(rhoE)
-        outVars.avg_rhoI[k],outVars.std_rhoI[k] = numpy.mean(rhoI),numpy.std(rhoI)
-        outVars.avg_rho[k],outVars.std_rho[k] = numpy.mean(rhoMean),numpy.std(rhoMean)
-        outVars.avg_gVar[k],outVars.std_gVar[k] = numpy.mean(g_data),numpy.std(g_data)
-        outVars.avg_YVar[k],outVars.std_YVar[k] = numpy.mean(Y_data),numpy.std(Y_data)
-        outVars.avg_Isyn[k],outVars.std_Isyn[k] = numpy.mean(synCurrentNet),numpy.std(synCurrentNet)
-        outVars.avg_IsynE[k],outVars.std_IsynE[k] = numpy.mean(excSynCurrent),numpy.std(excSynCurrent)
-        outVars.avg_IsynI[k],outVars.std_IsynI[k] = numpy.mean(inhSynCurrent),numpy.std(inhSynCurrent)
+        """
+        apparently there can be metastable states in the adaptive threshold excitatory networks
+        in which, for sufficiently high input Poisson rate, the network activity decays to rhoE=0
+        after some time of about 10^4 time steps or earlier for higher rates
+        """
+        t_decay = get_decay_time_idx(rhoE,3000,50)
+        outVars.t_decay[k] = t_decay
+        outVars.avg_rhoE[k],outVars.std_rhoE[k] = mean_std_before_decay(rhoE,t_decay=t_decay)
+        outVars.avg_rhoI[k],outVars.std_rhoI[k] = mean_std_before_decay(rhoI,t_decay=t_decay)
+        outVars.avg_rho[k],outVars.std_rho[k] = mean_std_before_decay(rhoMean,t_decay=t_decay)
+        outVars.avg_gVar[k],outVars.std_gVar[k] = mean_std_before_decay(g_data,t_decay=t_decay)
+        outVars.avg_YVar[k],outVars.std_YVar[k] = mean_std_before_decay(Y_data,t_decay=t_decay)
+        outVars.avg_Isyn[k],outVars.std_Isyn[k] = mean_std_before_decay(synCurrentNet,t_decay=t_decay)
+        outVars.avg_IsynE[k],outVars.std_IsynE[k] = mean_std_before_decay(excSynCurrent,t_decay=t_decay)
+        outVars.avg_IsynI[k],outVars.std_IsynI[k] = mean_std_before_decay(inhSynCurrent,t_decay=t_decay)
         if phasetrParam.saveTimeEvo:
             outVarsT.rhoE[:,k],outVarsT.rhoI[:,k] = rhoE,rhoI
             outVarsT.gVar[:,k],outVarsT.YVar[:,k] = g_data,Y_data
@@ -117,6 +126,62 @@ def main():
         scipy.io.savemat(outputFileName,{**outVars,**outVarsT},appendmat=True,long_field_names=True,do_compression=True)
     else:
         scipy.io.savemat(outputFileName,outVars,appendmat=True,long_field_names=True,do_compression=True)
+
+def mean_std_before_decay(x,t0=0,t_decay=numpy.nan):
+    if numpy.isnan(t_decay):
+        t_decay = len(x)
+    return numpy.mean(x[t0:t_decay]),numpy.std(x[t0:t_decay])
+
+def get_decay_time_idx(rho,dt=0,w_filter=50):
+    """
+    apparently there can be metastable states in the adaptive threshold excitatory networks
+    in which, for sufficiently high Poisson rate, the network activity decays to rhoE=0
+    after some time
+
+    dt -> time tolerance to be subtracted from the mean decay time
+    """
+    t_zero = find_consecutive(rho<1.0e-10,100)
+    if not t_zero:
+        return numpy.nan
+    rho_f = movingavg_filter(rho,w_filter)
+    n = int(numpy.floor(t_zero/2.0))
+    k = numpy.argmax(numpy.abs(numpy.diff(rho_f[:t_zero]))[-n:])
+    t_decay = k + n - dt
+    if t_decay<100:
+        t_decay = k+n
+    return t_decay
+
+def find_consecutive(X,N):
+    """
+    finds N consecutive True values in X
+    returns index of the first True value
+    """
+    k = 0
+    k0 = None
+    for i,x in enumerate(X):
+        if x:
+            if k == 0: # if the counter is zero
+                k0 = i # this is the first occurrence of zero
+            k += 1 # and thus we count this occurrence
+            if k == N: # if we reached the desired number of occurrences
+                return k0 # we return the index of the first finding
+        else:
+            k = 0 # otherwise, resets the counter
+            k0 = None # and the index of the first occurrence
+    return k0 # nothing was found
+
+def movingavg_filter(x1,w=50):
+    return normConvolution(x1,numpy.ones(w))
+
+def normConvolution(x1,x2):
+    f = scipy.signal.convolve(x1,x2,mode='same',method='direct')
+    f = f*numpy.max(x1)/numpy.max(f) # normalizing
+    #fixing boundary conditions
+    n = int(numpy.ceil( len(x2)/2.0 ) + 1.0)
+    f[:n] = f[n]
+    f[-n:] = f[-n]
+    return f
+
 
 if __name__ == '__main__':
     main()

@@ -147,7 +147,7 @@ def get_decay_time_idx(rho,w_filter=50):
     n = int(numpy.floor(t_zero/2.0))
     k = numpy.argmax(numpy.abs(numpy.diff(rho_f[:t_zero]))[-n:])
     t_decay = k + n
-    dt = 2.2*numpy.abs(t_zero - t_decay)
+    dt = int(2.2*numpy.abs(t_zero - t_decay))
     t_decay -= dt
     if t_decay<100:
         t_decay = k+n

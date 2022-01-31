@@ -132,7 +132,7 @@ def mean_std_before_decay(x,t0=0,t_decay=numpy.nan):
         t_decay = len(x)
     return numpy.mean(x[t0:t_decay]),numpy.std(x[t0:t_decay])
 
-def get_decay_time_idx(rho,w_filter=50):
+def get_decay_time_idx(rho,w_filter=50,n_ts_consecutive=100):
     """
     apparently there can be metastable states in the adaptive threshold excitatory networks
     in which, for sufficiently high Poisson rate, the network activity decays to rhoE=0
@@ -140,7 +140,7 @@ def get_decay_time_idx(rho,w_filter=50):
 
     dt -> time tolerance to be subtracted from the mean decay time
     """
-    t_zero = find_consecutive(numpy.asarray(rho)<1.0e-10,100)
+    t_zero = find_consecutive(numpy.asarray(rho)<1.0e-10,n_ts_consecutive)
     if not t_zero:
         return numpy.nan
     rho_f = movingavg_filter(rho,w_filter)

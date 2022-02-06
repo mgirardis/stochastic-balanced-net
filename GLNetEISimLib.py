@@ -2,22 +2,6 @@ import random
 import numpy
 
 #pythran export get_system_parameters(str:str dict,str:str dict)
-#pythran export get_param(str,str)
-#pythran export RunSimulation_aval(str:str dict,str:str dict)
-#pythran export RunSimulation_adapt(str:str dict,str:str dict)
-#pythran export RunSimulation_static(str:str dict,str:str dict)
-#pythran export RunSimulation_adaptthresh(str:str dict,str:str dict)
-#pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
-#pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
-#pythran export weightAdapt_decrease(float, float, float, float, float, float)
-#pythran export weightAdapt_increase(float, float, float, float, float, float)
-#pythran export PHI(float, float, float)
-#pythran export multvecelem(float list, float list)
-#pythran export PoissonProcess_firingprob(float)
-#pythran export save_spk_data_fake((int,int) list,int,int)
-#pythran export save_spk_data((int,int) list,int,int)
-#pythran export write_spk_data_fake(int,int)
-
 def get_system_parameters(simParam_dict,paramType_dict):
     N=get_param(simParam_dict['N'],paramType_dict['N'])
     tTrans=get_param(simParam_dict['tTrans'],paramType_dict['tTrans'])
@@ -54,6 +38,7 @@ def get_system_parameters(simParam_dict,paramType_dict):
     spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])
     return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName
 
+#pythran export get_param(str,str)
 def get_param(v,vtype):
     if vtype == 'int':
         return int(v)
@@ -66,11 +51,13 @@ def get_param(v,vtype):
     else:
         raise ValueError('unknown type for v')
 
+#pythran export RunSimulation_adaptthresh(str:str dict,str:str dict)
 def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
+    gJ = g*J
 
     XE0 = float(XE0)
     XI0 = float(XI0)
@@ -101,27 +88,7 @@ def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
 
     # running transient time
     if tTrans > 0:
-        dummyVar = 0.0
-        rhoE = [0.0 for i in range(tTrans)]
-        rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = rhoETemp
-        rhoI[0] = rhoITemp
-        for t in range(1,tTrans):
-            thetaMean = 0.0
-            #Iext = 0.0 # stimulus
-            for i in range(pN):
-                VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
-                rhoE[t] = rhoE[t] + XE[i]
-                thetaMean += thetaE[i]
-            for i in range(qN):
-                VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,g,p,q,tauTinv,uT,0.0)
-                rhoI[t] = rhoI[t] + XI[i]
-                thetaMean += thetaI[i]
-            rhoE[t] = rhoE[t]/pN_fl
-            rhoI[t] = rhoI[t]/qN_fl
-            thetaMean = thetaMean/N_fl
-        rhoETemp = rhoE[-1]
-        rhoITemp = rhoI[-1]
+        rhoETemp,rhoITemp,thetaMean,VE,XE,VI,XI=run_transient_GLNetEI_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,gJ,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -135,25 +102,9 @@ def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
         else:
-            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-            #spkData[0] = XE[:pN_s] + XI[:qN_s]
-            # spkData is a list of tuples
-            # where each tuple records (time step, neuron index) for each firing
-            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
             write_spk_time = write_spk_data_fake
             save_spk_time = save_spk_data
-            spkData = []
-            i = 0
-            while i < pN_s:
-                if XE[i] == 1:
-                    spkData = save_spk_time(spkData,0,i)
-                i+=1
-            i = 0
-            while i < qN_s:
-                if XI[i] == 1:
-                    spkData = save_spk_time(spkData,0,i+pN_s)
-                i+=1
+            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
@@ -170,14 +121,14 @@ def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
         #Iext = 0.0 # stimulus
         thetaMean = 0.0
         for i in range(pN):
-            VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+            VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,gJ,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             thetaMean += thetaE[i]
             if (i < pN_s) and XE[i]:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+            VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,gJ,p,q,tauTinv,uT,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             thetaMean += thetaI[i]
             if (i < qN_s) and XI[i]:
@@ -192,6 +143,7 @@ def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
+#pythran export RunSimulation_aval(str:str dict,str:str dict)
 def RunSimulation_aval(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauTinv = 1.0 / tauT
@@ -222,24 +174,7 @@ def RunSimulation_aval(simParam_dict,paramType_dict):
 
     # running transient time
     if tTrans > 0:
-        rhoE = [0.0 for i in range(tTrans)]
-        rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = rhoETemp
-        rhoI[0] = rhoITemp
-        for t in range(1,tTrans):
-            if (rhoE[t-1] + rhoI[t-1]) < 1e-16:
-                XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
-                rhoE[t-1] = 1.0 / pN_fl
-            for i in range(pN):
-                VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
-                rhoE[t] = rhoE[t] + XE[i]
-            for i in range(qN):
-                VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
-                rhoI[t] = rhoI[t] + XI[i]
-            rhoE[t] = rhoE[t]/pN_fl
-            rhoI[t] = rhoI[t]/qN_fl
-        rhoETemp = rhoE[-1]
-        rhoITemp = rhoI[-1]
+        rhoETemp,rhoITemp,VE,XE,VI,XI=run_transient_GLNetEI_aval(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -253,25 +188,9 @@ def RunSimulation_aval(simParam_dict,paramType_dict):
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
         else:
-            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-            #spkData[0] = XE[:pN_s] + XI[:qN_s]
-            # spkData is a list of tuples
-            # where each tuple records (time step, neuron index) for each firing
-            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
             write_spk_time = write_spk_data_fake
             save_spk_time = save_spk_data
-            spkData = []
-            i = 0
-            while i < pN_s:
-                if XE[i] == 1:
-                    spkData = save_spk_time(spkData,0,i)
-                i+=1
-            i = 0
-            while i < qN_s:
-                if XI[i] == 1:
-                    spkData = save_spk_time(spkData,0,i+pN_s)
-                i+=1
+            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
@@ -308,7 +227,7 @@ def RunSimulation_aval(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/theta for r in rhoE]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
-
+#pythran export RunSimulation_adapt(str:str dict,str:str dict)
 def RunSimulation_adapt(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
 
@@ -354,28 +273,7 @@ def RunSimulation_adapt(simParam_dict,paramType_dict):
     
     # running transient time
     if tTrans > 0:
-        rhoE = [0.0 for i in range(tTrans)]
-        rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = rhoETemp
-        rhoI[0] = rhoITemp
-        for t in range(1,tTrans):
-            W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE[t-1],rhoI[t-1]) # both the E and I subnetworks receive the same inhibitory adapted input
-            #Iext = 0.0 # stimulus
-            thetaMean = 0.0
-            for i in range(pN):
-                VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
-                rhoE[t] = rhoE[t] + XE[i]
-                thetaMean = thetaMean + thetaE[i]
-            for i in range(qN):
-                VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
-                rhoI[t] = rhoI[t] + XI[i]
-                thetaMean = thetaMean + thetaI[i]
-            rhoE[t] = rhoE[t]/pN_fl
-            rhoI[t] = rhoI[t]/qN_fl
-            thetaMean = thetaMean/N_fl
-
-        rhoETemp = rhoE[-1]
-        rhoITemp = rhoI[-1]
+        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI=run_transient_GLNetEI_adapt(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,P_firing_poisson)
     
     # subtracting transient time from total time   
     Tmax = Tmax - tTrans 
@@ -389,25 +287,9 @@ def RunSimulation_adapt(simParam_dict,paramType_dict):
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
         else:
-            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-            #spkData[0] = XE[:pN_s] + XI[:qN_s]
-            # spkData is a list of tuples
-            # where each tuple records (time step, neuron index) for each firing
-            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
             write_spk_time = write_spk_data_fake
             save_spk_time = save_spk_data
-            spkData = []
-            i = 0
-            while i < pN_s:
-                if XE[i] == 1:
-                    spkData = save_spk_time(spkData,0,i)
-                i+=1
-            i = 0
-            while i < qN_s:
-                if XI[i] == 1:
-                    spkData = save_spk_time(spkData,0,i+pN_s)
-                i+=1
+            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
@@ -450,6 +332,7 @@ def RunSimulation_adapt(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*r for r in multvecelem(W_I_data,rhoI)],[r/J for r in W_I_data],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
+#pythran export RunSimulation_static(str:str dict,str:str dict)
 def RunSimulation_static(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauWinv = 1.0 / tauW
@@ -471,21 +354,9 @@ def RunSimulation_static(simParam_dict,paramType_dict):
     # setting initial conditions
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     XE = generate_IC_spikes(XE0,pN,int(fXE0*pN),XE0Rand)
-    """if (XE0 > 0) and XE0Rand:
-        XE = [0.0 for i in range(pN)]
-        for k in random.sample(range(pN),int(fXE0*pN)):
-            XE[k] = 1.0
-    else:
-        XE = [XE0 for i in range(pN)]"""
 
     VI = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
     XI = generate_IC_spikes(XI0,qN,int(fXI0*qN),XI0Rand)
-    """if (XI0 > 0) and XI0Rand:
-        XI = [0.0 for i in range(qN)]
-        for k in random.sample(range(qN),int(fXI0*qN)):
-            XI[k] = 1.0
-    else:
-        XI = [XI0 for i in range(qN)]"""
 
     # setting initial condition
     rhoETemp = float(sum(XE))/pN_fl
@@ -493,22 +364,7 @@ def RunSimulation_static(simParam_dict,paramType_dict):
 
     # running transient time
     if tTrans > 0:
-        rhoE = [0.0 for i in range(tTrans)]
-        rhoI = [0.0 for i in range(tTrans)]
-        rhoE[0] = rhoETemp
-        rhoI[0] = rhoITemp
-        for t in range(1,tTrans):
-            #Iext = 0.0 # stimulus
-            for i in range(pN):
-                VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
-                rhoE[t] = rhoE[t] + XE[i]
-            for i in range(qN):
-                VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
-                rhoI[t] = rhoI[t] + XI[i]
-            rhoE[t] = rhoE[t]/pN_fl
-            rhoI[t] = rhoI[t]/qN_fl
-        rhoETemp = rhoE[-1]
-        rhoITemp = rhoI[-1]
+        rhoETemp,rhoITemp,VE,XE,VI,XI=run_transient_GLNetEI_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -522,25 +378,9 @@ def RunSimulation_static(simParam_dict,paramType_dict):
             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
             save_spk_time = save_spk_data_fake
         else:
-            #spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
-            #spkData[0] = XE[:pN_s] + XI[:qN_s]
-            # spkData is a list of tuples
-            # where each tuple records (time step, neuron index) for each firing
-            # the pythran breaks with the line below, probably due to enumerate and conditional for loop
-            #spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
             write_spk_time = write_spk_data_fake
             save_spk_time = save_spk_data
-            spkData = []
-            i = 0
-            while i < pN_s:
-                if XE[i] == 1:
-                    spkData = save_spk_time(spkData,0,i)
-                i+=1
-            i = 0
-            while i < qN_s:
-                if XI[i] == 1:
-                    spkData = save_spk_time(spkData,0,i+pN_s)
-                i+=1
+            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
     else:
         save_spk_time = save_spk_data_fake
         write_spk_time = write_spk_data_fake
@@ -573,6 +413,121 @@ def RunSimulation_static(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/theta for r in rhoE]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
+
+#pythran export run_transient_GLNetEI_adaptthresh(list float,list int,list float,list int,list float,list float,str,int,float,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEI_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,gJ,P_firing_poisson):
+    if weightDynType == "simple":
+        weightAdapt = weightAdapt_decrease
+    elif weightDynType == "coupled":
+        weightAdapt = weightAdapt_increase
+    rhoE_prev = rhoETemp
+    rhoI_prev = rhoITemp
+    for t in range(1,tTrans):
+        sum_XE = 0.0
+        sum_XI = 0.0
+        #Iext = 0.0 # stimulus
+        thetaMean = 0.0
+        for i in range(pN):
+            VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,gJ,p,q,tauTinv,uT,P_firing_poisson)
+            sum_XE = sum_XE + XE[i]
+            thetaMean = thetaMean + thetaE[i]
+        for i in range(qN):
+            VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,gJ,p,q,tauTinv,uT,0.0)
+            sum_XI = sum_XI + XI[i]
+            thetaMean = thetaMean + thetaI[i]
+        rhoE_prev = sum_XE/pN_fl
+        rhoI_prev = sum_XI/qN_fl
+        thetaMean = thetaMean/N_fl
+    return rhoE_prev,rhoI_prev,thetaMean,VE,XE,VI,XI
+
+#pythran export run_transient_GLNetEI_aval(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEI_aval(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson):
+    rhoE_prev = rhoETemp
+    rhoI_prev = rhoITemp
+    for t in range(1,tTrans):
+        if (rhoE_prev + rhoI_prev) < 1e-16:
+            XE[0] = 1 # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
+            rhoE_prev = 1.0 / pN_fl
+        sum_XE = 0.0
+        for i in range(pN):
+            VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+            sum_XE = sum_XE + XE[i]
+        sum_XI = 0.0
+        for i in range(qN):
+            VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+            sum_XI = sum_XI + XI[i]
+        rhoE_prev = sum_XE/pN_fl
+        rhoI_prev = sum_XI/qN_fl
+    return rhoE_prev,rhoI_prev,VE,XE,VI,XI
+
+#pythran export run_transient_GLNetEI_adapt(list float,list int,list float,list int,list float,list float,str,int,float,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEI_adapt(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,P_firing_poisson):
+    if weightDynType == "simple":
+        weightAdapt = weightAdapt_decrease
+    elif weightDynType == "coupled":
+        weightAdapt = weightAdapt_increase
+    rhoE_prev = rhoETemp
+    rhoI_prev = rhoITemp
+    for t in range(1,tTrans):
+        W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
+        sum_XE = 0.0
+        sum_XI = 0.0
+        #Iext = 0.0 # stimulus
+        thetaMean = 0.0
+        for i in range(pN):
+            VE[i],XE[i],thetaE[i] = GLNetEI_adaptthresh_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
+            sum_XE = sum_XE + XE[i]
+            thetaMean = thetaMean + thetaE[i]
+        for i in range(qN):
+            VI[i],XI[i],thetaI[i] = GLNetEI_adaptthresh_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
+            sum_XI = sum_XI + XI[i]
+            thetaMean = thetaMean + thetaI[i]
+        rhoE_prev = sum_XE/pN_fl
+        rhoI_prev = sum_XI/qN_fl
+        thetaMean = thetaMean/N_fl
+    return rhoE_prev,rhoI_prev,thetaMean,W_I,VE,XE,VI,XI
+
+#pythran export run_transient_GLNetEI_static(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEI_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson):
+    rhoE_prev = rhoETemp
+    rhoI_prev = rhoITemp
+    for t in range(1,tTrans):
+        sum_XE = 0.0
+        for i in range(pN):
+            VE[i],XE[i],_ = GLNetEI_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_firing_poisson)
+            sum_XE = sum_XE + XE[i]
+        sum_XI = 0.0
+        for i in range(qN):
+            VI[i],XI[i],_ = GLNetEI_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,0.0)
+            sum_XI = sum_XI + XI[i]
+        rhoE_prev = sum_XE/pN_fl
+        rhoI_prev = sum_XI/qN_fl
+    return rhoE_prev,rhoI_prev,VE,XE,VI,XI
+
+#pythran export save_initial_spkdata(int list,int list,int,int)
+def save_initial_spkdata(XE,XI,pN,qN):
+    """
+    spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
+    spkData[0] = XE[:pN_s] + XI[:qN_s]
+     spkData is a list of tuples
+     where each tuple records (time step, neuron index) for each firing
+     the pythran breaks with the line below, probably due to enumerate and conditional for loop
+    spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
+    """
+    spkData = []
+    i = 0
+    while i < pN:
+        if XE[i] == 1:
+            spkData = save_spk_data(spkData,0,i)
+        i+=1
+    i = 0
+    while i < qN:
+        if XI[i] == 1:
+            spkData = save_spk_data(spkData,0,i+pN)
+        i+=1
+    return spkData
+
+#pythran export generate_IC_spikes(int,int,int,bool)
 def generate_IC_spikes(X0,N,K,is_random=False):
     """generates a list X of zeros with len N containing K ones
     """
@@ -584,8 +539,8 @@ def generate_IC_spikes(X0,N,K,is_random=False):
         X = [X0 for i in range(N)]
     return X
 
-
-def generate_random_connectivity(K,N):
+#pythran export generate_random_net_fixed_input(int,int)
+def generate_random_net_fixed_input(K,N):
     """    function NetBuild(N,k)
         ##################
         #BUILD RANDOM NETWORK WITH constant k_in neighbors
@@ -613,36 +568,45 @@ def generate_random_connectivity(K,N):
     end"""
     return
 
+#pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEI_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
     theta = theta * (1.0 - tauTinv + uT*X)
     V = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
+#pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEI_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,g,p,q,tauTinv,uT,P_poisson):
     V = (mu*V + I + Iext + J*(p*rhoE - q*g*rhoI))*(1.0-X)
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
+#pythran export weightAdapt_decrease(float, float, float, float, float, float)
 def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):
     return W * (1.0 - tauWinv - uW*rhoI) + tauWinv * A
 
+#pythran export weightAdapt_increase(float, float, float, float, float, float)
 def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):
     return W * (1.0 - tauWinv + uW*rhoE) + tauWinv * A
 
+#pythran export PHI(float, float, float)
 def PHI(V,theta,Gamma):
     tg = theta+1.0/Gamma
     return Gamma*(V-theta)*float(V>theta)*float(V<tg)+float(V>=tg)
 
+#pythran export multvecelem(float list, float list)
 def multvecelem(x,y):
     return [x[i]*yy for i,yy in enumerate(y)]
 
+#pythran export PoissonProcess_firingprob(float)
 def PoissonProcess_firingprob(r):
     return 1.0-numpy.exp(-r) # probability of firing is constant
 
+#pythran export save_spk_data_fake((int,int) list,int,int)
 def save_spk_data_fake(s,t,k):
     return s
 
+#pythran export save_spk_data((int,int) list,int,int)
 def save_spk_data(s,t,k):
     # s -> list to append t_k
     # t -> spike time index
@@ -650,5 +614,6 @@ def save_spk_data(s,t,k):
     s.append((t,k))
     return s
 
+#pythran export write_spk_data_fake(int,int)
 def write_spk_data_fake(t,k):
     return None

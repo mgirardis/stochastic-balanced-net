@@ -1,12 +1,12 @@
 import random
 import numpy
 
-#pythran export get_system_parameters(str:str,str:str)
+#pythran export get_system_parameters(str:str dict,str:str dict)
 #pythran export get_param(str,str)
-#pythran export RunSimulation_aval(str:str,str:str)
-#pythran export RunSimulation_adapt(str:str,str:str)
-#pythran export RunSimulation_static(str:str,str:str)
-#pythran export RunSimulation_adaptthresh(str:str,str:str)
+#pythran export RunSimulation_aval(str:str dict,str:str dict)
+#pythran export RunSimulation_adapt(str:str dict,str:str dict)
+#pythran export RunSimulation_static(str:str dict,str:str dict)
+#pythran export RunSimulation_adaptthresh(str:str dict,str:str dict)
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)

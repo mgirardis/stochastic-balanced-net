@@ -90,7 +90,8 @@ def main():
         simParam[phasetrParam.parName] = v
 
         # running simulation
-        rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
+        #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
+        rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
 
         # calculating some means
         rhoMean = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)

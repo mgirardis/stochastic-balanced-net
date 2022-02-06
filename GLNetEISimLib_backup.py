@@ -1,12 +1,10 @@
 import random
 import numpy
 
-#pythran export get_system_parameters(str:str,str:str)
-#pythran export get_param(str,str)
-#pythran export RunSimulation_aval(str:str,str:str)
-#pythran export RunSimulation_adapt(str:str,str:str)
-#pythran export RunSimulation_static(str:str,str:str)
-#pythran export RunSimulation_adaptthresh(str:str,str:str)
+#pythran export RunSimulation_aval(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_adapt(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_static(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
+#pythran export RunSimulation_adaptthresh(int, int, int, float, float, float, float, float, float, bool, float, float, bool, float, float, float, float, float, float, float, float, float, float, float, float, float, float, bool, int, str, float, bool, str)
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export GLNetEI_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)
@@ -18,56 +16,7 @@ import numpy
 #pythran export save_spk_data((int,int) list,int,int)
 #pythran export write_spk_data_fake(int,int)
 
-def get_system_parameters(simParam_dict,paramType_dict):
-    N=get_param(simParam_dict['N'],paramType_dict['N'])
-    tTrans=get_param(simParam_dict['tTrans'],paramType_dict['tTrans'])
-    Tmax=get_param(simParam_dict['Tmax'],paramType_dict['Tmax'])
-    VE0=get_param(simParam_dict['VE0'],paramType_dict['VE0'])
-    VE0Std=get_param(simParam_dict['VE0Std'],paramType_dict['VE0Std'])
-    VI0=get_param(simParam_dict['VI0'],paramType_dict['VI0'])
-    VI0Std=get_param(simParam_dict['VI0Std'],paramType_dict['VI0Std'])
-    XE0=get_param(simParam_dict['XE0'],paramType_dict['XE0'])
-    fXE0=get_param(simParam_dict['fXE0'],paramType_dict['fXE0'])
-    XE0Rand=get_param(simParam_dict['XE0Rand'],paramType_dict['XE0Rand'])
-    XI0=get_param(simParam_dict['XI0'],paramType_dict['XI0'])
-    fXI0=get_param(simParam_dict['fXI0'],paramType_dict['fXI0'])
-    XI0Rand=get_param(simParam_dict['XI0Rand'],paramType_dict['XI0Rand'])
-    mu=get_param(simParam_dict['mu'],paramType_dict['mu'])
-    theta=get_param(simParam_dict['theta'],paramType_dict['theta'])
-    J=get_param(simParam_dict['J'],paramType_dict['J'])
-    Gamma=get_param(simParam_dict['Gamma'],paramType_dict['Gamma'])
-    I=get_param(simParam_dict['I'],paramType_dict['I'])
-    Iext=get_param(simParam_dict['Iext'],paramType_dict['Iext'])
-    g=get_param(simParam_dict['g'],paramType_dict['g'])
-    p=get_param(simParam_dict['p'],paramType_dict['p'])
-    q=get_param(simParam_dict['q'],paramType_dict['q'])
-    A=get_param(simParam_dict['A'],paramType_dict['A'])
-    tauW=get_param(simParam_dict['tauW'],paramType_dict['tauW'])
-    uW=get_param(simParam_dict['uW'],paramType_dict['uW'])
-    tauT=get_param(simParam_dict['tauT'],paramType_dict['tauT'])
-    uT=get_param(simParam_dict['uT'],paramType_dict['uT'])
-    saveSpikingData=get_param(simParam_dict['saveSpikingData'],paramType_dict['saveSpikingData'])
-    nNeuronsSpk=get_param(simParam_dict['nNeuronsSpk'],paramType_dict['nNeuronsSpk'])
-    weightDynType=get_param(simParam_dict['weightDynType'],paramType_dict['N'])
-    rPoisson=get_param(simParam_dict['rPoisson'],paramType_dict['rPoisson'])
-    writeOnRun=get_param(simParam_dict['writeOnRun'],paramType_dict['writeOnRun'])
-    spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])
-    return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName
-
-def get_param(v,vtype):
-    if vtype == 'int':
-        return int(v)
-    elif vtype == 'float':
-        return float(v)
-    elif vtype == 'str':
-        return str(v)
-    elif vtype == 'bool':
-        return bool(v)
-    else:
-        raise ValueError('unknown type for v')
-
-def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
-    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
+def RunSimulation_adaptthresh(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -192,8 +141,7 @@ def RunSimulation_adaptthresh(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*g*J*r for r in rhoI],[g for r in rhoE],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
-def RunSimulation_aval(simParam_dict,paramType_dict):
-    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
+def RunSimulation_aval(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -309,8 +257,7 @@ def RunSimulation_aval(simParam_dict,paramType_dict):
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
 
 
-def RunSimulation_adapt(simParam_dict,paramType_dict):
-    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
+def RunSimulation_adapt(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
 
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
@@ -450,8 +397,7 @@ def RunSimulation_adapt(simParam_dict,paramType_dict):
     return rhoE,rhoI,spkData,[p*J*r for r in rhoE],[q*r for r in multvecelem(W_I_data,rhoI)],[r/J for r in W_I_data],[I/r for r in theta_data]
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
-def RunSimulation_static(simParam_dict,paramType_dict):
-    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
+def RunSimulation_static(N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,writeOnRun,spkFileName):
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)

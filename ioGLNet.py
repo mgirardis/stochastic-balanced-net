@@ -1,5 +1,7 @@
+from multiprocessing.sharedctypes import Value
+import numpy
 import copy
-import collections
+import collections.abc
 
 """
 
@@ -63,12 +65,29 @@ def add_neuron_params(parser,**defaultValues):
     parser.add_argument('-saveTxtFile',     required=False, action='store_true', default=False, help='saves data in text as well as mat')
     return parser
 
+def get_arg_types_dict(args):
+    """
+    args must be a structtype or a dict
+    """
+    return { k:type(v).__name__ for k,v in args.items() }
+
+def simParam_to_str_for_pythran(simParam):
+    sp = { copy.deepcopy(k):copy.deepcopy(v) for k,v in simParam.items() }
+    for k,v in sp.items():
+        sp[k] = str(v)
+    return sp
+
 def get_sim_param_struct_for_pythran(args):
     #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson
     Y = float(args.Y[0])
     theta = float(args.theta[0])
     p = float(args.p[0])
-    return structtype(
+    s = namespace_to_structtype(args) # fix scalar input parameters automatically in this conversion
+    # setting the parameters that have another name in the function input inside the GLNetEISimLib.py file
+    s.Set(theta=theta,I=float(Y * theta),XE0Rand=not s.noXE0Rand,XI0Rand=not s.noXI0Rand,p=p,q=1.0-p,Tmax=args.tTotal,nNeuronsSpk=s.nNeuSpikingData,spkFileName='')
+    s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal'])
+    return s
+    """return structtype(
     mu = float(args.mu[0]),
     Gamma = float(args.Gamma[0]),
     J = float(args.J[0]),
@@ -101,19 +120,21 @@ def get_sim_param_struct_for_pythran(args):
     weightDynType =  args.weightDynType[0],
     nNeuronsSpk = int(args.nNeuSpikingData[0]),
     writeOnRun = args.writeOnRun,
-    spkFileName='')
+    spkFileName='')"""
 
 def get_phasetrans_param_struct(args):
     return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo)
 
-def fix_args_lists_as_scalars(args):
+def fix_args_lists_as_scalars(args,return_type_for_values=None):
     if type(args) is dict:
         a = args
     else:
         a = args.__dict__
     for k,v in a.items():
-        if (type(v) is list) and (len(v) == 1):
+        if (not numpy.isscalar(v)) and (len(v) == 1): #(type(v) is list) and (len(v) == 1):
             a[k] = v[0]
+        if not( type(return_type_for_values) is type(None)):
+            a[k] = return_type_for_values(a[k])
     if type(args) is dict:
         args = a
     else:
@@ -121,8 +142,6 @@ def fix_args_lists_as_scalars(args):
     return args
 
 def get_param_range(args,numpy=None):
-    if numpy is None:
-        import numpy
     if args.parScale[0] == 'log':
         v1 = args.parVal1[0]
         v2 = args.parVal2[0]
@@ -140,16 +159,34 @@ def get_param_value(paramName,args,default):
         return args[paramName]
     return default
 
-def namespace_to_structtype(a):
-    return structtype(**fix_args_lists_as_scalars(copy.deepcopy(a.__dict__)))
+def namespace_to_structtype(a,return_type_for_values=None):
+    return structtype(**fix_args_lists_as_scalars(copy.deepcopy(a.__dict__),return_type_for_values=return_type_for_values))
 
-class structtype(collections.MutableMapping):
+class structtype(collections.abc.MutableMapping):
     def __init__(self,**kwargs):
         self.Set(**kwargs)
     def Set(self,**kwargs):
         self.__dict__.update(kwargs)
-    def SetAttr(self,label,value):
-        self.__dict__[label] = value
+    def SetAttr(self,field,value):
+        self.__dict__[field] = value
+    def GetFields(self):
+        return '; '.join([ k for k in self.__dict__.keys() if (k[0:2] != '__') and (k[-2:] != '__') ])
+    def keys(self):
+        return self.__dict__.keys()
+    def items(self):
+        return self.__dict__.items()
+    def values(self):
+        return self.__dict__.values()
+    def pop(self,key,default_value=None):
+        if type(key) is str:
+            return self.__dict__.pop(key,default_value)
+        elif isinstance(key,collections.abc.Iterable):
+            r = []
+            for k in key:
+                r.append(self.__dict__.pop(k,default_value))
+            return r
+        else:
+            raise ValueError('key must be a string or a list of strings')
     def __setitem__(self,label,value):
         self.__dict__[label] = value
     def __getitem__(self,label):

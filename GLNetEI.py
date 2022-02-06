@@ -65,7 +65,8 @@ def main():
 
     print("* Running simulation...")
     start_time = time.monotonic()
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
+    #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(datetime.timedelta(seconds=end_time - start_time)))
 

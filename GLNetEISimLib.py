@@ -540,33 +540,15 @@ def generate_IC_spikes(X0,N,K,is_random=False):
     return X
 
 #pythran export generate_random_net_fixed_input(int,int)
-def generate_random_net_fixed_input(K,N):
-    """    function NetBuild(N,k)
-        ##################
-        #BUILD RANDOM NETWORK WITH constant k_in neighbors
-        #Neurons cannot have repeated neighbors
-        ##################
-        
-        C = zeros(Int32,N,k)
-        
-        for i in 1:N
-
-            z = sample(1:N,k,replace = false)
-            
-            while i in z
-
-                z = sample(1:N,k,replace = false)
-
-            end
-
-            C[i,:] = z
-
-        end
-        
-        return C
-        
-    end"""
-    return
+def generate_random_net_fixed_input(K_in,N):
+    """
+    ##################
+    #BUILD RANDOM NETWORK WITH constant k_in neighbors
+    #Neurons cannot have repeated neighbors
+    ##################
+    returns list where each entry is the list of neighbor indices
+    """
+    return [random.sample(range(N),K_in) for _ in range(N)]
 
 #pythran export GLNetEI_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEI_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):

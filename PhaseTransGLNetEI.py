@@ -51,13 +51,13 @@ def main():
         os.remove(outputFileName)
 
     if simType == "static":
-        RunSimulation = GLNetEISimLib.RunSimulation_static
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_static
     elif simType == "adapt":
-        RunSimulation = GLNetEISimLib.RunSimulation_adapt
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
     elif simType == "adaptthresh":
-        RunSimulation = GLNetEISimLib.RunSimulation_adaptthresh
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adaptthresh
     elif simType == "aval":
-        RunSimulation = GLNetEISimLib.RunSimulation_aval
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
     else:
         raise ValueError('unknown simType parameter')
 

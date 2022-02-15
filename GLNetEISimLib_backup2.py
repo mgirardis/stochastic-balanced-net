@@ -1,49 +1,8 @@
 import random
 import numpy
 
-
-# INPUT parameters
-N                   =   -1
-tTrans              =   -1
-Tmax                =   -1
-VE0                 =   numpy.nan
-VE0Std              =   numpy.nan
-VI0                 =   numpy.nan
-VI0Std              =   numpy.nan
-XE0                 =   -1
-fXE0                =   numpy.nan
-XE0Rand             =   False
-XI0                 =   -1
-fXI0                =   numpy.nan
-XI0Rand             =   False
-mu                  =   numpy.nan
-theta               =   numpy.nan
-J                   =   numpy.nan
-Gamma               =   numpy.nan
-I                   =   numpy.nan
-Iext                =   numpy.nan
-g                   =   numpy.nan
-p                   =   numpy.nan
-q                   =   numpy.nan
-A                   =   numpy.nan
-tauW                =   numpy.nan
-uW                  =   numpy.nan
-tauT                =   numpy.nan
-uT                  =   numpy.nan
-saveSpikingData     =   False
-nNeuronsSpk         =   -1
-weightDynType       =   ""
-rPoisson            =   numpy.nan
-paramCV             =   numpy.nan
-K                   =   -1
-writeOnRun          =   False
-spkFileName         =   ""
-synapticInput       =   [0.0]
-
 #pythran export get_system_parameters(str:str dict,str:str dict)
 def get_system_parameters(simParam_dict,paramType_dict):
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
     N=get_param(simParam_dict['N'],paramType_dict['N'])
     tTrans=get_param(simParam_dict['tTrans'],paramType_dict['tTrans'])
     Tmax=get_param(simParam_dict['Tmax'],paramType_dict['Tmax'])
@@ -79,10 +38,7 @@ def get_system_parameters(simParam_dict,paramType_dict):
     K=get_param(simParam_dict['K'],paramType_dict['K'])
     writeOnRun=get_param(simParam_dict['writeOnRun'],paramType_dict['writeOnRun'])
     spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])
-    
-    paramCV = 0.0
-    print(' ... forcing the CV of all parameters to be zero (homogeneous network), since parameter variability is not implemented yet')
-    #return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
+    return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
 
 #pythran export get_param(str,str)
 def get_param(v,vtype):
@@ -99,14 +55,7 @@ def get_param(v,vtype):
 
 #pythran export RunSimulation_GLNetEIRand_static(str:str dict,str:str dict)
 def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
-    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,\
-           synapticInput
-    
-    # define global variables
-    get_system_parameters(simParam_dict,paramType_dict)
-
+    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -132,12 +81,11 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
 
     # setting initial conditions
-    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_MF_network_IC(pN,qN,g,J)
-    synapticInput = [0.0 for _ in range(N)]
+    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J)
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,J,W,C)
+        rhoETemp,rhoITemp,VE,XE,VI,XI=run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,Gamma,I,P_firing_poisson,J,W,C)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -166,15 +114,15 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
     rhoI[0] = rhoITemp
     for t in range(1,Tmax):
         #Iext = 0.0 # stimulus
-        sumSynpaticInput_homog(KE,K,N,XE,XI,J,W,C) # updates synapticInput variable
+        synapticInput = sumSynpaticInput(KE,K,N,XE,XI,J,W,C)
         for i in range(pN):
-            VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson)
+            VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput,Iext,mu,theta,Gamma,I,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
             if (i < pN_s) and XE[i]:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],_ = GLNetEIRand_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0)
+            VI[i],XI[i],_ = GLNetEIRand_iter(VI[i],XI[i],synapticInput,Iext,mu,theta,Gamma,I,0.0)
             rhoI[t] = rhoI[t] + XI[i]
             if (i < qN_s) and XI[i]:
                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
@@ -189,13 +137,7 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
 
 #pythran export RunSimulation_GLNetEIMF_adaptthresh(str:str dict,str:str dict)
 def RunSimulation_GLNetEIMF_adaptthresh(simParam_dict,paramType_dict):
-    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
-    
-    # define global variables
-    get_system_parameters(simParam_dict,paramType_dict)
-
+    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -214,11 +156,11 @@ def RunSimulation_GLNetEIMF_adaptthresh(simParam_dict,paramType_dict):
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
 
     # setting initial conditions
-    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,_,thetaMean = set_MF_network_IC(pN,qN,g,J)
+    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,_,thetaMean=set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J)
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,thetaMean,VE,XE,VI,XI = run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,gJ,P_firing_poisson)
+        rhoETemp,rhoITemp,thetaMean,VE,XE,VI,XI=run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,gJ,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -275,13 +217,7 @@ def RunSimulation_GLNetEIMF_adaptthresh(simParam_dict,paramType_dict):
 
 #pythran export RunSimulation_GLNetEIMF_aval(str:str dict,str:str dict)
 def RunSimulation_GLNetEIMF_aval(simParam_dict,paramType_dict):
-    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
-    
-    # define global variables
-    get_system_parameters(simParam_dict,paramType_dict)
-
+    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauTinv = 1.0 / tauT
     pN = int(p*N)
     qN = N - pN
@@ -298,11 +234,11 @@ def RunSimulation_GLNetEIMF_aval(simParam_dict,paramType_dict):
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
 
     # setting initial conditions
-    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_MF_network_IC(pN,qN,g,J)
+    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_=set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J)
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIMF_aval(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson)
+        rhoETemp,rhoITemp,VE,XE,VI,XI=run_transient_GLNetEIMF_aval(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -357,12 +293,7 @@ def RunSimulation_GLNetEIMF_aval(simParam_dict,paramType_dict):
 
 #pythran export RunSimulation_GLNetEIMF_adapt(str:str dict,str:str dict)
 def RunSimulation_GLNetEIMF_adapt(simParam_dict,paramType_dict):
-    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
-    
-    # define global variables
-    get_system_parameters(simParam_dict,paramType_dict)
+    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
 
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
@@ -390,11 +321,11 @@ def RunSimulation_GLNetEIMF_adapt(simParam_dict,paramType_dict):
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
 
     # setting initial conditions
-    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,W_I,thetaMean = set_MF_network_IC(pN,qN,g,J)
+    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,W_I,thetaMean=set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J)
     
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI = run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson)
+        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI=run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,P_firing_poisson)
     
     # subtracting transient time from total time   
     Tmax = Tmax - tTrans 
@@ -455,13 +386,7 @@ def RunSimulation_GLNetEIMF_adapt(simParam_dict,paramType_dict):
 
 #pythran export RunSimulation_GLNetEIMF_static(str:str dict,str:str dict)
 def RunSimulation_GLNetEIMF_static(simParam_dict,paramType_dict):
-    #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
-    global N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
-    
-    # define global variables
-    get_system_parameters(simParam_dict,paramType_dict)
-    
+    N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName =  get_system_parameters(simParam_dict,paramType_dict)
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -479,11 +404,11 @@ def RunSimulation_GLNetEIMF_static(simParam_dict,paramType_dict):
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
 
     # setting initial conditions
-    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_MF_network_IC(pN,qN,g,J)
+    VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J)
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIMF_static(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson)
+        rhoETemp,rhoITemp,VE,XE,VI,XI=run_transient_GLNetEIMF_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -566,64 +491,37 @@ def sumSynpaticInput(K_ex,K,N,XE,XI,J,W,C):
          C[i] -> list of neighbors of i;
          C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
     """
-    global synapticInput
+    s = 0.0
     for i in range(N):
-        s = 0.0
         for j in range(K_ex):
             s += J[i][j] * XE[C[i][j]]
         for j in range(K_ex,K):
             s -= W[i][j-K_ex] * XI[C[i][j]]
-        synapticInput[i] = s / float(K)
+    return s / float(K)
 
-#pythran export sumSynpaticInput(int,int,int,int list,int list,float,float,float list list)
-def sumSynpaticInput_homog(K_ex,K,N,XE,XI,J,W,C):
-    """
-    K_ex -> number of excitatory inputs
-    K -> total number of inputs
-    N -> total number of neurons
-    XE -> state of excitatory neurons
-    XI -> state of inhibitory neurons
-    J -> excitatory synaptic weights (constant)
-    W -> inhibitory synaptic weights (positive constant)
-    C -> connectivity matrix (each entry in the outer list is the list of neighbor indices)
-         C[i] -> list of neighbors of i;
-         C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
-    """
-    global synapticInput
-    for i in range(N):
-        sE = 0.0
-        sI = 0.0
-        for j in range(K_ex):
-            sE += XE[C[i][j]]
-        for j in range(K_ex,K):
-            sI += XI[C[i][j]]
-        synapticInput[i] = (J*sE - W*sI) / float(K)
-
-#pythran export run_transient_GLNetEIMF_static(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float list list,float list list,float list list)
-def run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,J,W,C):
-    global Iext,mu,theta,Gamma,I,synapticInput
+#pythran export run_transient_GLNetEIMF_static(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float,float,float,float,float,float list list,float list list,float list list)
+def run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,Gamma,I,P_firing_poisson,J,W,C):
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
     K_ex = len(J[0])
     K = K_ex + len(W[0])
     N = len(C)
     for t in range(1,tTrans):
-        sumSynpaticInput_homog(K_ex,K,N,XE,XI,J,W,C) # updates synapticInput variable
+        synapticInput = sumSynpaticInput(K_ex,K,N,XE,XI,J,W,C)
         sum_XE = 0.0
         for i in range(pN):
-            VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson)
+            VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput,Iext,mu,theta,Gamma,I,P_firing_poisson)
             sum_XE = sum_XE + XE[i]
         sum_XI = 0.0
         for i in range(qN):
-            VI[i],XI[i],_ = GLNetEIRand_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0)
+            VI[i],XI[i],_ = GLNetEIRand_iter(VI[i],XI[i],synapticInput,Iext,mu,theta,Gamma,I,0.0)
             sum_XI = sum_XI + XI[i]
         rhoE_prev = sum_XE/pN_fl
         rhoI_prev = sum_XI/qN_fl
     return rhoE_prev,rhoI_prev,VE,XE,VI,XI
 
-#pythran export run_transient_GLNetEIMF_adaptthresh(float list,int list,float list,int list,float list,float list,float,float,float,int,int,float,float,float,float)
-def run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,gJ,P_firing_poisson):
-    global weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT
+#pythran export run_transient_GLNetEIMF_adaptthresh(list float,list int,list float,list int,list float,list float,str,int,float,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,gJ,P_firing_poisson):
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
     elif weightDynType == "coupled":
@@ -648,9 +546,8 @@ def run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoIT
         thetaMean = thetaMean/N_fl
     return rhoE_prev,rhoI_prev,thetaMean,VE,XE,VI,XI
 
-#pythran export run_transient_GLNetEIMF_aval(float list,int list,float list,int list,float,float,int,int,float,float,float)
-def run_transient_GLNetEIMF_aval(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson):
-    global tTrans,Iext,mu,theta,J,Gamma,I,g,p,q
+#pythran export run_transient_GLNetEIMF_aval(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEIMF_aval(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson):
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
     for t in range(1,tTrans):
@@ -669,9 +566,8 @@ def run_transient_GLNetEIMF_aval(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl
         rhoI_prev = sum_XI/qN_fl
     return rhoE_prev,rhoI_prev,VE,XE,VI,XI
 
-#pythran export run_transient_GLNetEIMF_adapt(float list,int list,float list,int list,float list,float list,float,float,float,int,int,float,float,float)
-def run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson):
-    global weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A
+#pythran export run_transient_GLNetEIMF_adapt(list float,list int,list float,list int,list float,list float,str,int,float,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,weightDynType,tTrans,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,P_firing_poisson):
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
     elif weightDynType == "coupled":
@@ -697,9 +593,8 @@ def run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_
         thetaMean = thetaMean/N_fl
     return rhoE_prev,rhoI_prev,thetaMean,W_I,VE,XE,VI,XI
 
-#pythran export run_transient_GLNetEIMF_static(float list,int list,float list,int list,float,float,int,int,float,float,float)
-def run_transient_GLNetEIMF_static(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson):
-    global tTrans,Iext,mu,theta,J,Gamma,I,g,p,q
+#pythran export run_transient_GLNetEIMF_static(float list,int list,float list,int list,int,float,float,int,int,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEIMF_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson):
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
     for t in range(1,tTrans):
@@ -738,9 +633,8 @@ def save_initial_spkdata(XE,XI,pN,qN):
         i+=1
     return spkData
 
-#pythran export set_network_IC(int,int,float,float)
-def set_MF_network_IC(pN,qN,g,J):
-    global VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta
+#pythran export set_network_IC(float,float,float,float,int,float,bool,int,float,bool,float,int,int,float,float)
+def set_network_IC(VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta,pN,qN,g,J):
     VE = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
     thetaE = [theta for i in range(pN)]
     XE = generate_IC_spikes(XE0,pN,int(fXE0*pN),XE0Rand)

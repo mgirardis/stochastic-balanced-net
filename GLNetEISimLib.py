@@ -38,11 +38,10 @@ def get_system_parameters(simParam_dict,paramType_dict):
     K=get_param(simParam_dict['K'],paramType_dict['K'])
     writeOnRun=get_param(simParam_dict['writeOnRun'],paramType_dict['writeOnRun'])
     spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])
-    return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
-    
     paramCV = 0.0
     print(' ... forcing the CV of all parameters to be zero (homogeneous network), since parameter variability is not implemented yet')
+    return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
+           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
     #return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
 
 #pythran export get_param(str,str)
@@ -495,7 +494,7 @@ def generate_random_net_fixed_input(K_ex,pN,K,N):
     """
     return numpy.array([sorted(random.sample(range(pN),K_ex)) + sorted(random.sample(range(N-pN),K-K_ex)) for _ in range(N)])
 
-#pythran export sumSynpaticInput(float[],int,int,int,int list, int list,float list list,float list list,float list list)
+#pythran export sumSynpaticInput(float[],int,int,int,int[],int[],float[:,:] order(C),float[:,:] order(C),float[:,:] order(C))
 def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
@@ -519,7 +518,7 @@ def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             s -= W[i][j-K_ex] * XI[C[i][j]]
         synapticInput[i] = s / float(K)
 
-#pythran export sumSynpaticInput(float[],int,int,int,int list,int list,float,float,float[:,:] order(C))
+#pythran export sumSynpaticInput(float[],int,int,int,int[],int[],float,float,float[:,:] order(C))
 def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs

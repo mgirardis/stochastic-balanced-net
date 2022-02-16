@@ -518,7 +518,7 @@ def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             s -= W[i][j-K_ex] * XI[C[i][j]]
         synapticInput[i] = s / float(K)
 
-#pythran export sumSynpaticInput(float[],int,int,int,int[],int[],float,float,float[:,:] order(C))
+#pythran export sumSynpaticInput_homog(float[],int,int,int,int[],int[],float,float,float[:,:] order(C))
 def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
@@ -541,7 +541,7 @@ def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             sI += XI[C[i][j]]
         synapticInput[i] = (J*sE - W*sI) / float(K)
 
-#pythran export run_transient_GLNetEIMF_static(float[],int[],float[],int[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C))
+#pythran export run_transient_GLNetEIRand_static(float[],int[],float[],int[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C))
 def run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W,C):
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
@@ -675,7 +675,7 @@ def save_initial_spkdata(XE,XI,pN,qN):
         i+=1
     return spkData
 
-#pythran export set_network_IC(int,int,float,float,float,float,float,float,int,float,bool,int,float,bool,float)
+#pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,int,float,bool,int,float,bool,float)
 def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
     VE = numpy.array([abs(random.gauss(VE0,VE0Std)) for i in range(pN)])
     thetaE = numpy.array([theta for i in range(pN)])

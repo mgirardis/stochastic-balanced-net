@@ -82,7 +82,7 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
     KE_fl = float(KE)
     KI_fl = float(KI)
 
-    C = generate_random_net_fixed_input(K,N)
+    C = generate_random_net_fixed_input(KE,pN,K,N)
     W = g*J #only constant parameters are implemented
 
     P_firing_poisson = PoissonProcess_firingprob(rPoisson)

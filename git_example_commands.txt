@@ -1,0 +1,16 @@
+cd D:\Dropbox\p\neuromat\programas\matlab\fp-stability
+
+git config --global user.email "girardi.s@gmail.com"
+git config --global user.name "Mauricio Girardi Schappo"
+
+git clone git@github.com:mgirardis/fp-stability.git
+cd .\fp-stability\
+git status
+git add func/*
+git add models
+git add .\models\einet_static_model
+git add .\models\ktz_model\
+git add ./*
+git status
+git commit -m "adding new example and modifications on the internal workings of getFixedPoint function"
+git push

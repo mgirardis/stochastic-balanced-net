@@ -35,20 +35,13 @@ def main():
     simType = args.simType[0]
     saveTxtFile = args.saveTxtFile
     outputFileName = args.outputFile[0]
-    if outputFileName.lower().endswith('.txt'):
-        outputFileName = outputFileName.replace('.txt','.mat')
-    if not outputFileName.lower().endswith('.mat'):
-        outputFileName += '.mat'
-
+    
+    outputFileName = io.fix_output_fileName_phasetrans_simulation(outputFileName)
     if saveTxtFile:
         warnings.warn('text file output is not supported')
     if simParam.saveSpikingData:
         warnings.warn('saving spiking data is not supported')
         simParam.saveSpikingData = False
-
-    if os.path.isfile(outputFileName):
-        print("* Replacing ... %s" % outputFileName)
-        os.remove(outputFileName)
 
     if simType == "static":
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_static

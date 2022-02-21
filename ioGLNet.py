@@ -2,6 +2,7 @@ from multiprocessing.sharedctypes import Value
 import numpy
 import copy
 import collections.abc
+import os
 
 """
 
@@ -127,6 +128,69 @@ def get_sim_param_struct_for_pythran(args):
     nNeuronsSpk = int(args.nNeuSpikingData[0]),
     writeOnRun = args.writeOnRun,
     spkFileName='')"""
+
+def fix_output_fileName_phasetrans_simulation(outputFileName):
+    """fix output file extension and remove output files if they already exist, creates output directory if they don't exist"""
+    if outputFileName.lower().endswith('.txt'):
+        outputFileName = outputFileName.replace('.txt','.mat')
+    if not outputFileName.lower().endswith('.mat'):
+        outputFileName += '.mat'
+
+    if os.path.isfile(outputFileName):
+        print("* Replacing ... %s" % outputFileName)
+        os.remove(outputFileName)
+    
+    if has_dir_in_path(outputFileName):
+        d = os.path.split(outputFileName)[0]
+        if d:
+            os.makedirs(d,exist_ok=True)
+
+    return outputFileName
+
+def fix_output_fileName_main_simulation(outputFileName):
+    """fix output file extension and remove output files if they already exist, creates output directory if they don't exist"""
+    if not outputFileName.lower().endswith('.txt'):
+        if outputFileName.lower().endswith('.mat'):
+            outputFileName = outputFileName.replace('.mat','.txt')
+        else:
+            outputFileName += '.txt'
+    matFileName = outputFileName.replace('.txt','.mat')
+    spkFileName = outputFileName.replace('.txt','_spkdata.txt')
+
+    if os.path.isfile(outputFileName):
+        print("* Replacing ... %s" % outputFileName)
+        os.remove(outputFileName)
+    if os.path.isfile(matFileName):
+        print("* Replacing ... %s" % matFileName)
+        os.remove(matFileName)
+    if os.path.isfile(spkFileName):
+        print("* Replacing ... %s" % spkFileName)
+        os.remove(spkFileName)
+    
+    if has_dir_in_path(outputFileName):
+        d = os.path.split(outputFileName)[0]
+        if d:
+            os.makedirs(d,exist_ok=True)
+
+    return outputFileName,matFileName,spkFileName
+
+def splitallpath(path):
+    allparts = []
+    while 1:
+        parts = os.path.split(path)
+        if parts[0] == path:  # sentinel for absolute paths
+            allparts.insert(0, parts[0])
+            break
+        elif parts[1] == path: # sentinel for relative paths
+            allparts.insert(0, parts[1])
+            break
+        else:
+            path = parts[0]
+            allparts.insert(0, parts[1])
+    return [ p for p in allparts if p.strip()!='' ]
+
+def has_dir_in_path(path):
+    return ('/' in path) or ('\\' in path)
 
 def get_phasetrans_param_struct(args):
     return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo)

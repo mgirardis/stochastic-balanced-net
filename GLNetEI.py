@@ -13,7 +13,7 @@ import sys
 def main():
 
     # for debug
-    #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
+    sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
     #sys.argv = 'GLNetEI.py -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100 -simType aval -tTotal 12000 -tTrans 3000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000'.split(' ')
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
     parser = io.add_neuron_params(parser)
@@ -32,23 +32,8 @@ def main():
     saveTxtFile = args.saveTxtFile
     outputFileName = args.outputFile[0]
 
-    if not outputFileName.lower().endswith('.txt'):
-        if outputFileName.lower().endswith('.mat'):
-            outputFileName = outputFileName.replace('.mat','.txt')
-        else:
-            outputFileName += '.txt'
-    matFileName = outputFileName.replace('.txt','.mat')
-    simParam.spkFileName = outputFileName.replace('.txt','_spkdata.txt')
-
-    if os.path.isfile(outputFileName):
-        print("* Replacing ... %s" % outputFileName)
-        os.remove(outputFileName)
-    if os.path.isfile(matFileName):
-        print("* Replacing ... %s" % matFileName)
-        os.remove(matFileName)
-    if os.path.isfile(simParam.spkFileName):
-        print("* Replacing ... %s" % simParam.spkFileName)
-        os.remove(simParam.spkFileName)
+    # fix output file extension and remove output files if they already exist, creates output directory if they don't exist    
+    outputFileName,matFileName,simParam.spkFileName = io.fix_output_fileName_main_simulation(outputFileName)
 
     simType = args.simType[0]
     if simType == "static":

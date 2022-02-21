@@ -3,41 +3,41 @@ import numpy
 
 #pythran export get_system_parameters(str:str dict,str:str dict)
 def get_system_parameters(simParam_dict,paramType_dict):
-    N=get_param(simParam_dict['N'],paramType_dict['N'])
-    tTrans=get_param(simParam_dict['tTrans'],paramType_dict['tTrans'])
-    Tmax=get_param(simParam_dict['Tmax'],paramType_dict['Tmax'])
-    VE0=get_param(simParam_dict['VE0'],paramType_dict['VE0'])
-    VE0Std=get_param(simParam_dict['VE0Std'],paramType_dict['VE0Std'])
-    VI0=get_param(simParam_dict['VI0'],paramType_dict['VI0'])
-    VI0Std=get_param(simParam_dict['VI0Std'],paramType_dict['VI0Std'])
-    XE0=get_param(simParam_dict['XE0'],paramType_dict['XE0'])
-    fXE0=get_param(simParam_dict['fXE0'],paramType_dict['fXE0'])
-    XE0Rand=get_param(simParam_dict['XE0Rand'],paramType_dict['XE0Rand'])
-    XI0=get_param(simParam_dict['XI0'],paramType_dict['XI0'])
-    fXI0=get_param(simParam_dict['fXI0'],paramType_dict['fXI0'])
-    XI0Rand=get_param(simParam_dict['XI0Rand'],paramType_dict['XI0Rand'])
-    mu=get_param(simParam_dict['mu'],paramType_dict['mu'])
-    theta=get_param(simParam_dict['theta'],paramType_dict['theta'])
-    J=get_param(simParam_dict['J'],paramType_dict['J'])
-    Gamma=get_param(simParam_dict['Gamma'],paramType_dict['Gamma'])
-    I=get_param(simParam_dict['I'],paramType_dict['I'])
-    Iext=get_param(simParam_dict['Iext'],paramType_dict['Iext'])
-    g=get_param(simParam_dict['g'],paramType_dict['g'])
-    p=get_param(simParam_dict['p'],paramType_dict['p'])
-    q=get_param(simParam_dict['q'],paramType_dict['q'])
-    A=get_param(simParam_dict['A'],paramType_dict['A'])
-    tauW=get_param(simParam_dict['tauW'],paramType_dict['tauW'])
-    uW=get_param(simParam_dict['uW'],paramType_dict['uW'])
-    tauT=get_param(simParam_dict['tauT'],paramType_dict['tauT'])
-    uT=get_param(simParam_dict['uT'],paramType_dict['uT'])
-    saveSpikingData=get_param(simParam_dict['saveSpikingData'],paramType_dict['saveSpikingData'])
-    nNeuronsSpk=get_param(simParam_dict['nNeuronsSpk'],paramType_dict['nNeuronsSpk'])
-    weightDynType=get_param(simParam_dict['weightDynType'],paramType_dict['weightDynType'])
-    rPoisson=get_param(simParam_dict['rPoisson'],paramType_dict['rPoisson'])
-    paramCV=get_param(simParam_dict['paramCV'],paramType_dict['paramCV'])
-    K=get_param(simParam_dict['K'],paramType_dict['K'])
-    writeOnRun=get_param(simParam_dict['writeOnRun'],paramType_dict['writeOnRun'])
-    spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])
+    N=get_param(simParam_dict['N'],paramType_dict['N'])[0]
+    tTrans=get_param(simParam_dict['tTrans'],paramType_dict['tTrans'])[0]
+    Tmax=get_param(simParam_dict['Tmax'],paramType_dict['Tmax'])[0]
+    VE0=get_param(simParam_dict['VE0'],paramType_dict['VE0'])[1]
+    VE0Std=get_param(simParam_dict['VE0Std'],paramType_dict['VE0Std'])[1]
+    VI0=get_param(simParam_dict['VI0'],paramType_dict['VI0'])[1]
+    VI0Std=get_param(simParam_dict['VI0Std'],paramType_dict['VI0Std'])[1]
+    XE0=get_param(simParam_dict['XE0'],paramType_dict['XE0'])[0]
+    fXE0=get_param(simParam_dict['fXE0'],paramType_dict['fXE0'])[1]
+    XE0Rand=get_param(simParam_dict['XE0Rand'],paramType_dict['XE0Rand'])[3]
+    XI0=get_param(simParam_dict['XI0'],paramType_dict['XI0'])[0]
+    fXI0=get_param(simParam_dict['fXI0'],paramType_dict['fXI0'])[1]
+    XI0Rand=get_param(simParam_dict['XI0Rand'],paramType_dict['XI0Rand'])[3]
+    mu=get_param(simParam_dict['mu'],paramType_dict['mu'])[1]
+    theta=get_param(simParam_dict['theta'],paramType_dict['theta'])[1]
+    J=get_param(simParam_dict['J'],paramType_dict['J'])[1]
+    Gamma=get_param(simParam_dict['Gamma'],paramType_dict['Gamma'])[1]
+    I=get_param(simParam_dict['I'],paramType_dict['I'])[1]
+    Iext=get_param(simParam_dict['Iext'],paramType_dict['Iext'])[1]
+    g=get_param(simParam_dict['g'],paramType_dict['g'])[1]
+    p=get_param(simParam_dict['p'],paramType_dict['p'])[1]
+    q=get_param(simParam_dict['q'],paramType_dict['q'])[1]
+    A=get_param(simParam_dict['A'],paramType_dict['A'])[1]
+    tauW=get_param(simParam_dict['tauW'],paramType_dict['tauW'])[1]
+    uW=get_param(simParam_dict['uW'],paramType_dict['uW'])[1]
+    tauT=get_param(simParam_dict['tauT'],paramType_dict['tauT'])[1]
+    uT=get_param(simParam_dict['uT'],paramType_dict['uT'])[1]
+    saveSpikingData=get_param(simParam_dict['saveSpikingData'],paramType_dict['saveSpikingData'])[3]
+    nNeuronsSpk=get_param(simParam_dict['nNeuronsSpk'],paramType_dict['nNeuronsSpk'])[0]
+    weightDynType=get_param(simParam_dict['weightDynType'],paramType_dict['weightDynType'])[2]
+    rPoisson=get_param(simParam_dict['rPoisson'],paramType_dict['rPoisson'])[1]
+    paramCV=get_param(simParam_dict['paramCV'],paramType_dict['paramCV'])[1]
+    K=get_param(simParam_dict['K'],paramType_dict['K'])[0]
+    writeOnRun=get_param(simParam_dict['writeOnRun'],paramType_dict['writeOnRun'])[3]
+    spkFileName=get_param(simParam_dict['spkFileName'],paramType_dict['spkFileName'])[2]
     paramCV = 0.0
     print(' ... forcing the CV of all parameters to be zero (homogeneous network), since parameter variability is not implemented yet')
     return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
@@ -46,16 +46,21 @@ def get_system_parameters(simParam_dict,paramType_dict):
 
 #pythran export get_param(str,str)
 def get_param(v,vtype):
+    a = -1
+    b = numpy.nan
+    c = ''
+    d = False
     if vtype == 'int':
-        return int(v)
+        a = int(v)
     elif vtype == 'float':
-        return float(v)
+        b = float(v)
     elif vtype == 'str':
-        return str(v)
+        c = str(v)
     elif vtype == 'bool':
-        return bool(v)
+        d = bool(v)
     else:
         raise ValueError('unknown type for v')
+    return a,b,c,d
 
 #pythran export RunSimulation_GLNetEIRand_static(str:str dict,str:str dict)
 def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):

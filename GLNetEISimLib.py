@@ -341,7 +341,7 @@ def RunSimulation_GLNetEIMF_adapt(simParam_dict,paramType_dict):
     
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI = run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A)
+        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI = run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I)
     
     # subtracting transient time from total time   
     Tmax = Tmax - tTrans 
@@ -608,8 +608,8 @@ def run_transient_GLNetEIMF_aval(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl
         rhoI_prev = sum_XI/qN_fl
     return rhoE_prev,rhoI_prev,VE,XE,VI,XI
 
-#pythran export run_transient_GLNetEIMF_adapt(float[],int[],float[],int[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float)
-def run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A):
+#pythran export run_transient_GLNetEIMF_adapt(float[],int[],float[],int[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
+def run_transient_GLNetEIMF_adapt(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I):
     if weightDynType == "simple":
         weightAdapt = weightAdapt_decrease
     elif weightDynType == "coupled":

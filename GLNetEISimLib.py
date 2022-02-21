@@ -93,7 +93,7 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W,C)
+        rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W,C,KE,K)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
@@ -122,7 +122,7 @@ def RunSimulation_GLNetEIRand_static(simParam_dict,paramType_dict):
     rhoI[0] = rhoITemp
     for t in range(1,Tmax):
         #Iext = 0.0 # stimulus
-        sumSynpaticInput_homog(KE,K,N,XE,XI,J,W,C) # updates synapticInput variable
+        sumSynpaticInput_homog(synapticInput,KE,K,N,XE,XI,J,W,C) # updates synapticInput variable
         for i in range(pN):
             VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson)
             rhoE[t] = rhoE[t] + XE[i]
@@ -541,15 +541,13 @@ def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             sI += XI[C[i][j]]
         synapticInput[i] = (J*sE - W*sI) / float(K)
 
-#pythran export run_transient_GLNetEIRand_static(float[],int[],float[],int[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C))
-def run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W,C):
+#pythran export run_transient_GLNetEIRand_static(float[],int[],float[],int[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C),int,int)
+def run_transient_GLNetEIRand_static(VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W,C,KE,K):
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
-    K_ex = len(J[0])
-    K = K_ex + len(W[0])
     N = len(C)
     for t in range(1,tTrans):
-        sumSynpaticInput_homog(K_ex,K,N,XE,XI,J,W,C) # updates synapticInput variable
+        sumSynpaticInput_homog(synapticInput,KE,K,N,XE,XI,J,W,C) # updates synapticInput variable
         sum_XE = 0.0
         for i in range(pN):
             VE[i],XE[i],_ = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson)

@@ -178,7 +178,7 @@ def RunSimulation_GLNetEIMF_adaptthresh(simParam_dict,paramType_dict):
     if tTrans > 0:
         rhoETemp,rhoITemp,thetaMean,VE,XE,VI,XI = run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,gJ,P_firing_poisson,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT)
     
-    # subtracting transient time from total time
+    # subtracting transient time from total time ####
     Tmax = Tmax - tTrans 
 
     # preparing variable for recording spiking data (if needed)

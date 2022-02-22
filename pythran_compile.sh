@@ -5,7 +5,7 @@ export PYTHRANRC=./config.pythranrc
 # the line below generates a cpp code
 #pythran GLNetEISimLib.py -o GLNetEISimLib.cpp -Ofast -march=native -v -e
 
-################
+#################
 ################
 ################
 ################ use pythran 0.9.9.dev0 ~/programs/python/pythran, since it has a bug correction made locally by me

@@ -9,10 +9,12 @@ import datetime
 import scipy.io
 import scipy.signal
 import GLNetEISimLib
+import sys
 # import matplotlib.pyplot as plt
 
 def main():
-
+    
+    cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
     parser = io.add_neuron_params(parser,outputFile=['glnet_phasetr.mat'])
     parser = io.add_phasetrans_params(parser)
@@ -114,6 +116,7 @@ def main():
     print("* End of simulation... Total time: {}".format(datetime.timedelta(seconds=end_time - start_time)))
 
     print("* Writing output file ... %s" % outputFileName)
+    outVars.update({'cmdLine': cmd_line})
     outVars.update(**outputParamValues)
     outVars.update(**phasetrParam)
     if phasetrParam.saveTimeEvo:

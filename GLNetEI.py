@@ -13,8 +13,9 @@ import sys
 def main():
 
     # for debug
-    sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
+    #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
     #sys.argv = 'GLNetEI.py -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100 -simType aval -tTotal 12000 -tTrans 3000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000'.split(' ')
+    cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
     parser = io.add_neuron_params(parser)
     args = parser.parse_args()
@@ -61,19 +62,15 @@ def main():
     rhoMean = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)
     synCurrentNet = numpy.subtract(excSynCurrent, inhSynCurrent)
 
-    fileHeader  = "****** Parameters:\n"
-    fileHeader += str(outputParamValues)[11:-1].replace(', ','\n') + "\n"
-    fileHeader += "****** Variables\n"
-    fileHeader += ("rhoE_mean=%.8g" % rhomedE) + "\n"
-    fileHeader += ("rhoI_mean=%.8g" % rhomedI) + "\n"
-    fileHeader += "****** Data columns:\n"
-
+    fileHeader = ''
     if saveTxtFile:
+        fileHeader = io.get_output_txtfile_header(cmd_line,outputParamValues,rhomedE,rhomedI)
         print("* Writing output file ... %s" % outputFileName)
         numpy.savetxt(outputFileName, [list(v) for v in zip(range(simParam.tTrans,simParam.Tmax), rhoE, rhoI, rhoMean, excSynCurrent, inhSynCurrent, synCurrentNet, g_data, Y_data)], fmt="%d\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E\t%15.8E", header=(fileHeader + "time\t rhoE\t rhoI\t rhoMean\t excSynCurr\t inhSynCurr\t netSynCurr\t g\t Y"))
 
     print("* Writing output file ... %s" % matFileName)
     matVars = vars(args)
+    matVars.update({'cmdLine':cmd_line})
     matVars.update({"W":outputParamValues.W, "h":outputParamValues.h, "rhoE_mean":rhomedE, "rhoI_mean":rhomedI})
     matVars.update({"time": range(simParam.tTrans,simParam.Tmax), "rhoE": rhoE, "rhoI": rhoI, "rhoMean": rhoMean})
     matVars.update({"excSynCurr": excSynCurrent, "inhSynCurr": inhSynCurrent, "netSynCurr": synCurrentNet})

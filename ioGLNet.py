@@ -174,20 +174,15 @@ def fix_output_fileName_main_simulation(outputFileName):
 
     return outputFileName,matFileName,spkFileName
 
-def splitallpath(path):
-    allparts = []
-    while 1:
-        parts = os.path.split(path)
-        if parts[0] == path:  # sentinel for absolute paths
-            allparts.insert(0, parts[0])
-            break
-        elif parts[1] == path: # sentinel for relative paths
-            allparts.insert(0, parts[1])
-            break
-        else:
-            path = parts[0]
-            allparts.insert(0, parts[1])
-    return [ p for p in allparts if p.strip()!='' ]
+def get_output_txtfile_header(cmd_line,outputParamValues,rhomedE,rhomedI):
+    fileHeader  = "****** cmd line: " + cmd_line + "\n"
+    fileHeader += "****** Parameters:\n"
+    fileHeader += str(outputParamValues)[11:-1].replace(', ','\n') + "\n"
+    fileHeader += "****** Variables\n"
+    fileHeader += ("rhoE_mean=%.8g" % rhomedE) + "\n"
+    fileHeader += ("rhoI_mean=%.8g" % rhomedI) + "\n"
+    fileHeader += "****** Data columns:\n"
+    return fileHeader
 
 def has_dir_in_path(path):
     return ('/' in path) or ('\\' in path)

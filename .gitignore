@@ -4,6 +4,7 @@
 output
 err
 out
+git_help
 __pycache__
 lines_to_run.txt
 old_run

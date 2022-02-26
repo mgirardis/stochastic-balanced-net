@@ -14,7 +14,7 @@ MAIN_SCRIPT_DIR=$(dirname "$THIS_SCRIPT_DIR")
 echo going to ... $MAIN_SCRIPT_DIR
 cd $MAIN_SCRIPT_DIR
 
-LINE=$(sed -n "$SLURM_ARRAY_TASK_ID"p $THIS_SCRIPT_DIR/lines_to_run.txt)
+LINE=$(sed -n "$SLURM_ARRAY_TASK_ID"p $THIS_SCRIPT_DIR/lines_to_run_tests.txt)
 echo Running task $SLURM_ARRAY_TASK_ID ::: $LINE
 
 python $LINE

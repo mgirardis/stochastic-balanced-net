@@ -11,10 +11,10 @@
 THIS_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 THIS_SCRIPT_DIR=$(dirname "$THIS_SCRIPT_DIR")
 
+echo going to ... $THIS_SCRIPT_DIR
 cd $THIS_SCRIPT_DIR
 
 LINE=$(sed -n "$SLURM_ARRAY_TASK_ID"p lines_to_run.txt)
-
 echo Running task $SLURM_ARRAY_TASK_ID ::: $LINE
 
 python $LINE

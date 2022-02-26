@@ -289,6 +289,8 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     theta_data = numpy.array([0.0 for i in range(Tmax)])
     rhoE[0] = rhoETemp
     rhoI[0] = rhoITemp
+    rhoE_prev = rhoETemp
+    rhoI_prev = rhoITemp
     W_I_data[0] = W_I
     theta_data[0] = thetaMean
     for t in range(1,Tmax):

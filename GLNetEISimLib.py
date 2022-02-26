@@ -572,7 +572,7 @@ def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poiss
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
-#pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float)
+#pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
     V = (mu*V + I + Iext + synapticInput)*(1.0-X)
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection

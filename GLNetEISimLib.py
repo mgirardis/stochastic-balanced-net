@@ -585,7 +585,7 @@ def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tau
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
-#pythran export GLNetEIMF_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
+#pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):
     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
@@ -931,13 +931,13 @@ def write_spk_data_fake(t,k):
 #     for t in range(1,Tmax):
 #         #Iext = 0.0 # stimulus
 #         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
+#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
 #             rhoE[t] = rhoE[t] + XE[i]
 #             if (i < pN_s) and XE[i]:
 #                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
 #                 write_spk_time(t,i)
 #         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
+#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
 #             rhoI[t] = rhoI[t] + XI[i]
 #             if (i < qN_s) and XI[i]:
 #                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
@@ -957,11 +957,11 @@ def write_spk_data_fake(t,k):
 #     for t in range(1,tTrans):
 #         sum_XE = 0.0
 #         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
+#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
 #             sum_XE = sum_XE + XE[i]
 #         sum_XI = 0.0
 #         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
+#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
 #             sum_XI = sum_XI + XI[i]
 #         rhoE_prev = sum_XE/pN_fl
 #         rhoI_prev = sum_XI/qN_fl

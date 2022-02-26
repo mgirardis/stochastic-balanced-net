@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 THIS_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PY_SCRIPT_DIR=$(dirname "$THIS_SCRIPT_DIR")

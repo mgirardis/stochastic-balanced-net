@@ -5,7 +5,7 @@
 #SBATCH -e err/balnet_%A_%a.err    # Name of stdout output file (%j expands to %jobID)
 #SBATCH -t 700:00:00              # Run time (hh:mm:ss) - 1.5 hours
 #SBATCH -N 1-3
-#SBATCH --array=2-2       # indices of the lines from lines_to_run.txt to be executed
+#SBATCH --array=2-24       # indices of the lines from lines_to_run.txt to be executed
 
 # going up one directory
 THIS_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

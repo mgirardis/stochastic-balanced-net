@@ -1,0 +1,6 @@
+
+GLNetEI.py -netType random -K 10 -p 1.0 -mu 0.0 -Gamma 0.2 -J 4.8 -Y 1.0 -theta 1.0 -N 100000 -simType aval -tTotal 120000 -tTrans 30000 -outputFile output/glexc_aval_G0.2_J4.8_Y1_N100000.txt -nNeuSpikingData 100000
+GLNetEI.py -netType random -K 10 -p 1.0 -mu 0.0 -Gamma 0.2 -J 4.9 -Y 1.0 -theta 1.0 -N 100000 -simType aval -tTotal 120000 -tTrans 30000 -outputFile output/glexc_aval_G0.2_J4.9_Y1_N100000.txt -nNeuSpikingData 100000
+GLNetEI.py -netType random -K 10 -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -theta 1.0 -N 100000 -simType aval -tTotal 120000 -tTrans 30000 -outputFile output/glexc_aval_G0.2_J5.0_Y1_N100000.txt -nNeuSpikingData 100000
+GLNetEI.py -netType random -K 10 -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.1 -Y 1.0 -theta 1.0 -N 100000 -simType aval -tTotal 120000 -tTrans 30000 -outputFile output/glexc_aval_G0.2_J5.1_Y1_N100000.txt -nNeuSpikingData 100000
+GLNetEI.py -netType random -K 10 -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100000 -simType aval -tTotal 120000 -tTrans 30000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000

@@ -194,7 +194,7 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
         spkTimeFile.close()
     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=rhoE.shape)*W_I/J),numpy.divide(I,theta_data)
 
-#pythran export get_stim_neuron_index(float)
+#pythran export get_stim_neuron_index_aval(float)
 def get_stim_neuron_index_aval(pN_fl):
     return int(random.random() * pN_fl)
 

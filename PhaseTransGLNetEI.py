@@ -45,14 +45,18 @@ def main():
         warnings.warn('saving spiking data is not supported')
         simParam.saveSpikingData = False
 
-    if simType == "adapt":
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
-    elif simType == "adaptthresh":
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adaptthresh
-    elif (simType == "aval") or (simType == "static"):
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
+    if (simParam.netType == 'random'):
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIRand
+    elif (simParam.netType == 'mf'):
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF
+        # if (simType == "adapt") or (simType == "adaptthresh"):
+        #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
+        # elif (simType == "aval") or (simType == "static"):
+        #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
+        # else:
+        #     raise ValueError('unknown simType parameter')
     else:
-        raise ValueError('unknown simType parameter')
+        raise ValueError('unknown netType parameter')
 
     # setup output variables
     nPoints = phasetrParam.parRange.size

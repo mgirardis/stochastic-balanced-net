@@ -37,14 +37,18 @@ def main():
     outputFileName,matFileName,simParam.spkFileName = io.fix_output_fileName_main_simulation(outputFileName)
 
     simType = args.simType[0]
-    if simType == "adapt":
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
-    elif simType == "adaptthresh":
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adaptthresh
-    elif (simType == "aval") or (simType == "static"):
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
+    if (simParam.netType == 'random'):
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIRand
+    elif (simParam.netType == 'mf'):
+        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF
+        # if (simType == "adapt") or (simType == "adaptthresh"):
+        #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
+        # elif (simType == "aval") or (simType == "static"):
+        #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
+        # else:
+        #     raise ValueError('unknown simType parameter')
     else:
-        raise ValueError('unknown simType parameter')
+        raise ValueError('unknown netType parameter')
 
 
     print("* Running simulation...")

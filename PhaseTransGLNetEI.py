@@ -4,11 +4,11 @@ import argparse
 import numpy
 import time
 import warnings
-import ioGLNet as io
+import modules.ioGLNet as io
 import datetime
 import scipy.io
 import scipy.signal
-import GLNetEISimLib
+import modules.GLNetEISimLib as GLNetEISimLib
 import sys
 # import matplotlib.pyplot as plt
 

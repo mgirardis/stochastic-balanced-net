@@ -3,9 +3,9 @@ import os
 import argparse
 import numpy
 import time
-import ioGLNet as io
+import modules.ioGLNet as io
 import scipy.io
-import GLNetEISimLib
+import modules.GLNetEISimLib as GLNetEISimLib
 import datetime
 import sys
 # import matplotlib.pyplot as plt

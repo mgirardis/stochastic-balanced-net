@@ -37,13 +37,11 @@ def main():
     outputFileName,matFileName,simParam.spkFileName = io.fix_output_fileName_main_simulation(outputFileName)
 
     simType = args.simType[0]
-    if simType == "static":
-        RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_static
-    elif simType == "adapt":
+    if simType == "adapt":
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
     elif simType == "adaptthresh":
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adaptthresh
-    elif simType == "aval":
+    elif (simType == "aval") or (simType == "static"):
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_aval
     else:
         raise ValueError('unknown simType parameter')

@@ -12,3 +12,6 @@ old_run
 old_txt_run
 completed_runs
 git_example_commands.txt
+clear_run.sh
+run/clear_run.sh
+run_sbatch_local.sh

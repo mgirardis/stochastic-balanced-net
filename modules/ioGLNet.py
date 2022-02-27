@@ -94,40 +94,6 @@ def get_sim_param_struct_for_pythran(args):
     s.Set(theta=theta,I=float(Y * theta),XE0Rand=not s.noXE0Rand,XI0Rand=not s.noXI0Rand,p=p,q=1.0-p,Tmax=s.tTotal,nNeuronsSpk=s.nNeuSpikingData,spkFileName='')
     s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal'])
     return s
-    """return structtype(
-    mu = float(args.mu[0]),
-    Gamma = float(args.Gamma[0]),
-    J = float(args.J[0]),
-    g = float(args.g[0]),
-    Iext = float(args.Iext[0]),
-    theta = theta,
-    I = float(Y * theta),
-    A = float(args.A[0]),
-    tauW = float(args.tauW[0]),
-    uW = float(args.uW[0]),
-    tauT = float(args.tauT[0]),
-    uT = float(args.uT[0]),
-    rPoisson = float(args.rPoisson[0]),
-    VE0 = float(args.VE0[0]),
-    VI0 = float(args.VI0[0]),
-    VE0Std = float(args.VE0Std[0]),
-    VI0Std = float(args.VI0Std[0]),
-    XE0 = float(args.XE0[0]),
-    XI0 = float(args.XI0[0]),
-    fXE0 = float(args.fXE0[0]),
-    fXI0 = float(args.fXI0[0]),
-    XE0Rand = not bool(args.noXE0Rand),
-    XI0Rand = not bool(args.noXI0Rand),
-    N = int(args.N[0]),
-    p = p,
-    q = float(1.0 - p),
-    Tmax = int(args.tTotal[0]),
-    tTrans = int(args.tTrans[0]),
-    saveSpikingData = args.saveSpikingData,
-    weightDynType =  args.weightDynType[0],
-    nNeuronsSpk = int(args.nNeuSpikingData[0]),
-    writeOnRun = args.writeOnRun,
-    spkFileName='')"""
 
 def fix_output_fileName_phasetrans_simulation(outputFileName):
     """fix output file extension and remove output files if they already exist, creates output directory if they don't exist"""
@@ -206,7 +172,7 @@ def fix_args_lists_as_scalars(args,return_type_for_values=None):
         args.__dict__ = a
     return args
 
-def get_param_range(args,numpy=None):
+def get_param_range(args):
     if args.parScale[0] == 'log':
         v1 = args.parVal1[0]
         v2 = args.parVal2[0]

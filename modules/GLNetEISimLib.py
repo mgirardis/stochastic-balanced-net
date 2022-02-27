@@ -51,16 +51,16 @@ def get_param(v,vtype):
     b = numpy.nan
     c = ''
     d = False
-    if vtype == 'int':
+    if 'int' in vtype:
         a = int(v)
-    elif vtype == 'float':
+    elif 'float' in vtype:
         b = float(v)
-    elif vtype == 'str':
+    elif 'str' in vtype:
         c = str(v)
-    elif vtype == 'bool':
+    elif 'bool' in vtype:
         d = v.lower() == 'true'
     else:
-        raise ValueError('unknown type for v')
+        raise ValueError('unknown type for v in get_param function from GLNetEISimLib')
     return a,b,c,d
 
 """

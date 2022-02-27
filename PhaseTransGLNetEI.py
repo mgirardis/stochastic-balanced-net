@@ -14,7 +14,7 @@ import sys
 
 def main():
     
-    sys.argv = 'PhaseTransGLNetEI.py -p 1.0 -saveTimeEvo -parName rPoisson -parVal1 0.000001 -parVal2 1.0 -nPar 5 -parScale log -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -theta 1.0 -N 1000 -simType static -tTotal 10000 -tTrans 3000 -outputFile run/output/glexc_pt_poisson_G0.2_J5.0_Y1_N1000.txt -nNeuSpikingData 1000'.split(' ')
+    #sys.argv = 'PhaseTransGLNetEI.py -p 1.0 -saveTimeEvo -parName rPoisson -parVal1 0.000001 -parVal2 1.0 -nPar 5 -parScale log -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -theta 1.0 -N 1000 -simType static -tTotal 10000 -tTrans 3000 -outputFile run/output/glexc_pt_poisson_G0.2_J5.0_Y1_N1000.txt -nNeuSpikingData 1000'.split(' ')
     cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
     parser = io.add_neuron_params(parser,outputFile=['glnet_phasetr.mat'])

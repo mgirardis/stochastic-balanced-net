@@ -15,6 +15,7 @@ def main():
     # for debug
     #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
     #sys.argv = 'GLNetEI.py -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100 -simType aval -tTotal 12000 -tTrans 3000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000'.split(' ')
+    #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.5 -Y 1.0 -theta 1.0 -N 1000 -simType adapt -p 0.8 -tTotal 10000 -tTrans 3000 -tauT 500.0 -tauW 500.0 -uT 0.1 -uW 0.1 -A 30.0 -outputFile run/output/glei_adapt_G0.2_g1.5_A30_tauW500_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
     cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
     parser = io.add_neuron_params(parser)

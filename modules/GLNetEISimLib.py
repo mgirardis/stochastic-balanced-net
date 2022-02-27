@@ -58,7 +58,7 @@ def get_param(v,vtype):
     elif vtype == 'str':
         c = str(v)
     elif vtype == 'bool':
-        d = bool(v)
+        d = v.lower() == 'true'
     else:
         raise ValueError('unknown type for v')
     return a,b,c,d

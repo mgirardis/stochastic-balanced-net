@@ -1,17 +1,17 @@
 #!/bin/bash
 
-THIS_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+#THIS_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-if [ ! -d $THIS_SCRIPT_DIR/out ]; then
-    mkdir $THIS_SCRIPT_DIR/out
+if [ ! -d run/out ]; then
+    mkdir run/out
 fi
-if [ ! -d $THIS_SCRIPT_DIR/err ]; then
-    mkdir $THIS_SCRIPT_DIR/err
+if [ ! -d run/err ]; then
+    mkdir run/err
 fi
-if [ ! -d $THIS_SCRIPT_DIR/output ]; then
-    mkdir $THIS_SCRIPT_DIR/output
+if [ ! -d run/output ]; then
+    mkdir run/output
 fi
 
-rm $THIS_SCRIPT_DIR/out/*
-rm $THIS_SCRIPT_DIR/err/*
-rm $THIS_SCRIPT_DIR/output/*
+rm run/out/*
+rm run/err/*
+rm run/output/*

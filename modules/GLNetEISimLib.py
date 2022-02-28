@@ -10,10 +10,10 @@ def get_system_parameters(simParam_dict,paramType_dict):
     VE0Std=get_param(simParam_dict['VE0Std'],paramType_dict['VE0Std'])[1]
     VI0=get_param(simParam_dict['VI0'],paramType_dict['VI0'])[1]
     VI0Std=get_param(simParam_dict['VI0Std'],paramType_dict['VI0Std'])[1]
-    XE0=get_param(simParam_dict['XE0'],paramType_dict['XE0'])[0]
+    XE0=get_param(simParam_dict['XE0'],paramType_dict['XE0'])[1]
     fXE0=get_param(simParam_dict['fXE0'],paramType_dict['fXE0'])[1]
     XE0Rand=get_param(simParam_dict['XE0Rand'],paramType_dict['XE0Rand'])[3]
-    XI0=get_param(simParam_dict['XI0'],paramType_dict['XI0'])[0]
+    XI0=get_param(simParam_dict['XI0'],paramType_dict['XI0'])[1]
     fXI0=get_param(simParam_dict['fXI0'],paramType_dict['fXI0'])[1]
     XI0Rand=get_param(simParam_dict['XI0Rand'],paramType_dict['XI0Rand'])[3]
     mu=get_param(simParam_dict['mu'],paramType_dict['mu'])[1]
@@ -78,11 +78,20 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
             weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
-
+    ############### I'll leave it here for later when I implement heterogeneous parameters
+    if simType == 'adapt':
+        raise ValueError('only adaptive threshold simulations are implemented for random networks, since adaptive weights require heterogeneous W matrix')
     if simType == 'adaptthresh':
         GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
     else:
         GLNetEIRand_iter = GLNetEIRand_static_iter
+    # preparing external stimulus in case of avalanche simulation
+    if simType == 'aval':
+        get_external_stimulus = get_external_stimulus_aval
+        get_stim_neuron_index = get_stim_neuron_index_aval
+    else:
+        get_external_stimulus = get_external_stimulus_dynamic
+        get_stim_neuron_index = lambda _: 0
 
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
@@ -126,18 +135,6 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
-
-    # preparing external stimulus in case of avalanche simulation
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-        get_stim_neuron_index = get_stim_neuron_index_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
-        get_stim_neuron_index = lambda _: 0
-    
-    ############### I'll leave it here for later when I implement heterogeneous parameters
-    if simType == 'adapt':
-        raise ValueError('only adaptive threshold simulations are implemented for random networks, since adaptive weights require heterogeneous W matrix')
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
@@ -221,10 +218,26 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
         weightAdapt = weightAdapt_decrease
     elif weightDynType == "coupled":
         weightAdapt = weightAdapt_increase
+    elif weightDynType == "none":
+        weightAdapt = weightAdapt_constant
     else:
         raise ValueError('weightDynType is unknown')
     if q == 0.0:
         weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
+    # preparing external stimulus in case of avalanche simulation
+    if simType == 'aval':
+        get_external_stimulus = get_external_stimulus_aval
+    else:
+        get_external_stimulus = get_external_stimulus_dynamic
+    # forcing a fixed inhibitory synaptic weight
+    if simType == 'adaptthresh':
+        print(' ... forcing constant inhibitory W because simType == adaptthresh')
+        weightAdapt = weightAdapt_constant
+    
+    if simType == 'aval':
+        print(' ... forcing fXE0 = fXI0 = 0.0 as initial conditions, since simType == aval')
+        fXE0 = 0.0
+        fXI0 = 0.0
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
     pN = int(p*N)
@@ -245,12 +258,6 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     # setting initial conditions
     # returns W_I = g*J
     VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,W_I,thetaMean = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
-    
-    # forcing a fixed inhibitory synaptic weight
-    if simType == 'adaptthresh':
-        A = 0.0
-        tauWinv = 0.0
-        uW = 0.0
 
     # running transient time
     if tTrans > 0:
@@ -258,12 +265,6 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
 
     # subtracting transient time from total time   
     Tmax = Tmax - tTrans
-
-    # preparing external stimulus in case of avalanche simulation
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
 
     # preparing variable for recording spiking data (if needed)
     if saveSpikingData:
@@ -352,7 +353,7 @@ def generate_random_net_fixed_input(K_ex,pN,K,N):
     """
     return numpy.array([sorted(random.sample(range(pN),K_ex)) + sorted(random.sample(range(N-pN),K-K_ex)) for _ in range(N)])
 
-#pythran export sumSynpaticInput(float[],int,int,int,int[],int[],float[:,:] order(C),float[:,:] order(C),float[:,:] order(C))
+#pythran export sumSynpaticInput(float[],int,int,int,float[],float[],float[:,:] order(C),float[:,:] order(C),float[:,:] order(C))
 def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
@@ -376,7 +377,7 @@ def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             s -= W[i][j-K_ex] * XI[C[i][j]]
         synapticInput[i] = s / float(K)
 
-#pythran export sumSynpaticInput_homog(float[],int,int,int,int[],int[],float,float,float[:,:] order(C))
+#pythran export sumSynpaticInput_homog(float[],int,int,int,float[],float[],float,float,float[:,:] order(C))
 def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
@@ -399,7 +400,7 @@ def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
             sI += XI[C[i][j]]
         synapticInput[i] = (J*sE - W*sI) / float(K)
 
-#pythran export run_transient_GLNetEIRand(str,float[],int[],float[],int[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C),int,int,float,float,float,float[],float[],float,float,str)
+#pythran export run_transient_GLNetEIRand(str,float[],float[],float[],float[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C),int,int,float,float,float,float[],float[],float,float,str)
 def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W_I,C,KE,K,A,tauTinv,tauWinv,thetaE,thetaI,uT,uW,weightDynType):
     # preparing external stimulus in case of avalanche simulation
     if simType == 'aval':
@@ -447,7 +448,7 @@ def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN
 ####################################
 """
 
-#pythran export run_transient_GLNetEIMF(str,float[],int[],float[],int[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
+#pythran export run_transient_GLNetEIMF(str,float[],float[],float[],float[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
 def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I):
     if 'adapt' in simType:
         GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
@@ -461,8 +462,16 @@ def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,
         weightAdapt = weightAdapt_decrease
     elif weightDynType == "coupled":
         weightAdapt = weightAdapt_increase
+    elif weightDynType == "none":
+        weightAdapt = weightAdapt_constant
+    if q == 0.0:
+        weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
+    if simType == 'adaptthresh':
+        print(' ... forcing constant inhibitory W because simType == adaptthresh')
+        weightAdapt = weightAdapt_constant
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
+    thetaMean = 0.0
     for t in range(1,tTrans):
         XE[0],rhoE_prev = get_external_stimulus(XE[0],rhoE_prev,rhoI_prev,pN_fl)
         W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
@@ -493,18 +502,18 @@ def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,
 ####################################
 """
 
-#pythran export get_external_stimulus_dynamic(int,float,float,float)
+#pythran export get_external_stimulus_dynamic(float,float,float,float)
 def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):
     return XE,rhoE
 
-#pythran export get_external_stimulus_aval(int,float,float,float)
+#pythran export get_external_stimulus_aval(float,float,float,float)
 def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):
     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
-        return 1, 1.0 / pN_fl
+        return 1.0, 1.0 / pN_fl
     else:
         return XE,rhoE
 
-#pythran export save_initial_spkdata(int[],int[],int,int)
+#pythran export save_initial_spkdata(float[],float[],int,int)
 def save_initial_spkdata(XE,XI,pN,qN):
     """
     spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
@@ -517,17 +526,17 @@ def save_initial_spkdata(XE,XI,pN,qN):
     spkData = []
     i = 0
     while i < pN:
-        if XE[i] == 1:
+        if XE[i] > 0.5:
             spkData = save_spk_data(spkData,0,i)
         i+=1
     i = 0
     while i < qN:
-        if XI[i] == 1:
+        if XI[i] > 0.5:
             spkData = save_spk_data(spkData,0,i+pN)
         i+=1
     return spkData
 
-#pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,int,float,bool,int,float,bool,float)
+#pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
 def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
     VE = numpy.array([abs(random.gauss(VE0,VE0Std)) for i in range(pN)])
     thetaE = numpy.array([theta for i in range(pN)])
@@ -543,11 +552,15 @@ def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,
     thetaMean = theta
     return VE,XE,VI,XI,rhoE0,rhoI0,thetaE,thetaI,W_I,thetaMean
 
-#pythran export generate_IC_spikes(int,int,int,bool)
+#pythran export generate_IC_spikes(float,int,int,bool)
 def generate_IC_spikes(X0,N,K,is_random=False):
     """generates a list X of zeros with len N containing K ones
     """
-    if (X0 > 0) and is_random:
+    X0 = float(X0>=0.5) # x0 can only be 1 or 0
+    if (X0 < 0.5) and (K > 0):
+        print(' ... forcing initial condition because even though X0 = 0, fX0 > 0')
+        X0 = 1.0
+    if (X0 >= 0.5) and is_random:
         X = numpy.array([0.0 for i in range(N)])
         for k in random.sample(range(N),K):
             X[k] = 1.0
@@ -590,6 +603,10 @@ def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,u
     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
+
+#pythran export weightAdapt_constant(float, float, float, float, float, float)
+def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):
+    return W
 
 #pythran export weightAdapt_decrease(float, float, float, float, float, float)
 def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):

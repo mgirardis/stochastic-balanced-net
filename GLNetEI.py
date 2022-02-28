@@ -29,7 +29,7 @@ def main():
     # this condition is solved; there was a conflicting definition of the IC
     # since XE0,XI0,fXE0,fXI0 define the IC,
     # now the rho=0 IC is only achieved when all XE0=XI0=fXE0=fXI0=0
-    sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.4 -Y 1.0 -theta 1.0 -N 1000 -simType static -p 0.8 -tTotal 10000 -tTrans 0 -outputFile run/output/glei_static_G0.2_g1.4_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
+    #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.4 -Y 1.0 -theta 1.0 -N 1000 -simType static -p 0.8 -tTotal 10000 -tTrans 0 -outputFile run/output/glei_static_G0.2_g1.4_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
 
     cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')

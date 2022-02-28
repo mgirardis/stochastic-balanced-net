@@ -563,18 +563,23 @@ def generate_IC_spikes(X0,N,K,neuronType,is_random):
     """generates a list X of zeros with len N containing K ones
     """
     X0 = float(X0>=0.5) # x0 can only be 1 or 0
-    if (X0 < 0.5) and (K == 0):
-        print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
-        return numpy.zeros(N)
-    if K > 0: #(X0 >= 0.5) and is_random:
+    if K == 0:
+        if (X0 < 0.5):
+            print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
+            X = numpy.zeros(N)
+        else:
+            print(' ... %s IC: starting from all active neurons'%(neuronType))
+            X = numpy.ones(N)
+    else: #(X0 >= 0.5) and is_random:
         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
         X = numpy.zeros(N)
-        start_activity_idx = random.sample(range(N),K) if is_random else numpy.arange(K)
+        if is_random:
+            start_activity_idx = random.sample(range(N),K)
+        else:
+            start_activity_idx = list(range(K))
         for k in start_activity_idx:
             X[k] = 1.0
-        return X
-    print(' ... %s IC: starting from all active neurons'%(neuronType))
-    return numpy.ones(N)
+    return X
 
 """
 ####################################

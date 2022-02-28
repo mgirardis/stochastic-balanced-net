@@ -28,7 +28,7 @@ undefs=
 include_dirs=
 libs=
 library_dirs=
-cflags=-std=c++11 -fno-math-errno -fvisibility=hidden -fno-wrapv -Wno-unused-function -Wno-int-in-bool-context -Wno-unknown-warning-option -Wno-unused-variable -Wmaybe-uninitialized -fbounds-check=off
+cflags=-std=c++11 -fno-math-errno -fvisibility=hidden -fno-wrapv -Wno-unused-function -Wno-int-in-bool-context -Wno-unknown-warning-option -Wno-unused-variable -Wmaybe-uninitialized
 ldflags=-fvisibility=hidden -Wl,-strip-all
 blas=blas
 CC=
@@ -42,7 +42,7 @@ ignoreflags=-Wstrict-prototypes
 # increasing this value inreases typing accuracy
 # but slows down compilation time, to the point of making g++ crash
 #max_container_type = 2 ###### gcc crashed with this value -- Mauricio
-max_container_type = 1
+max_container_type = 2
 
 # maximum number of combiner per user function
 # increasing this value inreases typing accuracy

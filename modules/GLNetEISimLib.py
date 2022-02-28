@@ -538,13 +538,19 @@ def save_initial_spkdata(XE,XI,pN,qN):
 
 #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
 def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
+    VE0 = theta if VE0 == 0.0 else VE0
     VE = numpy.array([abs(random.gauss(VE0,VE0Std)) for i in range(pN)])
     thetaE = numpy.array([theta for i in range(pN)])
-    XE = generate_IC_spikes(XE0,pN,int(fXE0*pN),XE0Rand)
+    XE = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
+    for i in range(pN):
+        VE[i] = 0.0 if XE[i] >= 0.5 else VE[i]
 
+    VI0 = theta if VI0 == 0.0 else VI0
     VI = numpy.array([abs(random.gauss(VI0,VI0Std)) for i in range(qN)])
     thetaI = numpy.array([theta for i in range(qN)])
-    XI = generate_IC_spikes(XI0,qN,int(fXI0*qN),XI0Rand)
+    XI = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
+    for i in range(qN):
+        VI[i] = 0.0 if XI[i] >= 0.5 else VI[i]
 
     rhoE0 = float(sum(XE))/(float(pN) if pN > 0 else 1.0)
     rhoI0 = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
@@ -552,21 +558,23 @@ def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,
     thetaMean = theta
     return VE,XE,VI,XI,rhoE0,rhoI0,thetaE,thetaI,W_I,thetaMean
 
-#pythran export generate_IC_spikes(float,int,int,bool)
-def generate_IC_spikes(X0,N,K,is_random=False):
+#pythran export generate_IC_spikes(float,int,int,str,bool)
+def generate_IC_spikes(X0,N,K,neuronType,is_random):
     """generates a list X of zeros with len N containing K ones
     """
     X0 = float(X0>=0.5) # x0 can only be 1 or 0
-    if (X0 < 0.5) and (K > 0):
-        print(' ... forcing initial condition because even though X0 = 0, fX0 > 0')
-        X0 = 1.0
-    if (X0 >= 0.5) and is_random:
-        X = numpy.array([0.0 for i in range(N)])
-        for k in random.sample(range(N),K):
+    if (X0 < 0.5) and (K == 0):
+        print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
+        return numpy.zeros(N)
+    if K > 0: #(X0 >= 0.5) and is_random:
+        print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
+        X = numpy.zeros(N)
+        start_activity_idx = random.sample(range(N),K) if is_random else numpy.arange(K)
+        for k in start_activity_idx:
             X[k] = 1.0
-    else:
-        X = numpy.array([X0 for i in range(N)])
-    return X
+        return X
+    print(' ... %s IC: starting from all active neurons'%(neuronType))
+    return numpy.ones(N)
 
 """
 ####################################

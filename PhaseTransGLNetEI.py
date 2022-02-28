@@ -49,6 +49,9 @@ def main():
     if (simParam.netType == 'random'):
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIRand
     elif (simParam.netType == 'mf'):
+        if simType == 'static':
+            print(' ... forcing avalanche simType because we want the system to lurk on the active state')
+            simParam.simType = 'aval'
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF
         # if (simType == "adapt") or (simType == "adaptthresh"):
         #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt

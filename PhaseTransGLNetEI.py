@@ -14,7 +14,7 @@ import sys
 
 def main():
     
-    #sys.argv = 'PhaseTransGLNetEI.py -p 1.0 -saveTimeEvo -parName rPoisson -parVal1 0.000001 -parVal2 1.0 -nPar 5 -parScale log -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -theta 1.0 -N 1000 -simType static -tTotal 10000 -tTrans 3000 -outputFile run/output/glexc_pt_poisson_G0.2_J5.0_Y1_N1000.txt -nNeuSpikingData 1000'.split(' ')
+    sys.argv = 'PhaseTransGLNetEI.py -p 1.0 -saveTimeEvo -parName rPoisson -parVal1 0.000001 -parVal2 1.0 -nPar 5 -parScale log -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -theta 1.0 -N 1000 -simType static -tTotal 10000 -tTrans 3000 -outputFile run/output/glexc_pt_poisson_G0.2_J5.0_Y1_N1000.txt -nNeuSpikingData 1000'.split(' ')
     cmd_line = ' '.join(sys.argv)
     parser = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
     parser = io.add_neuron_params(parser,outputFile=['glnet_phasetr.mat'])
@@ -28,6 +28,8 @@ def main():
     phasetrParam = io.get_phasetrans_param_struct(args)
     W = (simParam.p-simParam.q*simParam.g)*simParam.J
     h = simParam.I - simParam.theta
+    simParam.W = W
+    simParam.h = h
     outputParamValues = io.namespace_to_structtype(args)
     outputParamValues.W = W
     outputParamValues.h = h
@@ -49,8 +51,9 @@ def main():
     if (simParam.netType == 'random'):
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIRand
     elif (simParam.netType == 'mf'):
-        if simType == 'static':
-            print(' ... forcing avalanche simType because we want the system to lurk on the active state')
+        if (simType == 'static') and ((simParam.rPoisson == 0.0) and (simParam.Y <= 1.0)):
+            print(' ... static simulation with zero Poisson input or zero external field detected:')
+            print('     forcing avalanche simType because we want the system to lurk on the active state')
             simParam.simType = 'aval'
             outputParamValues.simType = 'aval'
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF

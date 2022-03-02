@@ -51,11 +51,6 @@ def main():
     if (simParam.netType == 'random'):
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIRand
     elif (simParam.netType == 'mf'):
-        if (simType == 'static') and ((simParam.rPoisson == 0.0) and (simParam.Y <= 1.0)):
-            print(' ... static simulation with zero Poisson input or zero external field detected:')
-            print('     forcing avalanche simType because we want the system to lurk on the active state')
-            simParam.simType = 'aval'
-            outputParamValues.simType = 'aval'
         RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF
         # if (simType == "adapt") or (simType == "adaptthresh"):
         #     RunSimulation = GLNetEISimLib.RunSimulation_GLNetEIMF_adapt
@@ -93,6 +88,16 @@ def main():
 
         # updating parameter
         simParam[phasetrParam.parName] = v
+
+        if phasetrParam.forceActivity:
+            if (simType == 'static') and ((simParam.rPoisson == 0.0) and (simParam.Y <= 1.0)):
+                print(' ... static simulation with zero Poisson input or zero external field detected:')
+                print('     forcing avalanche simType because we want the system to lurk on the active state')
+                simParam.simType = 'aval'
+                #outputParamValues.simType = 'aval'
+            else:
+                simParam.simType = simType
+                #outputParamValues.simType = simType
 
         # running simulation
         #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)

@@ -30,6 +30,7 @@ def add_phasetrans_params(parser,**defaultValues):
     parser.add_argument('-nPar',    nargs=1, required=False, metavar='VALUE', type=int,   default=get_param_value('nPar', defaultValues,[10]),           help='simulate n values of the parameter in [val1;val2]')
     parser.add_argument('-parScale',nargs=1, required=False, metavar='NAME',  type=str,   default=get_param_value('parScale',defaultValues,['log']), choices=['log', 'linear'], help='log: use logspace(val1,val2,n); linear: use linspace(val1,val2,n)')
     parser.add_argument('-saveTimeEvo', required=False, action='store_true', default=False, help='saves rho_EI(t) and IsynEI(t) for each parameter combination')
+    parser.add_argument('-noForceActive', required=False, action='store_true', default=False, help='set this parameter to let the activity die out to the absorbing state; by default, the program tries to keep the network active by stimulating it everytime the activity dies out (aval simType)')
     return parser
 
 def add_neuron_params(parser,**defaultValues):
@@ -92,7 +93,7 @@ def get_sim_param_struct_for_pythran(args):
     s = namespace_to_structtype(args) # fix scalar input parameters automatically in this conversion
     # setting the parameters that have another name in the function input inside the GLNetEISimLib.py file
     s.Set(theta=theta,I=float(Y * theta),XE0Rand=not s.noXE0Rand,XI0Rand=not s.noXI0Rand,p=p,q=1.0-p,Tmax=s.tTotal,nNeuronsSpk=s.nNeuSpikingData,spkFileName='')
-    s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal'])
+    s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal','noForceActive'])
     if (s.simType == 'adapt') and (s.weightDynType == 'none'):
         s.weightDynType = 'simple'
     return s
@@ -156,7 +157,7 @@ def has_dir_in_path(path):
     return ('/' in path) or ('\\' in path)
 
 def get_phasetrans_param_struct(args):
-    return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo)
+    return structtype(parName=args.parName[0],parRange=get_param_range(args),saveTimeEvo=args.saveTimeEvo,forceActivity=not args.noForceActive)
 
 def fix_args_lists_as_scalars(args,return_type_for_values=None):
     if type(args) is dict:

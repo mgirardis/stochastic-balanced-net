@@ -16,29 +16,29 @@ def main():
     
     #sys.argv = 'PhaseTransGLNetEI.py -netType random -K 100 -p 1.0 -saveTimeEvo -parName rPoisson -parVal1 0.000001 -parVal2 1.0 -nPar 20 -parScale log -mu 0.0 -Gamma 0.2 -J 4.8 -Y 1.0 -theta 1.0 -N 100000 -simType static -tTotal 200000 -tTrans 30000 -outputFile run/output/glexc_rand_pt_poisson_G0.2_J4.8_Y1_K100_N100000.txt -nNeuSpikingData 1000'.split(' ')
     cmd_line = ' '.join(sys.argv)
-    parser = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
-    parser = io.add_neuron_params(parser,outputFile=['glnet_phasetr.mat'])
-    parser = io.add_phasetrans_params(parser)
-    args = parser.parse_args()
+    parser   = argparse.ArgumentParser(description='Simulates a phase transition of a GL network of Excitatory/Inhibitory elements in the mean-field level over the chosen parameter')
+    parser   = io.add_neuron_params(parser,outputFile=['glnet_phasetr.mat'])
+    parser   = io.add_phasetrans_params(parser)
+    args     = parser.parse_args()
 
     print("* Setting input parameters ...")
     print(str(args)[10:-1].replace(', ','\n'))
 
-    simParam = io.get_sim_param_struct_for_pythran(args)
-    phasetrParam = io.get_phasetrans_param_struct(args)
-    W = (simParam.p-simParam.q*simParam.g)*simParam.J
-    h = simParam.I - simParam.theta
-    simParam.W = W
-    simParam.h = h
-    outputParamValues = io.namespace_to_structtype(args)
-    outputParamValues.W = W
-    outputParamValues.h = h
+    simParam                    = io.get_sim_param_struct_for_pythran(args)
+    phasetrParam                = io.get_phasetrans_param_struct(args)
+    W                           = (simParam.p-simParam.q*simParam.g)*simParam.J
+    h                           = simParam.I - simParam.theta
+    simParam.W                  = W
+    simParam.h                  = h
+    outputParamValues           = io.namespace_to_structtype(args)
+    outputParamValues.W         = W
+    outputParamValues.h         = h
     outputParamValues.N_rec_Exc = int(simParam.p*simParam.nNeuronsSpk) # number of recorded excitatory neurons
     outputParamValues[phasetrParam.parName] = numpy.nan
 
     # output parameters
-    simType = args.simType[0]
-    saveTxtFile = args.saveTxtFile
+    simType        = args.simType[0]
+    saveTxtFile    = args.saveTxtFile
     outputFileName = args.outputFile[0]
     
     outputFileName = io.fix_output_fileName_phasetrans_simulation(outputFileName)
@@ -75,10 +75,10 @@ def main():
     
     outVarsT = []
     if phasetrParam.saveTimeEvo:
-        tTotal = simParam.Tmax - simParam.tTrans
-        outVarsT = io.structtype(time=numpy.zeros((tTotal,1)),rhoE=numpy.zeros((tTotal,nPoints)),rhoI=numpy.zeros((tTotal,nPoints)),
-                                 gVar=numpy.zeros((tTotal,nPoints)),YVar=numpy.zeros((tTotal,nPoints)),
-                                 IsynE=numpy.zeros((tTotal,nPoints)),IsynI=numpy.zeros((tTotal,nPoints)))
+        tTotal        = simParam.Tmax - simParam.tTrans
+        outVarsT      = io.structtype(time=numpy.zeros((tTotal,1)),rhoE=numpy.zeros((tTotal,nPoints)),rhoI=numpy.zeros((tTotal,nPoints)),
+                                      gVar=numpy.zeros((tTotal,nPoints)),YVar=numpy.zeros((tTotal,nPoints)),
+                                      IsynE=numpy.zeros((tTotal,nPoints)),IsynI=numpy.zeros((tTotal,nPoints)))
         outVarsT.time = numpy.linspace(0,tTotal-1,tTotal).reshape((tTotal,1))
 
     print("* Running phase transition simulation...")
@@ -104,7 +104,7 @@ def main():
         rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
 
         # calculating some means
-        rhoMean = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)
+        rhoMean       = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)
         synCurrentNet = numpy.subtract(excSynCurrent, inhSynCurrent)
 
         # saving output data
@@ -115,17 +115,17 @@ def main():
         """
         t_decay = get_decay_time_idx(rhoE,50)
         outVars.t_decay[k] = t_decay
-        outVars.avg_rhoE[k],outVars.std_rhoE[k] = mean_std_before_decay(rhoE,t_decay=t_decay)
-        outVars.avg_rhoI[k],outVars.std_rhoI[k] = mean_std_before_decay(rhoI,t_decay=t_decay)
-        outVars.avg_rho[k],outVars.std_rho[k] = mean_std_before_decay(rhoMean,t_decay=t_decay)
-        outVars.avg_gVar[k],outVars.std_gVar[k] = mean_std_before_decay(g_data,t_decay=t_decay)
-        outVars.avg_YVar[k],outVars.std_YVar[k] = mean_std_before_decay(Y_data,t_decay=t_decay)
-        outVars.avg_Isyn[k],outVars.std_Isyn[k] = mean_std_before_decay(synCurrentNet,t_decay=t_decay)
+        outVars.avg_rhoE[k] ,outVars.std_rhoE[k]  = mean_std_before_decay(rhoE,t_decay=t_decay)
+        outVars.avg_rhoI[k] ,outVars.std_rhoI[k]  = mean_std_before_decay(rhoI,t_decay=t_decay)
+        outVars.avg_rho[k]  ,outVars.std_rho[k]   = mean_std_before_decay(rhoMean,t_decay=t_decay)
+        outVars.avg_gVar[k] ,outVars.std_gVar[k]  = mean_std_before_decay(g_data,t_decay=t_decay)
+        outVars.avg_YVar[k] ,outVars.std_YVar[k]  = mean_std_before_decay(Y_data,t_decay=t_decay)
+        outVars.avg_Isyn[k] ,outVars.std_Isyn[k]  = mean_std_before_decay(synCurrentNet,t_decay=t_decay)
         outVars.avg_IsynE[k],outVars.std_IsynE[k] = mean_std_before_decay(excSynCurrent,t_decay=t_decay)
         outVars.avg_IsynI[k],outVars.std_IsynI[k] = mean_std_before_decay(inhSynCurrent,t_decay=t_decay)
         if phasetrParam.saveTimeEvo:
-            outVarsT.rhoE[:,k],outVarsT.rhoI[:,k] = rhoE,rhoI
-            outVarsT.gVar[:,k],outVarsT.YVar[:,k] = g_data,Y_data
+            outVarsT.rhoE[:,k] ,outVarsT.rhoI[:,k]  = rhoE,rhoI
+            outVarsT.gVar[:,k] ,outVarsT.YVar[:,k]  = g_data,Y_data
             outVarsT.IsynE[:,k],outVarsT.IsynI[:,k] = excSynCurrent,inhSynCurrent
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(datetime.timedelta(seconds=end_time - start_time)))
@@ -155,11 +155,11 @@ def get_decay_time_idx(rho,w_filter=50,n_ts_consecutive=100):
     t_zero = find_consecutive(numpy.asarray(rho)<1.0e-10,n_ts_consecutive)
     if not t_zero:
         return numpy.nan
-    rho_f = movingavg_filter(rho,w_filter)
-    n = int(numpy.floor(t_zero/2.0))
-    k = numpy.argmax(numpy.abs(numpy.diff(rho_f[:t_zero]))[-n:])
-    t_decay = k + n
-    dt = int(2.2*numpy.abs(t_zero - t_decay))
+    rho_f    = movingavg_filter(rho,w_filter)
+    n        = int(numpy.floor(t_zero/2.0))
+    k        = numpy.argmax(numpy.abs(numpy.diff(rho_f[:t_zero]))[-n:])
+    t_decay  = k + n
+    dt       = int(2.2*numpy.abs(t_zero - t_decay))
     t_decay -= dt
     if t_decay<100:
         t_decay = k+n
@@ -191,8 +191,8 @@ def normConvolution(x1,x2):
     f = scipy.signal.convolve(x1,x2,mode='same',method='direct')
     f = f*numpy.max(x1)/numpy.max(f) # normalizing
     #fixing boundary conditions
-    n = int(numpy.ceil( len(x2)/2.0 ) + 1.0)
-    f[:n] = f[n]
+    n      = int(numpy.ceil( len(x2)/2.0 ) + 1.0)
+    f[:n]  = f[n]
     f[-n:] = f[-n]
     return f
 

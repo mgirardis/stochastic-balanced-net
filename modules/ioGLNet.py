@@ -63,7 +63,7 @@ def add_neuron_params(parser,**defaultValues):
     parser.add_argument('-outputFile',      nargs=1, required=False, metavar='OUTPUT_FILE_NAME', type=str,   default=get_param_value('outputFile',      defaultValues,['glnet_dynamics.txt']), help='name of the output file')
     parser.add_argument('-nNeuSpikingData', nargs=1, required=False, metavar='N_NEU_SPIKING',    type=int,   default=get_param_value('nNeuSpikingData', defaultValues,[10000]),                help='number of neurons to be recorded for spiking data')
     parser.add_argument('-netType',         nargs=1, required=False, metavar='NET_TYPE',         type=str,   default=get_param_value('netType',         defaultValues,['mf']),     choices=['mf', 'random'], help='network type; mf -> mean-field (all to all), random -> K-input neighbors')
-    parser.add_argument('-simType',         nargs=1, required=False, metavar='SIM_TYPE',         type=str,   default=get_param_value('simType',         defaultValues,['static']), choices=['static', 'adapt', 'aval', 'adaptthresh'], help='type of simulation; adapt is the SOqC dynamics; adaptthresh only adapts thresholds (synapses are fixed); aval = static network, seeding a spike everytime that activity dies off')
+    parser.add_argument('-simType',         nargs=1, required=False, metavar='SIM_TYPE',         type=str,   default=get_param_value('simType',         defaultValues,['static']), choices=['static', 'adapt', 'adaptlinear', 'aval', 'adaptthresh', 'adaptthreshlinear', 'adaptthreshsaturate'], help='type of simulation; adapt is the SOqC dynamics; adaptthresh only adapts thresholds (synapses are fixed; threshold increase ~ u*rho*theta); aval = static network, seeding a spike everytime that activity dies off; , adaptthreshlinear only adapts threshold (synapses are fixed; threshold increase ~ u*rho); adaptthreshsaturate only adapts threshold (synapses are fixed; threshold increase ~ u*rho*theta but it saturates at a high value)')
     parser.add_argument('-weightDynType',   nargs=1, required=False, metavar='WDYN_TYPE',        type=str,   default=get_param_value('weightDynType',   defaultValues,['none']),   choices=['none','simple', 'coupled'], help='simple: (default if simType=adapt) decrease inhibitory weight due to inhibitory activity; coupled: increase inhibitory weight due to excitatory activity')
     parser.add_argument('-noXE0Rand',       required=False, action='store_true', default=False, help='if set, generates sequential initial XE given by XE0')
     parser.add_argument('-noXI0Rand',       required=False, action='store_true', default=False, help='if set, generates sequential initial XI given by XI0')
@@ -86,12 +86,20 @@ def simParam_to_str_for_pythran(simParam):
 
 def get_sim_param_struct_for_pythran(args):
     #N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,XE0Rand,XI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson
-    Y = float(args.Y[0])
+    Y     = float(args.Y[0])
     theta = float(args.theta[0])
-    p = float(args.p[0])
-    s = namespace_to_structtype(args) # fix scalar input parameters automatically in this conversion
+    p     = float(args.p[0])
+    s     = namespace_to_structtype(args) # fix scalar input parameters automatically in this conversion
     # setting the parameters that have another name in the function input inside the GLNetEISimLib.py file
-    s.Set(theta=theta,I=float(Y * theta),XE0Rand=not s.noXE0Rand,XI0Rand=not s.noXI0Rand,p=p,q=1.0-p,Tmax=s.tTotal,nNeuronsSpk=s.nNeuSpikingData,spkFileName='')
+    s.Set(theta        = theta             ,
+          I            = float(Y * theta)  ,
+          XE0Rand      = not s.noXE0Rand   ,
+          XI0Rand      = not s.noXI0Rand   ,
+          p            = p                 ,
+          q            = 1.0-p             ,
+          Tmax         = s.tTotal          ,
+          nNeuronsSpk  = s.nNeuSpikingData ,
+          spkFileName  = ''                )
     s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal','noForceActive'])
     if (s.simType == 'adapt') and (s.weightDynType == 'none'):
         s.weightDynType = 'simple'

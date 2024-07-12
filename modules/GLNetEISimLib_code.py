@@ -81,8 +81,13 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     ############### I'll leave it here for later when I implement heterogeneous parameters
     if simType == 'adapt':
         raise ValueError('only adaptive threshold simulations are implemented for random networks, since adaptive weights require heterogeneous W matrix')
-    if simType == 'adaptthresh':
-        GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
+    if 'adaptthresh' in simType:
+        if 'threshlinear' in simType:
+            GLNetEIRand_iter = GLNetEIRand_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIRand_iter = GLNetEIRand_adaptthreshsaturate_iter
+        else:
+            GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
     else:
         GLNetEIRand_iter = GLNetEIRand_static_iter
     # preparing external stimulus in case of avalanche simulation
@@ -124,7 +129,7 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     synapticInput = numpy.array([0.0 for _ in range(N)])
 
     # forcing a fixed inhibitory synaptic weight
-    if simType == 'adaptthresh':
+    if 'adaptthresh' in simType:
         A = 0.0
         tauWinv = 0.0
         uW = 0.0
@@ -211,7 +216,12 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
             weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
     if 'adapt' in simType:
-        GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
+        if 'threshlinear' in simType:
+            GLNetEIMF_iter = GLNetEIMF_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIMF_iter = GLNetEIMF_adaptthreshsaturate_iter
+        else:
+            GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
     else:
         GLNetEIMF_iter = GLNetEIMF_static_iter
     if weightDynType == "simple":
@@ -230,7 +240,7 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     else:
         get_external_stimulus = get_external_stimulus_dynamic
     # forcing a fixed inhibitory synaptic weight
-    if simType == 'adaptthresh':
+    if 'adaptthresh' in simType:
         print(' ... forcing constant inhibitory W because simType == adaptthresh')
         weightAdapt = weightAdapt_constant
     
@@ -409,8 +419,13 @@ def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN
     else:
         get_external_stimulus = get_external_stimulus_dynamic
         get_stim_neuron_index = lambda _: 0
-    if simType == 'adaptthresh':
-        GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
+    if 'adaptthresh' in simType:
+        if 'threshlinear' in simType:
+            GLNetEIRand_iter = GLNetEIRand_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIRand_iter = GLNetEIRand_adaptthreshsaturate_iter
+        else:
+            GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
     else:
         GLNetEIRand_iter = GLNetEIRand_static_iter
     rhoE_prev = rhoETemp
@@ -451,7 +466,12 @@ def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN
 #pythran export run_transient_GLNetEIMF(str,float[],float[],float[],float[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
 def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I):
     if 'adapt' in simType:
-        GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
+        if 'threshlinear' in simType:
+            GLNetEIMF_iter = GLNetEIMF_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIMF_iter = GLNetEIMF_adaptthreshsaturate_iter
+        else:
+            GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
     else:
         GLNetEIMF_iter = GLNetEIMF_static_iter
     if simType == 'aval':
@@ -466,7 +486,7 @@ def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,
         weightAdapt = weightAdapt_constant
     if q == 0.0:
         weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
-    if simType == 'adaptthresh':
+    if 'adaptthresh' in simType:
         print(' ... forcing constant inhibitory W because simType == adaptthresh')
         weightAdapt = weightAdapt_constant
     rhoE_prev = rhoETemp
@@ -594,8 +614,22 @@ def generate_IC_spikes(X0,N,K,neuronType,is_random):
 #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
     theta = theta * (1.0 - tauTinv + uT*X)
-    V = (mu*V + I + Iext + synapticInput)*(1.0-X)
-    X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    return V,X,theta
+
+#pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
+def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
+    theta = theta * (1.0 - tauTinv) + uT*X
+    V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    return V,X,theta
+
+#pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
+def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
+    theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
+    V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
 #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
@@ -607,8 +641,22 @@ def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,ta
 #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
 def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
     theta = theta * (1.0 - tauTinv + uT*X)
-    V = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
-    X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    return V,X,theta
+
+#pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
+def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
+    theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
+    V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
+    return V,X,theta
+
+#pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
+def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
+    theta = theta * (1.0 - tauTinv) + uT*X
+    V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
+    X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
     return V,X,theta
 
 #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
@@ -668,331 +716,3 @@ def save_spk_data(s,t,k):
 def write_spk_data_fake(t,k):
     return None
 
-
-
-"""
-####################################
-#################################### 
-####################################
-#################################### DELETED METHODS
-####################################
-#################################### 
-####################################
-"""
-
-# """
-# ####################################
-# #################################### 
-# ####################################
-# #################################### STATIC MEAN-FIELD NETWORK SIMULATION
-# ####################################
-# #################################### 
-# ####################################
-# """
-
-# # pythran export RunSimulation_GLNetEIMF_aval(str:str dict,str:str dict)
-# def RunSimulation_GLNetEIMF_aval(simParam_dict,paramType_dict):
-#     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
-#         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
-#             weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
-
-#     tauWinv = 1.0 / tauW
-#     tauTinv = 1.0 / tauT
-#     pN = int(p*N)
-#     qN = N - pN
-
-#     XE0 = float(XE0)
-#     XI0 = float(XI0)
-
-#     pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
-#     qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
-
-#     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
-#     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
-
-#     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
-
-#     # setting initial conditions
-#     VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
-
-#     # running transient time
-#     if tTrans > 0:
-#         rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIMF_aval(simType,VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,tTrans,Iext,mu,theta,J,Gamma,I,g,p,q)
-    
-#     # subtracting transient time from total time
-#     Tmax = Tmax - tTrans 
-
-#     # preparing external stimulus in case of avalanche simulation
-#     if simType == 'aval':
-#         get_external_stimulus = get_external_stimulus_aval
-#     else:
-#         get_external_stimulus = get_external_stimulus_dynamic
-
-#     # preparing variable for recording spiking data (if needed)
-#     if saveSpikingData:
-#         if writeOnRun:
-#             print('*** writing file %s during simulation' % spkFileName)
-#             spkData = [(0,0)]
-#             spkTimeFile = open(spkFileName,'w')
-#             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
-#             save_spk_time = save_spk_data_fake
-#         else:
-#             write_spk_time = write_spk_data_fake
-#             save_spk_time = save_spk_data
-#             spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
-#     else:
-#         save_spk_time = save_spk_data_fake
-#         write_spk_time = write_spk_data_fake
-#         spkData = [(0,0)]
-
-#     # running main simulation
-#     rhoE = numpy.array([0.0 for i in range(Tmax)])
-#     rhoI = numpy.array([0.0 for i in range(Tmax)])
-#     rhoE[0] = rhoETemp
-#     rhoI[0] = rhoITemp
-#     for t in range(1,Tmax):
-#         XE[0],rhoETemp = get_external_stimulus(XE[0],rhoETemp,rhoITemp,pN_fl)
-#         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoETemp,rhoITemp,Iext,mu,theta,J,Gamma,I,g*J,p,q,0.0,0.0,P_firing_poisson)
-#             rhoE[t] += XE[i]
-#             if (i < pN_s) and XE[i]:
-#                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
-#                 write_spk_time(t,i)
-#         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoETemp,rhoITemp,Iext,mu,theta,J,Gamma,I,g*J,p,q,0.0,0.0,0.0)
-#             rhoI[t] += XI[i]
-#             if (i < qN_s) and XI[i]:
-#                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
-#                 write_spk_time(t,i+pN_s)
-#         rhoE[t] = rhoE[t]/pN_fl
-#         rhoI[t] = rhoI[t]/qN_fl
-#         rhoETemp = rhoE[t]
-#         rhoITemp = rhoI[t]
-#     # end of time loop
-#     if saveSpikingData and writeOnRun:
-#         spkTimeFile.close()
-#     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),numpy.array([g for _ in rhoE]),numpy.array([I/theta for _ in rhoE])
-#     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
-
-# # pythran export run_transient_GLNetEIMF_aval(str,float[],int[],float[],int[],float,float,int,int,float,float,float,int,float,float,float,float,float,float,float,float,float)
-# def run_transient_GLNetEIMF_aval(simType,VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,tTrans,Iext,mu,theta,J,Gamma,I,g,p,q):
-#     # preparing external stimulus in case of avalanche simulation
-#     if simType == 'aval':
-#         get_external_stimulus = get_external_stimulus_aval
-#     else:
-#         get_external_stimulus = get_external_stimulus_dynamic
-#     rhoE_prev = rhoETemp
-#     rhoI_prev = rhoITemp
-#     for t in range(1,tTrans):
-#         XE[0],rhoE_prev = get_external_stimulus(XE[0],rhoE_prev,rhoI_prev,pN_fl)
-#         sum_XE = 0.0
-#         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g*J,p,q,0.0,0.0,P_firing_poisson)
-#             sum_XE = sum_XE + XE[i]
-#         sum_XI = 0.0
-#         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g*J,p,q,0.0,0.0,0.0)
-#             sum_XI = sum_XI + XI[i]
-#         rhoE_prev = sum_XE/pN_fl
-#         rhoI_prev = sum_XI/qN_fl
-#     return rhoE_prev,rhoI_prev,VE,XE,VI,XI
-
-
-# # pythran export RunSimulation_GLNetEIMF_adaptthresh(str:str dict,str:str dict)
-# def RunSimulation_GLNetEIMF_adaptthresh(simParam_dict,paramType_dict):
-#     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
-#         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
-#             weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
-
-#     tauTinv = 1.0 / tauT
-#     pN = int(p*N)
-#     qN = N - pN
-#     gJ = g*J
-
-#     XE0 = float(XE0)
-#     XI0 = float(XI0)
-
-#     N_fl = float(N)
-#     pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
-#     qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
-
-#     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
-#     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
-
-#     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
-
-#     # setting initial conditions
-#     VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,_,thetaMean = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
-
-#     # running transient time
-#     if tTrans > 0:
-#         rhoETemp,rhoITemp,thetaMean,VE,XE,VI,XI = run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,gJ,P_firing_poisson,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT)
-    
-#     # subtracting transient time from total time ####
-#     Tmax = Tmax - tTrans 
-
-#     # preparing variable for recording spiking data (if needed)
-#     if saveSpikingData:
-#         if writeOnRun:
-#             print('*** writing file %s during simulation' % spkFileName)
-#             spkData = [(0,0)]
-#             spkTimeFile = open(spkFileName,'w')
-#             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
-#             save_spk_time = save_spk_data_fake
-#         else:
-#             write_spk_time = write_spk_data_fake
-#             save_spk_time = save_spk_data
-#             spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
-#     else:
-#         save_spk_time = save_spk_data_fake
-#         write_spk_time = write_spk_data_fake
-#         spkData = [(0,0)]
-
-#     # running main simulation
-#     rhoE = numpy.array([0.0 for i in range(Tmax)])
-#     rhoI = numpy.array([0.0 for i in range(Tmax)])
-#     theta_data = numpy.array([0.0 for i in range(Tmax)])
-#     rhoE[0] = rhoETemp
-#     rhoI[0] = rhoITemp
-#     theta_data[0] = thetaMean
-#     for t in range(1,Tmax):
-#         #Iext = 0.0 # stimulus
-#         thetaMean = 0.0
-#         for i in range(pN):
-#             VE[i],XE[i],thetaE[i] = GLNetEIMF_adaptthresh_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaE[i],J,Gamma,I,gJ,p,q,tauTinv,uT,P_firing_poisson)
-#             rhoE[t] = rhoE[t] + XE[i]
-#             thetaMean += thetaE[i]
-#             if (i < pN_s) and XE[i]:
-#                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
-#                 write_spk_time(t,i)
-#         for i in range(qN):
-#             VI[i],XI[i],thetaI[i] = GLNetEIMF_adaptthresh_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,thetaI[i],J,Gamma,I,gJ,p,q,tauTinv,uT,0.0)
-#             rhoI[t] = rhoI[t] + XI[i]
-#             thetaMean += thetaI[i]
-#             if (i < qN_s) and XI[i]:
-#                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
-#                 write_spk_time(t,i+pN_s)
-#         rhoE[t] = rhoE[t]/pN_fl
-#         rhoI[t] = rhoI[t]/qN_fl
-#         theta_data[t] = thetaMean/N_fl
-#     # end of time loop
-#     if saveSpikingData and writeOnRun:
-#         spkTimeFile.close()
-#     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),numpy.array([g for _ in rhoE]),numpy.divide(I,theta_data)
-#     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
-
-# # pythran export run_transient_GLNetEIMF_adaptthresh(float[],int[],float[],int[],float[],float[],float,float,float,int,int,float,float,float,float,int,float,float,float,float,float,float,float,float,float)
-# def run_transient_GLNetEIMF_adaptthresh(VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,gJ,P_firing_poisson,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT):
-#     rhoE_prev = rhoETemp
-#     rhoI_prev = rhoITemp
-#     for t in range(1,tTrans):
-#         sum_XE = 0.0
-#         sum_XI = 0.0
-#         #Iext = 0.0 # stimulus
-#         thetaMean = 0.0
-#         for i in range(pN):
-#             VE[i],XE[i],thetaE[i] = GLNetEIMF_adaptthresh_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,gJ,p,q,tauTinv,uT,P_firing_poisson)
-#             sum_XE = sum_XE + XE[i]
-#             thetaMean = thetaMean + thetaE[i]
-#         for i in range(qN):
-#             VI[i],XI[i],thetaI[i] = GLNetEIMF_adaptthresh_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,gJ,p,q,tauTinv,uT,0.0)
-#             sum_XI = sum_XI + XI[i]
-#             thetaMean = thetaMean + thetaI[i]
-#         rhoE_prev = sum_XE/pN_fl
-#         rhoI_prev = sum_XI/qN_fl
-#         thetaMean = thetaMean/N_fl
-#     return rhoE_prev,rhoI_prev,thetaMean,VE,XE,VI,XI
-
-
-# # pythran export RunSimulation_GLNetEIMF_static(str:str dict,str:str dict)
-# def RunSimulation_GLNetEIMF_static(simParam_dict,paramType_dict):
-#     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
-#         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
-#             weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
-    
-#     tauWinv = 1.0 / tauW
-#     tauTinv = 1.0 / tauT
-#     pN = int(p*N)
-#     qN = N - pN
-
-#     XE0 = float(XE0)
-#     XI0 = float(XI0)
-
-#     pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
-#     qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
-
-#     pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
-#     qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
-
-#     P_firing_poisson = PoissonProcess_firingprob(rPoisson)
-
-#     # setting initial conditions
-#     VE,XE,VI,XI,rhoETemp,rhoITemp,_,_,_,_ = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
-
-#     # running transient time
-#     if tTrans > 0:
-#         rhoETemp,rhoITemp,VE,XE,VI,XI = run_transient_GLNetEIMF_static(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,tTrans,Iext,mu,theta,J,Gamma,I,g,p,q)
-    
-#     # subtracting transient time from total time
-#     Tmax = Tmax - tTrans 
-
-#     # preparing variable for recording spiking data (if needed)
-#     if saveSpikingData:
-#         if writeOnRun:
-#             print('*** writing file %s during simulation' % spkFileName)
-#             spkData = [(0,0)]
-#             spkTimeFile = open(spkFileName,'w')
-#             write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
-#             save_spk_time = save_spk_data_fake
-#         else:
-#             write_spk_time = write_spk_data_fake
-#             save_spk_time = save_spk_data
-#             spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
-#     else:
-#         save_spk_time = save_spk_data_fake
-#         write_spk_time = write_spk_data_fake
-#         spkData = [(0,0)]
-
-#     # running main simulation
-#     rhoE = numpy.array([0.0 for i in range(Tmax)])
-#     rhoI = numpy.array([0.0 for i in range(Tmax)])
-#     rhoE[0] = rhoETemp
-#     rhoI[0] = rhoITemp
-#     for t in range(1,Tmax):
-#         #Iext = 0.0 # stimulus
-#         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
-#             rhoE[t] = rhoE[t] + XE[i]
-#             if (i < pN_s) and XE[i]:
-#                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
-#                 write_spk_time(t,i)
-#         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoE[t-1],rhoI[t-1],Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
-#             rhoI[t] = rhoI[t] + XI[i]
-#             if (i < qN_s) and XI[i]:
-#                 spkData = save_spk_time(spkData,t,i+pN_s) #spkData.append((t,i+pN_s)) #spkData[t][i+pN_s] = XI[i]
-#                 write_spk_time(t,i+pN_s)
-#         rhoE[t] = rhoE[t]/pN_fl
-#         rhoI[t] = rhoI[t]/qN_fl
-#     # end of time loop
-#     if saveSpikingData and writeOnRun:
-#         spkTimeFile.close()
-#     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),numpy.array([g for _ in rhoE]),numpy.array([I/theta for _ in rhoE])
-#     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=(len(rhoE),))*g),(numpy.ones(shape=(len(rhoE),))*I/theta)
-
-# # pythran export run_transient_GLNetEIMF_static(float[],int[],float[],int[],float,float,int,int,float,float,float,int,float,float,float,float,float,float,float,float,float)
-# def run_transient_GLNetEIMF_static(VE,XE,VI,XI,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,tTrans,Iext,mu,theta,J,Gamma,I,g,p,q):
-#     rhoE_prev = rhoETemp
-#     rhoI_prev = rhoITemp
-#     for t in range(1,tTrans):
-#         sum_XE = 0.0
-#         for i in range(pN):
-#             VE[i],XE[i],_ = GLNetEIMF_static_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,P_firing_poisson)
-#             sum_XE = sum_XE + XE[i]
-#         sum_XI = 0.0
-#         for i in range(qN):
-#             VI[i],XI[i],_ = GLNetEIMF_static_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,theta,J,Gamma,I,g,p,q,0.0)
-#             sum_XI = sum_XI + XI[i]
-#         rhoE_prev = sum_XE/pN_fl
-#         rhoI_prev = sum_XI/qN_fl
-#     return rhoE_prev,rhoI_prev,VE,XE,VI,XI

@@ -1,48 +1,50 @@
-import random
 import numpy
+import random
 
 #pythran export get_system_parameters(str:str dict,str:str dict)
 def get_system_parameters(simParam_dict,paramType_dict):
-    N               = get_param(simParam_dict['N']               , paramType_dict['N']               )[0]
-    tTrans          = get_param(simParam_dict['tTrans']          , paramType_dict['tTrans']          )[0]
-    Tmax            = get_param(simParam_dict['Tmax']            , paramType_dict['Tmax']            )[0]
-    VE0             = get_param(simParam_dict['VE0']             , paramType_dict['VE0']             )[1]
-    VE0Std          = get_param(simParam_dict['VE0Std']          , paramType_dict['VE0Std']          )[1]
-    VI0             = get_param(simParam_dict['VI0']             , paramType_dict['VI0']             )[1]
-    VI0Std          = get_param(simParam_dict['VI0Std']          , paramType_dict['VI0Std']          )[1]
-    XE0             = get_param(simParam_dict['XE0']             , paramType_dict['XE0']             )[1]
-    fXE0            = get_param(simParam_dict['fXE0']            , paramType_dict['fXE0']            )[1]
-    XE0Rand         = get_param(simParam_dict['XE0Rand']         , paramType_dict['XE0Rand']         )[3]
-    XI0             = get_param(simParam_dict['XI0']             , paramType_dict['XI0']             )[1]
-    fXI0            = get_param(simParam_dict['fXI0']            , paramType_dict['fXI0']            )[1]
-    XI0Rand         = get_param(simParam_dict['XI0Rand']         , paramType_dict['XI0Rand']         )[3]
-    mu              = get_param(simParam_dict['mu']              , paramType_dict['mu']              )[1]
-    theta           = get_param(simParam_dict['theta']           , paramType_dict['theta']           )[1]
-    J               = get_param(simParam_dict['J']               , paramType_dict['J']               )[1]
-    Gamma           = get_param(simParam_dict['Gamma']           , paramType_dict['Gamma']           )[1]
-    I               = get_param(simParam_dict['I']               , paramType_dict['I']               )[1]
-    Iext            = get_param(simParam_dict['Iext']            , paramType_dict['Iext']            )[1]
-    g               = get_param(simParam_dict['g']               , paramType_dict['g']               )[1]
-    p               = get_param(simParam_dict['p']               , paramType_dict['p']               )[1]
-    q               = get_param(simParam_dict['q']               , paramType_dict['q']               )[1]
-    A               = get_param(simParam_dict['A']               , paramType_dict['A']               )[1]
-    tauW            = get_param(simParam_dict['tauW']            , paramType_dict['tauW']            )[1]
-    uW              = get_param(simParam_dict['uW']              , paramType_dict['uW']              )[1]
-    tauT            = get_param(simParam_dict['tauT']            , paramType_dict['tauT']            )[1]
-    uT              = get_param(simParam_dict['uT']              , paramType_dict['uT']              )[1]
-    saveSpikingData = get_param(simParam_dict['saveSpikingData'] , paramType_dict['saveSpikingData'] )[3]
-    nNeuronsSpk     = get_param(simParam_dict['nNeuronsSpk']     , paramType_dict['nNeuronsSpk']     )[0]
-    weightDynType   = get_param(simParam_dict['weightDynType']   , paramType_dict['weightDynType']   )[2]
-    rPoisson        = get_param(simParam_dict['rPoisson']        , paramType_dict['rPoisson']        )[1]
-    paramCV         = get_param(simParam_dict['paramCV']         , paramType_dict['paramCV']         )[1]
-    K               = get_param(simParam_dict['K']               , paramType_dict['K']               )[0]
-    writeOnRun      = get_param(simParam_dict['writeOnRun']      , paramType_dict['writeOnRun']      )[3]
-    spkFileName     = get_param(simParam_dict['spkFileName']     , paramType_dict['spkFileName']     )[2]
-    simType         = get_param(simParam_dict['simType']         , paramType_dict['simType']         )[2]
+    N                  = get_param(simParam_dict['N']                  , paramType_dict['N']                  )[0]
+    tTrans             = get_param(simParam_dict['tTrans']             , paramType_dict['tTrans']             )[0]
+    Tmax               = get_param(simParam_dict['Tmax']               , paramType_dict['Tmax']               )[0]
+    VE0                = get_param(simParam_dict['VE0']                , paramType_dict['VE0']                )[1]
+    VE0Std             = get_param(simParam_dict['VE0Std']             , paramType_dict['VE0Std']             )[1]
+    VI0                = get_param(simParam_dict['VI0']                , paramType_dict['VI0']                )[1]
+    VI0Std             = get_param(simParam_dict['VI0Std']             , paramType_dict['VI0Std']             )[1]
+    XE0                = get_param(simParam_dict['XE0']                , paramType_dict['XE0']                )[1]
+    fXE0               = get_param(simParam_dict['fXE0']               , paramType_dict['fXE0']               )[1]
+    XE0Rand            = get_param(simParam_dict['XE0Rand']            , paramType_dict['XE0Rand']            )[3]
+    XI0                = get_param(simParam_dict['XI0']                , paramType_dict['XI0']                )[1]
+    fXI0               = get_param(simParam_dict['fXI0']               , paramType_dict['fXI0']               )[1]
+    XI0Rand            = get_param(simParam_dict['XI0Rand']            , paramType_dict['XI0Rand']            )[3]
+    mu                 = get_param(simParam_dict['mu']                 , paramType_dict['mu']                 )[1]
+    theta              = get_param(simParam_dict['theta']              , paramType_dict['theta']              )[1]
+    J                  = get_param(simParam_dict['J']                  , paramType_dict['J']                  )[1]
+    Gamma              = get_param(simParam_dict['Gamma']              , paramType_dict['Gamma']              )[1]
+    I                  = get_param(simParam_dict['I']                  , paramType_dict['I']                  )[1]
+    Iext               = get_param(simParam_dict['Iext']               , paramType_dict['Iext']               )[1]
+    g                  = get_param(simParam_dict['g']                  , paramType_dict['g']                  )[1]
+    p                  = get_param(simParam_dict['p']                  , paramType_dict['p']                  )[1]
+    q                  = get_param(simParam_dict['q']                  , paramType_dict['q']                  )[1]
+    A                  = get_param(simParam_dict['A']                  , paramType_dict['A']                  )[1]
+    tauW               = get_param(simParam_dict['tauW']               , paramType_dict['tauW']               )[1]
+    uW                 = get_param(simParam_dict['uW']                 , paramType_dict['uW']                 )[1]
+    tauT               = get_param(simParam_dict['tauT']               , paramType_dict['tauT']               )[1]
+    uT                 = get_param(simParam_dict['uT']                 , paramType_dict['uT']                 )[1]
+    saveSpikingData    = get_param(simParam_dict['saveSpikingData']    , paramType_dict['saveSpikingData']    )[3]
+    nNeuronsSpk        = get_param(simParam_dict['nNeuronsSpk']        , paramType_dict['nNeuronsSpk']        )[0]
+    weightDynType      = get_param(simParam_dict['weightDynType']      , paramType_dict['weightDynType']      )[2]
+    rPoisson           = get_param(simParam_dict['rPoisson']           , paramType_dict['rPoisson']           )[1]
+    paramCV            = get_param(simParam_dict['paramCV']            , paramType_dict['paramCV']            )[1]
+    K                  = get_param(simParam_dict['K']                  , paramType_dict['K']                  )[0]
+    writeOnRun         = get_param(simParam_dict['writeOnRun']         , paramType_dict['writeOnRun']         )[3]
+    spkFileName        = get_param(simParam_dict['spkFileName']        , paramType_dict['spkFileName']        )[2]
+    simType            = get_param(simParam_dict['simType']            , paramType_dict['simType']            )[2]
+    exc_only_dynthresh = get_param(simParam_dict['exc_only_dynthresh'] , paramType_dict['exc_only_dynthresh'] )[3]
     paramCV = 0.0
     print(' ... forcing the CV of all parameters to be zero (homogeneous network), since parameter variability is not implemented yet')
     return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,\
-           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType
+           g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType,\
+           exc_only_dynthresh
     #return N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName
 
 #pythran export get_param(str,str)
@@ -77,26 +79,16 @@ def get_param(v,vtype):
 def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
-            weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
+            weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType,exc_only_dynthresh =  get_system_parameters(simParam_dict,paramType_dict)
     ############### I'll leave it here for later when I implement heterogeneous parameters
     if simType == 'adapt':
         raise ValueError('only adaptive threshold simulations are implemented for random networks, since adaptive weights require heterogeneous W matrix')
-    if 'adaptthresh' in simType:
-        if 'threshlinear' in simType:
-            GLNetEIRand_iter = GLNetEIRand_adaptthreshlinear_iter
-        elif 'threshsaturate' in simType:
-            GLNetEIRand_iter = GLNetEIRand_adaptthreshsaturate_iter
-        else:
-            GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
-    else:
-        GLNetEIRand_iter = GLNetEIRand_static_iter
+    
+    ########## determining iterators for neuron states
+    GLNetEIRand_E_iter, GLNetEIRand_I_iter = get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh)
+
     # preparing external stimulus in case of avalanche simulation
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-        get_stim_neuron_index = get_stim_neuron_index_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
-        get_stim_neuron_index = lambda _: 0
+    get_external_stimulus,get_stim_neuron_index = get_RandomNet_stimulus_func(simType)
 
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
@@ -136,27 +128,16 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI,thetaE,thetaI = run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W_I,C,KE,K,A,tauTinv,tauWinv,thetaE,thetaI,uT,uW,weightDynType)
+        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI,thetaE,thetaI = run_transient_GLNetEIRand(simType,exc_only_dynthresh,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W_I,C,KE,K,A,tauTinv,tauWinv,thetaE,thetaI,uT,uW,weightDynType)
     
     # subtracting transient time from total time
     Tmax = Tmax - tTrans 
 
     # preparing variable for recording spiking data (if needed)
-    if saveSpikingData:
-        if writeOnRun:
-            print('*** writing file %s during simulation' % spkFileName)
-            spkData = [(0,0)]
-            spkTimeFile = open(spkFileName,'w')
-            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
-            save_spk_time = save_spk_data_fake
-        else:
-            write_spk_time = write_spk_data_fake
-            save_spk_time = save_spk_data
-            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
-    else:
-        save_spk_time = save_spk_data_fake
-        write_spk_time = write_spk_data_fake
-        spkData = [(0,0)]
+    if saveSpikingData and writeOnRun:
+        spkTimeFile = open(spkFileName,'w')
+        print('*** writing file %s during simulation' % spkFileName)
+    spkData,write_spk_time,save_spk_time = get_write_spike_data_functions(spkTimeFile,saveSpikingData,writeOnRun,XE,XI,pN_s,qN_s)
 
     # running main simulation
     rhoE = numpy.array([0.0 for i in range(Tmax)])
@@ -168,20 +149,20 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     #W_I_data[0] = W_I ############### I'll leave it here for later when I implement heterogeneous parameters
     theta_data[0] = thetaMean
     for t in range(1,Tmax):
-        k = get_stim_neuron_index(pN_fl)
+        k       = get_stim_neuron_index(pN_fl)
         XE[k],_ = get_external_stimulus(XE[k],rhoE[t-1],rhoI[t-1],pN_fl)
         #W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE[t-1],rhoI[t-1]) # both the E and I subnetworks receive the same inhibitory adapted input
         sumSynpaticInput_homog(synapticInput,KE,K,N,XE,XI,J,W_I,C) # updates synapticInput variable
         thetaMean = 0.0
         for i in range(pN):
-            VE[i],XE[i],thetaE[i] = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson,tauTinv,uT)
+            VE[i],XE[i],thetaE[i] = GLNetEIRand_E_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson,tauTinv,uT)
             rhoE[t] += XE[i]
             thetaMean += thetaE[i]
             if (i < pN_s) and XE[i]:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],thetaI[i] = GLNetEIRand_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0,tauTinv,uT)
+            VI[i],XI[i],thetaI[i] = GLNetEIRand_I_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0,tauTinv,uT)
             rhoI[t] += XI[i]
             thetaMean += thetaI[i]
             if (i < qN_s) and XI[i]:
@@ -194,11 +175,8 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     # end of time loop
     if saveSpikingData and writeOnRun:
         spkTimeFile.close()
+        print('*** closed file %s' % spkFileName)
     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q*g*J,rhoI),(numpy.ones(shape=rhoE.shape)*W_I/J),numpy.divide(I,theta_data)
-
-#pythran export get_stim_neuron_index_aval(float)
-def get_stim_neuron_index_aval(pN_fl):
-    return int(random.random() * pN_fl)
 
 """
 ####################################
@@ -214,49 +192,34 @@ def get_stim_neuron_index_aval(pN_fl):
 def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
-            weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType =  get_system_parameters(simParam_dict,paramType_dict)
-    if 'adapt' in simType:
-        if 'threshlinear' in simType:
-            GLNetEIMF_iter = GLNetEIMF_adaptthreshlinear_iter
-        elif 'threshsaturate' in simType:
-            GLNetEIMF_iter = GLNetEIMF_adaptthreshsaturate_iter
-        else:
-            GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
-    else:
-        GLNetEIMF_iter = GLNetEIMF_static_iter
-    if weightDynType == "simple":
-        weightAdapt = weightAdapt_decrease
-    elif weightDynType == "coupled":
-        weightAdapt = weightAdapt_increase
-    elif weightDynType == "none":
-        weightAdapt = weightAdapt_constant
-    else:
-        raise ValueError('weightDynType is unknown')
-    if q == 0.0:
-        weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
-    # preparing external stimulus in case of avalanche simulation
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
-    # forcing a fixed inhibitory synaptic weight
-    if 'adaptthresh' in simType:
-        print(' ... forcing constant inhibitory W because simType == adaptthresh')
-        weightAdapt = weightAdapt_constant
+            weightDynType,rPoisson,K,paramCV,writeOnRun,spkFileName,simType,exc_only_dynthresh =  get_system_parameters(simParam_dict,paramType_dict)
     
+    # setting the neuron state update function
+    GLNetEIMF_E_iter,GLNetEIMF_I_iter = get_MFNet_neuron_state_iter(simType,exc_only_dynthresh)
+
+    # setting the synaptic weight update function
+    weightAdapt_iter = get_MFNet_synaptic_weight_iter(weightDynType,simType,q)
+    
+    # preparing external stimulus in case of avalanche simulation
+    get_external_stimulus = get_MFNet_stimulus_func(simType)
+
+    
+    # forcing silent initial conditions for aval simulations
     if simType == 'aval':
         print(' ... forcing fXE0 = fXI0 = 0.0 as initial conditions, since simType == aval')
         fXE0 = 0.0
         fXI0 = 0.0
+    
+    # calculating some params
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
-    pN = int(p*N)
-    qN = N - pN
+    pN      = int(p*N)
+    qN      = N - pN
 
     XE0 = float(XE0)
     XI0 = float(XI0)
 
-    N_fl = float(N)
+    N_fl  = float(N)
     pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
     qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
@@ -267,57 +230,46 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
 
     # setting initial conditions
     # returns W_I = g*J
-    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,W_I,thetaMean = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
+    VE,XE,VI,XI,rhoETemp,rhoITemp,thetaE,thetaI,W_I,thetaMean     = set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta)
 
     # running transient time
     if tTrans > 0:
-        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI,thetaE,thetaI = run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I)
+        rhoETemp,rhoITemp,thetaMean,W_I,VE,XE,VI,XI,thetaE,thetaI = run_transient_GLNetEIMF(simType,exc_only_dynthresh,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I)
 
     # subtracting transient time from total time   
     Tmax = Tmax - tTrans
 
     # preparing variable for recording spiking data (if needed)
-    if saveSpikingData:
-        if writeOnRun:
-            print('*** writing file %s during simulation' % spkFileName)
-            spkData = [(0,0)]
-            spkTimeFile = open(spkFileName,'w')
-            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
-            save_spk_time = save_spk_data_fake
-        else:
-            write_spk_time = write_spk_data_fake
-            save_spk_time = save_spk_data
-            spkData = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
-    else:
-        save_spk_time = save_spk_data_fake
-        write_spk_time = write_spk_data_fake
-        spkData = [(0,0)]
+    if saveSpikingData and writeOnRun:
+        spkTimeFile = open(spkFileName,'w')
+        print('*** writing file %s during simulation' % spkFileName)
+    spkData,write_spk_time,save_spk_time = get_write_spike_data_functions(spkTimeFile,saveSpikingData,writeOnRun,XE,XI,pN_s,qN_s)
 
     # running main simulation
-    rhoE = numpy.array([0.0 for i in range(Tmax)])
-    rhoI = numpy.array([0.0 for i in range(Tmax)])
-    W_I_data = numpy.array([0.0 for i in range(Tmax)])
-    theta_data = numpy.array([0.0 for i in range(Tmax)])
-    rhoE[0] = rhoETemp
-    rhoI[0] = rhoITemp
-    rhoE_prev = rhoETemp
-    rhoI_prev = rhoITemp
-    W_I_data[0] = W_I
+    rhoE          = numpy.array([0.0 for i in range(Tmax)])
+    rhoI          = numpy.array([0.0 for i in range(Tmax)])
+    W_I_data      = numpy.array([0.0 for i in range(Tmax)])
+    theta_data    = numpy.array([0.0 for i in range(Tmax)])
+    rhoE[0]       = rhoETemp
+    rhoI[0]       = rhoITemp
+    rhoE_prev     = rhoETemp
+    rhoI_prev     = rhoITemp
+    W_I_data[0]   = W_I
     theta_data[0] = thetaMean
     for t in range(1,Tmax):
         XE[0],rhoE_prev = get_external_stimulus(XE[0],rhoE_prev,rhoI_prev,pN_fl)
-        W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
+        W_I = weightAdapt_iter(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
         #Iext = 0.0 # stimulus
         thetaMean = 0.0
         for i in range(pN):
-            VE[i],XE[i],thetaE[i] = GLNetEIMF_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
+            VE[i],XE[i],thetaE[i] = GLNetEIMF_E_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
             rhoE[t] += XE[i]
             thetaMean += thetaE[i]
             if (i < pN_s) and XE[i]:
                 spkData = save_spk_time(spkData,t,i) #spkData.append((t,i)) #spkData[t][i] = XE[i]
                 write_spk_time(t,i)
         for i in range(qN):
-            VI[i],XI[i],thetaI[i] = GLNetEIMF_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
+            VI[i],XI[i],thetaI[i] = GLNetEIMF_I_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
             rhoI[t] += XI[i]
             thetaMean += thetaI[i]
             if (i < qN_s) and XI[i]:
@@ -332,6 +284,7 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     # end of time loop
     if saveSpikingData and writeOnRun:
         spkTimeFile.close()
+        print('*** closed file %s' % spkFileName)
     return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),numpy.multiply(q,numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
     #return rhoE,rhoI,spkData,numpy.multiply(p*J,rhoE),(q*numpy.multiply(W_I_data,rhoI)),numpy.divide(W_I_data,J),numpy.divide(I,theta_data)
 
@@ -344,6 +297,10 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
 #################################### 
 ####################################
 """
+
+#pythran export get_stim_neuron_index_aval(float)
+def get_stim_neuron_index_aval(pN_fl):
+    return int(random.random() * pN_fl)
 
 #pythran export generate_random_net_fixed_input(int,int,int,int)
 def generate_random_net_fixed_input(K_ex,pN,K,N):
@@ -411,40 +368,29 @@ def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
         synapticInput[i] = (J*sE - W*sI) / float(K)
 
 #pythran export run_transient_GLNetEIRand(str,float[],float[],float[],float[],int,float,float,int,int,float,float,float,float,float,float,float,float,float[],float,float,float[:,:] order(C),int,int,float,float,float,float[],float[],float,float,str)
-def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W_I,C,KE,K,A,tauTinv,tauWinv,thetaE,thetaI,uT,uW,weightDynType):
-    # preparing external stimulus in case of avalanche simulation
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-        get_stim_neuron_index = get_stim_neuron_index_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
-        get_stim_neuron_index = lambda _: 0
-    if 'adaptthresh' in simType:
-        if 'threshlinear' in simType:
-            GLNetEIRand_iter = GLNetEIRand_adaptthreshlinear_iter
-        elif 'threshsaturate' in simType:
-            GLNetEIRand_iter = GLNetEIRand_adaptthreshsaturate_iter
-        else:
-            GLNetEIRand_iter = GLNetEIRand_adaptthresh_iter
-    else:
-        GLNetEIRand_iter = GLNetEIRand_static_iter
+def run_transient_GLNetEIRand(simType,exc_only_dynthresh,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN,pN_fl,qN_fl,P_firing_poisson,Iext,mu,theta,Gamma,I,synapticInput,J,W_I,C,KE,K,A,tauTinv,tauWinv,thetaE,thetaI,uT,uW,weightDynType):
+    # defining functions
+    get_external_stimulus,get_stim_neuron_index = get_RandomNet_stimulus_func(simType)
+    GLNetEIRand_E_iter, GLNetEIRand_I_iter      = get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh)
+
+    # running simulation
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
     N = len(C)
     for t in range(1,tTrans):
-        k=get_stim_neuron_index(pN_fl)
+        k               = get_stim_neuron_index(pN_fl)
         XE[k],rhoE_prev = get_external_stimulus(XE[k],rhoE_prev,rhoI_prev,pN_fl)
         #W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE[t-1],rhoI[t-1]) # both the E and I subnetworks receive the same inhibitory adapted input
         sumSynpaticInput_homog(synapticInput,KE,K,N,XE,XI,J,W_I,C) # updates synapticInput variable
         sum_XE = 0.0
         thetaMean = 0.0
         for i in range(pN):
-            VE[i],XE[i],thetaE[i] = GLNetEIRand_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson,tauTinv,uT)
+            VE[i],XE[i],thetaE[i] = GLNetEIRand_E_iter(VE[i],XE[i],synapticInput[i],Iext,mu,theta,Gamma,I,P_firing_poisson,tauTinv,uT)
             sum_XE += XE[i]
             thetaMean += thetaE[i]
         sum_XI = 0.0
         for i in range(qN):
-            VI[i],XI[i],thetaI[i] = GLNetEIRand_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0,tauTinv,uT)
+            VI[i],XI[i],thetaI[i] = GLNetEIRand_I_iter(VI[i],XI[i],synapticInput[i],Iext,mu,theta,Gamma,I,0.0,tauTinv,uT)
             sum_XI += XI[i]
             thetaMean += thetaI[i]
         rhoE_prev = sum_XE/pN_fl
@@ -464,47 +410,29 @@ def run_transient_GLNetEIRand(simType,VE,XE,VI,XI,tTrans,rhoETemp,rhoITemp,pN,qN
 """
 
 #pythran export run_transient_GLNetEIMF(str,float[],float[],float[],float[],float[],float[],float,float,float,int,int,float,float,float,str,int,float,float,float,float,float,float,float,float,float,float,float,float,float)
-def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I):
-    if 'adapt' in simType:
-        if 'threshlinear' in simType:
-            GLNetEIMF_iter = GLNetEIMF_adaptthreshlinear_iter
-        elif 'threshsaturate' in simType:
-            GLNetEIMF_iter = GLNetEIMF_adaptthreshsaturate_iter
-        else:
-            GLNetEIMF_iter = GLNetEIMF_adaptthresh_iter
-    else:
-        GLNetEIMF_iter = GLNetEIMF_static_iter
-    if simType == 'aval':
-        get_external_stimulus = get_external_stimulus_aval
-    else:
-        get_external_stimulus = get_external_stimulus_dynamic
-    if weightDynType == "simple":
-        weightAdapt = weightAdapt_decrease
-    elif weightDynType == "coupled":
-        weightAdapt = weightAdapt_increase
-    elif weightDynType == "none":
-        weightAdapt = weightAdapt_constant
-    if q == 0.0:
-        weightAdapt = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
-    if 'adaptthresh' in simType:
-        print(' ... forcing constant inhibitory W because simType == adaptthresh')
-        weightAdapt = weightAdapt_constant
+def run_transient_GLNetEIMF(simType,exc_only_dynthresh,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,N_fl,pN,qN,pN_fl,qN_fl,P_firing_poisson,weightDynType,tTrans,Iext,mu,J,Gamma,I,p,q,tauTinv,uT,tauWinv,uW,A,W_I):
+    # defining functions
+    get_external_stimulus             = get_MFNet_stimulus_func(simType)
+    GLNetEIMF_E_iter,GLNetEIMF_I_iter = get_MFNet_neuron_state_iter(simType,exc_only_dynthresh)
+    weightAdapt_iter                  = get_MFNet_synaptic_weight_iter(weightDynType,simType,q)
+
+    # running simulations
     rhoE_prev = rhoETemp
     rhoI_prev = rhoITemp
     thetaMean = 0.0
     for t in range(1,tTrans):
         XE[0],rhoE_prev = get_external_stimulus(XE[0],rhoE_prev,rhoI_prev,pN_fl)
-        W_I = weightAdapt(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
+        W_I = weightAdapt_iter(W_I,A,tauWinv,uW,rhoE_prev,rhoI_prev) # both the E and I subnetworks receive the same inhibitory adapted input
         sum_XE = 0.0
         sum_XI = 0.0
         #Iext = 0.0 # stimulus
         thetaMean = 0.0
         for i in range(pN):
-            VE[i],XE[i],thetaE[i] = GLNetEIMF_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
+            VE[i],XE[i],thetaE[i] = GLNetEIMF_E_iter(VE[i],XE[i],rhoE_prev,rhoI_prev,Iext,mu,thetaE[i],J,Gamma,I,W_I,p,q,tauTinv,uT,P_firing_poisson)
             sum_XE += XE[i]
             thetaMean += thetaE[i]
         for i in range(qN):
-            VI[i],XI[i],thetaI[i] = GLNetEIMF_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
+            VI[i],XI[i],thetaI[i] = GLNetEIMF_I_iter(VI[i],XI[i],rhoE_prev,rhoI_prev,Iext,mu,thetaI[i],J,Gamma,I,W_I,p,q,tauTinv,uT,0.0)
             sum_XI += XI[i]
             thetaMean += thetaI[i]
         rhoE_prev = sum_XE/pN_fl
@@ -512,6 +440,7 @@ def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,
         thetaMean = thetaMean/N_fl
     return rhoE_prev,rhoI_prev,thetaMean,W_I,VE,XE,VI,XI,thetaE,thetaI
 
+##-
 """
 ####################################
 #################################### 
@@ -521,6 +450,91 @@ def run_transient_GLNetEIMF(simType,VE,XE,VI,XI,thetaE,thetaI,rhoETemp,rhoITemp,
 #################################### 
 ####################################
 """
+
+def get_write_spike_data_functions(spkTimeFile,saveSpikingData,writeOnRun,XE,XI,pN_s,qN_s):
+    if saveSpikingData:
+        if writeOnRun:
+            spkData        = [(0,0)]
+            write_spk_time = lambda t_ind,k_ind: spkTimeFile.write(str(t_ind) + ',' + str(k_ind) + '\n')
+            save_spk_time  = save_spk_data_fake
+        else:
+            write_spk_time = write_spk_data_fake
+            save_spk_time  = save_spk_data
+            spkData        = save_initial_spkdata(XE,XI,pN_s,qN_s) # spkData is a list of tuples with spike time stemps [(t#,neuron#),(t2$,neuron#),...]
+    else:
+        save_spk_time  = save_spk_data_fake
+        write_spk_time = write_spk_data_fake
+        spkData        = [(0,0)]
+    return spkData,write_spk_time,save_spk_time
+
+def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+    if 'adaptthresh' in simType:
+        if 'threshlinear' in simType:
+            GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
+            GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
+            GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
+        else:
+            GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
+            GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
+        if exc_only_dynthresh:
+            GLNetEIRand_I_iter = GLNetEIRand_static_iter
+    else:
+        GLNetEIRand_E_iter = GLNetEIRand_static_iter
+        GLNetEIRand_I_iter = GLNetEIRand_static_iter
+    return GLNetEIRand_E_iter,GLNetEIRand_I_iter
+
+def get_RandomNet_stimulus_func(simType):
+    if simType == 'aval':
+        get_external_stimulus = get_external_stimulus_aval
+        get_stim_neuron_index = get_stim_neuron_index_aval
+    else:
+        get_external_stimulus = get_external_stimulus_dynamic
+        get_stim_neuron_index = lambda _: 0
+    return get_external_stimulus,get_stim_neuron_index
+
+def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+    if 'adapt' in simType:
+        if 'threshlinear' in simType:
+            GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
+            GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
+        elif 'threshsaturate' in simType:
+            GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
+            GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
+        else:
+            GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
+            GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
+        if exc_only_dynthresh:
+            GLNetEIMF_I_iter = GLNetEIMF_static_iter
+    else:
+        GLNetEIMF_E_iter = GLNetEIMF_static_iter
+        GLNetEIMF_I_iter = GLNetEIMF_static_iter
+    return GLNetEIMF_E_iter,GLNetEIMF_I_iter
+
+def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):
+    if weightDynType == "simple":
+        weightAdapt_iter = weightAdapt_decrease
+    elif weightDynType == "coupled":
+        weightAdapt_iter = weightAdapt_increase
+    elif weightDynType == "none":
+        weightAdapt_iter = weightAdapt_constant
+    else:
+        raise ValueError('weightDynType is unknown')
+    if q == 0.0:
+        weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
+    # forcing a fixed inhibitory synaptic weight
+    if 'adaptthresh' in simType:
+        print(' ... forcing constant inhibitory W because simType == adaptthresh')
+        weightAdapt_iter = weightAdapt_constant
+    return weightAdapt_iter
+
+def get_MFNet_stimulus_func(simType):
+    if simType == 'aval':
+        get_external_stimulus = get_external_stimulus_aval
+    else:
+        get_external_stimulus = get_external_stimulus_dynamic
+    return get_external_stimulus
 
 #pythran export get_external_stimulus_dynamic(float,float,float,float)
 def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):

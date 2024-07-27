@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-import argparse
-import numpy
-import time
-import modules.ioGLNet as io
-import scipy.io
-import modules.GLNetEISimLib as GLNetEISimLib
-import datetime
 import sys
+import time
+import numpy
+import argparse
+import datetime
+import scipy.io
+import modules.ioGLNet as io
+import modules.GLNetEISimLib as GLNetEISimLib
 # import matplotlib.pyplot as plt
 
 def main():
@@ -32,21 +32,21 @@ def main():
     #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.4 -Y 1.0 -theta 1.0 -N 1000 -simType static -p 0.8 -tTotal 10000 -tTrans 0 -outputFile run/output/glei_static_G0.2_g1.4_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
 
     cmd_line = ' '.join(sys.argv)
-    parser = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
-    parser = io.add_neuron_params(parser)
-    args = parser.parse_args()
+    parser   = argparse.ArgumentParser(description='Simulates a GL network of Excitatory/Inhibitory elements in the mean-field level')
+    parser   = io.add_neuron_params(parser)
+    args     = parser.parse_args()
 
     print("* Setting input parameters ...")
 
-    simParam = io.get_sim_param_struct_for_pythran(args)
-    outputParamValues = io.namespace_to_structtype(args)
-    outputParamValues.W = (simParam.p-simParam.q*simParam.g)*simParam.J
-    outputParamValues.h = simParam.I - simParam.theta
+    simParam                    = io.get_sim_param_struct_for_pythran(args)
+    outputParamValues           = io.namespace_to_structtype(args)
+    outputParamValues.W         = (simParam.p-simParam.q*simParam.g)*simParam.J
+    outputParamValues.h         = simParam.I - simParam.theta
     outputParamValues.N_rec_Exc = int(simParam.p*simParam.nNeuronsSpk) # number of recorded excitatory neurons
 
     print(str(outputParamValues)[11:-1].replace(', ','\n'))
 
-    saveTxtFile = args.saveTxtFile
+    saveTxtFile    = args.saveTxtFile
     outputFileName = args.outputFile[0]
 
     # fix output file extension and remove output files if they already exist, creates output directory if they don't exist    
@@ -88,11 +88,21 @@ def main():
 
     print("* Writing output file ... %s" % matFileName)
     matVars = vars(args)
-    matVars.update({'cmdLine':cmd_line})
-    matVars.update({"W":outputParamValues.W, "h":outputParamValues.h, "rhoE_mean":rhomedE, "rhoI_mean":rhomedI})
-    matVars.update({"time": range(simParam.tTrans,simParam.Tmax), "rhoE": rhoE, "rhoI": rhoI, "rhoMean": rhoMean})
-    matVars.update({"excSynCurr": excSynCurrent, "inhSynCurr": inhSynCurrent, "netSynCurr": synCurrentNet})
-    matVars.update({"gVar": g_data, "YVar": Y_data, "N_rec_Exc": outputParamValues.N_rec_Exc})
+    matVars.update({ 'cmdLine'  : cmd_line})
+    matVars.update({ "W"        : outputParamValues.W,
+                     "h"        : outputParamValues.h,
+                     "rhoE_mean": rhomedE,
+                     "rhoI_mean": rhomedI})
+    matVars.update({ "time"     : range(simParam.tTrans,simParam.Tmax),
+                     "rhoE"     : rhoE,
+                     "rhoI"     : rhoI,
+                     "rhoMean"  : rhoMean})
+    matVars.update({"excSynCurr": excSynCurrent,
+                    "inhSynCurr": inhSynCurrent,
+                    "netSynCurr": synCurrentNet})
+    matVars.update({"gVar"      : g_data,
+                    "YVar"      : Y_data,
+                    "N_rec_Exc" : outputParamValues.N_rec_Exc})
     scipy.io.savemat(matFileName,matVars,long_field_names=True,do_compression=True)
 
     if simParam.saveSpikingData and not simParam.writeOnRun:

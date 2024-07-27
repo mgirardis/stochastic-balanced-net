@@ -6,9 +6,9 @@ parser.add_argument('-where', nargs=1, required=False, metavar='VALUE', type=str
 parser.add_argument('-npar', nargs=1, required=False, metavar='VALUE', type=int, default=[8], help='number of parallel processes if run local is chosen')
 parser.add_argument('-tauw', nargs=1, required=False, metavar='VALUE', type=float, default=[float('nan')], help='value of tau_w... is nan, then tau_w == tau_theta')
 
-args = parser.parse_args()
+args     = parser.parse_args()
 runLocal = args.where[0].lower() == 'local'
-npar = args.npar[0]
+npar     = args.npar[0]
 tauw_val = args.tauw[0]
 
 

@@ -7,9 +7,9 @@ parser.add_argument('-npar', nargs=1, required=False, metavar='VALUE', type=int,
 parser.add_argument('-tauw', nargs=1, required=False, metavar='VALUE', type=float, default=[float('nan')], help='value of tau_w... is nan, then tau_w == tau_theta')
 parser.add_argument('-lowrate', required=False, action='store_true', default=False, help='if true, generates phase trans over very low rates')
 
-args = parser.parse_args()
+args     = parser.parse_args()
 runLocal = args.where[0].lower() == 'local'
-npar = args.npar[0]
+npar     = args.npar[0]
 tauw_val = args.tauw[0]
 
 is_lowrate_sim = args.lowrate

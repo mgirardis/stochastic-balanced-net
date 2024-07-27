@@ -1,9 +1,13 @@
 # stochastic-balanced-net
 A python simulation of an Excitatory/Inhibitory Network of stochastic integrate-and-fire neurons
 
+# Compiling for linux
+
+You need the `setup.py`, and the `__init__.py` in the `modules/` directory. Then, just run `compile_module.sh` and a cython `.so` should be generated in the modules directory. Required: cython and python development version.
+
 # scientific publications (please cite)
 
-* Girardi-Schappo M, Galera EF, Carvalho TTA, Brochini L, Kamiji NL, Roque AC, Kinouchi O (2020): A unified theory of E/I synaptic balance, quasicritical neuronal avalanches and asynchronous irregular spiking. bioRxiv, https://doi.org/10.1101/2020.12.17.423201
+* Girardi-Schappo M, Galera EF, Carvalho TTA, Brochini L, Kamiji NL, Roque AC, Kinouchi O (2021): A unified theory of E/I synaptic balance, quasicritical neuronal avalanches and asynchronous irregular spiking. J. Phys. Complex. 2, 045001, https://doi.org/10.1088/2632-072X/ac2792
 
 * Girardi-Schappo M, Brochini L, Costa AA, Carvalho TTA, Kinouchi O (2020): Synaptic balance due to homeostatically self-organized quasicritical dynamics. Phys. Rev. Research 2, 012042. https://doi.org/10.1103/PhysRevResearch.2.012042
 

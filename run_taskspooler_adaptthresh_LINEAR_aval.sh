@@ -4,7 +4,7 @@
 ts -S 20
 
 # set job name
-JOB_LABEL=DTLIN
+JOB_LABEL=DTLINava
 
 # set the input file
 INPUT_CMD_FILE=run/lines_to_run_adaptthresh_LINEAR_aval_poi.txt

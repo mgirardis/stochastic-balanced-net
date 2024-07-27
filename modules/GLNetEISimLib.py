@@ -92,25 +92,25 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
 
     tauWinv = 1.0 / tauW
     tauTinv = 1.0 / tauT
-    pN = int(p*N)
-    qN = N - pN
+    pN      = int(p*N)
+    qN      = N - pN
 
-    XE0 = float(XE0)
-    XI0 = float(XI0)
+    XE0   = float(XE0)
+    XI0   = float(XI0)
 
-    N_fl = float(N)
+    N_fl  = float(N)
     pN_fl = float(pN) if pN > 0 else 1.0 # avoids NaN and division by zero
     qN_fl = float(qN) if qN > 0 else 1.0 # avoids NaN and division by zero
 
-    pN_s = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
-    qN_s = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
+    pN_s  = int(p*nNeuronsSpk) # record only pN_s neurons from the excitatory population for raster plot
+    qN_s  = nNeuronsSpk - pN_s # record only qN_s neurons from the inhibitory population for raster plot
 
-    KE = int(numpy.ceil(p * float(K))) # number of excitatory inputs
-    KI = K - KE # number of inhibitory inputs
+    KE    = int(numpy.ceil(p * float(K))) # number of excitatory inputs
+    KI    = K - KE # number of inhibitory inputs
     KE_fl = float(KE)
     KI_fl = float(KI)
 
-    C = generate_random_net_fixed_input(KE,pN,K,N)
+    C = generate_random_net_fixed_number_of_inputs(KE,pN,K,N)
     #W_I = g*J #only constant parameters are implemented
     # this is set inside the set_MF_network_IC function
 
@@ -303,7 +303,7 @@ def get_stim_neuron_index_aval(pN_fl):
     return int(random.random() * pN_fl)
 
 #pythran export generate_random_net_fixed_input(int,int,int,int)
-def generate_random_net_fixed_input(K_ex,pN,K,N):
+def generate_random_net_fixed_number_of_inputs(K_ex,pN,K,N):
     """
     ##################
     #BUILD RANDOM NETWORK WITH constant k_in neighbors
@@ -324,17 +324,17 @@ def generate_random_net_fixed_input(K_ex,pN,K,N):
 def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
-    K -> total number of inputs
-    N -> total number of neurons
-    XE -> state of excitatory neurons
-    XI -> state of inhibitory neurons
-    J -> excitatory synaptic weights (each entry in the outer list is the list of neighbor input excitatory weights)
-         J[i] -> list of input excitatory weights for neuron i; contains K_ex entries
-    W -> inhibitory synaptic weights (positively defined; each entry in the outer list is the list of neighbor input inhibitory weights)
-         W[i] -> list of input inhibitory weights for neuron i (all positive); contains K-K_ex entries
-    C -> connectivity matrix (each entry in the outer list is the list of neighbor indices)
-         C[i] -> list of neighbors of i;
-         C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
+    K    -> total number of inputs
+    N    -> total number of neurons
+    XE   -> state of excitatory neurons
+    XI   -> state of inhibitory neurons
+    J    -> excitatory synaptic weights (each entry in the outer list is the list of neighbor input excitatory weights)
+            J[i] -> list of input excitatory weights for neuron i; contains K_ex entries
+    W    -> inhibitory synaptic weights (positively defined; each entry in the outer list is the list of neighbor input inhibitory weights)
+            W[i] -> list of input inhibitory weights for neuron i (all positive); contains K-K_ex entries
+    C    -> connectivity matrix (each entry in the outer list is the list of neighbor indices)
+            C[i] -> list of neighbors of i;
+            C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
     """
     for i in range(N):
         s = 0.0
@@ -348,15 +348,15 @@ def sumSynpaticInput(synapticInput,K_ex,K,N,XE,XI,J,W,C):
 def sumSynpaticInput_homog(synapticInput,K_ex,K,N,XE,XI,J,W,C):
     """
     K_ex -> number of excitatory inputs
-    K -> total number of inputs
-    N -> total number of neurons
-    XE -> state of excitatory neurons
-    XI -> state of inhibitory neurons
-    J -> excitatory synaptic weights (constant)
-    W -> inhibitory synaptic weights (positive constant)
-    C -> connectivity matrix (each entry in the outer list is the list of neighbor indices)
-         C[i] -> list of neighbors of i;
-         C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
+    K    -> total number of inputs
+    N    -> total number of neurons
+    XE   -> state of excitatory neurons
+    XI   -> state of inhibitory neurons
+    J    -> excitatory synaptic weights (constant)
+    W    -> inhibitory synaptic weights (positive constant)
+    C    -> connectivity matrix (each entry in the outer list is the list of neighbor indices)
+            C[i] -> list of neighbors of i;
+            C[i][:K_ex] -> excitatory neighbors (indices go from 0 to pN-1); C[i][K_ex:] -> inhibitory neighbors (indices go from 0 to N-pN-1)
     """
     for i in range(N):
         sE = 0.0
@@ -570,25 +570,34 @@ def save_initial_spkdata(XE,XI,pN,qN):
         i+=1
     return spkData
 
+def get_random_inhibitory_weights(W_I,C):
+    """
+    W_I -> average inhibitory weights
+    C   -> connectivity matrix
+    """
+    return W_I
+
 #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
 def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
-    VE0 = theta if VE0 == 0.0 else VE0
-    VE = numpy.array([abs(random.gauss(VE0,VE0Std)) for i in range(pN)])
+    VE0    = theta if VE0 == 0.0 else VE0
     thetaE = numpy.array([theta for i in range(pN)])
-    XE = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
-    for i in range(pN):
-        VE[i] = 0.0 if XE[i] >= 0.5 else VE[i]
+    XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
+    VE     = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
+    VE     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XE,VE) ],dtype=float)
+    #for i in range(pN):
+    #    VE[i] = 0.0 if XE[i] >= 0.5 else VE[i]
 
-    VI0 = theta if VI0 == 0.0 else VI0
-    VI = numpy.array([abs(random.gauss(VI0,VI0Std)) for i in range(qN)])
+    VI0    = theta if VI0 == 0.0 else VI0
     thetaI = numpy.array([theta for i in range(qN)])
-    XI = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
-    for i in range(qN):
-        VI[i] = 0.0 if XI[i] >= 0.5 else VI[i]
+    XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
+    VI     = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
+    VI     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XI,VI) ],dtype=float)
+    #for i in range(qN):
+    #    VI[i] = 0.0 if XI[i] >= 0.5 else VI[i]
 
-    rhoE0 = float(sum(XE))/(float(pN) if pN > 0 else 1.0)
-    rhoI0 = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
-    W_I = g*J
+    rhoE0     = float(sum(XE))/(float(pN) if pN > 0 else 1.0)
+    rhoI0     = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
+    W_I       = g*J
     thetaMean = theta
     return VE,XE,VI,XI,rhoE0,rhoI0,thetaE,thetaI,W_I,thetaMean
 

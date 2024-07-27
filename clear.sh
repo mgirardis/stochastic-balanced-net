@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #rm err/*.err
-rm out/*.out
+rm run/out/*.out
 
 # clears the ts queue
 ts -C

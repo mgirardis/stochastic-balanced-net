@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # set the number of simultaneous jobs to run
-ts -S 18
+ts -S 20
 
 # set job name
-JOB_LABEL=test
+JOB_LABEL=DTLIN
 
 # set the input file
-INPUT_CMD_FILE=run/lines_to_run_glexc_static_extra_J.txt
+INPUT_CMD_FILE=run/lines_to_run_glexc_adaptthresh_LINEAR.txt
 
 # set output directory (the directory below MUST EXIST ALREADY before calling this script)
 OUTPUT_DIR=run/out

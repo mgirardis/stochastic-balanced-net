@@ -17,6 +17,8 @@ def main():
     #sys.argv = 'GLNetEI.py -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100 -simType aval -tTotal 12000 -tTrans 3000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000'.split(' ')
     #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.5 -Y 1.0 -theta 1.0 -N 1000 -simType adapt -p 0.8 -tTotal 10000 -tTrans 3000 -tauT 500.0 -tauW 500.0 -uT 0.1 -uW 0.1 -A 30.0 -outputFile run/output/glei_adapt_G0.2_g1.5_A30_tauW500_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
 
+    #sys.argv = 'GLNetEI.py -netType mf -p 1.0 -mu 0.0 -Gamma 0.2 -J 4.8 -Y 1.0 -tauT 20 -uT 0.1 -theta 1.0 -N 1000 -simType adaptthreshlinear -tTotal 100 -tTrans 30 -outputFile ./test.txt -nNeuSpikingData 1000'.split(' ')
+
     # simulations to visually check whether results are as expected
 
     # these are returning no dynamics in Y, and weird dynamic in g

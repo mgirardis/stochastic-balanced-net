@@ -6,4 +6,7 @@ if [ -f "$HOME/pylocal/bin/activate" ] || [ -z "${VIRTUAL_ENV}" ]; then
 fi
 
 
-python $@
+echo Starting script
+
+python -OO $@
+

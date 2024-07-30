@@ -2515,7 +2515,6 @@ static const char __pyx_k_XI[] = "XI";
 static const char __pyx_k__2[] = "";
 static const char __pyx_k__6[] = ",";
 static const char __pyx_k__7[] = "\n";
-static const char __pyx_k__9[] = "_";
 static const char __pyx_k_gJ[] = "gJ";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_mu[] = "mu";
@@ -2533,8 +2532,9 @@ static const char __pyx_k_VI0[] = "VI0";
 static const char __pyx_k_W_I[] = "W_I";
 static const char __pyx_k_XE0[] = "XE0";
 static const char __pyx_k_XI0[] = "XI0";
-static const char __pyx_k__12[] = "*";
-static const char __pyx_k__82[] = "?";
+static const char __pyx_k__15[] = "_";
+static const char __pyx_k__18[] = "*";
+static const char __pyx_k__88[] = "?";
 static const char __pyx_k_exp[] = "exp";
 static const char __pyx_k_int[] = "int";
 static const char __pyx_k_nan[] = "nan";
@@ -2665,6 +2665,7 @@ static const char __pyx_k_generate_IC_spikes[] = "generate_IC_spikes";
 static const char __pyx_k_save_spk_data_fake[] = "save_spk_data_fake";
 static const char __pyx_k_start_activity_idx[] = "start_activity_idx";
 static const char __pyx_k_write_spk_data_fake[] = "write_spk_data_fake";
+static const char __pyx_k_choosing_neuron_wiht[] = " ... choosing neuron wiht: ";
 static const char __pyx_k_save_initial_spkdata[] = "save_initial_spkdata";
 static const char __pyx_k_weightAdapt_constant[] = "weightAdapt_constant";
 static const char __pyx_k_weightAdapt_decrease[] = "weightAdapt_decrease";
@@ -2695,10 +2696,15 @@ static const char __pyx_k_get_random_inhibitory_weights[] = "get_random_inhibito
 static const char __pyx_k_get_MFNet_synaptic_weight_iter[] = "get_MFNet_synaptic_weight_iter";
 static const char __pyx_k_get_write_spike_data_functions[] = "get_write_spike_data_functions";
 static const char __pyx_k_GLNetEIRand_adaptthreshsaturate[] = "GLNetEIRand_adaptthreshsaturate_iter";
+static const char __pyx_k_INHIBITORY_neurons_will_not_ada[] = " ....... INHIBITORY neurons will not adapt thresholds!";
+static const char __pyx_k_LINEAR_adaptive_threshold_addit[] = " ....... LINEAR adaptive threshold (additive noise)";
+static const char __pyx_k_NONLINEAR_adaptive_threshold_mu[] = " ....... NONLINEAR adaptive threshold (multiplicative noise)";
+static const char __pyx_k_SATURATING_adaptive_threshold_s[] = " ....... SATURATING adaptive threshold (saturating multiplicative noise)";
 static const char __pyx_k_forcing_constant_inhibitory_W_b[] = " ... forcing constant inhibitory W because simType == adaptthresh";
 static const char __pyx_k_forcing_fXE0_fXI0_0_0_as_initia[] = " ... forcing fXE0 = fXI0 = 0.0 as initial conditions, since simType == aval";
 static const char __pyx_k_forcing_the_CV_of_all_parameter[] = " ... forcing the CV of all parameters to be zero (homogeneous network), since parameter variability is not implemented yet";
 static const char __pyx_k_get_RandomNet_neuron_state_iter[] = "get_RandomNet_neuron_state_iter";
+static const char __pyx_k_neurons_will_not_adapt_threshol[] = " ....... neurons will not adapt thresholds!";
 static const char __pyx_k_s_IC_starting_from_all_active_n[] = " ... %s IC: starting from all active neurons";
 static const char __pyx_k_s_IC_starting_from_the_absorbin[] = " ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0";
 static const char __pyx_k_s_IC_starting_with_d_s_active_n[] = " ... %s IC: starting with %d %s active neurons regardless of X0";
@@ -2803,6 +2809,7 @@ typedef struct {
   PyObject *__pyx_n_s_GLNetEIRand_static_iter;
   PyObject *__pyx_n_s_Gamma;
   PyObject *__pyx_n_s_I;
+  PyObject *__pyx_kp_s_INHIBITORY_neurons_will_not_ada;
   PyObject *__pyx_n_s_Iext;
   PyObject *__pyx_n_s_J;
   PyObject *__pyx_n_s_K;
@@ -2811,7 +2818,9 @@ typedef struct {
   PyObject *__pyx_n_s_KI;
   PyObject *__pyx_n_s_KI_fl;
   PyObject *__pyx_n_s_K_ex;
+  PyObject *__pyx_kp_s_LINEAR_adaptive_threshold_addit;
   PyObject *__pyx_n_s_N;
+  PyObject *__pyx_kp_s_NONLINEAR_adaptive_threshold_mu;
   PyObject *__pyx_n_s_N_fl;
   PyObject *__pyx_n_s_PHI;
   PyObject *__pyx_n_s_P_firing_poisson;
@@ -2819,6 +2828,7 @@ typedef struct {
   PyObject *__pyx_n_s_PoissonProcess_firingprob;
   PyObject *__pyx_n_s_RunSimulation_GLNetEIMF;
   PyObject *__pyx_n_s_RunSimulation_GLNetEIRand;
+  PyObject *__pyx_kp_s_SATURATING_adaptive_threshold_s;
   PyObject *__pyx_n_s_Tmax;
   PyObject *__pyx_n_s_V;
   PyObject *__pyx_n_s_VE;
@@ -2839,12 +2849,12 @@ typedef struct {
   PyObject *__pyx_n_s_XI;
   PyObject *__pyx_n_s_XI0;
   PyObject *__pyx_n_s_XI0Rand;
-  PyObject *__pyx_n_s__12;
+  PyObject *__pyx_n_s__15;
+  PyObject *__pyx_n_s__18;
   PyObject *__pyx_kp_s__2;
   PyObject *__pyx_kp_s__6;
   PyObject *__pyx_kp_s__7;
-  PyObject *__pyx_n_s__82;
-  PyObject *__pyx_n_s__9;
+  PyObject *__pyx_n_s__88;
   PyObject *__pyx_n_s_a;
   PyObject *__pyx_n_s_adapt;
   PyObject *__pyx_n_s_adaptthresh;
@@ -2856,6 +2866,7 @@ typedef struct {
   PyObject *__pyx_n_s_bool;
   PyObject *__pyx_n_s_c;
   PyObject *__pyx_n_s_ceil;
+  PyObject *__pyx_kp_s_choosing_neuron_wiht;
   PyObject *__pyx_n_s_class_getitem;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_close;
@@ -2921,6 +2932,7 @@ typedef struct {
   PyObject *__pyx_n_s_name;
   PyObject *__pyx_n_s_nan;
   PyObject *__pyx_n_s_neuronType;
+  PyObject *__pyx_kp_s_neurons_will_not_adapt_threshol;
   PyObject *__pyx_n_s_none;
   PyObject *__pyx_n_s_numpy;
   PyObject *__pyx_n_s_ones;
@@ -3032,10 +3044,13 @@ typedef struct {
   PyObject *__pyx_tuple__4;
   PyObject *__pyx_tuple__5;
   PyObject *__pyx_tuple__8;
+  PyObject *__pyx_tuple__9;
   PyObject *__pyx_tuple__10;
   PyObject *__pyx_tuple__11;
+  PyObject *__pyx_tuple__12;
   PyObject *__pyx_tuple__13;
-  PyObject *__pyx_tuple__15;
+  PyObject *__pyx_tuple__14;
+  PyObject *__pyx_tuple__16;
   PyObject *__pyx_tuple__17;
   PyObject *__pyx_tuple__19;
   PyObject *__pyx_tuple__21;
@@ -3051,22 +3066,22 @@ typedef struct {
   PyObject *__pyx_tuple__41;
   PyObject *__pyx_tuple__43;
   PyObject *__pyx_tuple__45;
-  PyObject *__pyx_tuple__48;
-  PyObject *__pyx_tuple__50;
-  PyObject *__pyx_tuple__52;
+  PyObject *__pyx_tuple__47;
+  PyObject *__pyx_tuple__49;
+  PyObject *__pyx_tuple__51;
   PyObject *__pyx_tuple__54;
   PyObject *__pyx_tuple__56;
-  PyObject *__pyx_tuple__61;
-  PyObject *__pyx_tuple__65;
+  PyObject *__pyx_tuple__58;
+  PyObject *__pyx_tuple__60;
+  PyObject *__pyx_tuple__62;
   PyObject *__pyx_tuple__67;
   PyObject *__pyx_tuple__71;
   PyObject *__pyx_tuple__73;
-  PyObject *__pyx_tuple__75;
   PyObject *__pyx_tuple__77;
-  PyObject *__pyx_tuple__80;
-  PyObject *__pyx_codeobj__14;
-  PyObject *__pyx_codeobj__16;
-  PyObject *__pyx_codeobj__18;
+  PyObject *__pyx_tuple__79;
+  PyObject *__pyx_tuple__81;
+  PyObject *__pyx_tuple__83;
+  PyObject *__pyx_tuple__86;
   PyObject *__pyx_codeobj__20;
   PyObject *__pyx_codeobj__22;
   PyObject *__pyx_codeobj__24;
@@ -3081,28 +3096,31 @@ typedef struct {
   PyObject *__pyx_codeobj__42;
   PyObject *__pyx_codeobj__44;
   PyObject *__pyx_codeobj__46;
-  PyObject *__pyx_codeobj__47;
-  PyObject *__pyx_codeobj__49;
-  PyObject *__pyx_codeobj__51;
+  PyObject *__pyx_codeobj__48;
+  PyObject *__pyx_codeobj__50;
+  PyObject *__pyx_codeobj__52;
   PyObject *__pyx_codeobj__53;
   PyObject *__pyx_codeobj__55;
   PyObject *__pyx_codeobj__57;
-  PyObject *__pyx_codeobj__58;
   PyObject *__pyx_codeobj__59;
-  PyObject *__pyx_codeobj__60;
-  PyObject *__pyx_codeobj__62;
+  PyObject *__pyx_codeobj__61;
   PyObject *__pyx_codeobj__63;
   PyObject *__pyx_codeobj__64;
+  PyObject *__pyx_codeobj__65;
   PyObject *__pyx_codeobj__66;
   PyObject *__pyx_codeobj__68;
   PyObject *__pyx_codeobj__69;
   PyObject *__pyx_codeobj__70;
   PyObject *__pyx_codeobj__72;
   PyObject *__pyx_codeobj__74;
+  PyObject *__pyx_codeobj__75;
   PyObject *__pyx_codeobj__76;
   PyObject *__pyx_codeobj__78;
-  PyObject *__pyx_codeobj__79;
-  PyObject *__pyx_codeobj__81;
+  PyObject *__pyx_codeobj__80;
+  PyObject *__pyx_codeobj__82;
+  PyObject *__pyx_codeobj__84;
+  PyObject *__pyx_codeobj__85;
+  PyObject *__pyx_codeobj__87;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -3163,6 +3181,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_GLNetEIRand_static_iter);
   Py_CLEAR(clear_module_state->__pyx_n_s_Gamma);
   Py_CLEAR(clear_module_state->__pyx_n_s_I);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_INHIBITORY_neurons_will_not_ada);
   Py_CLEAR(clear_module_state->__pyx_n_s_Iext);
   Py_CLEAR(clear_module_state->__pyx_n_s_J);
   Py_CLEAR(clear_module_state->__pyx_n_s_K);
@@ -3171,7 +3190,9 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_KI);
   Py_CLEAR(clear_module_state->__pyx_n_s_KI_fl);
   Py_CLEAR(clear_module_state->__pyx_n_s_K_ex);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_LINEAR_adaptive_threshold_addit);
   Py_CLEAR(clear_module_state->__pyx_n_s_N);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_NONLINEAR_adaptive_threshold_mu);
   Py_CLEAR(clear_module_state->__pyx_n_s_N_fl);
   Py_CLEAR(clear_module_state->__pyx_n_s_PHI);
   Py_CLEAR(clear_module_state->__pyx_n_s_P_firing_poisson);
@@ -3179,6 +3200,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_PoissonProcess_firingprob);
   Py_CLEAR(clear_module_state->__pyx_n_s_RunSimulation_GLNetEIMF);
   Py_CLEAR(clear_module_state->__pyx_n_s_RunSimulation_GLNetEIRand);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_SATURATING_adaptive_threshold_s);
   Py_CLEAR(clear_module_state->__pyx_n_s_Tmax);
   Py_CLEAR(clear_module_state->__pyx_n_s_V);
   Py_CLEAR(clear_module_state->__pyx_n_s_VE);
@@ -3199,12 +3221,12 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_XI);
   Py_CLEAR(clear_module_state->__pyx_n_s_XI0);
   Py_CLEAR(clear_module_state->__pyx_n_s_XI0Rand);
-  Py_CLEAR(clear_module_state->__pyx_n_s__12);
+  Py_CLEAR(clear_module_state->__pyx_n_s__15);
+  Py_CLEAR(clear_module_state->__pyx_n_s__18);
   Py_CLEAR(clear_module_state->__pyx_kp_s__2);
   Py_CLEAR(clear_module_state->__pyx_kp_s__6);
   Py_CLEAR(clear_module_state->__pyx_kp_s__7);
-  Py_CLEAR(clear_module_state->__pyx_n_s__82);
-  Py_CLEAR(clear_module_state->__pyx_n_s__9);
+  Py_CLEAR(clear_module_state->__pyx_n_s__88);
   Py_CLEAR(clear_module_state->__pyx_n_s_a);
   Py_CLEAR(clear_module_state->__pyx_n_s_adapt);
   Py_CLEAR(clear_module_state->__pyx_n_s_adaptthresh);
@@ -3216,6 +3238,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_bool);
   Py_CLEAR(clear_module_state->__pyx_n_s_c);
   Py_CLEAR(clear_module_state->__pyx_n_s_ceil);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_choosing_neuron_wiht);
   Py_CLEAR(clear_module_state->__pyx_n_s_class_getitem);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_close);
@@ -3281,6 +3304,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
   Py_CLEAR(clear_module_state->__pyx_n_s_nan);
   Py_CLEAR(clear_module_state->__pyx_n_s_neuronType);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_neurons_will_not_adapt_threshol);
   Py_CLEAR(clear_module_state->__pyx_n_s_none);
   Py_CLEAR(clear_module_state->__pyx_n_s_numpy);
   Py_CLEAR(clear_module_state->__pyx_n_s_ones);
@@ -3392,10 +3416,13 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__4);
   Py_CLEAR(clear_module_state->__pyx_tuple__5);
   Py_CLEAR(clear_module_state->__pyx_tuple__8);
+  Py_CLEAR(clear_module_state->__pyx_tuple__9);
   Py_CLEAR(clear_module_state->__pyx_tuple__10);
   Py_CLEAR(clear_module_state->__pyx_tuple__11);
+  Py_CLEAR(clear_module_state->__pyx_tuple__12);
   Py_CLEAR(clear_module_state->__pyx_tuple__13);
-  Py_CLEAR(clear_module_state->__pyx_tuple__15);
+  Py_CLEAR(clear_module_state->__pyx_tuple__14);
+  Py_CLEAR(clear_module_state->__pyx_tuple__16);
   Py_CLEAR(clear_module_state->__pyx_tuple__17);
   Py_CLEAR(clear_module_state->__pyx_tuple__19);
   Py_CLEAR(clear_module_state->__pyx_tuple__21);
@@ -3411,22 +3438,22 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__41);
   Py_CLEAR(clear_module_state->__pyx_tuple__43);
   Py_CLEAR(clear_module_state->__pyx_tuple__45);
-  Py_CLEAR(clear_module_state->__pyx_tuple__48);
-  Py_CLEAR(clear_module_state->__pyx_tuple__50);
-  Py_CLEAR(clear_module_state->__pyx_tuple__52);
+  Py_CLEAR(clear_module_state->__pyx_tuple__47);
+  Py_CLEAR(clear_module_state->__pyx_tuple__49);
+  Py_CLEAR(clear_module_state->__pyx_tuple__51);
   Py_CLEAR(clear_module_state->__pyx_tuple__54);
   Py_CLEAR(clear_module_state->__pyx_tuple__56);
-  Py_CLEAR(clear_module_state->__pyx_tuple__61);
-  Py_CLEAR(clear_module_state->__pyx_tuple__65);
+  Py_CLEAR(clear_module_state->__pyx_tuple__58);
+  Py_CLEAR(clear_module_state->__pyx_tuple__60);
+  Py_CLEAR(clear_module_state->__pyx_tuple__62);
   Py_CLEAR(clear_module_state->__pyx_tuple__67);
   Py_CLEAR(clear_module_state->__pyx_tuple__71);
   Py_CLEAR(clear_module_state->__pyx_tuple__73);
-  Py_CLEAR(clear_module_state->__pyx_tuple__75);
   Py_CLEAR(clear_module_state->__pyx_tuple__77);
-  Py_CLEAR(clear_module_state->__pyx_tuple__80);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__14);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__16);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__18);
+  Py_CLEAR(clear_module_state->__pyx_tuple__79);
+  Py_CLEAR(clear_module_state->__pyx_tuple__81);
+  Py_CLEAR(clear_module_state->__pyx_tuple__83);
+  Py_CLEAR(clear_module_state->__pyx_tuple__86);
   Py_CLEAR(clear_module_state->__pyx_codeobj__20);
   Py_CLEAR(clear_module_state->__pyx_codeobj__22);
   Py_CLEAR(clear_module_state->__pyx_codeobj__24);
@@ -3441,28 +3468,31 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__42);
   Py_CLEAR(clear_module_state->__pyx_codeobj__44);
   Py_CLEAR(clear_module_state->__pyx_codeobj__46);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__47);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__49);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__51);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__48);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__50);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__52);
   Py_CLEAR(clear_module_state->__pyx_codeobj__53);
   Py_CLEAR(clear_module_state->__pyx_codeobj__55);
   Py_CLEAR(clear_module_state->__pyx_codeobj__57);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__58);
   Py_CLEAR(clear_module_state->__pyx_codeobj__59);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__60);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__62);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__61);
   Py_CLEAR(clear_module_state->__pyx_codeobj__63);
   Py_CLEAR(clear_module_state->__pyx_codeobj__64);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__65);
   Py_CLEAR(clear_module_state->__pyx_codeobj__66);
   Py_CLEAR(clear_module_state->__pyx_codeobj__68);
   Py_CLEAR(clear_module_state->__pyx_codeobj__69);
   Py_CLEAR(clear_module_state->__pyx_codeobj__70);
   Py_CLEAR(clear_module_state->__pyx_codeobj__72);
   Py_CLEAR(clear_module_state->__pyx_codeobj__74);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__75);
   Py_CLEAR(clear_module_state->__pyx_codeobj__76);
   Py_CLEAR(clear_module_state->__pyx_codeobj__78);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__79);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__81);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__80);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__82);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__84);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__85);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__87);
   return 0;
 }
 #endif
@@ -3501,6 +3531,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_GLNetEIRand_static_iter);
   Py_VISIT(traverse_module_state->__pyx_n_s_Gamma);
   Py_VISIT(traverse_module_state->__pyx_n_s_I);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_INHIBITORY_neurons_will_not_ada);
   Py_VISIT(traverse_module_state->__pyx_n_s_Iext);
   Py_VISIT(traverse_module_state->__pyx_n_s_J);
   Py_VISIT(traverse_module_state->__pyx_n_s_K);
@@ -3509,7 +3540,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_KI);
   Py_VISIT(traverse_module_state->__pyx_n_s_KI_fl);
   Py_VISIT(traverse_module_state->__pyx_n_s_K_ex);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_LINEAR_adaptive_threshold_addit);
   Py_VISIT(traverse_module_state->__pyx_n_s_N);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_NONLINEAR_adaptive_threshold_mu);
   Py_VISIT(traverse_module_state->__pyx_n_s_N_fl);
   Py_VISIT(traverse_module_state->__pyx_n_s_PHI);
   Py_VISIT(traverse_module_state->__pyx_n_s_P_firing_poisson);
@@ -3517,6 +3550,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_PoissonProcess_firingprob);
   Py_VISIT(traverse_module_state->__pyx_n_s_RunSimulation_GLNetEIMF);
   Py_VISIT(traverse_module_state->__pyx_n_s_RunSimulation_GLNetEIRand);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_SATURATING_adaptive_threshold_s);
   Py_VISIT(traverse_module_state->__pyx_n_s_Tmax);
   Py_VISIT(traverse_module_state->__pyx_n_s_V);
   Py_VISIT(traverse_module_state->__pyx_n_s_VE);
@@ -3537,12 +3571,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_XI);
   Py_VISIT(traverse_module_state->__pyx_n_s_XI0);
   Py_VISIT(traverse_module_state->__pyx_n_s_XI0Rand);
-  Py_VISIT(traverse_module_state->__pyx_n_s__12);
+  Py_VISIT(traverse_module_state->__pyx_n_s__15);
+  Py_VISIT(traverse_module_state->__pyx_n_s__18);
   Py_VISIT(traverse_module_state->__pyx_kp_s__2);
   Py_VISIT(traverse_module_state->__pyx_kp_s__6);
   Py_VISIT(traverse_module_state->__pyx_kp_s__7);
-  Py_VISIT(traverse_module_state->__pyx_n_s__82);
-  Py_VISIT(traverse_module_state->__pyx_n_s__9);
+  Py_VISIT(traverse_module_state->__pyx_n_s__88);
   Py_VISIT(traverse_module_state->__pyx_n_s_a);
   Py_VISIT(traverse_module_state->__pyx_n_s_adapt);
   Py_VISIT(traverse_module_state->__pyx_n_s_adaptthresh);
@@ -3554,6 +3588,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_bool);
   Py_VISIT(traverse_module_state->__pyx_n_s_c);
   Py_VISIT(traverse_module_state->__pyx_n_s_ceil);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_choosing_neuron_wiht);
   Py_VISIT(traverse_module_state->__pyx_n_s_class_getitem);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_close);
@@ -3619,6 +3654,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
   Py_VISIT(traverse_module_state->__pyx_n_s_nan);
   Py_VISIT(traverse_module_state->__pyx_n_s_neuronType);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_neurons_will_not_adapt_threshol);
   Py_VISIT(traverse_module_state->__pyx_n_s_none);
   Py_VISIT(traverse_module_state->__pyx_n_s_numpy);
   Py_VISIT(traverse_module_state->__pyx_n_s_ones);
@@ -3730,10 +3766,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__4);
   Py_VISIT(traverse_module_state->__pyx_tuple__5);
   Py_VISIT(traverse_module_state->__pyx_tuple__8);
+  Py_VISIT(traverse_module_state->__pyx_tuple__9);
   Py_VISIT(traverse_module_state->__pyx_tuple__10);
   Py_VISIT(traverse_module_state->__pyx_tuple__11);
+  Py_VISIT(traverse_module_state->__pyx_tuple__12);
   Py_VISIT(traverse_module_state->__pyx_tuple__13);
-  Py_VISIT(traverse_module_state->__pyx_tuple__15);
+  Py_VISIT(traverse_module_state->__pyx_tuple__14);
+  Py_VISIT(traverse_module_state->__pyx_tuple__16);
   Py_VISIT(traverse_module_state->__pyx_tuple__17);
   Py_VISIT(traverse_module_state->__pyx_tuple__19);
   Py_VISIT(traverse_module_state->__pyx_tuple__21);
@@ -3749,22 +3788,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__41);
   Py_VISIT(traverse_module_state->__pyx_tuple__43);
   Py_VISIT(traverse_module_state->__pyx_tuple__45);
-  Py_VISIT(traverse_module_state->__pyx_tuple__48);
-  Py_VISIT(traverse_module_state->__pyx_tuple__50);
-  Py_VISIT(traverse_module_state->__pyx_tuple__52);
+  Py_VISIT(traverse_module_state->__pyx_tuple__47);
+  Py_VISIT(traverse_module_state->__pyx_tuple__49);
+  Py_VISIT(traverse_module_state->__pyx_tuple__51);
   Py_VISIT(traverse_module_state->__pyx_tuple__54);
   Py_VISIT(traverse_module_state->__pyx_tuple__56);
-  Py_VISIT(traverse_module_state->__pyx_tuple__61);
-  Py_VISIT(traverse_module_state->__pyx_tuple__65);
+  Py_VISIT(traverse_module_state->__pyx_tuple__58);
+  Py_VISIT(traverse_module_state->__pyx_tuple__60);
+  Py_VISIT(traverse_module_state->__pyx_tuple__62);
   Py_VISIT(traverse_module_state->__pyx_tuple__67);
   Py_VISIT(traverse_module_state->__pyx_tuple__71);
   Py_VISIT(traverse_module_state->__pyx_tuple__73);
-  Py_VISIT(traverse_module_state->__pyx_tuple__75);
   Py_VISIT(traverse_module_state->__pyx_tuple__77);
-  Py_VISIT(traverse_module_state->__pyx_tuple__80);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__14);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__16);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__18);
+  Py_VISIT(traverse_module_state->__pyx_tuple__79);
+  Py_VISIT(traverse_module_state->__pyx_tuple__81);
+  Py_VISIT(traverse_module_state->__pyx_tuple__83);
+  Py_VISIT(traverse_module_state->__pyx_tuple__86);
   Py_VISIT(traverse_module_state->__pyx_codeobj__20);
   Py_VISIT(traverse_module_state->__pyx_codeobj__22);
   Py_VISIT(traverse_module_state->__pyx_codeobj__24);
@@ -3779,28 +3818,31 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__42);
   Py_VISIT(traverse_module_state->__pyx_codeobj__44);
   Py_VISIT(traverse_module_state->__pyx_codeobj__46);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__47);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__49);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__51);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__48);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__50);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__52);
   Py_VISIT(traverse_module_state->__pyx_codeobj__53);
   Py_VISIT(traverse_module_state->__pyx_codeobj__55);
   Py_VISIT(traverse_module_state->__pyx_codeobj__57);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__58);
   Py_VISIT(traverse_module_state->__pyx_codeobj__59);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__60);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__62);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__61);
   Py_VISIT(traverse_module_state->__pyx_codeobj__63);
   Py_VISIT(traverse_module_state->__pyx_codeobj__64);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__65);
   Py_VISIT(traverse_module_state->__pyx_codeobj__66);
   Py_VISIT(traverse_module_state->__pyx_codeobj__68);
   Py_VISIT(traverse_module_state->__pyx_codeobj__69);
   Py_VISIT(traverse_module_state->__pyx_codeobj__70);
   Py_VISIT(traverse_module_state->__pyx_codeobj__72);
   Py_VISIT(traverse_module_state->__pyx_codeobj__74);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__75);
   Py_VISIT(traverse_module_state->__pyx_codeobj__76);
   Py_VISIT(traverse_module_state->__pyx_codeobj__78);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__79);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__81);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__80);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__82);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__84);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__85);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__87);
   return 0;
 }
 #endif
@@ -3849,6 +3891,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_GLNetEIRand_static_iter __pyx_mstate_global->__pyx_n_s_GLNetEIRand_static_iter
 #define __pyx_n_s_Gamma __pyx_mstate_global->__pyx_n_s_Gamma
 #define __pyx_n_s_I __pyx_mstate_global->__pyx_n_s_I
+#define __pyx_kp_s_INHIBITORY_neurons_will_not_ada __pyx_mstate_global->__pyx_kp_s_INHIBITORY_neurons_will_not_ada
 #define __pyx_n_s_Iext __pyx_mstate_global->__pyx_n_s_Iext
 #define __pyx_n_s_J __pyx_mstate_global->__pyx_n_s_J
 #define __pyx_n_s_K __pyx_mstate_global->__pyx_n_s_K
@@ -3857,7 +3900,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_KI __pyx_mstate_global->__pyx_n_s_KI
 #define __pyx_n_s_KI_fl __pyx_mstate_global->__pyx_n_s_KI_fl
 #define __pyx_n_s_K_ex __pyx_mstate_global->__pyx_n_s_K_ex
+#define __pyx_kp_s_LINEAR_adaptive_threshold_addit __pyx_mstate_global->__pyx_kp_s_LINEAR_adaptive_threshold_addit
 #define __pyx_n_s_N __pyx_mstate_global->__pyx_n_s_N
+#define __pyx_kp_s_NONLINEAR_adaptive_threshold_mu __pyx_mstate_global->__pyx_kp_s_NONLINEAR_adaptive_threshold_mu
 #define __pyx_n_s_N_fl __pyx_mstate_global->__pyx_n_s_N_fl
 #define __pyx_n_s_PHI __pyx_mstate_global->__pyx_n_s_PHI
 #define __pyx_n_s_P_firing_poisson __pyx_mstate_global->__pyx_n_s_P_firing_poisson
@@ -3865,6 +3910,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_PoissonProcess_firingprob __pyx_mstate_global->__pyx_n_s_PoissonProcess_firingprob
 #define __pyx_n_s_RunSimulation_GLNetEIMF __pyx_mstate_global->__pyx_n_s_RunSimulation_GLNetEIMF
 #define __pyx_n_s_RunSimulation_GLNetEIRand __pyx_mstate_global->__pyx_n_s_RunSimulation_GLNetEIRand
+#define __pyx_kp_s_SATURATING_adaptive_threshold_s __pyx_mstate_global->__pyx_kp_s_SATURATING_adaptive_threshold_s
 #define __pyx_n_s_Tmax __pyx_mstate_global->__pyx_n_s_Tmax
 #define __pyx_n_s_V __pyx_mstate_global->__pyx_n_s_V
 #define __pyx_n_s_VE __pyx_mstate_global->__pyx_n_s_VE
@@ -3885,12 +3931,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_XI __pyx_mstate_global->__pyx_n_s_XI
 #define __pyx_n_s_XI0 __pyx_mstate_global->__pyx_n_s_XI0
 #define __pyx_n_s_XI0Rand __pyx_mstate_global->__pyx_n_s_XI0Rand
-#define __pyx_n_s__12 __pyx_mstate_global->__pyx_n_s__12
+#define __pyx_n_s__15 __pyx_mstate_global->__pyx_n_s__15
+#define __pyx_n_s__18 __pyx_mstate_global->__pyx_n_s__18
 #define __pyx_kp_s__2 __pyx_mstate_global->__pyx_kp_s__2
 #define __pyx_kp_s__6 __pyx_mstate_global->__pyx_kp_s__6
 #define __pyx_kp_s__7 __pyx_mstate_global->__pyx_kp_s__7
-#define __pyx_n_s__82 __pyx_mstate_global->__pyx_n_s__82
-#define __pyx_n_s__9 __pyx_mstate_global->__pyx_n_s__9
+#define __pyx_n_s__88 __pyx_mstate_global->__pyx_n_s__88
 #define __pyx_n_s_a __pyx_mstate_global->__pyx_n_s_a
 #define __pyx_n_s_adapt __pyx_mstate_global->__pyx_n_s_adapt
 #define __pyx_n_s_adaptthresh __pyx_mstate_global->__pyx_n_s_adaptthresh
@@ -3902,6 +3948,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_bool __pyx_mstate_global->__pyx_n_s_bool
 #define __pyx_n_s_c __pyx_mstate_global->__pyx_n_s_c
 #define __pyx_n_s_ceil __pyx_mstate_global->__pyx_n_s_ceil
+#define __pyx_kp_s_choosing_neuron_wiht __pyx_mstate_global->__pyx_kp_s_choosing_neuron_wiht
 #define __pyx_n_s_class_getitem __pyx_mstate_global->__pyx_n_s_class_getitem
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_close __pyx_mstate_global->__pyx_n_s_close
@@ -3967,6 +4014,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
 #define __pyx_n_s_nan __pyx_mstate_global->__pyx_n_s_nan
 #define __pyx_n_s_neuronType __pyx_mstate_global->__pyx_n_s_neuronType
+#define __pyx_kp_s_neurons_will_not_adapt_threshol __pyx_mstate_global->__pyx_kp_s_neurons_will_not_adapt_threshol
 #define __pyx_n_s_none __pyx_mstate_global->__pyx_n_s_none
 #define __pyx_n_s_numpy __pyx_mstate_global->__pyx_n_s_numpy
 #define __pyx_n_s_ones __pyx_mstate_global->__pyx_n_s_ones
@@ -4078,10 +4126,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__4 __pyx_mstate_global->__pyx_tuple__4
 #define __pyx_tuple__5 __pyx_mstate_global->__pyx_tuple__5
 #define __pyx_tuple__8 __pyx_mstate_global->__pyx_tuple__8
+#define __pyx_tuple__9 __pyx_mstate_global->__pyx_tuple__9
 #define __pyx_tuple__10 __pyx_mstate_global->__pyx_tuple__10
 #define __pyx_tuple__11 __pyx_mstate_global->__pyx_tuple__11
+#define __pyx_tuple__12 __pyx_mstate_global->__pyx_tuple__12
 #define __pyx_tuple__13 __pyx_mstate_global->__pyx_tuple__13
-#define __pyx_tuple__15 __pyx_mstate_global->__pyx_tuple__15
+#define __pyx_tuple__14 __pyx_mstate_global->__pyx_tuple__14
+#define __pyx_tuple__16 __pyx_mstate_global->__pyx_tuple__16
 #define __pyx_tuple__17 __pyx_mstate_global->__pyx_tuple__17
 #define __pyx_tuple__19 __pyx_mstate_global->__pyx_tuple__19
 #define __pyx_tuple__21 __pyx_mstate_global->__pyx_tuple__21
@@ -4097,22 +4148,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__41 __pyx_mstate_global->__pyx_tuple__41
 #define __pyx_tuple__43 __pyx_mstate_global->__pyx_tuple__43
 #define __pyx_tuple__45 __pyx_mstate_global->__pyx_tuple__45
-#define __pyx_tuple__48 __pyx_mstate_global->__pyx_tuple__48
-#define __pyx_tuple__50 __pyx_mstate_global->__pyx_tuple__50
-#define __pyx_tuple__52 __pyx_mstate_global->__pyx_tuple__52
+#define __pyx_tuple__47 __pyx_mstate_global->__pyx_tuple__47
+#define __pyx_tuple__49 __pyx_mstate_global->__pyx_tuple__49
+#define __pyx_tuple__51 __pyx_mstate_global->__pyx_tuple__51
 #define __pyx_tuple__54 __pyx_mstate_global->__pyx_tuple__54
 #define __pyx_tuple__56 __pyx_mstate_global->__pyx_tuple__56
-#define __pyx_tuple__61 __pyx_mstate_global->__pyx_tuple__61
-#define __pyx_tuple__65 __pyx_mstate_global->__pyx_tuple__65
+#define __pyx_tuple__58 __pyx_mstate_global->__pyx_tuple__58
+#define __pyx_tuple__60 __pyx_mstate_global->__pyx_tuple__60
+#define __pyx_tuple__62 __pyx_mstate_global->__pyx_tuple__62
 #define __pyx_tuple__67 __pyx_mstate_global->__pyx_tuple__67
 #define __pyx_tuple__71 __pyx_mstate_global->__pyx_tuple__71
 #define __pyx_tuple__73 __pyx_mstate_global->__pyx_tuple__73
-#define __pyx_tuple__75 __pyx_mstate_global->__pyx_tuple__75
 #define __pyx_tuple__77 __pyx_mstate_global->__pyx_tuple__77
-#define __pyx_tuple__80 __pyx_mstate_global->__pyx_tuple__80
-#define __pyx_codeobj__14 __pyx_mstate_global->__pyx_codeobj__14
-#define __pyx_codeobj__16 __pyx_mstate_global->__pyx_codeobj__16
-#define __pyx_codeobj__18 __pyx_mstate_global->__pyx_codeobj__18
+#define __pyx_tuple__79 __pyx_mstate_global->__pyx_tuple__79
+#define __pyx_tuple__81 __pyx_mstate_global->__pyx_tuple__81
+#define __pyx_tuple__83 __pyx_mstate_global->__pyx_tuple__83
+#define __pyx_tuple__86 __pyx_mstate_global->__pyx_tuple__86
 #define __pyx_codeobj__20 __pyx_mstate_global->__pyx_codeobj__20
 #define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
 #define __pyx_codeobj__24 __pyx_mstate_global->__pyx_codeobj__24
@@ -4127,28 +4178,31 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__42 __pyx_mstate_global->__pyx_codeobj__42
 #define __pyx_codeobj__44 __pyx_mstate_global->__pyx_codeobj__44
 #define __pyx_codeobj__46 __pyx_mstate_global->__pyx_codeobj__46
-#define __pyx_codeobj__47 __pyx_mstate_global->__pyx_codeobj__47
-#define __pyx_codeobj__49 __pyx_mstate_global->__pyx_codeobj__49
-#define __pyx_codeobj__51 __pyx_mstate_global->__pyx_codeobj__51
+#define __pyx_codeobj__48 __pyx_mstate_global->__pyx_codeobj__48
+#define __pyx_codeobj__50 __pyx_mstate_global->__pyx_codeobj__50
+#define __pyx_codeobj__52 __pyx_mstate_global->__pyx_codeobj__52
 #define __pyx_codeobj__53 __pyx_mstate_global->__pyx_codeobj__53
 #define __pyx_codeobj__55 __pyx_mstate_global->__pyx_codeobj__55
 #define __pyx_codeobj__57 __pyx_mstate_global->__pyx_codeobj__57
-#define __pyx_codeobj__58 __pyx_mstate_global->__pyx_codeobj__58
 #define __pyx_codeobj__59 __pyx_mstate_global->__pyx_codeobj__59
-#define __pyx_codeobj__60 __pyx_mstate_global->__pyx_codeobj__60
-#define __pyx_codeobj__62 __pyx_mstate_global->__pyx_codeobj__62
+#define __pyx_codeobj__61 __pyx_mstate_global->__pyx_codeobj__61
 #define __pyx_codeobj__63 __pyx_mstate_global->__pyx_codeobj__63
 #define __pyx_codeobj__64 __pyx_mstate_global->__pyx_codeobj__64
+#define __pyx_codeobj__65 __pyx_mstate_global->__pyx_codeobj__65
 #define __pyx_codeobj__66 __pyx_mstate_global->__pyx_codeobj__66
 #define __pyx_codeobj__68 __pyx_mstate_global->__pyx_codeobj__68
 #define __pyx_codeobj__69 __pyx_mstate_global->__pyx_codeobj__69
 #define __pyx_codeobj__70 __pyx_mstate_global->__pyx_codeobj__70
 #define __pyx_codeobj__72 __pyx_mstate_global->__pyx_codeobj__72
 #define __pyx_codeobj__74 __pyx_mstate_global->__pyx_codeobj__74
+#define __pyx_codeobj__75 __pyx_mstate_global->__pyx_codeobj__75
 #define __pyx_codeobj__76 __pyx_mstate_global->__pyx_codeobj__76
 #define __pyx_codeobj__78 __pyx_mstate_global->__pyx_codeobj__78
-#define __pyx_codeobj__79 __pyx_mstate_global->__pyx_codeobj__79
-#define __pyx_codeobj__81 __pyx_mstate_global->__pyx_codeobj__81
+#define __pyx_codeobj__80 __pyx_mstate_global->__pyx_codeobj__80
+#define __pyx_codeobj__82 __pyx_mstate_global->__pyx_codeobj__82
+#define __pyx_codeobj__84 __pyx_mstate_global->__pyx_codeobj__84
+#define __pyx_codeobj__85 __pyx_mstate_global->__pyx_codeobj__85
+#define __pyx_codeobj__87 __pyx_mstate_global->__pyx_codeobj__87
 /* #### Code section: module_code ### */
 
 /* "modules/GLNetEISimLib.py":5
@@ -18502,8 +18556,8 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_20get_write_spike_data_functi
  *     return spkData,write_spk_time,save_spk_time
  * 
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
- *         if 'threshlinear' in simType:
  */
 
 /* Python wrapper */
@@ -18622,8 +18676,8 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_22get_RandomNet_neuron_state_
   PyObject *__pyx_v_GLNetEIRand_I_iter = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -18632,197 +18686,263 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_22get_RandomNet_neuron_state_
   /* "modules/GLNetEISimLib.py":471
  * 
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')             # <<<<<<<<<<<<<<
+ *     if 'adaptthresh' in simType:
+ *         if 'threshlinear' in simType:
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "modules/GLNetEISimLib.py":472
+ * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:             # <<<<<<<<<<<<<<
  *         if 'threshlinear' in simType:
- *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adaptthresh, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 471, __pyx_L1_error)
-  if (__pyx_t_1) {
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adaptthresh, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+  if (__pyx_t_2) {
 
-    /* "modules/GLNetEISimLib.py":472
- * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+    /* "modules/GLNetEISimLib.py":473
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
  *         if 'threshlinear' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
+ */
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshlinear, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 473, __pyx_L1_error)
+    if (__pyx_t_2) {
+
+      /* "modules/GLNetEISimLib.py":474
+ *     if 'adaptthresh' in simType:
+ *         if 'threshlinear' in simType:
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')             # <<<<<<<<<<<<<<
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
  */
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshlinear, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
-    if (__pyx_t_1) {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":473
- *     if 'adaptthresh' in simType:
+      /* "modules/GLNetEISimLib.py":475
  *         if 'threshlinear' in simType:
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter             # <<<<<<<<<<<<<<
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 473, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":474
- *         if 'threshlinear' in simType:
+      /* "modules/GLNetEISimLib.py":476
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter             # <<<<<<<<<<<<<<
  *         elif 'threshsaturate' in simType:
- *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":472
- * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+      /* "modules/GLNetEISimLib.py":473
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
  *         if 'threshlinear' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
- *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
  */
       goto __pyx_L4;
     }
 
-    /* "modules/GLNetEISimLib.py":475
+    /* "modules/GLNetEISimLib.py":477
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
+ */
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshsaturate, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 477, __pyx_L1_error)
+    if (__pyx_t_2) {
+
+      /* "modules/GLNetEISimLib.py":478
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
+ *         elif 'threshsaturate' in simType:
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')             # <<<<<<<<<<<<<<
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
  */
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshsaturate, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 475, __pyx_L1_error)
-    if (__pyx_t_1) {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":476
- *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
+      /* "modules/GLNetEISimLib.py":479
  *         elif 'threshsaturate' in simType:
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter             # <<<<<<<<<<<<<<
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
  *         else:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthreshsaturate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthreshsaturate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 479, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":477
- *         elif 'threshsaturate' in simType:
+      /* "modules/GLNetEISimLib.py":480
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter             # <<<<<<<<<<<<<<
  *         else:
- *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthreshsaturate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthreshsaturate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":475
+      /* "modules/GLNetEISimLib.py":477
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
- *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
  */
       goto __pyx_L4;
     }
 
-    /* "modules/GLNetEISimLib.py":479
+    /* "modules/GLNetEISimLib.py":482
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
  *         else:
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
+ */
+    /*else*/ {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 482, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "modules/GLNetEISimLib.py":483
+ *         else:
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter             # <<<<<<<<<<<<<<
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
  *         if exc_only_dynthresh:
  */
-    /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthresh_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 479, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthresh_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 483, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":480
- *         else:
+      /* "modules/GLNetEISimLib.py":484
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter             # <<<<<<<<<<<<<<
  *         if exc_only_dynthresh:
- *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_adaptthresh_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIRand_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_adaptthresh_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIRand_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
     }
     __pyx_L4:;
 
-    /* "modules/GLNetEISimLib.py":481
+    /* "modules/GLNetEISimLib.py":485
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
  *         if exc_only_dynthresh:             # <<<<<<<<<<<<<<
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
- *     else:
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_exc_only_dynthresh); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 481, __pyx_L1_error)
-    if (__pyx_t_1) {
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_exc_only_dynthresh); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 485, __pyx_L1_error)
+    if (__pyx_t_2) {
 
-      /* "modules/GLNetEISimLib.py":482
+      /* "modules/GLNetEISimLib.py":486
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
  *         if exc_only_dynthresh:
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ *     else:
+ */
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 486, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "modules/GLNetEISimLib.py":487
+ *         if exc_only_dynthresh:
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIRand_I_iter = GLNetEIRand_static_iter             # <<<<<<<<<<<<<<
  *     else:
- *         GLNetEIRand_E_iter = GLNetEIRand_static_iter
+ *         print(' ....... neurons will not adapt thresholds!')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 482, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF_SET(__pyx_v_GLNetEIRand_I_iter, __pyx_t_2);
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF_SET(__pyx_v_GLNetEIRand_I_iter, __pyx_t_1);
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":481
+      /* "modules/GLNetEISimLib.py":485
  *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
  *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
  *         if exc_only_dynthresh:             # <<<<<<<<<<<<<<
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
- *     else:
  */
     }
 
-    /* "modules/GLNetEISimLib.py":471
- * 
+    /* "modules/GLNetEISimLib.py":472
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:             # <<<<<<<<<<<<<<
  *         if 'threshlinear' in simType:
- *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  */
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":484
+  /* "modules/GLNetEISimLib.py":489
  *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
  *     else:
+ *         print(' ....... neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *         GLNetEIRand_E_iter = GLNetEIRand_static_iter
+ *         GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ */
+  /*else*/ {
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 489, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "modules/GLNetEISimLib.py":490
+ *     else:
+ *         print(' ....... neurons will not adapt thresholds!')
  *         GLNetEIRand_E_iter = GLNetEIRand_static_iter             # <<<<<<<<<<<<<<
  *         GLNetEIRand_I_iter = GLNetEIRand_static_iter
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  */
-  /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_GLNetEIRand_E_iter = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_GLNetEIRand_E_iter = __pyx_t_1;
+    __pyx_t_1 = 0;
 
-    /* "modules/GLNetEISimLib.py":485
- *     else:
+    /* "modules/GLNetEISimLib.py":491
+ *         print(' ....... neurons will not adapt thresholds!')
  *         GLNetEIRand_E_iter = GLNetEIRand_static_iter
  *         GLNetEIRand_I_iter = GLNetEIRand_static_iter             # <<<<<<<<<<<<<<
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_GLNetEIRand_I_iter = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIRand_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 491, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_GLNetEIRand_I_iter = __pyx_t_1;
+    __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":486
+  /* "modules/GLNetEISimLib.py":492
  *         GLNetEIRand_E_iter = GLNetEIRand_static_iter
  *         GLNetEIRand_I_iter = GLNetEIRand_static_iter
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter             # <<<<<<<<<<<<<<
@@ -18830,29 +18950,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_22get_RandomNet_neuron_state_
  * def get_RandomNet_stimulus_func(simType):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_GLNetEIRand_E_iter);
   __Pyx_GIVEREF(__pyx_v_GLNetEIRand_E_iter);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_GLNetEIRand_E_iter)) __PYX_ERR(0, 486, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_GLNetEIRand_E_iter)) __PYX_ERR(0, 492, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_GLNetEIRand_I_iter);
   __Pyx_GIVEREF(__pyx_v_GLNetEIRand_I_iter);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_GLNetEIRand_I_iter)) __PYX_ERR(0, 486, __pyx_L1_error);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_GLNetEIRand_I_iter)) __PYX_ERR(0, 492, __pyx_L1_error);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* "modules/GLNetEISimLib.py":470
  *     return spkData,write_spk_time,save_spk_time
  * 
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
- *         if 'threshlinear' in simType:
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("modules.GLNetEISimLib.get_RandomNet_neuron_state_iter", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -18863,7 +18983,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_22get_RandomNet_neuron_state_
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":488
+/* "modules/GLNetEISimLib.py":494
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  * def get_RandomNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
@@ -18924,12 +19044,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 488, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 494, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_RandomNet_stimulus_func") < 0)) __PYX_ERR(0, 488, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_RandomNet_stimulus_func") < 0)) __PYX_ERR(0, 494, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -18940,7 +19060,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_RandomNet_stimulus_func", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 488, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_RandomNet_stimulus_func", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 494, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18967,7 +19087,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":494
+/* "modules/GLNetEISimLib.py":500
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic
  *         get_stim_neuron_index = lambda _: 0             # <<<<<<<<<<<<<<
@@ -19012,7 +19132,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s__9,0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s__15,0};
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
@@ -19024,16 +19144,16 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
       switch (__pyx_nargs) {
         case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s__9)) != 0)) {
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s__15)) != 0)) {
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 494, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 500, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda1") < 0)) __PYX_ERR(0, 494, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda1") < 0)) __PYX_ERR(0, 500, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -19044,7 +19164,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 494, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 500, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19087,7 +19207,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":488
+/* "modules/GLNetEISimLib.py":494
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  * def get_RandomNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
@@ -19107,41 +19227,41 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_24get_RandomNet_stimulus_func
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_RandomNet_stimulus_func", 1);
 
-  /* "modules/GLNetEISimLib.py":489
+  /* "modules/GLNetEISimLib.py":495
  * 
  * def get_RandomNet_stimulus_func(simType):
  *     if simType == 'aval':             # <<<<<<<<<<<<<<
  *         get_external_stimulus = get_external_stimulus_aval
  *         get_stim_neuron_index = get_stim_neuron_index_aval
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_simType, __pyx_n_s_aval, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 489, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_simType, __pyx_n_s_aval, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 495, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":490
+    /* "modules/GLNetEISimLib.py":496
  * def get_RandomNet_stimulus_func(simType):
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval             # <<<<<<<<<<<<<<
  *         get_stim_neuron_index = get_stim_neuron_index_aval
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 490, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 496, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_external_stimulus = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":491
+    /* "modules/GLNetEISimLib.py":497
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval
  *         get_stim_neuron_index = get_stim_neuron_index_aval             # <<<<<<<<<<<<<<
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_stim_neuron_index_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 491, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_stim_neuron_index_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_stim_neuron_index = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":489
+    /* "modules/GLNetEISimLib.py":495
  * 
  * def get_RandomNet_stimulus_func(simType):
  *     if simType == 'aval':             # <<<<<<<<<<<<<<
@@ -19151,7 +19271,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_24get_RandomNet_stimulus_func
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":493
+  /* "modules/GLNetEISimLib.py":499
  *         get_stim_neuron_index = get_stim_neuron_index_aval
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic             # <<<<<<<<<<<<<<
@@ -19159,26 +19279,26 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_24get_RandomNet_stimulus_func
  *     return get_external_stimulus,get_stim_neuron_index
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_external_stimulus = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":494
+    /* "modules/GLNetEISimLib.py":500
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic
  *         get_stim_neuron_index = lambda _: 0             # <<<<<<<<<<<<<<
  *     return get_external_stimulus,get_stim_neuron_index
  * 
  */
-    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_27get_RandomNet_stimulus_func_lambda1, 0, __pyx_n_s_get_RandomNet_stimulus_func_loca, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 494, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_27get_RandomNet_stimulus_func_lambda1, 0, __pyx_n_s_get_RandomNet_stimulus_func_loca, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_stim_neuron_index = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":495
+  /* "modules/GLNetEISimLib.py":501
  *         get_external_stimulus = get_external_stimulus_dynamic
  *         get_stim_neuron_index = lambda _: 0
  *     return get_external_stimulus,get_stim_neuron_index             # <<<<<<<<<<<<<<
@@ -19186,19 +19306,19 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_24get_RandomNet_stimulus_func
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_get_external_stimulus);
   __Pyx_GIVEREF(__pyx_v_get_external_stimulus);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_get_external_stimulus)) __PYX_ERR(0, 495, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_get_external_stimulus)) __PYX_ERR(0, 501, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_get_stim_neuron_index);
   __Pyx_GIVEREF(__pyx_v_get_stim_neuron_index);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_get_stim_neuron_index)) __PYX_ERR(0, 495, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_get_stim_neuron_index)) __PYX_ERR(0, 501, __pyx_L1_error);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":488
+  /* "modules/GLNetEISimLib.py":494
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  * def get_RandomNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
@@ -19219,12 +19339,12 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_24get_RandomNet_stimulus_func
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":497
+/* "modules/GLNetEISimLib.py":503
  *     return get_external_stimulus,get_stim_neuron_index
  * 
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
- *         if 'threshlinear' in simType:
  */
 
 /* Python wrapper */
@@ -19283,7 +19403,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 497, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 503, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -19291,14 +19411,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 497, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 503, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_MFNet_neuron_state_iter", 1, 2, 2, 1); __PYX_ERR(0, 497, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_MFNet_neuron_state_iter", 1, 2, 2, 1); __PYX_ERR(0, 503, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_neuron_state_iter") < 0)) __PYX_ERR(0, 497, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_neuron_state_iter") < 0)) __PYX_ERR(0, 503, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -19311,7 +19431,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_MFNet_neuron_state_iter", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 497, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_MFNet_neuron_state_iter", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 503, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19343,207 +19463,273 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_26get_MFNet_neuron_state_iter
   PyObject *__pyx_v_GLNetEIMF_I_iter = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_MFNet_neuron_state_iter", 1);
 
-  /* "modules/GLNetEISimLib.py":498
+  /* "modules/GLNetEISimLib.py":504
  * 
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')             # <<<<<<<<<<<<<<
+ *     if 'adapt' in simType:
+ *         if 'threshlinear' in simType:
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "modules/GLNetEISimLib.py":505
+ * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:             # <<<<<<<<<<<<<<
  *         if 'threshlinear' in simType:
- *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adapt, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 498, __pyx_L1_error)
-  if (__pyx_t_1) {
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adapt, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 505, __pyx_L1_error)
+  if (__pyx_t_2) {
 
-    /* "modules/GLNetEISimLib.py":499
- * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+    /* "modules/GLNetEISimLib.py":506
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
  *         if 'threshlinear' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
+ *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
+ */
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshlinear, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 506, __pyx_L1_error)
+    if (__pyx_t_2) {
+
+      /* "modules/GLNetEISimLib.py":507
+ *     if 'adapt' in simType:
+ *         if 'threshlinear' in simType:
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')             # <<<<<<<<<<<<<<
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
  */
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshlinear, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
-    if (__pyx_t_1) {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 507, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":500
- *     if 'adapt' in simType:
+      /* "modules/GLNetEISimLib.py":508
  *         if 'threshlinear' in simType:
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter             # <<<<<<<<<<<<<<
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 508, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":501
- *         if 'threshlinear' in simType:
+      /* "modules/GLNetEISimLib.py":509
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter             # <<<<<<<<<<<<<<
  *         elif 'threshsaturate' in simType:
- *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 501, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 509, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":499
- * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+      /* "modules/GLNetEISimLib.py":506
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
  *         if 'threshlinear' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
- *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
  */
       goto __pyx_L4;
     }
 
-    /* "modules/GLNetEISimLib.py":502
+    /* "modules/GLNetEISimLib.py":510
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
+ *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
+ */
+    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshsaturate, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 510, __pyx_L1_error)
+    if (__pyx_t_2) {
+
+      /* "modules/GLNetEISimLib.py":511
+ *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
+ *         elif 'threshsaturate' in simType:
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')             # <<<<<<<<<<<<<<
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
  */
-    __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_threshsaturate, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 502, __pyx_L1_error)
-    if (__pyx_t_1) {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 511, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":503
- *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
+      /* "modules/GLNetEISimLib.py":512
  *         elif 'threshsaturate' in simType:
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter             # <<<<<<<<<<<<<<
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
  *         else:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 503, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 512, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":504
- *         elif 'threshsaturate' in simType:
+      /* "modules/GLNetEISimLib.py":513
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter             # <<<<<<<<<<<<<<
  *         else:
- *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 504, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 513, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":502
+      /* "modules/GLNetEISimLib.py":510
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
  *         elif 'threshsaturate' in simType:             # <<<<<<<<<<<<<<
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
- *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
  */
       goto __pyx_L4;
     }
 
-    /* "modules/GLNetEISimLib.py":506
+    /* "modules/GLNetEISimLib.py":515
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
  *         else:
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')             # <<<<<<<<<<<<<<
+ *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
+ *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
+ */
+    /*else*/ {
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 515, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "modules/GLNetEISimLib.py":516
+ *         else:
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter             # <<<<<<<<<<<<<<
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
  *         if exc_only_dynthresh:
  */
-    /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthresh_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 506, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_E_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthresh_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 516, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_E_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":507
- *         else:
+      /* "modules/GLNetEISimLib.py":517
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter             # <<<<<<<<<<<<<<
  *         if exc_only_dynthresh:
- *             GLNetEIMF_I_iter = GLNetEIMF_static_iter
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_adaptthresh_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 507, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_v_GLNetEIMF_I_iter = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_adaptthresh_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 517, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_v_GLNetEIMF_I_iter = __pyx_t_1;
+      __pyx_t_1 = 0;
     }
     __pyx_L4:;
 
-    /* "modules/GLNetEISimLib.py":508
+    /* "modules/GLNetEISimLib.py":518
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
  *         if exc_only_dynthresh:             # <<<<<<<<<<<<<<
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIMF_I_iter = GLNetEIMF_static_iter
- *     else:
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_exc_only_dynthresh); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 508, __pyx_L1_error)
-    if (__pyx_t_1) {
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_exc_only_dynthresh); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 518, __pyx_L1_error)
+    if (__pyx_t_2) {
 
-      /* "modules/GLNetEISimLib.py":509
+      /* "modules/GLNetEISimLib.py":519
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
  *         if exc_only_dynthresh:
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *             GLNetEIMF_I_iter = GLNetEIMF_static_iter
+ *     else:
+ */
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 519, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "modules/GLNetEISimLib.py":520
+ *         if exc_only_dynthresh:
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIMF_I_iter = GLNetEIMF_static_iter             # <<<<<<<<<<<<<<
  *     else:
- *         GLNetEIMF_E_iter = GLNetEIMF_static_iter
+ *         print(' ....... neurons will not adapt thresholds!')
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 509, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF_SET(__pyx_v_GLNetEIMF_I_iter, __pyx_t_2);
-      __pyx_t_2 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 520, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF_SET(__pyx_v_GLNetEIMF_I_iter, __pyx_t_1);
+      __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":508
+      /* "modules/GLNetEISimLib.py":518
  *             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
  *             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
  *         if exc_only_dynthresh:             # <<<<<<<<<<<<<<
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')
  *             GLNetEIMF_I_iter = GLNetEIMF_static_iter
- *     else:
  */
     }
 
-    /* "modules/GLNetEISimLib.py":498
- * 
+    /* "modules/GLNetEISimLib.py":505
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:             # <<<<<<<<<<<<<<
  *         if 'threshlinear' in simType:
- *             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')
  */
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":511
+  /* "modules/GLNetEISimLib.py":522
  *             GLNetEIMF_I_iter = GLNetEIMF_static_iter
  *     else:
+ *         print(' ....... neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *         GLNetEIMF_E_iter = GLNetEIMF_static_iter
+ *         GLNetEIMF_I_iter = GLNetEIMF_static_iter
+ */
+  /*else*/ {
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "modules/GLNetEISimLib.py":523
+ *     else:
+ *         print(' ....... neurons will not adapt thresholds!')
  *         GLNetEIMF_E_iter = GLNetEIMF_static_iter             # <<<<<<<<<<<<<<
  *         GLNetEIMF_I_iter = GLNetEIMF_static_iter
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  */
-  /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 511, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_GLNetEIMF_E_iter = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_GLNetEIMF_E_iter = __pyx_t_1;
+    __pyx_t_1 = 0;
 
-    /* "modules/GLNetEISimLib.py":512
- *     else:
+    /* "modules/GLNetEISimLib.py":524
+ *         print(' ....... neurons will not adapt thresholds!')
  *         GLNetEIMF_E_iter = GLNetEIMF_static_iter
  *         GLNetEIMF_I_iter = GLNetEIMF_static_iter             # <<<<<<<<<<<<<<
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 512, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_GLNetEIMF_I_iter = __pyx_t_2;
-    __pyx_t_2 = 0;
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_GLNetEIMF_static_iter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 524, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_GLNetEIMF_I_iter = __pyx_t_1;
+    __pyx_t_1 = 0;
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":513
+  /* "modules/GLNetEISimLib.py":525
  *         GLNetEIMF_E_iter = GLNetEIMF_static_iter
  *         GLNetEIMF_I_iter = GLNetEIMF_static_iter
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter             # <<<<<<<<<<<<<<
@@ -19551,29 +19737,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_26get_MFNet_neuron_state_iter
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 513, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_GLNetEIMF_E_iter);
   __Pyx_GIVEREF(__pyx_v_GLNetEIMF_E_iter);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_GLNetEIMF_E_iter)) __PYX_ERR(0, 513, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_GLNetEIMF_E_iter)) __PYX_ERR(0, 525, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_GLNetEIMF_I_iter);
   __Pyx_GIVEREF(__pyx_v_GLNetEIMF_I_iter);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_GLNetEIMF_I_iter)) __PYX_ERR(0, 513, __pyx_L1_error);
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_GLNetEIMF_I_iter)) __PYX_ERR(0, 525, __pyx_L1_error);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":497
+  /* "modules/GLNetEISimLib.py":503
  *     return get_external_stimulus,get_stim_neuron_index
  * 
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
- *         if 'threshlinear' in simType:
  */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("modules.GLNetEISimLib.get_MFNet_neuron_state_iter", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -19584,7 +19770,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_26get_MFNet_neuron_state_iter
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":515
+/* "modules/GLNetEISimLib.py":527
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):             # <<<<<<<<<<<<<<
@@ -19651,7 +19837,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 515, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 527, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -19659,9 +19845,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 515, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 527, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, 1); __PYX_ERR(0, 515, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, 1); __PYX_ERR(0, 527, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -19669,14 +19855,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 515, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 527, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, 2); __PYX_ERR(0, 515, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, 2); __PYX_ERR(0, 527, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_synaptic_weight_iter") < 0)) __PYX_ERR(0, 515, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_synaptic_weight_iter") < 0)) __PYX_ERR(0, 527, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -19691,7 +19877,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 515, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_MFNet_synaptic_weight_iter", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 527, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19718,7 +19904,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":525
+/* "modules/GLNetEISimLib.py":537
  *         raise ValueError('weightDynType is unknown')
  *     if q == 0.0:
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0             # <<<<<<<<<<<<<<
@@ -19794,7 +19980,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -19802,9 +19988,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 1); __PYX_ERR(0, 525, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 1); __PYX_ERR(0, 537, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -19812,9 +19998,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 2); __PYX_ERR(0, 525, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 2); __PYX_ERR(0, 537, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -19822,9 +20008,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 3); __PYX_ERR(0, 525, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 3); __PYX_ERR(0, 537, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -19832,9 +20018,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 4); __PYX_ERR(0, 525, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 4); __PYX_ERR(0, 537, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -19842,14 +20028,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 537, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 5); __PYX_ERR(0, 525, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, 5); __PYX_ERR(0, 537, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda2") < 0)) __PYX_ERR(0, 525, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda2") < 0)) __PYX_ERR(0, 537, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
@@ -19870,7 +20056,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 525, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda2", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 537, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19913,7 +20099,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":515
+/* "modules/GLNetEISimLib.py":527
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):             # <<<<<<<<<<<<<<
@@ -19932,29 +20118,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_MFNet_synaptic_weight_iter", 1);
 
-  /* "modules/GLNetEISimLib.py":516
+  /* "modules/GLNetEISimLib.py":528
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):
  *     if weightDynType == "simple":             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = weightAdapt_decrease
  *     elif weightDynType == "coupled":
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_simple, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 516, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_simple, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 528, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":517
+    /* "modules/GLNetEISimLib.py":529
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):
  *     if weightDynType == "simple":
  *         weightAdapt_iter = weightAdapt_decrease             # <<<<<<<<<<<<<<
  *     elif weightDynType == "coupled":
  *         weightAdapt_iter = weightAdapt_increase
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_decrease); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 517, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_decrease); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 529, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_weightAdapt_iter = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":516
+    /* "modules/GLNetEISimLib.py":528
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):
  *     if weightDynType == "simple":             # <<<<<<<<<<<<<<
@@ -19964,29 +20150,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":518
+  /* "modules/GLNetEISimLib.py":530
  *     if weightDynType == "simple":
  *         weightAdapt_iter = weightAdapt_decrease
  *     elif weightDynType == "coupled":             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = weightAdapt_increase
  *     elif weightDynType == "none":
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_coupled, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_coupled, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 530, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":519
+    /* "modules/GLNetEISimLib.py":531
  *         weightAdapt_iter = weightAdapt_decrease
  *     elif weightDynType == "coupled":
  *         weightAdapt_iter = weightAdapt_increase             # <<<<<<<<<<<<<<
  *     elif weightDynType == "none":
  *         weightAdapt_iter = weightAdapt_constant
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_increase); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 519, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_increase); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 531, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_weightAdapt_iter = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":518
+    /* "modules/GLNetEISimLib.py":530
  *     if weightDynType == "simple":
  *         weightAdapt_iter = weightAdapt_decrease
  *     elif weightDynType == "coupled":             # <<<<<<<<<<<<<<
@@ -19996,29 +20182,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":520
+  /* "modules/GLNetEISimLib.py":532
  *     elif weightDynType == "coupled":
  *         weightAdapt_iter = weightAdapt_increase
  *     elif weightDynType == "none":             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = weightAdapt_constant
  *     else:
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_none, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 520, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_weightDynType, __pyx_n_s_none, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 532, __pyx_L1_error)
   if (likely(__pyx_t_1)) {
 
-    /* "modules/GLNetEISimLib.py":521
+    /* "modules/GLNetEISimLib.py":533
  *         weightAdapt_iter = weightAdapt_increase
  *     elif weightDynType == "none":
  *         weightAdapt_iter = weightAdapt_constant             # <<<<<<<<<<<<<<
  *     else:
  *         raise ValueError('weightDynType is unknown')
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_constant); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 521, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_constant); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 533, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_weightAdapt_iter = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":520
+    /* "modules/GLNetEISimLib.py":532
  *     elif weightDynType == "coupled":
  *         weightAdapt_iter = weightAdapt_increase
  *     elif weightDynType == "none":             # <<<<<<<<<<<<<<
@@ -20028,7 +20214,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":523
+  /* "modules/GLNetEISimLib.py":535
  *         weightAdapt_iter = weightAdapt_constant
  *     else:
  *         raise ValueError('weightDynType is unknown')             # <<<<<<<<<<<<<<
@@ -20036,37 +20222,37 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
  */
   /*else*/ {
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 523, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 535, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 523, __pyx_L1_error)
+    __PYX_ERR(0, 535, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":524
+  /* "modules/GLNetEISimLib.py":536
  *     else:
  *         raise ValueError('weightDynType is unknown')
  *     if q == 0.0:             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
  *     # forcing a fixed inhibitory synaptic weight
  */
-  __pyx_t_1 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_q, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_q, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 536, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":525
+    /* "modules/GLNetEISimLib.py":537
  *         raise ValueError('weightDynType is unknown')
  *     if q == 0.0:
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0             # <<<<<<<<<<<<<<
  *     # forcing a fixed inhibitory synaptic weight
  *     if 'adaptthresh' in simType:
  */
-    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_30get_MFNet_synaptic_weight_iter_lambda2, 0, __pyx_n_s_get_MFNet_synaptic_weight_iter_l, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 525, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_30get_MFNet_synaptic_weight_iter_lambda2, 0, __pyx_n_s_get_MFNet_synaptic_weight_iter_l, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 537, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_weightAdapt_iter, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":524
+    /* "modules/GLNetEISimLib.py":536
  *     else:
  *         raise ValueError('weightDynType is unknown')
  *     if q == 0.0:             # <<<<<<<<<<<<<<
@@ -20075,40 +20261,40 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
  */
   }
 
-  /* "modules/GLNetEISimLib.py":527
+  /* "modules/GLNetEISimLib.py":539
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
  *     # forcing a fixed inhibitory synaptic weight
  *     if 'adaptthresh' in simType:             # <<<<<<<<<<<<<<
  *         print(' ... forcing constant inhibitory W because simType == adaptthresh')
  *         weightAdapt_iter = weightAdapt_constant
  */
-  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adaptthresh, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_adaptthresh, __pyx_v_simType, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 539, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":528
+    /* "modules/GLNetEISimLib.py":540
  *     # forcing a fixed inhibitory synaptic weight
  *     if 'adaptthresh' in simType:
  *         print(' ... forcing constant inhibitory W because simType == adaptthresh')             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = weightAdapt_constant
  *     return weightAdapt_iter
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 528, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 540, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":529
+    /* "modules/GLNetEISimLib.py":541
  *     if 'adaptthresh' in simType:
  *         print(' ... forcing constant inhibitory W because simType == adaptthresh')
  *         weightAdapt_iter = weightAdapt_constant             # <<<<<<<<<<<<<<
  *     return weightAdapt_iter
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_constant); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 529, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_weightAdapt_constant); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 541, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_weightAdapt_iter, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":527
+    /* "modules/GLNetEISimLib.py":539
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
  *     # forcing a fixed inhibitory synaptic weight
  *     if 'adaptthresh' in simType:             # <<<<<<<<<<<<<<
@@ -20117,7 +20303,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
  */
   }
 
-  /* "modules/GLNetEISimLib.py":530
+  /* "modules/GLNetEISimLib.py":542
  *         print(' ... forcing constant inhibitory W because simType == adaptthresh')
  *         weightAdapt_iter = weightAdapt_constant
  *     return weightAdapt_iter             # <<<<<<<<<<<<<<
@@ -20129,7 +20315,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
   __pyx_r = __pyx_v_weightAdapt_iter;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":515
+  /* "modules/GLNetEISimLib.py":527
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):             # <<<<<<<<<<<<<<
@@ -20149,7 +20335,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_28get_MFNet_synaptic_weight_i
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":532
+/* "modules/GLNetEISimLib.py":544
  *     return weightAdapt_iter
  * 
  * def get_MFNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
@@ -20210,12 +20396,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 532, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 544, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_stimulus_func") < 0)) __PYX_ERR(0, 532, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_MFNet_stimulus_func") < 0)) __PYX_ERR(0, 544, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -20226,7 +20412,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_MFNet_stimulus_func", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 532, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_MFNet_stimulus_func", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 544, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20264,29 +20450,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_30get_MFNet_stimulus_func(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_MFNet_stimulus_func", 1);
 
-  /* "modules/GLNetEISimLib.py":533
+  /* "modules/GLNetEISimLib.py":545
  * 
  * def get_MFNet_stimulus_func(simType):
  *     if simType == 'aval':             # <<<<<<<<<<<<<<
  *         get_external_stimulus = get_external_stimulus_aval
  *     else:
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_simType, __pyx_n_s_aval, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_simType, __pyx_n_s_aval, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 545, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "modules/GLNetEISimLib.py":534
+    /* "modules/GLNetEISimLib.py":546
  * def get_MFNet_stimulus_func(simType):
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval             # <<<<<<<<<<<<<<
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 534, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_aval); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 546, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_external_stimulus = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":533
+    /* "modules/GLNetEISimLib.py":545
  * 
  * def get_MFNet_stimulus_func(simType):
  *     if simType == 'aval':             # <<<<<<<<<<<<<<
@@ -20296,7 +20482,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_30get_MFNet_stimulus_func(CYT
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":536
+  /* "modules/GLNetEISimLib.py":548
  *         get_external_stimulus = get_external_stimulus_aval
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic             # <<<<<<<<<<<<<<
@@ -20304,14 +20490,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_30get_MFNet_stimulus_func(CYT
  * 
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 536, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_get_external_stimulus_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_get_external_stimulus = __pyx_t_2;
     __pyx_t_2 = 0;
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":537
+  /* "modules/GLNetEISimLib.py":549
  *     else:
  *         get_external_stimulus = get_external_stimulus_dynamic
  *     return get_external_stimulus             # <<<<<<<<<<<<<<
@@ -20323,7 +20509,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_30get_MFNet_stimulus_func(CYT
   __pyx_r = __pyx_v_get_external_stimulus;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":532
+  /* "modules/GLNetEISimLib.py":544
  *     return weightAdapt_iter
  * 
  * def get_MFNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
@@ -20343,7 +20529,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_30get_MFNet_stimulus_func(CYT
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":540
+/* "modules/GLNetEISimLib.py":552
  * 
  * #pythran export get_external_stimulus_dynamic(float,float,float,float)
  * def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
@@ -20413,7 +20599,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -20421,9 +20607,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 1); __PYX_ERR(0, 540, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 1); __PYX_ERR(0, 552, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -20431,9 +20617,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 2); __PYX_ERR(0, 540, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 2); __PYX_ERR(0, 552, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -20441,14 +20627,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 540, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 3); __PYX_ERR(0, 540, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, 3); __PYX_ERR(0, 552, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_external_stimulus_dynamic") < 0)) __PYX_ERR(0, 540, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_external_stimulus_dynamic") < 0)) __PYX_ERR(0, 552, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
@@ -20465,7 +20651,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 540, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_external_stimulus_dynamic", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 552, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20501,7 +20687,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_32get_external_stimulus_dynam
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_external_stimulus_dynamic", 1);
 
-  /* "modules/GLNetEISimLib.py":541
+  /* "modules/GLNetEISimLib.py":553
  * #pythran export get_external_stimulus_dynamic(float,float,float,float)
  * def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):
  *     return XE,rhoE             # <<<<<<<<<<<<<<
@@ -20509,19 +20695,19 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_32get_external_stimulus_dynam
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 553, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_XE);
   __Pyx_GIVEREF(__pyx_v_XE);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_XE)) __PYX_ERR(0, 541, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_XE)) __PYX_ERR(0, 553, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_rhoE);
   __Pyx_GIVEREF(__pyx_v_rhoE);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_rhoE)) __PYX_ERR(0, 541, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_rhoE)) __PYX_ERR(0, 553, __pyx_L1_error);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":540
+  /* "modules/GLNetEISimLib.py":552
  * 
  * #pythran export get_external_stimulus_dynamic(float,float,float,float)
  * def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
@@ -20540,7 +20726,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_32get_external_stimulus_dynam
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":544
+/* "modules/GLNetEISimLib.py":556
  * 
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
@@ -20610,7 +20796,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 544, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -20618,9 +20804,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 544, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 1); __PYX_ERR(0, 544, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 1); __PYX_ERR(0, 556, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -20628,9 +20814,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 544, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 2); __PYX_ERR(0, 544, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 2); __PYX_ERR(0, 556, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -20638,14 +20824,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 544, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 556, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 3); __PYX_ERR(0, 544, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, 3); __PYX_ERR(0, 556, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_external_stimulus_aval") < 0)) __PYX_ERR(0, 544, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_external_stimulus_aval") < 0)) __PYX_ERR(0, 556, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
@@ -20662,7 +20848,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 544, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_external_stimulus_aval", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 556, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20700,22 +20886,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_34get_external_stimulus_aval(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_external_stimulus_aval", 1);
 
-  /* "modules/GLNetEISimLib.py":545
+  /* "modules/GLNetEISimLib.py":557
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):
  *     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision             # <<<<<<<<<<<<<<
  *         return 1.0, 1.0 / pN_fl
  *     else:
  */
-  __pyx_t_1 = PyNumber_Add(__pyx_v_rhoE, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_v_rhoE, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_float_1eneg_16, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_float_1eneg_16, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "modules/GLNetEISimLib.py":546
+    /* "modules/GLNetEISimLib.py":558
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):
  *     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
  *         return 1.0, 1.0 / pN_fl             # <<<<<<<<<<<<<<
@@ -20723,21 +20909,21 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_34get_external_stimulus_aval(
  *         return XE,rhoE
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyFloat_TrueDivideCObj(__pyx_float_1_0, __pyx_v_pN_fl, 1.0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFloat_TrueDivideCObj(__pyx_float_1_0, __pyx_v_pN_fl, 1.0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 558, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_float_1_0);
     __Pyx_GIVEREF(__pyx_float_1_0);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_float_1_0)) __PYX_ERR(0, 546, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_float_1_0)) __PYX_ERR(0, 558, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2)) __PYX_ERR(0, 546, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2)) __PYX_ERR(0, 558, __pyx_L1_error);
     __pyx_t_2 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "modules/GLNetEISimLib.py":545
+    /* "modules/GLNetEISimLib.py":557
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):
  *     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision             # <<<<<<<<<<<<<<
@@ -20746,7 +20932,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_34get_external_stimulus_aval(
  */
   }
 
-  /* "modules/GLNetEISimLib.py":548
+  /* "modules/GLNetEISimLib.py":560
  *         return 1.0, 1.0 / pN_fl
  *     else:
  *         return XE,rhoE             # <<<<<<<<<<<<<<
@@ -20755,20 +20941,20 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_34get_external_stimulus_aval(
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 548, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 560, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_XE);
     __Pyx_GIVEREF(__pyx_v_XE);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_XE)) __PYX_ERR(0, 548, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_XE)) __PYX_ERR(0, 560, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_rhoE);
     __Pyx_GIVEREF(__pyx_v_rhoE);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_rhoE)) __PYX_ERR(0, 548, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_rhoE)) __PYX_ERR(0, 560, __pyx_L1_error);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
   }
 
-  /* "modules/GLNetEISimLib.py":544
+  /* "modules/GLNetEISimLib.py":556
  * 
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
@@ -20788,7 +20974,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_34get_external_stimulus_aval(
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":551
+/* "modules/GLNetEISimLib.py":563
  * 
  * #pythran export save_initial_spkdata(float[],float[],int,int)
  * def save_initial_spkdata(XE,XI,pN,qN):             # <<<<<<<<<<<<<<
@@ -20859,7 +21045,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 563, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -20867,9 +21053,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 563, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 1); __PYX_ERR(0, 551, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 1); __PYX_ERR(0, 563, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -20877,9 +21063,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 563, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 2); __PYX_ERR(0, 551, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 2); __PYX_ERR(0, 563, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -20887,14 +21073,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 563, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 3); __PYX_ERR(0, 551, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, 3); __PYX_ERR(0, 563, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_initial_spkdata") < 0)) __PYX_ERR(0, 551, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_initial_spkdata") < 0)) __PYX_ERR(0, 563, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
@@ -20911,7 +21097,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 551, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("save_initial_spkdata", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 563, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20954,19 +21140,19 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("save_initial_spkdata", 1);
 
-  /* "modules/GLNetEISimLib.py":560
+  /* "modules/GLNetEISimLib.py":572
  *     spkData = [ [0,i] for i,x in enumerate(XE[:pN_s]) if x == 1 ] + [ [0,i+pN_s] for i,x in enumerate(XI[:qN_s]) if x == 1 ]
  *     """
  *     spkData = []             # <<<<<<<<<<<<<<
  *     i = 0
  *     while i < pN:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 560, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 572, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_spkData = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":561
+  /* "modules/GLNetEISimLib.py":573
  *     """
  *     spkData = []
  *     i = 0             # <<<<<<<<<<<<<<
@@ -20976,7 +21162,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_i = __pyx_int_0;
 
-  /* "modules/GLNetEISimLib.py":562
+  /* "modules/GLNetEISimLib.py":574
  *     spkData = []
  *     i = 0
  *     while i < pN:             # <<<<<<<<<<<<<<
@@ -20984,34 +21170,34 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
  *             spkData = save_spk_data(spkData,0,i)
  */
   while (1) {
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_i, __pyx_v_pN, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 562, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 562, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_i, __pyx_v_pN, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 574, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (!__pyx_t_2) break;
 
-    /* "modules/GLNetEISimLib.py":563
+    /* "modules/GLNetEISimLib.py":575
  *     i = 0
  *     while i < pN:
  *         if XE[i] > 0.5:             # <<<<<<<<<<<<<<
  *             spkData = save_spk_data(spkData,0,i)
  *         i+=1
  */
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_XE, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 563, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_XE, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_float_0_5, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 563, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_float_0_5, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 563, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 575, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "modules/GLNetEISimLib.py":564
+      /* "modules/GLNetEISimLib.py":576
  *     while i < pN:
  *         if XE[i] > 0.5:
  *             spkData = save_spk_data(spkData,0,i)             # <<<<<<<<<<<<<<
  *         i+=1
  *     i = 0
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_save_spk_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_save_spk_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 576, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_4 = NULL;
       __pyx_t_5 = 0;
@@ -21031,14 +21217,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
         PyObject *__pyx_callargs[4] = {__pyx_t_4, __pyx_v_spkData, __pyx_int_0, __pyx_v_i};
         __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_5, 3+__pyx_t_5);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 564, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 576, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF_SET(__pyx_v_spkData, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "modules/GLNetEISimLib.py":563
+      /* "modules/GLNetEISimLib.py":575
  *     i = 0
  *     while i < pN:
  *         if XE[i] > 0.5:             # <<<<<<<<<<<<<<
@@ -21047,20 +21233,20 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
  */
     }
 
-    /* "modules/GLNetEISimLib.py":565
+    /* "modules/GLNetEISimLib.py":577
  *         if XE[i] > 0.5:
  *             spkData = save_spk_data(spkData,0,i)
  *         i+=1             # <<<<<<<<<<<<<<
  *     i = 0
  *     while i < qN:
  */
-    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 565, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 577, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
   }
 
-  /* "modules/GLNetEISimLib.py":566
+  /* "modules/GLNetEISimLib.py":578
  *             spkData = save_spk_data(spkData,0,i)
  *         i+=1
  *     i = 0             # <<<<<<<<<<<<<<
@@ -21070,7 +21256,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_DECREF_SET(__pyx_v_i, __pyx_int_0);
 
-  /* "modules/GLNetEISimLib.py":567
+  /* "modules/GLNetEISimLib.py":579
  *         i+=1
  *     i = 0
  *     while i < qN:             # <<<<<<<<<<<<<<
@@ -21078,36 +21264,36 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
  *             spkData = save_spk_data(spkData,0,i+pN)
  */
   while (1) {
-    __pyx_t_3 = PyObject_RichCompare(__pyx_v_i, __pyx_v_qN, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 567, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 567, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_i, __pyx_v_qN, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 579, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 579, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (!__pyx_t_2) break;
 
-    /* "modules/GLNetEISimLib.py":568
+    /* "modules/GLNetEISimLib.py":580
  *     i = 0
  *     while i < qN:
  *         if XI[i] > 0.5:             # <<<<<<<<<<<<<<
  *             spkData = save_spk_data(spkData,0,i+pN)
  *         i+=1
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_XI, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 568, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_XI, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_float_0_5, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 568, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_float_0_5, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 580, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 568, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 580, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_2) {
 
-      /* "modules/GLNetEISimLib.py":569
+      /* "modules/GLNetEISimLib.py":581
  *     while i < qN:
  *         if XI[i] > 0.5:
  *             spkData = save_spk_data(spkData,0,i+pN)             # <<<<<<<<<<<<<<
  *         i+=1
  *     return spkData
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_save_spk_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 569, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_save_spk_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 581, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyNumber_Add(__pyx_v_i, __pyx_v_pN); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 569, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Add(__pyx_v_i, __pyx_v_pN); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 581, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_6 = NULL;
       __pyx_t_5 = 0;
@@ -21128,14 +21314,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 3+__pyx_t_5);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 569, __pyx_L1_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 581, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF_SET(__pyx_v_spkData, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":568
+      /* "modules/GLNetEISimLib.py":580
  *     i = 0
  *     while i < qN:
  *         if XI[i] > 0.5:             # <<<<<<<<<<<<<<
@@ -21144,20 +21330,20 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
  */
     }
 
-    /* "modules/GLNetEISimLib.py":570
+    /* "modules/GLNetEISimLib.py":582
  *         if XI[i] > 0.5:
  *             spkData = save_spk_data(spkData,0,i+pN)
  *         i+=1             # <<<<<<<<<<<<<<
  *     return spkData
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 570, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
   }
 
-  /* "modules/GLNetEISimLib.py":571
+  /* "modules/GLNetEISimLib.py":583
  *             spkData = save_spk_data(spkData,0,i+pN)
  *         i+=1
  *     return spkData             # <<<<<<<<<<<<<<
@@ -21169,7 +21355,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
   __pyx_r = __pyx_v_spkData;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":551
+  /* "modules/GLNetEISimLib.py":563
  * 
  * #pythran export save_initial_spkdata(float[],float[],int,int)
  * def save_initial_spkdata(XE,XI,pN,qN):             # <<<<<<<<<<<<<<
@@ -21193,7 +21379,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_36save_initial_spkdata(CYTHON
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":573
+/* "modules/GLNetEISimLib.py":585
  *     return spkData
  * 
  * def get_random_inhibitory_weights(W_I,C):             # <<<<<<<<<<<<<<
@@ -21258,7 +21444,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 573, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 585, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -21266,14 +21452,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 573, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 585, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("get_random_inhibitory_weights", 1, 2, 2, 1); __PYX_ERR(0, 573, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_random_inhibitory_weights", 1, 2, 2, 1); __PYX_ERR(0, 585, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_random_inhibitory_weights") < 0)) __PYX_ERR(0, 573, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_random_inhibitory_weights") < 0)) __PYX_ERR(0, 585, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -21286,7 +21472,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_random_inhibitory_weights", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 573, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_random_inhibitory_weights", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 585, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21318,7 +21504,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_38get_random_inhibitory_weigh
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_random_inhibitory_weights", 1);
 
-  /* "modules/GLNetEISimLib.py":578
+  /* "modules/GLNetEISimLib.py":590
  *     C   -> connectivity matrix
  *     """
  *     return W_I             # <<<<<<<<<<<<<<
@@ -21330,7 +21516,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_38get_random_inhibitory_weigh
   __pyx_r = __pyx_v_W_I;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":573
+  /* "modules/GLNetEISimLib.py":585
  *     return spkData
  * 
  * def get_random_inhibitory_weights(W_I,C):             # <<<<<<<<<<<<<<
@@ -21345,7 +21531,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_38get_random_inhibitory_weigh
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":581
+/* "modules/GLNetEISimLib.py":593
  * 
  * #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):             # <<<<<<<<<<<<<<
@@ -21448,7 +21634,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -21456,9 +21642,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 1); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 1); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -21466,9 +21652,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 2); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 2); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -21476,9 +21662,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 3); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 3); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -21486,9 +21672,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 4); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 4); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -21496,9 +21682,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 5); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 5); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -21506,9 +21692,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 6); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 6); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -21516,9 +21702,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 7); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 7); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -21526,9 +21712,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 8); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 8); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -21536,9 +21722,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 9); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 9); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -21546,9 +21732,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 10); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 10); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
@@ -21556,9 +21742,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[11]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 11); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 11); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
@@ -21566,9 +21752,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[12]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 12); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 12); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -21576,9 +21762,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[13]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 13); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 13); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -21586,14 +21772,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[14]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 581, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 14); __PYX_ERR(0, 581, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, 14); __PYX_ERR(0, 593, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_MF_network_IC") < 0)) __PYX_ERR(0, 581, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "set_MF_network_IC") < 0)) __PYX_ERR(0, 593, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 15)) {
       goto __pyx_L5_argtuple_error;
@@ -21632,7 +21818,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, __pyx_nargs); __PYX_ERR(0, 581, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_MF_network_IC", 1, 15, 15, __pyx_nargs); __PYX_ERR(0, 593, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21702,14 +21888,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_INCREF(__pyx_v_VE0);
   __Pyx_INCREF(__pyx_v_VI0);
 
-  /* "modules/GLNetEISimLib.py":582
+  /* "modules/GLNetEISimLib.py":594
  * #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
  *     VE0    = theta if VE0 == 0.0 else VE0             # <<<<<<<<<<<<<<
  *     thetaE = numpy.array([theta for i in range(pN)])
  *     XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
  */
-  __pyx_t_2 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_VE0, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_VE0, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 594, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_INCREF(__pyx_v_theta);
     __pyx_t_1 = __pyx_v_theta;
@@ -21720,31 +21906,31 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_VE0, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":583
+  /* "modules/GLNetEISimLib.py":595
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):
  *     VE0    = theta if VE0 == 0.0 else VE0
  *     thetaE = numpy.array([theta for i in range(pN)])             # <<<<<<<<<<<<<<
  *     XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
  *     VE     = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 583, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 583, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   { /* enter inner scope */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 583, __pyx_L5_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 595, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_pN); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 583, __pyx_L5_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_pN); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 595, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
       __pyx_t_6 = __pyx_t_5; __Pyx_INCREF(__pyx_t_6);
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 583, __pyx_L5_error)
+      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 595, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 583, __pyx_L5_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 595, __pyx_L5_error)
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     for (;;) {
@@ -21753,28 +21939,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 583, __pyx_L5_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 595, __pyx_L5_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 583, __pyx_L5_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 595, __pyx_L5_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 583, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 595, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 583, __pyx_L5_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 595, __pyx_L5_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 583, __pyx_L5_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 595, __pyx_L5_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 583, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 595, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -21784,7 +21970,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 583, __pyx_L5_error)
+            else __PYX_ERR(0, 595, __pyx_L5_error)
           }
           break;
         }
@@ -21792,7 +21978,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       }
       __Pyx_XDECREF_SET(__pyx_8genexpr9__pyx_v_i, __pyx_t_5);
       __pyx_t_5 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_v_theta))) __PYX_ERR(0, 583, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_v_theta))) __PYX_ERR(0, 595, __pyx_L5_error)
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_8genexpr9__pyx_v_i); __pyx_8genexpr9__pyx_v_i = 0;
@@ -21821,25 +22007,25 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 583, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 595, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_thetaE = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":584
+  /* "modules/GLNetEISimLib.py":596
  *     VE0    = theta if VE0 == 0.0 else VE0
  *     thetaE = numpy.array([theta for i in range(pN)])
  *     XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)             # <<<<<<<<<<<<<<
  *     VE     = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
  *     VE     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XE,VE) ],dtype=float)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_generate_IC_spikes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_generate_IC_spikes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_fXE0, __pyx_v_pN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_fXE0, __pyx_v_pN); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 584, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -21861,14 +22047,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_9, 5+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 584, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_XE = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":585
+  /* "modules/GLNetEISimLib.py":597
  *     thetaE = numpy.array([theta for i in range(pN)])
  *     XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
  *     VE     = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]             # <<<<<<<<<<<<<<
@@ -21876,18 +22062,18 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
  *     #for i in range(pN):
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 585, __pyx_L12_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 597, __pyx_L12_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_pN); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 585, __pyx_L12_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_pN); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 597, __pyx_L12_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
       __pyx_t_6 = __pyx_t_4; __Pyx_INCREF(__pyx_t_6);
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 585, __pyx_L12_error)
+      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 597, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 585, __pyx_L12_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 597, __pyx_L12_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -21896,28 +22082,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 585, __pyx_L12_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 597, __pyx_L12_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 585, __pyx_L12_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 597, __pyx_L12_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 585, __pyx_L12_error)
+          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 597, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 585, __pyx_L12_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 597, __pyx_L12_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 585, __pyx_L12_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 597, __pyx_L12_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 585, __pyx_L12_error)
+          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 597, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -21927,7 +22113,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 585, __pyx_L12_error)
+            else __PYX_ERR(0, 597, __pyx_L12_error)
           }
           break;
         }
@@ -21935,9 +22121,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr10__pyx_v_i, __pyx_t_4);
       __pyx_t_4 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 585, __pyx_L12_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 597, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_gauss); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 585, __pyx_L12_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_gauss); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 597, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -21958,14 +22144,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_v_VE0, __pyx_v_VE0Std};
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_9, 2+__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 585, __pyx_L12_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 597, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
-      __pyx_t_5 = __Pyx_PyNumber_Absolute(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 585, __pyx_L12_error)
+      __pyx_t_5 = __Pyx_PyNumber_Absolute(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 597, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 585, __pyx_L12_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 597, __pyx_L12_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -21979,30 +22165,30 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __pyx_v_VE = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":586
+  /* "modules/GLNetEISimLib.py":598
  *     XE     = generate_IC_spikes(XE0,pN,int(fXE0*pN),'excitatory',XE0Rand)
  *     VE     = [abs(random.gauss(VE0,VE0Std)) for i in range(pN)]
  *     VE     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XE,VE) ],dtype=float)             # <<<<<<<<<<<<<<
  *     #for i in range(pN):
  *     #    VE[i] = 0.0 if XE[i] >= 0.5 else VE[i]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 586, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 586, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 586, __pyx_L19_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L19_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L19_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 598, __pyx_L19_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_XE);
     __Pyx_GIVEREF(__pyx_v_XE);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_XE)) __PYX_ERR(0, 586, __pyx_L19_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_XE)) __PYX_ERR(0, 598, __pyx_L19_error);
     __Pyx_INCREF(__pyx_v_VE);
     __Pyx_GIVEREF(__pyx_v_VE);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_VE)) __PYX_ERR(0, 586, __pyx_L19_error);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L19_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_VE)) __PYX_ERR(0, 598, __pyx_L19_error);
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 598, __pyx_L19_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
@@ -22010,9 +22196,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L19_error)
+      __pyx_t_7 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 598, __pyx_L19_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 586, __pyx_L19_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 598, __pyx_L19_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -22021,28 +22207,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_5);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 586, __pyx_L19_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 598, __pyx_L19_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 586, __pyx_L19_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 598, __pyx_L19_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L19_error)
+          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 598, __pyx_L19_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_5);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 586, __pyx_L19_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 598, __pyx_L19_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 586, __pyx_L19_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 598, __pyx_L19_error)
           #else
-          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L19_error)
+          __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 598, __pyx_L19_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -22052,7 +22238,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 586, __pyx_L19_error)
+            else __PYX_ERR(0, 598, __pyx_L19_error)
           }
           break;
         }
@@ -22064,7 +22250,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 586, __pyx_L19_error)
+          __PYX_ERR(0, 598, __pyx_L19_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -22077,15 +22263,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_10);
         #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 586, __pyx_L19_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 598, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 586, __pyx_L19_error)
+        __pyx_t_10 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 598, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 586, __pyx_L19_error)
+        __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 598, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_12 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_11);
@@ -22093,7 +22279,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_GOTREF(__pyx_t_3);
         index = 1; __pyx_t_10 = __pyx_t_12(__pyx_t_11); if (unlikely(!__pyx_t_10)) goto __pyx_L22_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_10);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 2) < 0) __PYX_ERR(0, 586, __pyx_L19_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 2) < 0) __PYX_ERR(0, 598, __pyx_L19_error)
         __pyx_t_12 = NULL;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         goto __pyx_L23_unpacking_done;
@@ -22101,15 +22287,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 586, __pyx_L19_error)
+        __PYX_ERR(0, 598, __pyx_L19_error)
         __pyx_L23_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr11__pyx_v_x, __pyx_t_3);
       __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_9genexpr11__pyx_v_v, __pyx_t_10);
       __pyx_t_10 = 0;
-      __pyx_t_10 = PyObject_RichCompare(__pyx_9genexpr11__pyx_v_x, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 586, __pyx_L19_error)
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 586, __pyx_L19_error)
+      __pyx_t_10 = PyObject_RichCompare(__pyx_9genexpr11__pyx_v_x, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 598, __pyx_L19_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 598, __pyx_L19_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       if (__pyx_t_2) {
         __Pyx_INCREF(__pyx_float_0_0);
@@ -22118,7 +22304,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_INCREF(__pyx_9genexpr11__pyx_v_v);
         __pyx_t_4 = __pyx_9genexpr11__pyx_v_v;
       }
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 586, __pyx_L19_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 598, __pyx_L19_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -22131,15 +22317,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     goto __pyx_L1_error;
     __pyx_L25_exit_scope:;
   } /* exit inner scope */
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 586, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 598, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 586, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyFloat_Type))) < 0) __PYX_ERR(0, 586, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyFloat_Type))) < 0) __PYX_ERR(0, 598, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 598, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -22147,14 +22333,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_VE, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":590
+  /* "modules/GLNetEISimLib.py":602
  *     #    VE[i] = 0.0 if XE[i] >= 0.5 else VE[i]
  * 
  *     VI0    = theta if VI0 == 0.0 else VI0             # <<<<<<<<<<<<<<
  *     thetaI = numpy.array([theta for i in range(qN)])
  *     XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
  */
-  __pyx_t_2 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_VI0, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 590, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyFloat_BoolEqObjC(__pyx_v_VI0, __pyx_float_0_0, 0.0, 0, 0)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 602, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_INCREF(__pyx_v_theta);
     __pyx_t_4 = __pyx_v_theta;
@@ -22165,31 +22351,31 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_VI0, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":591
+  /* "modules/GLNetEISimLib.py":603
  * 
  *     VI0    = theta if VI0 == 0.0 else VI0
  *     thetaI = numpy.array([theta for i in range(qN)])             # <<<<<<<<<<<<<<
  *     XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
  *     VI     = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 603, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L28_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 603, __pyx_L28_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_qN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 591, __pyx_L28_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_qN); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 603, __pyx_L28_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (likely(PyList_CheckExact(__pyx_t_6)) || PyTuple_CheckExact(__pyx_t_6)) {
       __pyx_t_10 = __pyx_t_6; __Pyx_INCREF(__pyx_t_10);
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 591, __pyx_L28_error)
+      __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 603, __pyx_L28_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 591, __pyx_L28_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 603, __pyx_L28_error)
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     for (;;) {
@@ -22198,28 +22384,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_10);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 591, __pyx_L28_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 603, __pyx_L28_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 591, __pyx_L28_error)
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 603, __pyx_L28_error)
           #else
-          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 591, __pyx_L28_error)
+          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 603, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_10);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 591, __pyx_L28_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 603, __pyx_L28_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 591, __pyx_L28_error)
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 603, __pyx_L28_error)
           #else
-          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 591, __pyx_L28_error)
+          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 603, __pyx_L28_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         }
@@ -22229,7 +22415,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 591, __pyx_L28_error)
+            else __PYX_ERR(0, 603, __pyx_L28_error)
           }
           break;
         }
@@ -22237,7 +22423,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr12__pyx_v_i, __pyx_t_6);
       __pyx_t_6 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_v_theta))) __PYX_ERR(0, 591, __pyx_L28_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_v_theta))) __PYX_ERR(0, 603, __pyx_L28_error)
     }
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_XDECREF(__pyx_9genexpr12__pyx_v_i); __pyx_9genexpr12__pyx_v_i = 0;
@@ -22266,25 +22452,25 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_9, 1+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 591, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __pyx_v_thetaI = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":592
+  /* "modules/GLNetEISimLib.py":604
  *     VI0    = theta if VI0 == 0.0 else VI0
  *     thetaI = numpy.array([theta for i in range(qN)])
  *     XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)             # <<<<<<<<<<<<<<
  *     VI     = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
  *     VI     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XI,VI) ],dtype=float)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_generate_IC_spikes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 592, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_generate_IC_spikes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_fXI0, __pyx_v_qN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 592, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_fXI0, __pyx_v_qN); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 592, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -22306,14 +22492,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_9, 5+__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 592, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 604, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __pyx_v_XI = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":593
+  /* "modules/GLNetEISimLib.py":605
  *     thetaI = numpy.array([theta for i in range(qN)])
  *     XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
  *     VI     = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]             # <<<<<<<<<<<<<<
@@ -22321,18 +22507,18 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
  *     #for i in range(qN):
  */
   { /* enter inner scope */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 593, __pyx_L35_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L35_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_qN); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 593, __pyx_L35_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_qN); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 605, __pyx_L35_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
       __pyx_t_10 = __pyx_t_5; __Pyx_INCREF(__pyx_t_10);
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 593, __pyx_L35_error)
+      __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 605, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 593, __pyx_L35_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 605, __pyx_L35_error)
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     for (;;) {
@@ -22341,28 +22527,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_10);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 593, __pyx_L35_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 605, __pyx_L35_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 593, __pyx_L35_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 605, __pyx_L35_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 593, __pyx_L35_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 605, __pyx_L35_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_10);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 593, __pyx_L35_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 605, __pyx_L35_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 593, __pyx_L35_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 605, __pyx_L35_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 593, __pyx_L35_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 605, __pyx_L35_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -22372,7 +22558,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 593, __pyx_L35_error)
+            else __PYX_ERR(0, 605, __pyx_L35_error)
           }
           break;
         }
@@ -22380,9 +22566,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr13__pyx_v_i, __pyx_t_5);
       __pyx_t_5 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 593, __pyx_L35_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_gauss); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 593, __pyx_L35_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_gauss); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 605, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -22403,14 +22589,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_v_VI0, __pyx_v_VI0Std};
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_9, 2+__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 593, __pyx_L35_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 605, __pyx_L35_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
-      __pyx_t_6 = __Pyx_PyNumber_Absolute(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 593, __pyx_L35_error)
+      __pyx_t_6 = __Pyx_PyNumber_Absolute(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 605, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 593, __pyx_L35_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 605, __pyx_L35_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -22424,30 +22610,30 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __pyx_v_VI = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":594
+  /* "modules/GLNetEISimLib.py":606
  *     XI     = generate_IC_spikes(XI0,qN,int(fXI0*qN),'inhibitory',XI0Rand)
  *     VI     = [abs(random.gauss(VI0,VI0Std)) for i in range(qN)]
  *     VI     = numpy.array([ (0.0 if x >= 0.5 else v) for x,v in zip(XI,VI) ],dtype=float)             # <<<<<<<<<<<<<<
  *     #for i in range(qN):
  *     #    VI[i] = 0.0 if XI[i] >= 0.5 else VI[i]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   { /* enter inner scope */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L42_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L42_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 594, __pyx_L42_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 606, __pyx_L42_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_v_XI);
     __Pyx_GIVEREF(__pyx_v_XI);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_XI)) __PYX_ERR(0, 594, __pyx_L42_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_XI)) __PYX_ERR(0, 606, __pyx_L42_error);
     __Pyx_INCREF(__pyx_v_VI);
     __Pyx_GIVEREF(__pyx_v_VI);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_VI)) __PYX_ERR(0, 594, __pyx_L42_error);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 594, __pyx_L42_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_VI)) __PYX_ERR(0, 606, __pyx_L42_error);
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 606, __pyx_L42_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
@@ -22455,9 +22641,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 594, __pyx_L42_error)
+      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 606, __pyx_L42_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 594, __pyx_L42_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 606, __pyx_L42_error)
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     for (;;) {
@@ -22466,28 +22652,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 594, __pyx_L42_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 606, __pyx_L42_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 594, __pyx_L42_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 606, __pyx_L42_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 594, __pyx_L42_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 606, __pyx_L42_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 594, __pyx_L42_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 606, __pyx_L42_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 594, __pyx_L42_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 606, __pyx_L42_error)
           #else
-          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 594, __pyx_L42_error)
+          __pyx_t_5 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 606, __pyx_L42_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -22497,7 +22683,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 594, __pyx_L42_error)
+            else __PYX_ERR(0, 606, __pyx_L42_error)
           }
           break;
         }
@@ -22509,7 +22695,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 594, __pyx_L42_error)
+          __PYX_ERR(0, 606, __pyx_L42_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -22522,15 +22708,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_3);
         #else
-        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 594, __pyx_L42_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L42_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 594, __pyx_L42_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 606, __pyx_L42_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_11 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 594, __pyx_L42_error)
+        __pyx_t_11 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 606, __pyx_L42_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_t_12 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_11);
@@ -22538,7 +22724,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_GOTREF(__pyx_t_1);
         index = 1; __pyx_t_3 = __pyx_t_12(__pyx_t_11); if (unlikely(!__pyx_t_3)) goto __pyx_L45_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_3);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 2) < 0) __PYX_ERR(0, 594, __pyx_L42_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 2) < 0) __PYX_ERR(0, 606, __pyx_L42_error)
         __pyx_t_12 = NULL;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         goto __pyx_L46_unpacking_done;
@@ -22546,15 +22732,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 594, __pyx_L42_error)
+        __PYX_ERR(0, 606, __pyx_L42_error)
         __pyx_L46_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_9genexpr14__pyx_v_x, __pyx_t_1);
       __pyx_t_1 = 0;
       __Pyx_XDECREF_SET(__pyx_9genexpr14__pyx_v_v, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyObject_RichCompare(__pyx_9genexpr14__pyx_v_x, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 594, __pyx_L42_error)
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 594, __pyx_L42_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_9genexpr14__pyx_v_x, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 606, __pyx_L42_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 606, __pyx_L42_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
         __Pyx_INCREF(__pyx_float_0_0);
@@ -22563,7 +22749,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
         __Pyx_INCREF(__pyx_9genexpr14__pyx_v_v);
         __pyx_t_5 = __pyx_9genexpr14__pyx_v_v;
       }
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 594, __pyx_L42_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 606, __pyx_L42_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -22576,15 +22762,15 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
     goto __pyx_L1_error;
     __pyx_L48_exit_scope:;
   } /* exit inner scope */
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 594, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyFloat_Type))) < 0) __PYX_ERR(0, 594, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 594, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, ((PyObject *)(&PyFloat_Type))) < 0) __PYX_ERR(0, 606, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -22592,71 +22778,71 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_VI, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "modules/GLNetEISimLib.py":598
+  /* "modules/GLNetEISimLib.py":610
  *     #    VI[i] = 0.0 if XI[i] >= 0.5 else VI[i]
  * 
  *     rhoE0     = float(sum(XE))/(float(pN) if pN > 0 else 1.0)             # <<<<<<<<<<<<<<
  *     rhoI0     = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
  *     W_I       = g*J
  */
-  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_XE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 598, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_XE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_13 = __Pyx_PyObject_AsDouble(__pyx_t_5); if (unlikely(__pyx_t_13 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 598, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_AsDouble(__pyx_t_5); if (unlikely(__pyx_t_13 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_v_pN, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 598, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 598, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_v_pN, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_2) {
-    __pyx_t_15 = __Pyx_PyObject_AsDouble(__pyx_v_pN); if (unlikely(__pyx_t_15 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 598, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_AsDouble(__pyx_v_pN); if (unlikely(__pyx_t_15 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 610, __pyx_L1_error)
     __pyx_t_14 = __pyx_t_15;
   } else {
     __pyx_t_14 = 1.0;
   }
   if (unlikely(__pyx_t_14 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 598, __pyx_L1_error)
+    __PYX_ERR(0, 610, __pyx_L1_error)
   }
   __pyx_v_rhoE0 = (__pyx_t_13 / __pyx_t_14);
 
-  /* "modules/GLNetEISimLib.py":599
+  /* "modules/GLNetEISimLib.py":611
  * 
  *     rhoE0     = float(sum(XE))/(float(pN) if pN > 0 else 1.0)
  *     rhoI0     = float(sum(XI))/(float(qN) if qN > 0 else 1.0)             # <<<<<<<<<<<<<<
  *     W_I       = g*J
  *     thetaMean = theta
  */
-  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_XI); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_v_XI); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_5); if (unlikely(__pyx_t_14 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_AsDouble(__pyx_t_5); if (unlikely(__pyx_t_14 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_v_qN, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 599, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_v_qN, __pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 611, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 611, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_2) {
-    __pyx_t_15 = __Pyx_PyObject_AsDouble(__pyx_v_qN); if (unlikely(__pyx_t_15 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 599, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_AsDouble(__pyx_v_qN); if (unlikely(__pyx_t_15 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 611, __pyx_L1_error)
     __pyx_t_13 = __pyx_t_15;
   } else {
     __pyx_t_13 = 1.0;
   }
   if (unlikely(__pyx_t_13 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 599, __pyx_L1_error)
+    __PYX_ERR(0, 611, __pyx_L1_error)
   }
   __pyx_v_rhoI0 = (__pyx_t_14 / __pyx_t_13);
 
-  /* "modules/GLNetEISimLib.py":600
+  /* "modules/GLNetEISimLib.py":612
  *     rhoE0     = float(sum(XE))/(float(pN) if pN > 0 else 1.0)
  *     rhoI0     = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
  *     W_I       = g*J             # <<<<<<<<<<<<<<
  *     thetaMean = theta
  *     return VE,XE,VI,XI,rhoE0,rhoI0,thetaE,thetaI,W_I,thetaMean
  */
-  __pyx_t_5 = PyNumber_Multiply(__pyx_v_g, __pyx_v_J); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 600, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_v_g, __pyx_v_J); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 612, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_v_W_I = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "modules/GLNetEISimLib.py":601
+  /* "modules/GLNetEISimLib.py":613
  *     rhoI0     = float(sum(XI))/(float(qN) if qN > 0 else 1.0)
  *     W_I       = g*J
  *     thetaMean = theta             # <<<<<<<<<<<<<<
@@ -22666,7 +22852,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   __Pyx_INCREF(__pyx_v_theta);
   __pyx_v_thetaMean = __pyx_v_theta;
 
-  /* "modules/GLNetEISimLib.py":602
+  /* "modules/GLNetEISimLib.py":614
  *     W_I       = g*J
  *     thetaMean = theta
  *     return VE,XE,VI,XI,rhoE0,rhoI0,thetaE,thetaI,W_I,thetaMean             # <<<<<<<<<<<<<<
@@ -22674,47 +22860,47 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
  * #pythran export generate_IC_spikes(float,int,int,str,bool)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_rhoE0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_rhoE0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_rhoI0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_rhoI0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyTuple_New(10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 602, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_v_VE);
   __Pyx_GIVEREF(__pyx_v_VE);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_VE)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_VE)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_XE);
   __Pyx_GIVEREF(__pyx_v_XE);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_XE)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_XE)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_VI);
   __Pyx_GIVEREF(__pyx_v_VI);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_VI)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_VI)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_XI);
   __Pyx_GIVEREF(__pyx_v_XI);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_v_XI)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_v_XI)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_t_5)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_t_5)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 5, __pyx_t_4)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 5, __pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_thetaE);
   __Pyx_GIVEREF(__pyx_v_thetaE);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 6, __pyx_v_thetaE)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 6, __pyx_v_thetaE)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_thetaI);
   __Pyx_GIVEREF(__pyx_v_thetaI);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 7, __pyx_v_thetaI)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 7, __pyx_v_thetaI)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_W_I);
   __Pyx_GIVEREF(__pyx_v_W_I);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 8, __pyx_v_W_I)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 8, __pyx_v_W_I)) __PYX_ERR(0, 614, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_thetaMean);
   __Pyx_GIVEREF(__pyx_v_thetaMean);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 9, __pyx_v_thetaMean)) __PYX_ERR(0, 602, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 9, __pyx_v_thetaMean)) __PYX_ERR(0, 614, __pyx_L1_error);
   __pyx_t_5 = 0;
   __pyx_t_4 = 0;
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":581
+  /* "modules/GLNetEISimLib.py":593
  * 
  * #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):             # <<<<<<<<<<<<<<
@@ -22757,7 +22943,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_40set_MF_network_IC(CYTHON_UN
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":605
+/* "modules/GLNetEISimLib.py":617
  * 
  * #pythran export generate_IC_spikes(float,int,int,str,bool)
  * def generate_IC_spikes(X0,N,K,neuronType,is_random):             # <<<<<<<<<<<<<<
@@ -22831,7 +23017,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -22839,9 +23025,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 1); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 1); __PYX_ERR(0, 617, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -22849,9 +23035,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 2); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 2); __PYX_ERR(0, 617, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -22859,9 +23045,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 3); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 3); __PYX_ERR(0, 617, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -22869,14 +23055,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 617, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 4); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, 4); __PYX_ERR(0, 617, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "generate_IC_spikes") < 0)) __PYX_ERR(0, 605, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "generate_IC_spikes") < 0)) __PYX_ERR(0, 617, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 5)) {
       goto __pyx_L5_argtuple_error;
@@ -22895,7 +23081,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, __pyx_nargs); __PYX_ERR(0, 605, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("generate_IC_spikes", 1, 5, 5, __pyx_nargs); __PYX_ERR(0, 617, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22942,66 +23128,66 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
   __Pyx_RefNannySetupContext("generate_IC_spikes", 0);
   __Pyx_INCREF(__pyx_v_X0);
 
-  /* "modules/GLNetEISimLib.py":608
+  /* "modules/GLNetEISimLib.py":620
  *     """generates a list X of zeros with len N containing K ones
  *     """
  *     X0 = float(X0>=0.5) # x0 can only be 1 or 0             # <<<<<<<<<<<<<<
  *     if K == 0:
  *         if (X0 < 0.5):
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_X0, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 608, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_X0, __pyx_float_0_5, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 620, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_X0, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":609
+  /* "modules/GLNetEISimLib.py":621
  *     """
  *     X0 = float(X0>=0.5) # x0 can only be 1 or 0
  *     if K == 0:             # <<<<<<<<<<<<<<
  *         if (X0 < 0.5):
  *             print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
  */
-  __pyx_t_3 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_K, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_K, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 621, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "modules/GLNetEISimLib.py":610
+    /* "modules/GLNetEISimLib.py":622
  *     X0 = float(X0>=0.5) # x0 can only be 1 or 0
  *     if K == 0:
  *         if (X0 < 0.5):             # <<<<<<<<<<<<<<
  *             print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
  *             X = numpy.zeros(N)
  */
-    __pyx_t_2 = PyObject_RichCompare(__pyx_v_X0, __pyx_float_0_5, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 610, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_v_X0, __pyx_float_0_5, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_3) {
 
-      /* "modules/GLNetEISimLib.py":611
+      /* "modules/GLNetEISimLib.py":623
  *     if K == 0:
  *         if (X0 < 0.5):
  *             print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))             # <<<<<<<<<<<<<<
  *             X = numpy.zeros(N)
  *         else:
  */
-      __pyx_t_2 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s_IC_starting_from_the_absorbin, __pyx_v_neuronType); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s_IC_starting_from_the_absorbin, __pyx_v_neuronType); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 623, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":612
+      /* "modules/GLNetEISimLib.py":624
  *         if (X0 < 0.5):
  *             print(' ... %s IC: starting from the absorbing state (all inactive neurons) because fX0 = 0.0 and X0 = 0.0'%(neuronType))
  *             X = numpy.zeros(N)             # <<<<<<<<<<<<<<
  *         else:
  *             print(' ... %s IC: starting from all active neurons'%(neuronType))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 624, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 612, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
@@ -23022,14 +23208,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
         PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_N};
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 624, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __pyx_v_X = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "modules/GLNetEISimLib.py":610
+      /* "modules/GLNetEISimLib.py":622
  *     X0 = float(X0>=0.5) # x0 can only be 1 or 0
  *     if K == 0:
  *         if (X0 < 0.5):             # <<<<<<<<<<<<<<
@@ -23039,7 +23225,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       goto __pyx_L4;
     }
 
-    /* "modules/GLNetEISimLib.py":614
+    /* "modules/GLNetEISimLib.py":626
  *             X = numpy.zeros(N)
  *         else:
  *             print(' ... %s IC: starting from all active neurons'%(neuronType))             # <<<<<<<<<<<<<<
@@ -23047,23 +23233,23 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
  *     else: #(X0 >= 0.5) and is_random:
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s_IC_starting_from_all_active_n, __pyx_v_neuronType); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s_IC_starting_from_all_active_n, __pyx_v_neuronType); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "modules/GLNetEISimLib.py":615
+      /* "modules/GLNetEISimLib.py":627
  *         else:
  *             print(' ... %s IC: starting from all active neurons'%(neuronType))
  *             X = numpy.ones(N)             # <<<<<<<<<<<<<<
  *     else: #(X0 >= 0.5) and is_random:
  *         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_numpy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 627, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 615, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 627, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -23084,7 +23270,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
         PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_N};
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 615, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 627, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -23093,7 +23279,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
     }
     __pyx_L4:;
 
-    /* "modules/GLNetEISimLib.py":609
+    /* "modules/GLNetEISimLib.py":621
  *     """
  *     X0 = float(X0>=0.5) # x0 can only be 1 or 0
  *     if K == 0:             # <<<<<<<<<<<<<<
@@ -23103,7 +23289,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
     goto __pyx_L3;
   }
 
-  /* "modules/GLNetEISimLib.py":617
+  /* "modules/GLNetEISimLib.py":629
  *             X = numpy.ones(N)
  *     else: #(X0 >= 0.5) and is_random:
  *         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))             # <<<<<<<<<<<<<<
@@ -23111,7 +23297,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
  *         if is_random:
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_is_random); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 617, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_is_random); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 629, __pyx_L1_error)
     if (__pyx_t_3) {
       __Pyx_INCREF(__pyx_n_s_random);
       __pyx_t_4 = __pyx_n_s_random;
@@ -23119,35 +23305,35 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       __Pyx_INCREF(__pyx_n_s_sequential);
       __pyx_t_4 = __pyx_n_s_sequential;
     }
-    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_neuronType);
     __Pyx_GIVEREF(__pyx_v_neuronType);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_neuronType)) __PYX_ERR(0, 617, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_neuronType)) __PYX_ERR(0, 629, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_K);
     __Pyx_GIVEREF(__pyx_v_K);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_K)) __PYX_ERR(0, 617, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_K)) __PYX_ERR(0, 629, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_t_4)) __PYX_ERR(0, 629, __pyx_L1_error);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_s_IC_starting_with_d_s_active_n, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_s_IC_starting_with_d_s_active_n, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 629, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":618
+    /* "modules/GLNetEISimLib.py":630
  *     else: #(X0 >= 0.5) and is_random:
  *         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
  *         X = numpy.zeros(N)             # <<<<<<<<<<<<<<
  *         if is_random:
  *             start_activity_idx = random.sample(range(N),K)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 630, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 630, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -23168,36 +23354,36 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_N};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __pyx_v_X = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "modules/GLNetEISimLib.py":619
+    /* "modules/GLNetEISimLib.py":631
  *         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
  *         X = numpy.zeros(N)
  *         if is_random:             # <<<<<<<<<<<<<<
  *             start_activity_idx = random.sample(range(N),K)
  *         else:
  */
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_is_random); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 619, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_is_random); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 631, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "modules/GLNetEISimLib.py":620
+      /* "modules/GLNetEISimLib.py":632
  *         X = numpy.zeros(N)
  *         if is_random:
  *             start_activity_idx = random.sample(range(N),K)             # <<<<<<<<<<<<<<
  *         else:
  *             start_activity_idx = list(range(K))
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sample); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 620, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sample); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_6 = NULL;
       __pyx_t_5 = 0;
@@ -23218,14 +23404,14 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 620, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 632, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __pyx_v_start_activity_idx = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "modules/GLNetEISimLib.py":619
+      /* "modules/GLNetEISimLib.py":631
  *         print(' ... %s IC: starting with %d %s active neurons regardless of X0'%(neuronType,K,'random' if is_random else 'sequential'))
  *         X = numpy.zeros(N)
  *         if is_random:             # <<<<<<<<<<<<<<
@@ -23235,7 +23421,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       goto __pyx_L5;
     }
 
-    /* "modules/GLNetEISimLib.py":622
+    /* "modules/GLNetEISimLib.py":634
  *             start_activity_idx = random.sample(range(N),K)
  *         else:
  *             start_activity_idx = list(range(K))             # <<<<<<<<<<<<<<
@@ -23243,9 +23429,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
  *             X[k] = 1.0
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_K); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_K); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 634, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PySequence_ListKeepNew(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 622, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PySequence_ListKeepNew(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_start_activity_idx = __pyx_t_4;
@@ -23253,7 +23439,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
     }
     __pyx_L5:;
 
-    /* "modules/GLNetEISimLib.py":623
+    /* "modules/GLNetEISimLib.py":635
  *         else:
  *             start_activity_idx = list(range(K))
  *         for k in start_activity_idx:             # <<<<<<<<<<<<<<
@@ -23265,9 +23451,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_start_activity_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 623, __pyx_L1_error)
+      __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_start_activity_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 635, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 623, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 635, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_8)) {
@@ -23275,28 +23461,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 623, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 635, __pyx_L1_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 623, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 635, __pyx_L1_error)
           #else
-          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 623, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 635, __pyx_L1_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 623, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 635, __pyx_L1_error)
           #else
-          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 623, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 635, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -23306,7 +23492,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 623, __pyx_L1_error)
+            else __PYX_ERR(0, 635, __pyx_L1_error)
           }
           break;
         }
@@ -23315,16 +23501,16 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
       __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "modules/GLNetEISimLib.py":624
+      /* "modules/GLNetEISimLib.py":636
  *             start_activity_idx = list(range(K))
  *         for k in start_activity_idx:
  *             X[k] = 1.0             # <<<<<<<<<<<<<<
  *     return X
  * 
  */
-      if (unlikely((PyObject_SetItem(__pyx_v_X, __pyx_v_k, __pyx_float_1_0) < 0))) __PYX_ERR(0, 624, __pyx_L1_error)
+      if (unlikely((PyObject_SetItem(__pyx_v_X, __pyx_v_k, __pyx_float_1_0) < 0))) __PYX_ERR(0, 636, __pyx_L1_error)
 
-      /* "modules/GLNetEISimLib.py":623
+      /* "modules/GLNetEISimLib.py":635
  *         else:
  *             start_activity_idx = list(range(K))
  *         for k in start_activity_idx:             # <<<<<<<<<<<<<<
@@ -23336,7 +23522,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
   }
   __pyx_L3:;
 
-  /* "modules/GLNetEISimLib.py":625
+  /* "modules/GLNetEISimLib.py":637
  *         for k in start_activity_idx:
  *             X[k] = 1.0
  *     return X             # <<<<<<<<<<<<<<
@@ -23348,7 +23534,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
   __pyx_r = __pyx_v_X;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":605
+  /* "modules/GLNetEISimLib.py":617
  * 
  * #pythran export generate_IC_spikes(float,int,int,str,bool)
  * def generate_IC_spikes(X0,N,K,neuronType,is_random):             # <<<<<<<<<<<<<<
@@ -23374,7 +23560,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_42generate_IC_spikes(CYTHON_U
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":638
+/* "modules/GLNetEISimLib.py":650
  * 
  * #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -23465,7 +23651,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -23473,9 +23659,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 1); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 1); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -23483,9 +23669,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 2); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 2); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -23493,9 +23679,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 3); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 3); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -23503,9 +23689,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 4); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 4); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -23513,9 +23699,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 5); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 5); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -23523,9 +23709,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 6); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 6); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -23533,9 +23719,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 7); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 7); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -23543,9 +23729,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 8); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 8); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -23553,9 +23739,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 9); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 9); __PYX_ERR(0, 650, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -23563,14 +23749,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 638, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 10); __PYX_ERR(0, 638, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, 10); __PYX_ERR(0, 650, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthresh_iter") < 0)) __PYX_ERR(0, 638, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthresh_iter") < 0)) __PYX_ERR(0, 650, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 11)) {
       goto __pyx_L5_argtuple_error;
@@ -23601,7 +23787,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 638, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthresh_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 650, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -23644,64 +23830,64 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_44GLNetEIRand_adaptthresh_ite
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":639
+  /* "modules/GLNetEISimLib.py":651
  * #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = theta * (1.0 - tauTinv + uT*X)             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 651, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":640
+  /* "modules/GLNetEISimLib.py":652
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_v_Iext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_v_Iext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_synapticInput); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_synapticInput); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 640, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 652, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":641
+  /* "modules/GLNetEISimLib.py":653
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -23722,11 +23908,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_44GLNetEIRand_adaptthresh_ite
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 641, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 653, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PHI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PHI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -23746,29 +23932,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_44GLNetEIRand_adaptthresh_ite
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 641, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":642
+  /* "modules/GLNetEISimLib.py":654
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -23776,22 +23962,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_44GLNetEIRand_adaptthresh_ite
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 654, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_V)) __PYX_ERR(0, 642, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_V)) __PYX_ERR(0, 654, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_X)) __PYX_ERR(0, 642, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_X)) __PYX_ERR(0, 654, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_theta)) __PYX_ERR(0, 642, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_theta)) __PYX_ERR(0, 654, __pyx_L1_error);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":638
+  /* "modules/GLNetEISimLib.py":650
  * 
  * #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -23816,7 +24002,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_44GLNetEIRand_adaptthresh_ite
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":645
+/* "modules/GLNetEISimLib.py":657
  * 
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -23907,7 +24093,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -23915,9 +24101,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 1); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 1); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -23925,9 +24111,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 2); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 2); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -23935,9 +24121,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 3); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 3); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -23945,9 +24131,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 4); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 4); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -23955,9 +24141,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 5); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 5); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -23965,9 +24151,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 6); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 6); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -23975,9 +24161,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 7); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 7); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -23985,9 +24171,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 8); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 8); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -23995,9 +24181,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 9); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 9); __PYX_ERR(0, 657, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -24005,14 +24191,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 10); __PYX_ERR(0, 645, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, 10); __PYX_ERR(0, 657, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthreshlinear_iter") < 0)) __PYX_ERR(0, 645, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthreshlinear_iter") < 0)) __PYX_ERR(0, 657, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 11)) {
       goto __pyx_L5_argtuple_error;
@@ -24043,7 +24229,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 645, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshlinear_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 657, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -24086,64 +24272,64 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_46GLNetEIRand_adaptthreshline
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":646
+  /* "modules/GLNetEISimLib.py":658
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = theta * (1.0 - tauTinv) + uT*X             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 658, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 658, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 658, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":647
+  /* "modules/GLNetEISimLib.py":659
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_Iext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_Iext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_synapticInput); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_synapticInput); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":648
+  /* "modules/GLNetEISimLib.py":660
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -24164,11 +24350,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_46GLNetEIRand_adaptthreshline
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_PHI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_PHI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -24188,29 +24374,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_46GLNetEIRand_adaptthreshline
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":649
+  /* "modules/GLNetEISimLib.py":661
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -24218,22 +24404,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_46GLNetEIRand_adaptthreshline
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 649, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 661, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_V)) __PYX_ERR(0, 649, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_V)) __PYX_ERR(0, 661, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_X)) __PYX_ERR(0, 649, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_X)) __PYX_ERR(0, 661, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_theta)) __PYX_ERR(0, 649, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_theta)) __PYX_ERR(0, 661, __pyx_L1_error);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":645
+  /* "modules/GLNetEISimLib.py":657
  * 
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -24258,7 +24444,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_46GLNetEIRand_adaptthreshline
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":652
+/* "modules/GLNetEISimLib.py":664
  * 
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -24349,7 +24535,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -24357,9 +24543,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 1); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 1); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -24367,9 +24553,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 2); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 2); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -24377,9 +24563,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 3); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 3); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -24387,9 +24573,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 4); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 4); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -24397,9 +24583,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 5); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 5); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -24407,9 +24593,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 6); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 6); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -24417,9 +24603,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 7); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 7); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -24427,9 +24613,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 8); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 8); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -24437,9 +24623,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 9); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 9); __PYX_ERR(0, 664, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -24447,14 +24633,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 664, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 10); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, 10); __PYX_ERR(0, 664, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthreshsaturate_iter") < 0)) __PYX_ERR(0, 652, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_adaptthreshsaturate_iter") < 0)) __PYX_ERR(0, 664, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 11)) {
       goto __pyx_L5_argtuple_error;
@@ -24485,7 +24671,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 652, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_adaptthreshsaturate_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 664, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -24529,28 +24715,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":653
+  /* "modules/GLNetEISimLib.py":665
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_uT, __pyx_v_tauTinv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_uT, __pyx_v_tauTinv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 665, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_5) {
     __Pyx_INCREF(__pyx_t_1);
@@ -24567,43 +24753,43 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":654
+  /* "modules/GLNetEISimLib.py":666
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_synapticInput); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_synapticInput); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 654, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":655
+  /* "modules/GLNetEISimLib.py":667
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -24624,11 +24810,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
     PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 655, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = NULL;
   __pyx_t_6 = 0;
@@ -24648,29 +24834,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
     PyObject *__pyx_callargs[4] = {__pyx_t_2, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_6, 3+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 655, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 667, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":656
+  /* "modules/GLNetEISimLib.py":668
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -24678,22 +24864,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 656, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 668, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 656, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 668, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 656, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 668, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 656, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 668, __pyx_L1_error);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":652
+  /* "modules/GLNetEISimLib.py":664
  * 
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -24718,7 +24904,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_48GLNetEIRand_adaptthreshsatu
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":659
+/* "modules/GLNetEISimLib.py":671
  * 
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -24809,7 +24995,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -24817,9 +25003,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 1); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 1); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -24827,9 +25013,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 2); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 2); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -24837,9 +25023,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 3); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 3); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -24847,9 +25033,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 4); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 4); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -24857,9 +25043,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 5); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 5); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -24867,9 +25053,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 6); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 6); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -24877,9 +25063,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 7); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 7); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -24887,9 +25073,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 8); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 8); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -24897,9 +25083,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 9); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 9); __PYX_ERR(0, 671, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -24907,14 +25093,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 659, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 671, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 10); __PYX_ERR(0, 659, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, 10); __PYX_ERR(0, 671, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_static_iter") < 0)) __PYX_ERR(0, 659, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIRand_static_iter") < 0)) __PYX_ERR(0, 671, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 11)) {
       goto __pyx_L5_argtuple_error;
@@ -24945,7 +25131,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 659, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIRand_static_iter", 1, 11, 11, __pyx_nargs); __PYX_ERR(0, 671, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -24987,43 +25173,43 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_50GLNetEIRand_static_iter(CYT
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_INCREF(__pyx_v_X);
 
-  /* "modules/GLNetEISimLib.py":660
+  /* "modules/GLNetEISimLib.py":672
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     V = (mu*V + I + Iext + synapticInput)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_synapticInput); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_synapticInput); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":661
+  /* "modules/GLNetEISimLib.py":673
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):
  *     V = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -25044,11 +25230,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_50GLNetEIRand_static_iter(CYT
     PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 661, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 673, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -25068,29 +25254,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_50GLNetEIRand_static_iter(CYT
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 661, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 673, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":662
+  /* "modules/GLNetEISimLib.py":674
  *     V = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -25098,22 +25284,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_50GLNetEIRand_static_iter(CYT
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 662, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 674, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 662, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 674, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 662, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 674, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 662, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 674, __pyx_L1_error);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":659
+  /* "modules/GLNetEISimLib.py":671
  * 
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
@@ -25137,7 +25323,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_50GLNetEIRand_static_iter(CYT
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":665
+/* "modules/GLNetEISimLib.py":677
  * 
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -25243,7 +25429,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -25251,9 +25437,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 1); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 1); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -25261,9 +25447,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 2); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 2); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -25271,9 +25457,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 3); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 3); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -25281,9 +25467,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 4); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 4); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -25291,9 +25477,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 5); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 5); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -25301,9 +25487,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 6); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 6); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -25311,9 +25497,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 7); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 7); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -25321,9 +25507,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 8); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 8); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -25331,9 +25517,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 9); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 9); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -25341,9 +25527,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 10); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 10); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
@@ -25351,9 +25537,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[11]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 11); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 11); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
@@ -25361,9 +25547,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[12]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 12); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 12); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -25371,9 +25557,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[13]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 13); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 13); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -25381,9 +25567,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[14]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 14); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 14); __PYX_ERR(0, 677, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
@@ -25391,14 +25577,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[15]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 665, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 677, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 15); __PYX_ERR(0, 665, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, 15); __PYX_ERR(0, 677, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthresh_iter") < 0)) __PYX_ERR(0, 665, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthresh_iter") < 0)) __PYX_ERR(0, 677, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 16)) {
       goto __pyx_L5_argtuple_error;
@@ -25439,7 +25625,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 665, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthresh_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 677, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -25482,79 +25668,79 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_52GLNetEIMF_adaptthresh_iter(
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":666
+  /* "modules/GLNetEISimLib.py":678
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = theta * (1.0 - tauTinv + uT*X)             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 678, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 678, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 678, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":667
+  /* "modules/GLNetEISimLib.py":679
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_v_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_v_Iext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_3, __pyx_v_Iext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_rhoI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_rhoI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":668
+  /* "modules/GLNetEISimLib.py":680
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -25575,11 +25761,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_52GLNetEIMF_adaptthresh_iter(
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 668, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 680, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PHI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_PHI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -25599,29 +25785,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_52GLNetEIMF_adaptthresh_iter(
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 668, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":669
+  /* "modules/GLNetEISimLib.py":681
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -25629,22 +25815,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_52GLNetEIMF_adaptthresh_iter(
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 681, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_V)) __PYX_ERR(0, 669, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_V)) __PYX_ERR(0, 681, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_X)) __PYX_ERR(0, 669, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_X)) __PYX_ERR(0, 681, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_theta)) __PYX_ERR(0, 669, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_theta)) __PYX_ERR(0, 681, __pyx_L1_error);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":665
+  /* "modules/GLNetEISimLib.py":677
  * 
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -25669,7 +25855,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_52GLNetEIMF_adaptthresh_iter(
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":672
+/* "modules/GLNetEISimLib.py":684
  * 
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -25775,7 +25961,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -25783,9 +25969,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 1); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 1); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -25793,9 +25979,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 2); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 2); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -25803,9 +25989,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 3); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 3); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -25813,9 +25999,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 4); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 4); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -25823,9 +26009,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 5); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 5); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -25833,9 +26019,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 6); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 6); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -25843,9 +26029,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 7); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 7); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -25853,9 +26039,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 8); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 8); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -25863,9 +26049,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 9); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 9); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -25873,9 +26059,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 10); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 10); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
@@ -25883,9 +26069,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[11]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 11); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 11); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
@@ -25893,9 +26079,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[12]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 12); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 12); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -25903,9 +26089,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[13]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 13); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 13); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -25913,9 +26099,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[14]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 14); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 14); __PYX_ERR(0, 684, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
@@ -25923,14 +26109,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[15]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 672, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 15); __PYX_ERR(0, 672, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, 15); __PYX_ERR(0, 684, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthreshsaturate_iter") < 0)) __PYX_ERR(0, 672, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthreshsaturate_iter") < 0)) __PYX_ERR(0, 684, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 16)) {
       goto __pyx_L5_argtuple_error;
@@ -25971,7 +26157,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 672, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshsaturate_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 684, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26015,28 +26201,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":673
+  /* "modules/GLNetEISimLib.py":685
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_uT, __pyx_v_tauTinv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_uT, __pyx_v_tauTinv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 673, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_5) {
     __Pyx_INCREF(__pyx_t_1);
@@ -26053,58 +26239,58 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":674
+  /* "modules/GLNetEISimLib.py":686
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_4, __pyx_v_rhoE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_4, __pyx_v_rhoE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 686, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "modules/GLNetEISimLib.py":675
+  /* "modules/GLNetEISimLib.py":687
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -26125,11 +26311,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
     PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 675, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 687, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = NULL;
   __pyx_t_6 = 0;
@@ -26149,29 +26335,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
     PyObject *__pyx_callargs[4] = {__pyx_t_2, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_6, 3+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_4, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 675, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":676
+  /* "modules/GLNetEISimLib.py":688
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -26179,22 +26365,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 676, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 688, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 688, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 676, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 688, __pyx_L1_error);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":672
+  /* "modules/GLNetEISimLib.py":684
  * 
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -26219,7 +26405,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_54GLNetEIMF_adaptthreshsatura
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":679
+/* "modules/GLNetEISimLib.py":691
  * 
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -26325,7 +26511,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -26333,9 +26519,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 1); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 1); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -26343,9 +26529,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 2); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 2); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -26353,9 +26539,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 3); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 3); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -26363,9 +26549,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 4); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 4); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -26373,9 +26559,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 5); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 5); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -26383,9 +26569,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 6); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 6); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -26393,9 +26579,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 7); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 7); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -26403,9 +26589,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 8); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 8); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -26413,9 +26599,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 9); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 9); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -26423,9 +26609,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 10); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 10); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
@@ -26433,9 +26619,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[11]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 11); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 11); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
@@ -26443,9 +26629,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[12]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 12); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 12); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -26453,9 +26639,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[13]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 13); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 13); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -26463,9 +26649,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[14]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 14); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 14); __PYX_ERR(0, 691, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
@@ -26473,14 +26659,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[15]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 679, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 691, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 15); __PYX_ERR(0, 679, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, 15); __PYX_ERR(0, 691, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthreshlinear_iter") < 0)) __PYX_ERR(0, 679, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_adaptthreshlinear_iter") < 0)) __PYX_ERR(0, 691, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 16)) {
       goto __pyx_L5_argtuple_error;
@@ -26521,7 +26707,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 679, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_adaptthreshlinear_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 691, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26564,79 +26750,79 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_56GLNetEIMF_adaptthreshlinear
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_INCREF(__pyx_v_theta);
 
-  /* "modules/GLNetEISimLib.py":680
+  /* "modules/GLNetEISimLib.py":692
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = theta * (1.0 - tauTinv) + uT*X             # <<<<<<<<<<<<<<
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauTinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_uT, __pyx_v_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_theta, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":681
+  /* "modules/GLNetEISimLib.py":693
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_Iext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_Iext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_rhoE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_v_rhoE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_q, __pyx_v_W_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_rhoI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_rhoI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 681, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":682
+  /* "modules/GLNetEISimLib.py":694
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -26657,11 +26843,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_56GLNetEIMF_adaptthreshlinear
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 682, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 694, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_PHI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_PHI); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -26681,29 +26867,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_56GLNetEIMF_adaptthreshlinear
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 682, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 682, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "modules/GLNetEISimLib.py":683
+  /* "modules/GLNetEISimLib.py":695
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  *     X     = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -26711,22 +26897,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_56GLNetEIMF_adaptthreshlinear
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 683, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 695, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_V)) __PYX_ERR(0, 683, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_V)) __PYX_ERR(0, 695, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_X)) __PYX_ERR(0, 683, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_X)) __PYX_ERR(0, 695, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_theta)) __PYX_ERR(0, 683, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_theta)) __PYX_ERR(0, 695, __pyx_L1_error);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":679
+  /* "modules/GLNetEISimLib.py":691
  * 
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -26751,7 +26937,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_56GLNetEIMF_adaptthreshlinear
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":686
+/* "modules/GLNetEISimLib.py":698
  * 
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -26857,7 +27043,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -26865,9 +27051,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 1); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 1); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -26875,9 +27061,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 2); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 2); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -26885,9 +27071,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 3); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 3); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -26895,9 +27081,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 4); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 4); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -26905,9 +27091,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 5); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 5); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -26915,9 +27101,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 6); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 6); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -26925,9 +27111,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 7); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 7); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -26935,9 +27121,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 8); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 8); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
@@ -26945,9 +27131,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[9]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 9); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 9); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
@@ -26955,9 +27141,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[10]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 10); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 10); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
@@ -26965,9 +27151,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[11]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 11); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 11); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
@@ -26975,9 +27161,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[12]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 12); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 12); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
@@ -26985,9 +27171,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[13]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 13); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 13); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
@@ -26995,9 +27181,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[14]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 14); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 14); __PYX_ERR(0, 698, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
@@ -27005,14 +27191,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[15]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 15); __PYX_ERR(0, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, 15); __PYX_ERR(0, 698, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_static_iter") < 0)) __PYX_ERR(0, 686, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "GLNetEIMF_static_iter") < 0)) __PYX_ERR(0, 698, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 16)) {
       goto __pyx_L5_argtuple_error;
@@ -27053,7 +27239,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 686, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("GLNetEIMF_static_iter", 1, 16, 16, __pyx_nargs); __PYX_ERR(0, 698, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27095,58 +27281,58 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_58GLNetEIMF_static_iter(CYTHO
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_INCREF(__pyx_v_X);
 
-  /* "modules/GLNetEISimLib.py":687
+  /* "modules/GLNetEISimLib.py":699
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):
  *     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)             # <<<<<<<<<<<<<<
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_mu, __pyx_v_V); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_I); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_Iext); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_J, __pyx_v_p); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_rhoE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_v_rhoE); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_q, __pyx_v_gJ); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_q, __pyx_v_gJ); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_v_rhoI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_X, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 699, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_V, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":688
+  /* "modules/GLNetEISimLib.py":700
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):
  *     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection             # <<<<<<<<<<<<<<
  *     return V,X,theta
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -27167,11 +27353,11 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_58GLNetEIMF_static_iter(CYTHO
     PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 688, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 700, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_PHI); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   __pyx_t_4 = 0;
@@ -27191,29 +27377,29 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_58GLNetEIMF_static_iter(CYTHO
     PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_v_V, __pyx_v_theta, __pyx_v_Gamma};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 688, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 700, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_P_poisson, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_5, __pyx_v_P_poisson); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":689
+  /* "modules/GLNetEISimLib.py":701
  *     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  *     return V,X,theta             # <<<<<<<<<<<<<<
@@ -27221,22 +27407,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_58GLNetEIMF_static_iter(CYTHO
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_V);
   __Pyx_GIVEREF(__pyx_v_V);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 689, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_V)) __PYX_ERR(0, 701, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_X);
   __Pyx_GIVEREF(__pyx_v_X);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 689, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_X)) __PYX_ERR(0, 701, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_theta);
   __Pyx_GIVEREF(__pyx_v_theta);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 689, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_theta)) __PYX_ERR(0, 701, __pyx_L1_error);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":686
+  /* "modules/GLNetEISimLib.py":698
  * 
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
@@ -27260,7 +27446,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_58GLNetEIMF_static_iter(CYTHO
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":692
+/* "modules/GLNetEISimLib.py":704
  * 
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  * def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27336,7 +27522,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -27344,9 +27530,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 1); __PYX_ERR(0, 692, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 1); __PYX_ERR(0, 704, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -27354,9 +27540,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 2); __PYX_ERR(0, 692, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 2); __PYX_ERR(0, 704, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -27364,9 +27550,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 3); __PYX_ERR(0, 692, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 3); __PYX_ERR(0, 704, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -27374,9 +27560,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 4); __PYX_ERR(0, 692, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 4); __PYX_ERR(0, 704, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -27384,14 +27570,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 692, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 5); __PYX_ERR(0, 692, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, 5); __PYX_ERR(0, 704, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_constant") < 0)) __PYX_ERR(0, 692, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_constant") < 0)) __PYX_ERR(0, 704, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
@@ -27412,7 +27598,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 692, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("weightAdapt_constant", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 704, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27444,7 +27630,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_60weightAdapt_constant(CYTHON
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("weightAdapt_constant", 1);
 
-  /* "modules/GLNetEISimLib.py":693
+  /* "modules/GLNetEISimLib.py":705
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  * def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):
  *     return W             # <<<<<<<<<<<<<<
@@ -27456,7 +27642,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_60weightAdapt_constant(CYTHON
   __pyx_r = __pyx_v_W;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":692
+  /* "modules/GLNetEISimLib.py":704
  * 
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  * def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27471,7 +27657,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_60weightAdapt_constant(CYTHON
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":696
+/* "modules/GLNetEISimLib.py":708
  * 
  * #pythran export weightAdapt_decrease(float, float, float, float, float, float)
  * def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27547,7 +27733,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -27555,9 +27741,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 1); __PYX_ERR(0, 696, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 1); __PYX_ERR(0, 708, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -27565,9 +27751,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 2); __PYX_ERR(0, 696, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 2); __PYX_ERR(0, 708, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -27575,9 +27761,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 3); __PYX_ERR(0, 696, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 3); __PYX_ERR(0, 708, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -27585,9 +27771,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 4); __PYX_ERR(0, 696, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 4); __PYX_ERR(0, 708, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -27595,14 +27781,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 708, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 5); __PYX_ERR(0, 696, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, 5); __PYX_ERR(0, 708, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_decrease") < 0)) __PYX_ERR(0, 696, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_decrease") < 0)) __PYX_ERR(0, 708, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
@@ -27623,7 +27809,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 696, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("weightAdapt_decrease", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 708, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27661,7 +27847,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_62weightAdapt_decrease(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("weightAdapt_decrease", 1);
 
-  /* "modules/GLNetEISimLib.py":697
+  /* "modules/GLNetEISimLib.py":709
  * #pythran export weightAdapt_decrease(float, float, float, float, float, float)
  * def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):
  *     return W * (1.0 - tauWinv - uW*rhoI) + tauWinv * A             # <<<<<<<<<<<<<<
@@ -27669,20 +27855,20 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_62weightAdapt_decrease(CYTHON
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauWinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauWinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uW, __pyx_v_rhoI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uW, __pyx_v_rhoI); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_W, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_W, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_tauWinv, __pyx_v_A); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_tauWinv, __pyx_v_A); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -27690,7 +27876,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_62weightAdapt_decrease(CYTHON
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":696
+  /* "modules/GLNetEISimLib.py":708
  * 
  * #pythran export weightAdapt_decrease(float, float, float, float, float, float)
  * def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27711,7 +27897,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_62weightAdapt_decrease(CYTHON
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":700
+/* "modules/GLNetEISimLib.py":712
  * 
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  * def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27787,7 +27973,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -27795,9 +27981,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 1); __PYX_ERR(0, 700, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 1); __PYX_ERR(0, 712, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -27805,9 +27991,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 2); __PYX_ERR(0, 700, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 2); __PYX_ERR(0, 712, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -27815,9 +28001,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 3); __PYX_ERR(0, 700, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 3); __PYX_ERR(0, 712, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -27825,9 +28011,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 4); __PYX_ERR(0, 700, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 4); __PYX_ERR(0, 712, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -27835,14 +28021,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 700, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 5); __PYX_ERR(0, 700, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, 5); __PYX_ERR(0, 712, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_increase") < 0)) __PYX_ERR(0, 700, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "weightAdapt_increase") < 0)) __PYX_ERR(0, 712, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
@@ -27863,7 +28049,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 700, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("weightAdapt_increase", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 712, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -27901,7 +28087,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_64weightAdapt_increase(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("weightAdapt_increase", 1);
 
-  /* "modules/GLNetEISimLib.py":701
+  /* "modules/GLNetEISimLib.py":713
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  * def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):
  *     return W * (1.0 - tauWinv + uW*rhoE) + tauWinv * A             # <<<<<<<<<<<<<<
@@ -27909,20 +28095,20 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_64weightAdapt_increase(CYTHON
  * #pythran export PHI(float, float, float)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauWinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_v_tauWinv, 1.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uW, __pyx_v_rhoE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_uW, __pyx_v_rhoE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_W, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_W, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_tauWinv, __pyx_v_A); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_tauWinv, __pyx_v_A); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -27930,7 +28116,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_64weightAdapt_increase(CYTHON
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":700
+  /* "modules/GLNetEISimLib.py":712
  * 
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  * def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
@@ -27951,7 +28137,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_64weightAdapt_increase(CYTHON
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":704
+/* "modules/GLNetEISimLib.py":716
  * 
  * #pythran export PHI(float, float, float)
  * def PHI(V,theta,Gamma):             # <<<<<<<<<<<<<<
@@ -28018,7 +28204,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 716, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28026,9 +28212,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 716, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, 1); __PYX_ERR(0, 704, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, 1); __PYX_ERR(0, 716, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -28036,14 +28222,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 704, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 716, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, 2); __PYX_ERR(0, 704, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, 2); __PYX_ERR(0, 716, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "PHI") < 0)) __PYX_ERR(0, 704, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "PHI") < 0)) __PYX_ERR(0, 716, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -28058,7 +28244,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 704, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("PHI", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 716, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28097,22 +28283,22 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_66PHI(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PHI", 1);
 
-  /* "modules/GLNetEISimLib.py":705
+  /* "modules/GLNetEISimLib.py":717
  * #pythran export PHI(float, float, float)
  * def PHI(V,theta,Gamma):
  *     tg = theta+1.0/Gamma             # <<<<<<<<<<<<<<
  *     return Gamma*(V-theta)*float(V>theta)*float(V<tg)+float(V>=tg)
  * 
  */
-  __pyx_t_1 = __Pyx_PyFloat_TrueDivideCObj(__pyx_float_1_0, __pyx_v_Gamma, 1.0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyFloat_TrueDivideCObj(__pyx_float_1_0, __pyx_v_Gamma, 1.0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Add(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 705, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_v_theta, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_tg = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":706
+  /* "modules/GLNetEISimLib.py":718
  * def PHI(V,theta,Gamma):
  *     tg = theta+1.0/Gamma
  *     return Gamma*(V-theta)*float(V>theta)*float(V<tg)+float(V>=tg)             # <<<<<<<<<<<<<<
@@ -28120,32 +28306,32 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_66PHI(CYTHON_UNUSED PyObject 
  * """
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_v_V, __pyx_v_theta); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Subtract(__pyx_v_V, __pyx_v_theta); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_Gamma, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_Gamma, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_V, __pyx_v_theta, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 706, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_V, __pyx_v_theta, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_V, __pyx_v_tg, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 706, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_V, __pyx_v_tg, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_V, __pyx_v_tg, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_V, __pyx_v_tg, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -28153,7 +28339,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_66PHI(CYTHON_UNUSED PyObject 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":704
+  /* "modules/GLNetEISimLib.py":716
  * 
  * #pythran export PHI(float, float, float)
  * def PHI(V,theta,Gamma):             # <<<<<<<<<<<<<<
@@ -28175,7 +28361,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_66PHI(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":719
+/* "modules/GLNetEISimLib.py":731
  * 
  * #pythran export multvecelem(float list, float list)
  * def multvecelem(x,y):             # <<<<<<<<<<<<<<
@@ -28239,7 +28425,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 719, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 731, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28247,14 +28433,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 719, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 731, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("multvecelem", 1, 2, 2, 1); __PYX_ERR(0, 719, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("multvecelem", 1, 2, 2, 1); __PYX_ERR(0, 731, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "multvecelem") < 0)) __PYX_ERR(0, 719, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "multvecelem") < 0)) __PYX_ERR(0, 731, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -28267,7 +28453,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("multvecelem", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 719, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("multvecelem", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 731, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28311,7 +28497,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("multvecelem", 1);
 
-  /* "modules/GLNetEISimLib.py":720
+  /* "modules/GLNetEISimLib.py":732
  * #pythran export multvecelem(float list, float list)
  * def multvecelem(x,y):
  *     return [x[i]*yy for i,yy in enumerate(y)]             # <<<<<<<<<<<<<<
@@ -28320,7 +28506,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 720, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 732, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_int_0);
     __pyx_t_2 = __pyx_int_0;
@@ -28329,9 +28515,9 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
       __pyx_t_4 = 0;
       __pyx_t_5 = NULL;
     } else {
-      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 720, __pyx_L5_error)
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 732, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 720, __pyx_L5_error)
+      __pyx_t_5 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 732, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_5)) {
@@ -28339,28 +28525,28 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 720, __pyx_L5_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 732, __pyx_L5_error)
             #endif
             if (__pyx_t_4 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 720, __pyx_L5_error)
+          __pyx_t_6 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 732, __pyx_L5_error)
           #else
-          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 720, __pyx_L5_error)
+          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 732, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         } else {
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
             #if !CYTHON_ASSUME_SAFE_MACROS
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 720, __pyx_L5_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 732, __pyx_L5_error)
             #endif
             if (__pyx_t_4 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 720, __pyx_L5_error)
+          __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_6); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 732, __pyx_L5_error)
           #else
-          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 720, __pyx_L5_error)
+          __pyx_t_6 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 732, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_6);
           #endif
         }
@@ -28370,7 +28556,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 720, __pyx_L5_error)
+            else __PYX_ERR(0, 732, __pyx_L5_error)
           }
           break;
         }
@@ -28380,17 +28566,17 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
       __pyx_t_6 = 0;
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_9genexpr15__pyx_v_i, __pyx_t_2);
-      __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 720, __pyx_L5_error)
+      __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 732, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_2);
       __pyx_t_2 = __pyx_t_6;
       __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_x, __pyx_9genexpr15__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 720, __pyx_L5_error)
+      __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_x, __pyx_9genexpr15__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 732, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PyNumber_Multiply(__pyx_t_6, __pyx_9genexpr15__pyx_v_yy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 720, __pyx_L5_error)
+      __pyx_t_7 = PyNumber_Multiply(__pyx_t_6, __pyx_9genexpr15__pyx_v_yy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 732, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 720, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 732, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -28408,7 +28594,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":719
+  /* "modules/GLNetEISimLib.py":731
  * 
  * #pythran export multvecelem(float list, float list)
  * def multvecelem(x,y):             # <<<<<<<<<<<<<<
@@ -28433,7 +28619,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_68multvecelem(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":723
+/* "modules/GLNetEISimLib.py":735
  * 
  * #pythran export PoissonProcess_firingprob(float)
  * def PoissonProcess_firingprob(r):             # <<<<<<<<<<<<<<
@@ -28494,12 +28680,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 723, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 735, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "PoissonProcess_firingprob") < 0)) __PYX_ERR(0, 723, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "PoissonProcess_firingprob") < 0)) __PYX_ERR(0, 735, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -28510,7 +28696,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("PoissonProcess_firingprob", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 723, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("PoissonProcess_firingprob", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 735, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28550,7 +28736,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_70PoissonProcess_firingprob(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PoissonProcess_firingprob", 1);
 
-  /* "modules/GLNetEISimLib.py":724
+  /* "modules/GLNetEISimLib.py":736
  * #pythran export PoissonProcess_firingprob(float)
  * def PoissonProcess_firingprob(r):
  *     return 1.0-numpy.exp(-r) # probability of firing is constant             # <<<<<<<<<<<<<<
@@ -28558,12 +28744,12 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_70PoissonProcess_firingprob(C
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_numpy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Negative(__pyx_v_r); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Negative(__pyx_v_r); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -28584,18 +28770,18 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_70PoissonProcess_firingprob(C
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 724, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 736, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_t_1, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_0, __pyx_t_1, 1.0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":723
+  /* "modules/GLNetEISimLib.py":735
  * 
  * #pythran export PoissonProcess_firingprob(float)
  * def PoissonProcess_firingprob(r):             # <<<<<<<<<<<<<<
@@ -28617,7 +28803,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_70PoissonProcess_firingprob(C
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":727
+/* "modules/GLNetEISimLib.py":739
  * 
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  * def save_spk_data_fake(s,t,k):             # <<<<<<<<<<<<<<
@@ -28684,7 +28870,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 739, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28692,9 +28878,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 739, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, 1); __PYX_ERR(0, 727, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, 1); __PYX_ERR(0, 739, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -28702,14 +28888,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 727, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 739, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, 2); __PYX_ERR(0, 727, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, 2); __PYX_ERR(0, 739, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_spk_data_fake") < 0)) __PYX_ERR(0, 727, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_spk_data_fake") < 0)) __PYX_ERR(0, 739, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -28724,7 +28910,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 727, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("save_spk_data_fake", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 739, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28756,7 +28942,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_72save_spk_data_fake(CYTHON_U
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("save_spk_data_fake", 1);
 
-  /* "modules/GLNetEISimLib.py":728
+  /* "modules/GLNetEISimLib.py":740
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  * def save_spk_data_fake(s,t,k):
  *     return s             # <<<<<<<<<<<<<<
@@ -28768,7 +28954,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_72save_spk_data_fake(CYTHON_U
   __pyx_r = __pyx_v_s;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":727
+  /* "modules/GLNetEISimLib.py":739
  * 
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  * def save_spk_data_fake(s,t,k):             # <<<<<<<<<<<<<<
@@ -28783,7 +28969,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_72save_spk_data_fake(CYTHON_U
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":731
+/* "modules/GLNetEISimLib.py":743
  * 
  * #pythran export save_spk_data((int,int) list,int,int)
  * def save_spk_data(s,t,k):             # <<<<<<<<<<<<<<
@@ -28850,7 +29036,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 731, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 743, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28858,9 +29044,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 731, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 743, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, 1); __PYX_ERR(0, 731, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, 1); __PYX_ERR(0, 743, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -28868,14 +29054,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 731, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 743, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, 2); __PYX_ERR(0, 731, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, 2); __PYX_ERR(0, 743, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_spk_data") < 0)) __PYX_ERR(0, 731, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "save_spk_data") < 0)) __PYX_ERR(0, 743, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -28890,7 +29076,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 731, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("save_spk_data", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 743, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28927,25 +29113,25 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_74save_spk_data(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("save_spk_data", 1);
 
-  /* "modules/GLNetEISimLib.py":735
+  /* "modules/GLNetEISimLib.py":747
  *     # t -> spike time index
  *     # k -> neuron index that fired at t
  *     s.append((t,k))             # <<<<<<<<<<<<<<
  *     return s
  * 
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 735, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 747, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_t);
   __Pyx_GIVEREF(__pyx_v_t);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_t)) __PYX_ERR(0, 735, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_t)) __PYX_ERR(0, 747, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_k);
   __Pyx_GIVEREF(__pyx_v_k);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_k)) __PYX_ERR(0, 735, __pyx_L1_error);
-  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_v_s, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 735, __pyx_L1_error)
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_k)) __PYX_ERR(0, 747, __pyx_L1_error);
+  __pyx_t_2 = __Pyx_PyObject_Append(__pyx_v_s, __pyx_t_1); if (unlikely(__pyx_t_2 == ((int)-1))) __PYX_ERR(0, 747, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "modules/GLNetEISimLib.py":736
+  /* "modules/GLNetEISimLib.py":748
  *     # k -> neuron index that fired at t
  *     s.append((t,k))
  *     return s             # <<<<<<<<<<<<<<
@@ -28957,7 +29143,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_74save_spk_data(CYTHON_UNUSED
   __pyx_r = __pyx_v_s;
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":731
+  /* "modules/GLNetEISimLib.py":743
  * 
  * #pythran export save_spk_data((int,int) list,int,int)
  * def save_spk_data(s,t,k):             # <<<<<<<<<<<<<<
@@ -28976,7 +29162,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_74save_spk_data(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "modules/GLNetEISimLib.py":739
+/* "modules/GLNetEISimLib.py":751
  * 
  * #pythran export write_spk_data_fake(int,int)
  * def write_spk_data_fake(t,k):             # <<<<<<<<<<<<<<
@@ -29040,7 +29226,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 739, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 751, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -29048,14 +29234,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 739, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 751, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("write_spk_data_fake", 1, 2, 2, 1); __PYX_ERR(0, 739, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("write_spk_data_fake", 1, 2, 2, 1); __PYX_ERR(0, 751, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "write_spk_data_fake") < 0)) __PYX_ERR(0, 739, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "write_spk_data_fake") < 0)) __PYX_ERR(0, 751, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -29068,7 +29254,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("write_spk_data_fake", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 739, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("write_spk_data_fake", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 751, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -29100,7 +29286,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_76write_spk_data_fake(CYTHON_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("write_spk_data_fake", 1);
 
-  /* "modules/GLNetEISimLib.py":740
+  /* "modules/GLNetEISimLib.py":752
  * #pythran export write_spk_data_fake(int,int)
  * def write_spk_data_fake(t,k):
  *     return None             # <<<<<<<<<<<<<<
@@ -29110,7 +29296,7 @@ static PyObject *__pyx_pf_7modules_13GLNetEISimLib_76write_spk_data_fake(CYTHON_
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
 
-  /* "modules/GLNetEISimLib.py":739
+  /* "modules/GLNetEISimLib.py":751
  * 
  * #pythran export write_spk_data_fake(int,int)
  * def write_spk_data_fake(t,k):             # <<<<<<<<<<<<<<
@@ -29328,6 +29514,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_GLNetEIRand_static_iter, __pyx_k_GLNetEIRand_static_iter, sizeof(__pyx_k_GLNetEIRand_static_iter), 0, 0, 1, 1},
     {&__pyx_n_s_Gamma, __pyx_k_Gamma, sizeof(__pyx_k_Gamma), 0, 0, 1, 1},
     {&__pyx_n_s_I, __pyx_k_I, sizeof(__pyx_k_I), 0, 0, 1, 1},
+    {&__pyx_kp_s_INHIBITORY_neurons_will_not_ada, __pyx_k_INHIBITORY_neurons_will_not_ada, sizeof(__pyx_k_INHIBITORY_neurons_will_not_ada), 0, 0, 1, 0},
     {&__pyx_n_s_Iext, __pyx_k_Iext, sizeof(__pyx_k_Iext), 0, 0, 1, 1},
     {&__pyx_n_s_J, __pyx_k_J, sizeof(__pyx_k_J), 0, 0, 1, 1},
     {&__pyx_n_s_K, __pyx_k_K, sizeof(__pyx_k_K), 0, 0, 1, 1},
@@ -29336,7 +29523,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_KI, __pyx_k_KI, sizeof(__pyx_k_KI), 0, 0, 1, 1},
     {&__pyx_n_s_KI_fl, __pyx_k_KI_fl, sizeof(__pyx_k_KI_fl), 0, 0, 1, 1},
     {&__pyx_n_s_K_ex, __pyx_k_K_ex, sizeof(__pyx_k_K_ex), 0, 0, 1, 1},
+    {&__pyx_kp_s_LINEAR_adaptive_threshold_addit, __pyx_k_LINEAR_adaptive_threshold_addit, sizeof(__pyx_k_LINEAR_adaptive_threshold_addit), 0, 0, 1, 0},
     {&__pyx_n_s_N, __pyx_k_N, sizeof(__pyx_k_N), 0, 0, 1, 1},
+    {&__pyx_kp_s_NONLINEAR_adaptive_threshold_mu, __pyx_k_NONLINEAR_adaptive_threshold_mu, sizeof(__pyx_k_NONLINEAR_adaptive_threshold_mu), 0, 0, 1, 0},
     {&__pyx_n_s_N_fl, __pyx_k_N_fl, sizeof(__pyx_k_N_fl), 0, 0, 1, 1},
     {&__pyx_n_s_PHI, __pyx_k_PHI, sizeof(__pyx_k_PHI), 0, 0, 1, 1},
     {&__pyx_n_s_P_firing_poisson, __pyx_k_P_firing_poisson, sizeof(__pyx_k_P_firing_poisson), 0, 0, 1, 1},
@@ -29344,6 +29533,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_PoissonProcess_firingprob, __pyx_k_PoissonProcess_firingprob, sizeof(__pyx_k_PoissonProcess_firingprob), 0, 0, 1, 1},
     {&__pyx_n_s_RunSimulation_GLNetEIMF, __pyx_k_RunSimulation_GLNetEIMF, sizeof(__pyx_k_RunSimulation_GLNetEIMF), 0, 0, 1, 1},
     {&__pyx_n_s_RunSimulation_GLNetEIRand, __pyx_k_RunSimulation_GLNetEIRand, sizeof(__pyx_k_RunSimulation_GLNetEIRand), 0, 0, 1, 1},
+    {&__pyx_kp_s_SATURATING_adaptive_threshold_s, __pyx_k_SATURATING_adaptive_threshold_s, sizeof(__pyx_k_SATURATING_adaptive_threshold_s), 0, 0, 1, 0},
     {&__pyx_n_s_Tmax, __pyx_k_Tmax, sizeof(__pyx_k_Tmax), 0, 0, 1, 1},
     {&__pyx_n_s_V, __pyx_k_V, sizeof(__pyx_k_V), 0, 0, 1, 1},
     {&__pyx_n_s_VE, __pyx_k_VE, sizeof(__pyx_k_VE), 0, 0, 1, 1},
@@ -29364,12 +29554,12 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_XI, __pyx_k_XI, sizeof(__pyx_k_XI), 0, 0, 1, 1},
     {&__pyx_n_s_XI0, __pyx_k_XI0, sizeof(__pyx_k_XI0), 0, 0, 1, 1},
     {&__pyx_n_s_XI0Rand, __pyx_k_XI0Rand, sizeof(__pyx_k_XI0Rand), 0, 0, 1, 1},
-    {&__pyx_n_s__12, __pyx_k__12, sizeof(__pyx_k__12), 0, 0, 1, 1},
+    {&__pyx_n_s__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 0, 1, 1},
+    {&__pyx_n_s__18, __pyx_k__18, sizeof(__pyx_k__18), 0, 0, 1, 1},
     {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
     {&__pyx_kp_s__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 0, 1, 0},
     {&__pyx_kp_s__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 1, 0},
-    {&__pyx_n_s__82, __pyx_k__82, sizeof(__pyx_k__82), 0, 0, 1, 1},
-    {&__pyx_n_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 1},
+    {&__pyx_n_s__88, __pyx_k__88, sizeof(__pyx_k__88), 0, 0, 1, 1},
     {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
     {&__pyx_n_s_adapt, __pyx_k_adapt, sizeof(__pyx_k_adapt), 0, 0, 1, 1},
     {&__pyx_n_s_adaptthresh, __pyx_k_adaptthresh, sizeof(__pyx_k_adaptthresh), 0, 0, 1, 1},
@@ -29381,6 +29571,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_bool, __pyx_k_bool, sizeof(__pyx_k_bool), 0, 0, 1, 1},
     {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
     {&__pyx_n_s_ceil, __pyx_k_ceil, sizeof(__pyx_k_ceil), 0, 0, 1, 1},
+    {&__pyx_kp_s_choosing_neuron_wiht, __pyx_k_choosing_neuron_wiht, sizeof(__pyx_k_choosing_neuron_wiht), 0, 0, 1, 0},
     {&__pyx_n_s_class_getitem, __pyx_k_class_getitem, sizeof(__pyx_k_class_getitem), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
@@ -29446,6 +29637,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
     {&__pyx_n_s_nan, __pyx_k_nan, sizeof(__pyx_k_nan), 0, 0, 1, 1},
     {&__pyx_n_s_neuronType, __pyx_k_neuronType, sizeof(__pyx_k_neuronType), 0, 0, 1, 1},
+    {&__pyx_kp_s_neurons_will_not_adapt_threshol, __pyx_k_neurons_will_not_adapt_threshol, sizeof(__pyx_k_neurons_will_not_adapt_threshol), 0, 0, 1, 0},
     {&__pyx_n_s_none, __pyx_k_none, sizeof(__pyx_k_none), 0, 0, 1, 1},
     {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
     {&__pyx_n_s_ones, __pyx_k_ones, sizeof(__pyx_k_ones), 0, 0, 1, 1},
@@ -29555,9 +29747,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 65, __pyx_L1_error)
   __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 151, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 598, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 586, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 598, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 732, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -29623,27 +29815,93 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "modules/GLNetEISimLib.py":523
+  /* "modules/GLNetEISimLib.py":471
+ * 
+ * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+ *     print(' ... choosing neuron wiht: ')             # <<<<<<<<<<<<<<
+ *     if 'adaptthresh' in simType:
+ *         if 'threshlinear' in simType:
+ */
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_choosing_neuron_wiht); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+
+  /* "modules/GLNetEISimLib.py":474
+ *     if 'adaptthresh' in simType:
+ *         if 'threshlinear' in simType:
+ *             print(' ....... LINEAR adaptive threshold (additive noise)')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
+ */
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_LINEAR_adaptive_threshold_addit); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+
+  /* "modules/GLNetEISimLib.py":478
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
+ *         elif 'threshsaturate' in simType:
+ *             print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
+ */
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_SATURATING_adaptive_threshold_s); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 478, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+
+  /* "modules/GLNetEISimLib.py":482
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
+ *         else:
+ *             print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
+ */
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_NONLINEAR_adaptive_threshold_mu); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 482, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+
+  /* "modules/GLNetEISimLib.py":486
+ *             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
+ *         if exc_only_dynthresh:
+ *             print(' ....... INHIBITORY neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ *     else:
+ */
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_INHIBITORY_neurons_will_not_ada); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 486, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+
+  /* "modules/GLNetEISimLib.py":489
+ *             GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ *     else:
+ *         print(' ....... neurons will not adapt thresholds!')             # <<<<<<<<<<<<<<
+ *         GLNetEIRand_E_iter = GLNetEIRand_static_iter
+ *         GLNetEIRand_I_iter = GLNetEIRand_static_iter
+ */
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_neurons_will_not_adapt_threshol); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 489, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+
+  /* "modules/GLNetEISimLib.py":535
  *         weightAdapt_iter = weightAdapt_constant
  *     else:
  *         raise ValueError('weightDynType is unknown')             # <<<<<<<<<<<<<<
  *     if q == 0.0:
  *         weightAdapt_iter = lambda W,A,tauWinv,uW,rhoE,rhoI: 0.0
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_weightDynType_is_unknown); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 523, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_weightDynType_is_unknown); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 535, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
 
-  /* "modules/GLNetEISimLib.py":528
+  /* "modules/GLNetEISimLib.py":540
  *     # forcing a fixed inhibitory synaptic weight
  *     if 'adaptthresh' in simType:
  *         print(' ... forcing constant inhibitory W because simType == adaptthresh')             # <<<<<<<<<<<<<<
  *         weightAdapt_iter = weightAdapt_constant
  *     return weightAdapt_iter
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_forcing_constant_inhibitory_W_b); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 528, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_forcing_constant_inhibitory_W_b); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 540, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
   /* "modules/GLNetEISimLib.py":5
  * 
@@ -29652,10 +29910,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     N                  = get_param(simParam_dict['N']                  , paramType_dict['N']                  )[0]
  *     tTrans             = get_param(simParam_dict['tTrans']             , paramType_dict['tTrans']             )[0]
  */
-  __pyx_tuple__13 = PyTuple_Pack(39, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_paramCV, __pyx_n_s_K, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__13);
-  __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_system_parameters, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(39, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_paramCV, __pyx_n_s_K, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_system_parameters, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 5, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":51
  * 
@@ -29664,10 +29922,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     a = -1
  *     b = numpy.nan
  */
-  __pyx_tuple__15 = PyTuple_Pack(6, __pyx_n_s_v, __pyx_n_s_vtype, __pyx_n_s_a, __pyx_n_s_b, __pyx_n_s_c, __pyx_n_s_d); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_param, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(6, __pyx_n_s_v, __pyx_n_s_vtype, __pyx_n_s_a, __pyx_n_s_b, __pyx_n_s_c, __pyx_n_s_d); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_param, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 51, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":79
  * 
@@ -29676,10 +29934,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
  *         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
  */
-  __pyx_tuple__17 = PyTuple_Pack(84, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_K, __pyx_n_s_paramCV, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index, __pyx_n_s_tauWinv, __pyx_n_s_tauTinv, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_N_fl, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_KE, __pyx_n_s_KI, __pyx_n_s_KE_fl, __pyx_n_s_KI_fl, __pyx_n_s_C, __pyx_n_s_P_firing_poisson, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_synapticInput, __pyx_n_s_spkTimeFile, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_theta_data, __pyx_n_s_t, __pyx_n_s_k, __pyx_n_s__9, __pyx_n_s_i, __pyx_n_s__9, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 79, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 84, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_RunSimulation_GLNetEIRand, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(84, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_K, __pyx_n_s_paramCV, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index, __pyx_n_s_tauWinv, __pyx_n_s_tauTinv, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_N_fl, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_KE, __pyx_n_s_KI, __pyx_n_s_KE_fl, __pyx_n_s_KI_fl, __pyx_n_s_C, __pyx_n_s_P_firing_poisson, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_synapticInput, __pyx_n_s_spkTimeFile, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_theta_data, __pyx_n_s_t, __pyx_n_s_k, __pyx_n_s__15, __pyx_n_s_i, __pyx_n_s__15, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 84, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_RunSimulation_GLNetEIRand, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 79, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":192
  * 
@@ -29688,10 +29946,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
  *         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
  */
-  __pyx_tuple__19 = PyTuple_Pack(79, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_K, __pyx_n_s_paramCV, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter, __pyx_n_s_weightAdapt_iter, __pyx_n_s_get_external_stimulus, __pyx_n_s_tauWinv, __pyx_n_s_tauTinv, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_N_fl, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_P_firing_poisson, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_spkTimeFile, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_W_I_data, __pyx_n_s_theta_data, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_t, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 192, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 79, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_RunSimulation_GLNetEIMF, 192, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(79, __pyx_n_s_simParam_dict, __pyx_n_s_paramType_dict, __pyx_n_s_N, __pyx_n_s_tTrans, __pyx_n_s_Tmax, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_Iext, __pyx_n_s_g, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_A, __pyx_n_s_tauW, __pyx_n_s_uW, __pyx_n_s_tauT, __pyx_n_s_uT, __pyx_n_s_saveSpikingData, __pyx_n_s_nNeuronsSpk, __pyx_n_s_weightDynType, __pyx_n_s_rPoisson, __pyx_n_s_K, __pyx_n_s_paramCV, __pyx_n_s_writeOnRun, __pyx_n_s_spkFileName, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter, __pyx_n_s_weightAdapt_iter, __pyx_n_s_get_external_stimulus, __pyx_n_s_tauWinv, __pyx_n_s_tauTinv, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_N_fl, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_P_firing_poisson, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_spkTimeFile, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_W_I_data, __pyx_n_s_theta_data, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_t, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 79, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_RunSimulation_GLNetEIMF, 192, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 192, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":302
  * 
@@ -29700,10 +29958,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     return int(random.random() * pN_fl)
  * 
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_n_s_pN_fl); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 302, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_stim_neuron_index_aval, 302, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_pN_fl); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_stim_neuron_index_aval, 302, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 302, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":306
  * 
@@ -29712,10 +29970,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     """
  *     ##################
  */
-  __pyx_tuple__23 = PyTuple_Pack(5, __pyx_n_s_K_ex, __pyx_n_s_pN, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s__9); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 306, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_generate_random_net_fixed_number, 306, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(5, __pyx_n_s_K_ex, __pyx_n_s_pN, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s__15); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_generate_random_net_fixed_number, 306, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 306, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":324
  * 
@@ -29724,10 +29982,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     """
  *     K_ex -> number of excitatory inputs
  */
-  __pyx_tuple__25 = PyTuple_Pack(12, __pyx_n_s_synapticInput, __pyx_n_s_K_ex, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_J, __pyx_n_s_W, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_s, __pyx_n_s_j); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 324, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_sumSynpaticInput, 324, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(12, __pyx_n_s_synapticInput, __pyx_n_s_K_ex, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_J, __pyx_n_s_W, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_s, __pyx_n_s_j); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_sumSynpaticInput, 324, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 324, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":348
  * 
@@ -29736,10 +29994,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     """
  *     K_ex -> number of excitatory inputs
  */
-  __pyx_tuple__27 = PyTuple_Pack(13, __pyx_n_s_synapticInput, __pyx_n_s_K_ex, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_J, __pyx_n_s_W, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_sE, __pyx_n_s_sI, __pyx_n_s_j); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 348, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_sumSynpaticInput_homog, 348, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(13, __pyx_n_s_synapticInput, __pyx_n_s_K_ex, __pyx_n_s_K, __pyx_n_s_N, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_J, __pyx_n_s_W, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_sE, __pyx_n_s_sI, __pyx_n_s_j); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(9, 0, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_sumSynpaticInput_homog, 348, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 348, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":371
  * 
@@ -29748,10 +30006,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     # defining functions
  *     get_external_stimulus,get_stim_neuron_index = get_RandomNet_stimulus_func(simType)
  */
-  __pyx_tuple__29 = PyTuple_Pack(46, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_tTrans, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_P_firing_poisson, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_synapticInput, __pyx_n_s_J, __pyx_n_s_W_I, __pyx_n_s_C, __pyx_n_s_KE, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_tauTinv, __pyx_n_s_tauWinv, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_uT, __pyx_n_s_uW, __pyx_n_s_weightDynType, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_N, __pyx_n_s_t, __pyx_n_s_k, __pyx_n_s_sum_XE, __pyx_n_s_thetaMean, __pyx_n_s_i, __pyx_n_s_sum_XI); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 371, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(33, 0, 0, 46, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_run_transient_GLNetEIRand, 371, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(46, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_tTrans, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_P_firing_poisson, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_synapticInput, __pyx_n_s_J, __pyx_n_s_W_I, __pyx_n_s_C, __pyx_n_s_KE, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_tauTinv, __pyx_n_s_tauWinv, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_uT, __pyx_n_s_uW, __pyx_n_s_weightDynType, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_N, __pyx_n_s_t, __pyx_n_s_k, __pyx_n_s_sum_XE, __pyx_n_s_thetaMean, __pyx_n_s_i, __pyx_n_s_sum_XI); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(33, 0, 0, 46, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_run_transient_GLNetEIRand, 371, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 371, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":413
  * 
@@ -29760,10 +30018,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     # defining functions
  *     get_external_stimulus             = get_MFNet_stimulus_func(simType)
  */
-  __pyx_tuple__31 = PyTuple_Pack(42, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_N_fl, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_P_firing_poisson, __pyx_n_s_weightDynType, __pyx_n_s_tTrans, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_tauWinv, __pyx_n_s_uW, __pyx_n_s_A, __pyx_n_s_W_I, __pyx_n_s_get_external_stimulus, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter, __pyx_n_s_weightAdapt_iter, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_thetaMean, __pyx_n_s_t, __pyx_n_s_sum_XE, __pyx_n_s_sum_XI, __pyx_n_s_i); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 413, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(31, 0, 0, 42, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_run_transient_GLNetEIMF, 413, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(42, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_VE, __pyx_n_s_XE, __pyx_n_s_VI, __pyx_n_s_XI, __pyx_n_s_thetaE, __pyx_n_s_thetaI, __pyx_n_s_rhoETemp, __pyx_n_s_rhoITemp, __pyx_n_s_N_fl, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_pN_fl, __pyx_n_s_qN_fl, __pyx_n_s_P_firing_poisson, __pyx_n_s_weightDynType, __pyx_n_s_tTrans, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_tauWinv, __pyx_n_s_uW, __pyx_n_s_A, __pyx_n_s_W_I, __pyx_n_s_get_external_stimulus, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter, __pyx_n_s_weightAdapt_iter, __pyx_n_s_rhoE_prev, __pyx_n_s_rhoI_prev, __pyx_n_s_thetaMean, __pyx_n_s_t, __pyx_n_s_sum_XE, __pyx_n_s_sum_XI, __pyx_n_s_i); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(31, 0, 0, 42, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_run_transient_GLNetEIMF, 413, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 413, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":454
  * """
@@ -29772,319 +30030,319 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     if saveSpikingData:
  *         if writeOnRun:
  */
-  __pyx_tuple__33 = PyTuple_Pack(10, __pyx_n_s_spkTimeFile, __pyx_n_s_saveSpikingData, __pyx_n_s_writeOnRun, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 454, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(7, 0, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_write_spike_data_functions, 454, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 454, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(10, __pyx_n_s_spkTimeFile, __pyx_n_s_saveSpikingData, __pyx_n_s_writeOnRun, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_pN_s, __pyx_n_s_qN_s, __pyx_n_s_spkData, __pyx_n_s_write_spk_time, __pyx_n_s_save_spk_time); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 454, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(7, 0, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_write_spike_data_functions, 454, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 454, __pyx_L1_error)
 
   /* "modules/GLNetEISimLib.py":470
  *     return spkData,write_spk_time,save_spk_time
  * 
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
- *         if 'threshlinear' in simType:
  */
-  __pyx_tuple__35 = PyTuple_Pack(4, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 470, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_RandomNet_neuron_state_iter, 470, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(4, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIRand_E_iter, __pyx_n_s_GLNetEIRand_I_iter); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_RandomNet_neuron_state_iter, 470, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 470, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":488
+  /* "modules/GLNetEISimLib.py":494
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  * def get_RandomNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval
  */
-  __pyx_tuple__37 = PyTuple_Pack(3, __pyx_n_s_simType, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 488, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_RandomNet_stimulus_func, 488, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(3, __pyx_n_s_simType, __pyx_n_s_get_external_stimulus, __pyx_n_s_get_stim_neuron_index); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_RandomNet_stimulus_func, 494, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 494, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":497
+  /* "modules/GLNetEISimLib.py":503
  *     return get_external_stimulus,get_stim_neuron_index
  * 
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
- *         if 'threshlinear' in simType:
  */
-  __pyx_tuple__39 = PyTuple_Pack(4, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 497, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_neuron_state_iter, 497, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(4, __pyx_n_s_simType, __pyx_n_s_exc_only_dynthresh, __pyx_n_s_GLNetEIMF_E_iter, __pyx_n_s_GLNetEIMF_I_iter); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 503, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_neuron_state_iter, 503, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 503, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":515
+  /* "modules/GLNetEISimLib.py":527
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):             # <<<<<<<<<<<<<<
  *     if weightDynType == "simple":
  *         weightAdapt_iter = weightAdapt_decrease
  */
-  __pyx_tuple__41 = PyTuple_Pack(4, __pyx_n_s_weightDynType, __pyx_n_s_simType, __pyx_n_s_q, __pyx_n_s_weightAdapt_iter); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 515, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_synaptic_weight_iter, 515, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(4, __pyx_n_s_weightDynType, __pyx_n_s_simType, __pyx_n_s_q, __pyx_n_s_weightAdapt_iter); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_synaptic_weight_iter, 527, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 527, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":532
+  /* "modules/GLNetEISimLib.py":544
  *     return weightAdapt_iter
  * 
  * def get_MFNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval
  */
-  __pyx_tuple__43 = PyTuple_Pack(2, __pyx_n_s_simType, __pyx_n_s_get_external_stimulus); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 532, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_stimulus_func, 532, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 532, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(2, __pyx_n_s_simType, __pyx_n_s_get_external_stimulus); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 544, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_MFNet_stimulus_func, 544, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 544, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":540
+  /* "modules/GLNetEISimLib.py":552
  * 
  * #pythran export get_external_stimulus_dynamic(float,float,float,float)
  * def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
  *     return XE,rhoE
  * 
  */
-  __pyx_tuple__45 = PyTuple_Pack(4, __pyx_n_s_XE, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_pN_fl); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 540, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_external_stimulus_dynamic, 540, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 540, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(4, __pyx_n_s_XE, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_pN_fl); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 552, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_external_stimulus_dynamic, 552, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 552, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":544
+  /* "modules/GLNetEISimLib.py":556
  * 
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
  *     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
  *         return 1.0, 1.0 / pN_fl
  */
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_external_stimulus_aval, 544, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 544, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_external_stimulus_aval, 556, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 556, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":551
+  /* "modules/GLNetEISimLib.py":563
  * 
  * #pythran export save_initial_spkdata(float[],float[],int,int)
  * def save_initial_spkdata(XE,XI,pN,qN):             # <<<<<<<<<<<<<<
  *     """
  *     spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
  */
-  __pyx_tuple__48 = PyTuple_Pack(6, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_spkData, __pyx_n_s_i); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 551, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__48);
-  __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_initial_spkdata, 551, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_tuple__54 = PyTuple_Pack(6, __pyx_n_s_XE, __pyx_n_s_XI, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_spkData, __pyx_n_s_i); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__54);
+  __Pyx_GIVEREF(__pyx_tuple__54);
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_initial_spkdata, 563, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 563, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":573
+  /* "modules/GLNetEISimLib.py":585
  *     return spkData
  * 
  * def get_random_inhibitory_weights(W_I,C):             # <<<<<<<<<<<<<<
  *     """
  *     W_I -> average inhibitory weights
  */
-  __pyx_tuple__50 = PyTuple_Pack(2, __pyx_n_s_W_I, __pyx_n_s_C); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 573, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
-  __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_random_inhibitory_weights, 573, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 573, __pyx_L1_error)
+  __pyx_tuple__56 = PyTuple_Pack(2, __pyx_n_s_W_I, __pyx_n_s_C); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 585, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__56);
+  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_get_random_inhibitory_weights, 585, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 585, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":581
+  /* "modules/GLNetEISimLib.py":593
  * 
  * #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):             # <<<<<<<<<<<<<<
  *     VE0    = theta if VE0 == 0.0 else VE0
  *     thetaE = numpy.array([theta for i in range(pN)])
  */
-  __pyx_tuple__52 = PyTuple_Pack(33, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_g, __pyx_n_s_J, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_theta, __pyx_n_s_thetaE, __pyx_n_s_XE, __pyx_n_s_VE, __pyx_n_s_thetaI, __pyx_n_s_XI, __pyx_n_s_VI, __pyx_n_s_rhoE0, __pyx_n_s_rhoI0, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_v, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_v); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 581, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(15, 0, 0, 33, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_set_MF_network_IC, 581, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(33, __pyx_n_s_pN, __pyx_n_s_qN, __pyx_n_s_g, __pyx_n_s_J, __pyx_n_s_VE0, __pyx_n_s_VE0Std, __pyx_n_s_VI0, __pyx_n_s_VI0Std, __pyx_n_s_XE0, __pyx_n_s_fXE0, __pyx_n_s_XE0Rand, __pyx_n_s_XI0, __pyx_n_s_fXI0, __pyx_n_s_XI0Rand, __pyx_n_s_theta, __pyx_n_s_thetaE, __pyx_n_s_XE, __pyx_n_s_VE, __pyx_n_s_thetaI, __pyx_n_s_XI, __pyx_n_s_VI, __pyx_n_s_rhoE0, __pyx_n_s_rhoI0, __pyx_n_s_W_I, __pyx_n_s_thetaMean, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_v, __pyx_n_s_i, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_v); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 593, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(15, 0, 0, 33, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_set_MF_network_IC, 593, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 593, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":605
+  /* "modules/GLNetEISimLib.py":617
  * 
  * #pythran export generate_IC_spikes(float,int,int,str,bool)
  * def generate_IC_spikes(X0,N,K,neuronType,is_random):             # <<<<<<<<<<<<<<
  *     """generates a list X of zeros with len N containing K ones
  *     """
  */
-  __pyx_tuple__54 = PyTuple_Pack(8, __pyx_n_s_X0, __pyx_n_s_N, __pyx_n_s_K, __pyx_n_s_neuronType, __pyx_n_s_is_random, __pyx_n_s_X, __pyx_n_s_start_activity_idx, __pyx_n_s_k); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 605, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__54);
-  __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(5, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_generate_IC_spikes, 605, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_tuple__60 = PyTuple_Pack(8, __pyx_n_s_X0, __pyx_n_s_N, __pyx_n_s_K, __pyx_n_s_neuronType, __pyx_n_s_is_random, __pyx_n_s_X, __pyx_n_s_start_activity_idx, __pyx_n_s_k); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 617, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__60);
+  __Pyx_GIVEREF(__pyx_tuple__60);
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(5, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_generate_IC_spikes, 617, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 617, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":638
+  /* "modules/GLNetEISimLib.py":650
  * 
  * #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_tuple__56 = PyTuple_Pack(11, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_synapticInput, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_P_poisson, __pyx_n_s_tauTinv, __pyx_n_s_uT); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 638, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthresh_iter, 638, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 638, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(11, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_synapticInput, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_P_poisson, __pyx_n_s_tauTinv, __pyx_n_s_uT); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 650, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthresh_iter, 650, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 650, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":645
+  /* "modules/GLNetEISimLib.py":657
  * 
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, 645, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 645, __pyx_L1_error)
+  __pyx_codeobj__64 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, 657, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__64)) __PYX_ERR(0, 657, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":652
+  /* "modules/GLNetEISimLib.py":664
  * 
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, 652, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, 664, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 664, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":659
+  /* "modules/GLNetEISimLib.py":671
  * 
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     V = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_static_iter, 659, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 659, __pyx_L1_error)
+  __pyx_codeobj__66 = (PyObject*)__Pyx_PyCode_New(11, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIRand_static_iter, 671, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__66)) __PYX_ERR(0, 671, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":665
+  /* "modules/GLNetEISimLib.py":677
  * 
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_tuple__61 = PyTuple_Pack(16, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_W_I, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_P_poisson); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 665, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__61);
-  __Pyx_GIVEREF(__pyx_tuple__61);
-  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthresh_iter, 665, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 665, __pyx_L1_error)
+  __pyx_tuple__67 = PyTuple_Pack(16, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_W_I, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_P_poisson); if (unlikely(!__pyx_tuple__67)) __PYX_ERR(0, 677, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__67);
+  __Pyx_GIVEREF(__pyx_tuple__67);
+  __pyx_codeobj__68 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthresh_iter, 677, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__68)) __PYX_ERR(0, 677, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":672
+  /* "modules/GLNetEISimLib.py":684
  * 
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, 672, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 672, __pyx_L1_error)
+  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, 684, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 684, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":679
+  /* "modules/GLNetEISimLib.py":691
  * 
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_codeobj__64 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, 679, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__64)) __PYX_ERR(0, 679, __pyx_L1_error)
+  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, 691, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 691, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":686
+  /* "modules/GLNetEISimLib.py":698
  * 
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_tuple__65 = PyTuple_Pack(16, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_gJ, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_P_poisson); if (unlikely(!__pyx_tuple__65)) __PYX_ERR(0, 686, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__65);
-  __Pyx_GIVEREF(__pyx_tuple__65);
-  __pyx_codeobj__66 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__65, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_static_iter, 686, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__66)) __PYX_ERR(0, 686, __pyx_L1_error)
+  __pyx_tuple__71 = PyTuple_Pack(16, __pyx_n_s_V, __pyx_n_s_X, __pyx_n_s_rhoE, __pyx_n_s_rhoI, __pyx_n_s_Iext, __pyx_n_s_mu, __pyx_n_s_theta, __pyx_n_s_J, __pyx_n_s_Gamma, __pyx_n_s_I, __pyx_n_s_gJ, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_tauTinv, __pyx_n_s_uT, __pyx_n_s_P_poisson); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 698, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__71);
+  __Pyx_GIVEREF(__pyx_tuple__71);
+  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(16, 0, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_GLNetEIMF_static_iter, 698, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 698, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":692
+  /* "modules/GLNetEISimLib.py":704
  * 
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  * def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W
  * 
  */
-  __pyx_tuple__67 = PyTuple_Pack(6, __pyx_n_s_W, __pyx_n_s_A, __pyx_n_s_tauWinv, __pyx_n_s_uW, __pyx_n_s_rhoE, __pyx_n_s_rhoI); if (unlikely(!__pyx_tuple__67)) __PYX_ERR(0, 692, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__67);
-  __Pyx_GIVEREF(__pyx_tuple__67);
-  __pyx_codeobj__68 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_constant, 692, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__68)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_tuple__73 = PyTuple_Pack(6, __pyx_n_s_W, __pyx_n_s_A, __pyx_n_s_tauWinv, __pyx_n_s_uW, __pyx_n_s_rhoE, __pyx_n_s_rhoI); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__73);
+  __Pyx_GIVEREF(__pyx_tuple__73);
+  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_constant, 704, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 704, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":696
+  /* "modules/GLNetEISimLib.py":708
  * 
  * #pythran export weightAdapt_decrease(float, float, float, float, float, float)
  * def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W * (1.0 - tauWinv - uW*rhoI) + tauWinv * A
  * 
  */
-  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_decrease, 696, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 696, __pyx_L1_error)
+  __pyx_codeobj__75 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_decrease, 708, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__75)) __PYX_ERR(0, 708, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":700
+  /* "modules/GLNetEISimLib.py":712
  * 
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  * def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W * (1.0 - tauWinv + uW*rhoE) + tauWinv * A
  * 
  */
-  __pyx_codeobj__70 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__67, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_increase, 700, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__70)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __pyx_codeobj__76 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_weightAdapt_increase, 712, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__76)) __PYX_ERR(0, 712, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":704
+  /* "modules/GLNetEISimLib.py":716
  * 
  * #pythran export PHI(float, float, float)
  * def PHI(V,theta,Gamma):             # <<<<<<<<<<<<<<
  *     tg = theta+1.0/Gamma
  *     return Gamma*(V-theta)*float(V>theta)*float(V<tg)+float(V>=tg)
  */
-  __pyx_tuple__71 = PyTuple_Pack(4, __pyx_n_s_V, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_tg); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(0, 704, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__71);
-  __Pyx_GIVEREF(__pyx_tuple__71);
-  __pyx_codeobj__72 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__71, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_PHI, 704, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__72)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __pyx_tuple__77 = PyTuple_Pack(4, __pyx_n_s_V, __pyx_n_s_theta, __pyx_n_s_Gamma, __pyx_n_s_tg); if (unlikely(!__pyx_tuple__77)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__77);
+  __Pyx_GIVEREF(__pyx_tuple__77);
+  __pyx_codeobj__78 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_PHI, 716, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__78)) __PYX_ERR(0, 716, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":719
+  /* "modules/GLNetEISimLib.py":731
  * 
  * #pythran export multvecelem(float list, float list)
  * def multvecelem(x,y):             # <<<<<<<<<<<<<<
  *     return [x[i]*yy for i,yy in enumerate(y)]
  * 
  */
-  __pyx_tuple__73 = PyTuple_Pack(4, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_yy); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 719, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__73);
-  __Pyx_GIVEREF(__pyx_tuple__73);
-  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_multvecelem, 719, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 719, __pyx_L1_error)
+  __pyx_tuple__79 = PyTuple_Pack(4, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_yy); if (unlikely(!__pyx_tuple__79)) __PYX_ERR(0, 731, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__79);
+  __Pyx_GIVEREF(__pyx_tuple__79);
+  __pyx_codeobj__80 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__79, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_multvecelem, 731, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__80)) __PYX_ERR(0, 731, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":723
+  /* "modules/GLNetEISimLib.py":735
  * 
  * #pythran export PoissonProcess_firingprob(float)
  * def PoissonProcess_firingprob(r):             # <<<<<<<<<<<<<<
  *     return 1.0-numpy.exp(-r) # probability of firing is constant
  * 
  */
-  __pyx_tuple__75 = PyTuple_Pack(1, __pyx_n_s_r); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(0, 723, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__75);
-  __Pyx_GIVEREF(__pyx_tuple__75);
-  __pyx_codeobj__76 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__75, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_PoissonProcess_firingprob, 723, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__76)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_tuple__81 = PyTuple_Pack(1, __pyx_n_s_r); if (unlikely(!__pyx_tuple__81)) __PYX_ERR(0, 735, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__81);
+  __Pyx_GIVEREF(__pyx_tuple__81);
+  __pyx_codeobj__82 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__81, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_PoissonProcess_firingprob, 735, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__82)) __PYX_ERR(0, 735, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":727
+  /* "modules/GLNetEISimLib.py":739
  * 
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  * def save_spk_data_fake(s,t,k):             # <<<<<<<<<<<<<<
  *     return s
  * 
  */
-  __pyx_tuple__77 = PyTuple_Pack(3, __pyx_n_s_s, __pyx_n_s_t, __pyx_n_s_k); if (unlikely(!__pyx_tuple__77)) __PYX_ERR(0, 727, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__77);
-  __Pyx_GIVEREF(__pyx_tuple__77);
-  __pyx_codeobj__78 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_spk_data_fake, 727, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__78)) __PYX_ERR(0, 727, __pyx_L1_error)
+  __pyx_tuple__83 = PyTuple_Pack(3, __pyx_n_s_s, __pyx_n_s_t, __pyx_n_s_k); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(0, 739, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__83);
+  __Pyx_GIVEREF(__pyx_tuple__83);
+  __pyx_codeobj__84 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_spk_data_fake, 739, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__84)) __PYX_ERR(0, 739, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":731
+  /* "modules/GLNetEISimLib.py":743
  * 
  * #pythran export save_spk_data((int,int) list,int,int)
  * def save_spk_data(s,t,k):             # <<<<<<<<<<<<<<
  *     # s -> list to append t_k
  *     # t -> spike time index
  */
-  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_spk_data, 731, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(0, 731, __pyx_L1_error)
+  __pyx_codeobj__85 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__83, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_save_spk_data, 743, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__85)) __PYX_ERR(0, 743, __pyx_L1_error)
 
-  /* "modules/GLNetEISimLib.py":739
+  /* "modules/GLNetEISimLib.py":751
  * 
  * #pythran export write_spk_data_fake(int,int)
  * def write_spk_data_fake(t,k):             # <<<<<<<<<<<<<<
  *     return None
  * 
  */
-  __pyx_tuple__80 = PyTuple_Pack(2, __pyx_n_s_t, __pyx_n_s_k); if (unlikely(!__pyx_tuple__80)) __PYX_ERR(0, 739, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__80);
-  __Pyx_GIVEREF(__pyx_tuple__80);
-  __pyx_codeobj__81 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__80, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_write_spk_data_fake, 739, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__81)) __PYX_ERR(0, 739, __pyx_L1_error)
+  __pyx_tuple__86 = PyTuple_Pack(2, __pyx_n_s_t, __pyx_n_s_k); if (unlikely(!__pyx_tuple__86)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__86);
+  __Pyx_GIVEREF(__pyx_tuple__86);
+  __pyx_codeobj__87 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__86, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_modules_GLNetEISimLib_py, __pyx_n_s_write_spk_data_fake, 751, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__87)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -30508,7 +30766,7 @@ if (!__Pyx_RefNanny) {
  *     N                  = get_param(simParam_dict['N']                  , paramType_dict['N']                  )[0]
  *     tTrans             = get_param(simParam_dict['tTrans']             , paramType_dict['tTrans']             )[0]
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_1get_system_parameters, 0, __pyx_n_s_get_system_parameters, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__14)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_1get_system_parameters, 0, __pyx_n_s_get_system_parameters, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_system_parameters, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30520,7 +30778,7 @@ if (!__Pyx_RefNanny) {
  *     a = -1
  *     b = numpy.nan
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_3get_param, 0, __pyx_n_s_get_param, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_3get_param, 0, __pyx_n_s_get_param, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_param, __pyx_t_2) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30532,7 +30790,7 @@ if (!__Pyx_RefNanny) {
  *     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
  *         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_5RunSimulation_GLNetEIRand, 0, __pyx_n_s_RunSimulation_GLNetEIRand, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_5RunSimulation_GLNetEIRand, 0, __pyx_n_s_RunSimulation_GLNetEIRand, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_RunSimulation_GLNetEIRand, __pyx_t_2) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30544,7 +30802,7 @@ if (!__Pyx_RefNanny) {
  *     N,tTrans,Tmax,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,\
  *         mu,theta,J,Gamma,I,Iext,g,p,q,A,tauW,uW,tauT,uT,saveSpikingData,nNeuronsSpk,\
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_7RunSimulation_GLNetEIMF, 0, __pyx_n_s_RunSimulation_GLNetEIMF, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_7RunSimulation_GLNetEIMF, 0, __pyx_n_s_RunSimulation_GLNetEIMF, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_RunSimulation_GLNetEIMF, __pyx_t_2) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30556,7 +30814,7 @@ if (!__Pyx_RefNanny) {
  *     return int(random.random() * pN_fl)
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_9get_stim_neuron_index_aval, 0, __pyx_n_s_get_stim_neuron_index_aval, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_9get_stim_neuron_index_aval, 0, __pyx_n_s_get_stim_neuron_index_aval, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_stim_neuron_index_aval, __pyx_t_2) < 0) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30568,7 +30826,7 @@ if (!__Pyx_RefNanny) {
  *     """
  *     ##################
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_11generate_random_net_fixed_number_of_inputs, 0, __pyx_n_s_generate_random_net_fixed_number, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_11generate_random_net_fixed_number_of_inputs, 0, __pyx_n_s_generate_random_net_fixed_number, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_generate_random_net_fixed_number, __pyx_t_2) < 0) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30580,7 +30838,7 @@ if (!__Pyx_RefNanny) {
  *     """
  *     K_ex -> number of excitatory inputs
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_13sumSynpaticInput, 0, __pyx_n_s_sumSynpaticInput, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_13sumSynpaticInput, 0, __pyx_n_s_sumSynpaticInput, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sumSynpaticInput, __pyx_t_2) < 0) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30592,7 +30850,7 @@ if (!__Pyx_RefNanny) {
  *     """
  *     K_ex -> number of excitatory inputs
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_15sumSynpaticInput_homog, 0, __pyx_n_s_sumSynpaticInput_homog, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_15sumSynpaticInput_homog, 0, __pyx_n_s_sumSynpaticInput_homog, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sumSynpaticInput_homog, __pyx_t_2) < 0) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30604,7 +30862,7 @@ if (!__Pyx_RefNanny) {
  *     # defining functions
  *     get_external_stimulus,get_stim_neuron_index = get_RandomNet_stimulus_func(simType)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_17run_transient_GLNetEIRand, 0, __pyx_n_s_run_transient_GLNetEIRand, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_17run_transient_GLNetEIRand, 0, __pyx_n_s_run_transient_GLNetEIRand, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_transient_GLNetEIRand, __pyx_t_2) < 0) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30616,7 +30874,7 @@ if (!__Pyx_RefNanny) {
  *     # defining functions
  *     get_external_stimulus             = get_MFNet_stimulus_func(simType)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_19run_transient_GLNetEIMF, 0, __pyx_n_s_run_transient_GLNetEIMF, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_19run_transient_GLNetEIMF, 0, __pyx_n_s_run_transient_GLNetEIMF, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_transient_GLNetEIMF, __pyx_t_2) < 0) __PYX_ERR(0, 413, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30628,7 +30886,7 @@ if (!__Pyx_RefNanny) {
  *     if saveSpikingData:
  *         if writeOnRun:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_21get_write_spike_data_functions, 0, __pyx_n_s_get_write_spike_data_functions, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_21get_write_spike_data_functions, 0, __pyx_n_s_get_write_spike_data_functions, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_write_spike_data_functions, __pyx_t_2) < 0) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -30637,336 +30895,336 @@ if (!__Pyx_RefNanny) {
  *     return spkData,write_spk_time,save_spk_time
  * 
  * def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adaptthresh' in simType:
- *         if 'threshlinear' in simType:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_23get_RandomNet_neuron_state_iter, 0, __pyx_n_s_get_RandomNet_neuron_state_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_23get_RandomNet_neuron_state_iter, 0, __pyx_n_s_get_RandomNet_neuron_state_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_RandomNet_neuron_state_iter, __pyx_t_2) < 0) __PYX_ERR(0, 470, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":488
+  /* "modules/GLNetEISimLib.py":494
  *     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
  * 
  * def get_RandomNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_25get_RandomNet_stimulus_func, 0, __pyx_n_s_get_RandomNet_stimulus_func, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_25get_RandomNet_stimulus_func, 0, __pyx_n_s_get_RandomNet_stimulus_func, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 494, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_RandomNet_stimulus_func, __pyx_t_2) < 0) __PYX_ERR(0, 488, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_RandomNet_stimulus_func, __pyx_t_2) < 0) __PYX_ERR(0, 494, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":497
+  /* "modules/GLNetEISimLib.py":503
  *     return get_external_stimulus,get_stim_neuron_index
  * 
  * def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):             # <<<<<<<<<<<<<<
+ *     print(' ... choosing neuron wiht: ')
  *     if 'adapt' in simType:
- *         if 'threshlinear' in simType:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_27get_MFNet_neuron_state_iter, 0, __pyx_n_s_get_MFNet_neuron_state_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_27get_MFNet_neuron_state_iter, 0, __pyx_n_s_get_MFNet_neuron_state_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 503, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_neuron_state_iter, __pyx_t_2) < 0) __PYX_ERR(0, 497, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_neuron_state_iter, __pyx_t_2) < 0) __PYX_ERR(0, 503, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":515
+  /* "modules/GLNetEISimLib.py":527
  *     return GLNetEIMF_E_iter,GLNetEIMF_I_iter
  * 
  * def get_MFNet_synaptic_weight_iter(weightDynType,simType,q):             # <<<<<<<<<<<<<<
  *     if weightDynType == "simple":
  *         weightAdapt_iter = weightAdapt_decrease
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_29get_MFNet_synaptic_weight_iter, 0, __pyx_n_s_get_MFNet_synaptic_weight_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_29get_MFNet_synaptic_weight_iter, 0, __pyx_n_s_get_MFNet_synaptic_weight_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 527, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_synaptic_weight_iter, __pyx_t_2) < 0) __PYX_ERR(0, 515, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_synaptic_weight_iter, __pyx_t_2) < 0) __PYX_ERR(0, 527, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":532
+  /* "modules/GLNetEISimLib.py":544
  *     return weightAdapt_iter
  * 
  * def get_MFNet_stimulus_func(simType):             # <<<<<<<<<<<<<<
  *     if simType == 'aval':
  *         get_external_stimulus = get_external_stimulus_aval
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_31get_MFNet_stimulus_func, 0, __pyx_n_s_get_MFNet_stimulus_func, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 532, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_31get_MFNet_stimulus_func, 0, __pyx_n_s_get_MFNet_stimulus_func, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_stimulus_func, __pyx_t_2) < 0) __PYX_ERR(0, 532, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_MFNet_stimulus_func, __pyx_t_2) < 0) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":540
+  /* "modules/GLNetEISimLib.py":552
  * 
  * #pythran export get_external_stimulus_dynamic(float,float,float,float)
  * def get_external_stimulus_dynamic(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
  *     return XE,rhoE
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_33get_external_stimulus_dynamic, 0, __pyx_n_s_get_external_stimulus_dynamic, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 540, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_33get_external_stimulus_dynamic, 0, __pyx_n_s_get_external_stimulus_dynamic, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_external_stimulus_dynamic, __pyx_t_2) < 0) __PYX_ERR(0, 540, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_external_stimulus_dynamic, __pyx_t_2) < 0) __PYX_ERR(0, 552, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":544
+  /* "modules/GLNetEISimLib.py":556
  * 
  * #pythran export get_external_stimulus_aval(float,float,float,float)
  * def get_external_stimulus_aval(XE,rhoE,rhoI,pN_fl):             # <<<<<<<<<<<<<<
  *     if (rhoE + rhoI) < 1e-16:  # causes a spike in an excitatory neuron if the activity is less than the floating-point double precision
  *         return 1.0, 1.0 / pN_fl
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_35get_external_stimulus_aval, 0, __pyx_n_s_get_external_stimulus_aval, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 544, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_35get_external_stimulus_aval, 0, __pyx_n_s_get_external_stimulus_aval, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 556, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_external_stimulus_aval, __pyx_t_2) < 0) __PYX_ERR(0, 544, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_external_stimulus_aval, __pyx_t_2) < 0) __PYX_ERR(0, 556, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":551
+  /* "modules/GLNetEISimLib.py":563
  * 
  * #pythran export save_initial_spkdata(float[],float[],int,int)
  * def save_initial_spkdata(XE,XI,pN,qN):             # <<<<<<<<<<<<<<
  *     """
  *     spkData = [[0 for i in range(nNeuronsSpk)] for t in range(Tmax)]
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_37save_initial_spkdata, 0, __pyx_n_s_save_initial_spkdata, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_37save_initial_spkdata, 0, __pyx_n_s_save_initial_spkdata, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 563, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_initial_spkdata, __pyx_t_2) < 0) __PYX_ERR(0, 551, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_initial_spkdata, __pyx_t_2) < 0) __PYX_ERR(0, 563, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":573
+  /* "modules/GLNetEISimLib.py":585
  *     return spkData
  * 
  * def get_random_inhibitory_weights(W_I,C):             # <<<<<<<<<<<<<<
  *     """
  *     W_I -> average inhibitory weights
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_39get_random_inhibitory_weights, 0, __pyx_n_s_get_random_inhibitory_weights, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 573, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_39get_random_inhibitory_weights, 0, __pyx_n_s_get_random_inhibitory_weights, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_random_inhibitory_weights, __pyx_t_2) < 0) __PYX_ERR(0, 573, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_random_inhibitory_weights, __pyx_t_2) < 0) __PYX_ERR(0, 585, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":581
+  /* "modules/GLNetEISimLib.py":593
  * 
  * #pythran export set_MF_network_IC(int,int,float,float,float,float,float,float,float,float,bool,float,float,bool,float)
  * def set_MF_network_IC(pN,qN,g,J,VE0,VE0Std,VI0,VI0Std,XE0,fXE0,XE0Rand,XI0,fXI0,XI0Rand,theta):             # <<<<<<<<<<<<<<
  *     VE0    = theta if VE0 == 0.0 else VE0
  *     thetaE = numpy.array([theta for i in range(pN)])
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_41set_MF_network_IC, 0, __pyx_n_s_set_MF_network_IC, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 581, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_41set_MF_network_IC, 0, __pyx_n_s_set_MF_network_IC, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_MF_network_IC, __pyx_t_2) < 0) __PYX_ERR(0, 581, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_set_MF_network_IC, __pyx_t_2) < 0) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":605
+  /* "modules/GLNetEISimLib.py":617
  * 
  * #pythran export generate_IC_spikes(float,int,int,str,bool)
  * def generate_IC_spikes(X0,N,K,neuronType,is_random):             # <<<<<<<<<<<<<<
  *     """generates a list X of zeros with len N containing K ones
  *     """
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_43generate_IC_spikes, 0, __pyx_n_s_generate_IC_spikes, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_43generate_IC_spikes, 0, __pyx_n_s_generate_IC_spikes, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_generate_IC_spikes, __pyx_t_2) < 0) __PYX_ERR(0, 605, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_generate_IC_spikes, __pyx_t_2) < 0) __PYX_ERR(0, 617, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":638
+  /* "modules/GLNetEISimLib.py":650
  * 
  * #pythran export GLNetEIRand_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthresh_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_45GLNetEIRand_adaptthresh_iter, 0, __pyx_n_s_GLNetEIRand_adaptthresh_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 638, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_45GLNetEIRand_adaptthresh_iter, 0, __pyx_n_s_GLNetEIRand_adaptthresh_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthresh_iter, __pyx_t_2) < 0) __PYX_ERR(0, 638, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthresh_iter, __pyx_t_2) < 0) __PYX_ERR(0, 650, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":645
+  /* "modules/GLNetEISimLib.py":657
  * 
  * #pythran export GLNetEIRand_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshlinear_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_47GLNetEIRand_adaptthreshlinear_iter, 0, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_47GLNetEIRand_adaptthreshlinear_iter, 0, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__64)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 657, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, __pyx_t_2) < 0) __PYX_ERR(0, 645, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthreshlinear_it, __pyx_t_2) < 0) __PYX_ERR(0, 657, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":652
+  /* "modules/GLNetEISimLib.py":664
  * 
  * #pythran export GLNetEIRand_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_adaptthreshsaturate_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + synapticInput)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_49GLNetEIRand_adaptthreshsaturate_iter, 0, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_49GLNetEIRand_adaptthreshsaturate_iter, 0, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 664, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, __pyx_t_2) < 0) __PYX_ERR(0, 652, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_adaptthreshsaturate, __pyx_t_2) < 0) __PYX_ERR(0, 664, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":659
+  /* "modules/GLNetEISimLib.py":671
  * 
  * #pythran export GLNetEIRand_static_iter(float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIRand_static_iter(V,X,synapticInput,Iext,mu,theta,Gamma,I,P_poisson,tauTinv,uT):             # <<<<<<<<<<<<<<
  *     V = (mu*V + I + Iext + synapticInput)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_51GLNetEIRand_static_iter, 0, __pyx_n_s_GLNetEIRand_static_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 659, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_51GLNetEIRand_static_iter, 0, __pyx_n_s_GLNetEIRand_static_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__66)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 671, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_static_iter, __pyx_t_2) < 0) __PYX_ERR(0, 659, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIRand_static_iter, __pyx_t_2) < 0) __PYX_ERR(0, 671, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":665
+  /* "modules/GLNetEISimLib.py":677
  * 
  * #pythran export GLNetEIMF_adaptthresh_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthresh_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv + uT*X)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_53GLNetEIMF_adaptthresh_iter, 0, __pyx_n_s_GLNetEIMF_adaptthresh_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 665, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_53GLNetEIMF_adaptthresh_iter, 0, __pyx_n_s_GLNetEIMF_adaptthresh_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__68)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 677, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthresh_iter, __pyx_t_2) < 0) __PYX_ERR(0, 665, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthresh_iter, __pyx_t_2) < 0) __PYX_ERR(0, 677, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":672
+  /* "modules/GLNetEISimLib.py":684
  * 
  * #pythran export GLNetEIMF_adaptthreshsaturate_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshsaturate_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = min(theta * (1.0 - tauTinv + uT*X),uT/tauTinv)
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_55GLNetEIMF_adaptthreshsaturate_iter, 0, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 672, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_55GLNetEIMF_adaptthreshsaturate_iter, 0, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, __pyx_t_2) < 0) __PYX_ERR(0, 672, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthreshsaturate_it, __pyx_t_2) < 0) __PYX_ERR(0, 684, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":679
+  /* "modules/GLNetEISimLib.py":691
  * 
  * #pythran export GLNetEIMF_adaptthreshlinear_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_adaptthreshlinear_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,W_I,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     theta = theta * (1.0 - tauTinv) + uT*X
  *     V     = (mu*V + I + Iext + J*p*rhoE - q*W_I*rhoI)*(1.0-X)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_57GLNetEIMF_adaptthreshlinear_iter, 0, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__64)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 679, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_57GLNetEIMF_adaptthreshlinear_iter, 0, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__70)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, __pyx_t_2) < 0) __PYX_ERR(0, 679, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_adaptthreshlinear_iter, __pyx_t_2) < 0) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":686
+  /* "modules/GLNetEISimLib.py":698
  * 
  * #pythran export GLNetEIMF_static_iter(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float)
  * def GLNetEIMF_static_iter(V,X,rhoE,rhoI,Iext,mu,theta,J,Gamma,I,gJ,p,q,tauTinv,uT,P_poisson):             # <<<<<<<<<<<<<<
  *     V = (mu*V + I + Iext + J*p*rhoE - q*gJ*rhoI)*(1.0-X)
  *     X = float(random.random() < (PHI(V,theta,Gamma) * (1.0-P_poisson) + P_poisson )) # the neuron fires if random < Phi(V) + P_poisson - Phi(V)*P_poisson, because Phi(V) and P_poisson are independent processes with nonzero intersection
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_59GLNetEIMF_static_iter, 0, __pyx_n_s_GLNetEIMF_static_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__66)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 686, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_59GLNetEIMF_static_iter, 0, __pyx_n_s_GLNetEIMF_static_iter, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__72)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_static_iter, __pyx_t_2) < 0) __PYX_ERR(0, 686, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLNetEIMF_static_iter, __pyx_t_2) < 0) __PYX_ERR(0, 698, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":692
+  /* "modules/GLNetEISimLib.py":704
  * 
  * #pythran export weightAdapt_constant(float, float, float, float, float, float)
  * def weightAdapt_constant(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_61weightAdapt_constant, 0, __pyx_n_s_weightAdapt_constant, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__68)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_61weightAdapt_constant, 0, __pyx_n_s_weightAdapt_constant, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__74)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_constant, __pyx_t_2) < 0) __PYX_ERR(0, 692, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_constant, __pyx_t_2) < 0) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":696
+  /* "modules/GLNetEISimLib.py":708
  * 
  * #pythran export weightAdapt_decrease(float, float, float, float, float, float)
  * def weightAdapt_decrease(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W * (1.0 - tauWinv - uW*rhoI) + tauWinv * A
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_63weightAdapt_decrease, 0, __pyx_n_s_weightAdapt_decrease, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 696, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_63weightAdapt_decrease, 0, __pyx_n_s_weightAdapt_decrease, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__75)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 708, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_decrease, __pyx_t_2) < 0) __PYX_ERR(0, 696, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_decrease, __pyx_t_2) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":700
+  /* "modules/GLNetEISimLib.py":712
  * 
  * #pythran export weightAdapt_increase(float, float, float, float, float, float)
  * def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):             # <<<<<<<<<<<<<<
  *     return W * (1.0 - tauWinv + uW*rhoE) + tauWinv * A
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_65weightAdapt_increase, 0, __pyx_n_s_weightAdapt_increase, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__70)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_65weightAdapt_increase, 0, __pyx_n_s_weightAdapt_increase, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__76)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 712, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_increase, __pyx_t_2) < 0) __PYX_ERR(0, 700, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_weightAdapt_increase, __pyx_t_2) < 0) __PYX_ERR(0, 712, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":704
+  /* "modules/GLNetEISimLib.py":716
  * 
  * #pythran export PHI(float, float, float)
  * def PHI(V,theta,Gamma):             # <<<<<<<<<<<<<<
  *     tg = theta+1.0/Gamma
  *     return Gamma*(V-theta)*float(V>theta)*float(V<tg)+float(V>=tg)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_67PHI, 0, __pyx_n_s_PHI, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__72)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_67PHI, 0, __pyx_n_s_PHI, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__78)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 716, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PHI, __pyx_t_2) < 0) __PYX_ERR(0, 704, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PHI, __pyx_t_2) < 0) __PYX_ERR(0, 716, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":719
+  /* "modules/GLNetEISimLib.py":731
  * 
  * #pythran export multvecelem(float list, float list)
  * def multvecelem(x,y):             # <<<<<<<<<<<<<<
  *     return [x[i]*yy for i,yy in enumerate(y)]
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_69multvecelem, 0, __pyx_n_s_multvecelem, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__74)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 719, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_69multvecelem, 0, __pyx_n_s_multvecelem, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__80)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 731, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_multvecelem, __pyx_t_2) < 0) __PYX_ERR(0, 719, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_multvecelem, __pyx_t_2) < 0) __PYX_ERR(0, 731, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":723
+  /* "modules/GLNetEISimLib.py":735
  * 
  * #pythran export PoissonProcess_firingprob(float)
  * def PoissonProcess_firingprob(r):             # <<<<<<<<<<<<<<
  *     return 1.0-numpy.exp(-r) # probability of firing is constant
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_71PoissonProcess_firingprob, 0, __pyx_n_s_PoissonProcess_firingprob, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__76)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_71PoissonProcess_firingprob, 0, __pyx_n_s_PoissonProcess_firingprob, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__82)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 735, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PoissonProcess_firingprob, __pyx_t_2) < 0) __PYX_ERR(0, 723, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_PoissonProcess_firingprob, __pyx_t_2) < 0) __PYX_ERR(0, 735, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":727
+  /* "modules/GLNetEISimLib.py":739
  * 
  * #pythran export save_spk_data_fake((int,int) list,int,int)
  * def save_spk_data_fake(s,t,k):             # <<<<<<<<<<<<<<
  *     return s
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_73save_spk_data_fake, 0, __pyx_n_s_save_spk_data_fake, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__78)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_73save_spk_data_fake, 0, __pyx_n_s_save_spk_data_fake, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__84)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 739, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_spk_data_fake, __pyx_t_2) < 0) __PYX_ERR(0, 727, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_spk_data_fake, __pyx_t_2) < 0) __PYX_ERR(0, 739, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":731
+  /* "modules/GLNetEISimLib.py":743
  * 
  * #pythran export save_spk_data((int,int) list,int,int)
  * def save_spk_data(s,t,k):             # <<<<<<<<<<<<<<
  *     # s -> list to append t_k
  *     # t -> spike time index
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_75save_spk_data, 0, __pyx_n_s_save_spk_data, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__79)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 731, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_75save_spk_data, 0, __pyx_n_s_save_spk_data, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__85)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 743, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_spk_data, __pyx_t_2) < 0) __PYX_ERR(0, 731, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_save_spk_data, __pyx_t_2) < 0) __PYX_ERR(0, 743, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "modules/GLNetEISimLib.py":739
+  /* "modules/GLNetEISimLib.py":751
  * 
  * #pythran export write_spk_data_fake(int,int)
  * def write_spk_data_fake(t,k):             # <<<<<<<<<<<<<<
  *     return None
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_77write_spk_data_fake, 0, __pyx_n_s_write_spk_data_fake, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__81)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 739, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7modules_13GLNetEISimLib_77write_spk_data_fake, 0, __pyx_n_s_write_spk_data_fake, NULL, __pyx_n_s_modules_GLNetEISimLib, __pyx_d, ((PyObject *)__pyx_codeobj__87)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_write_spk_data_fake, __pyx_t_2) < 0) __PYX_ERR(0, 739, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_write_spk_data_fake, __pyx_t_2) < 0) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "modules/GLNetEISimLib.py":1
@@ -34964,7 +35222,7 @@ static PyObject *__Pyx_ImportDottedModule_WalkParts(PyObject *module, PyObject *
 #endif
 static PyObject *__Pyx__ImportDottedModule(PyObject *name, PyObject *parts_tuple) {
 #if PY_MAJOR_VERSION < 3
-    PyObject *module, *from_list, *star = __pyx_n_s__12;
+    PyObject *module, *from_list, *star = __pyx_n_s__18;
     CYTHON_UNUSED_VAR(parts_tuple);
     from_list = PyList_New(1);
     if (unlikely(!from_list))
@@ -35405,7 +35663,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__82);
+        name = __Pyx_NewRef(__pyx_n_s__88);
     }
     return name;
 }

@@ -134,6 +134,7 @@ def RunSimulation_GLNetEIRand(simParam_dict,paramType_dict):
     Tmax = Tmax - tTrans 
 
     # preparing variable for recording spiking data (if needed)
+    spkTimeFile = None
     if saveSpikingData and writeOnRun:
         spkTimeFile = open(spkFileName,'w')
         print('*** writing file %s during simulation' % spkFileName)
@@ -240,6 +241,7 @@ def RunSimulation_GLNetEIMF(simParam_dict,paramType_dict):
     Tmax = Tmax - tTrans
 
     # preparing variable for recording spiking data (if needed)
+    spkTimeFile = None
     if saveSpikingData and writeOnRun:
         spkTimeFile = open(spkFileName,'w')
         print('*** writing file %s during simulation' % spkFileName)
@@ -468,19 +470,25 @@ def get_write_spike_data_functions(spkTimeFile,saveSpikingData,writeOnRun,XE,XI,
     return spkData,write_spk_time,save_spk_time
 
 def get_RandomNet_neuron_state_iter(simType,exc_only_dynthresh):
+    print(' ... choosing neuron wiht: ')
     if 'adaptthresh' in simType:
         if 'threshlinear' in simType:
+            print(' ....... LINEAR adaptive threshold (additive noise)')
             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshlinear_iter
             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshlinear_iter
         elif 'threshsaturate' in simType:
+            print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
             GLNetEIRand_E_iter = GLNetEIRand_adaptthreshsaturate_iter
             GLNetEIRand_I_iter = GLNetEIRand_adaptthreshsaturate_iter
         else:
+            print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
             GLNetEIRand_E_iter = GLNetEIRand_adaptthresh_iter
             GLNetEIRand_I_iter = GLNetEIRand_adaptthresh_iter
         if exc_only_dynthresh:
+            print(' ....... INHIBITORY neurons will not adapt thresholds!')
             GLNetEIRand_I_iter = GLNetEIRand_static_iter
     else:
+        print(' ....... neurons will not adapt thresholds!')
         GLNetEIRand_E_iter = GLNetEIRand_static_iter
         GLNetEIRand_I_iter = GLNetEIRand_static_iter
     return GLNetEIRand_E_iter,GLNetEIRand_I_iter
@@ -495,19 +503,25 @@ def get_RandomNet_stimulus_func(simType):
     return get_external_stimulus,get_stim_neuron_index
 
 def get_MFNet_neuron_state_iter(simType,exc_only_dynthresh):
+    print(' ... choosing neuron wiht: ')
     if 'adapt' in simType:
         if 'threshlinear' in simType:
+            print(' ....... LINEAR adaptive threshold (additive noise)')
             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshlinear_iter
             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshlinear_iter
         elif 'threshsaturate' in simType:
+            print(' ....... SATURATING adaptive threshold (saturating multiplicative noise)')
             GLNetEIMF_E_iter = GLNetEIMF_adaptthreshsaturate_iter
             GLNetEIMF_I_iter = GLNetEIMF_adaptthreshsaturate_iter
         else:
+            print(' ....... NONLINEAR adaptive threshold (multiplicative noise)')
             GLNetEIMF_E_iter = GLNetEIMF_adaptthresh_iter
             GLNetEIMF_I_iter = GLNetEIMF_adaptthresh_iter
         if exc_only_dynthresh:
+            print(' ....... INHIBITORY neurons will not adapt thresholds!')
             GLNetEIMF_I_iter = GLNetEIMF_static_iter
     else:
+        print(' ....... neurons will not adapt thresholds!')
         GLNetEIMF_E_iter = GLNetEIMF_static_iter
         GLNetEIMF_I_iter = GLNetEIMF_static_iter
     return GLNetEIMF_E_iter,GLNetEIMF_I_iter

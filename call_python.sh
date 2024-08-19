@@ -9,4 +9,3 @@ fi
 echo Starting script
 
 python -OO $@
-

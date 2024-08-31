@@ -101,7 +101,8 @@ def main():
 
         # running simulation
         #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
-        rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
+        simParam_numba,paramType_numba = GLNetEISimLib.convert_simParam_to_numba_dict(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
+        rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(simParam_numba,paramType_numba)
 
         # calculating some means
         rhoMean       = numpy.multiply(simParam.p,rhoE)+numpy.multiply(simParam.q,rhoI)

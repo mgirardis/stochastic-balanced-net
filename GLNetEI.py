@@ -13,6 +13,11 @@ import modules.GLNetEISimLib as GLNetEISimLib
 def main():
 
     # for debug
+
+    ##### 2024/August/20
+    ##### check if it is writing spikingData txt file
+    #sys.argv = 'GLNetEI.py -rPoisson 0.000001000000000 -netType mf -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.0 -Y 1.0 -tauT 100 -uT 0.1 -theta 1.0 -N 100 -simType adaptthresh -tTotal 1000 -tTrans 0 -outputFile glexc_adaptthresh_tau100_u0.1_J5.0_r0.000001.txt -nNeuSpikingData 100 -writeOnRun -saveSpikingData'.split(' ')
+
     #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.50 -Y 1.0 -theta 1.0 -N 100 -simType aval -p 0.8 -tTotal 120000 -tTrans 30000 -outputFile test/test.mat -nNeuSpikingData 100'.split(' ')
     #sys.argv = 'GLNetEI.py -p 1.0 -mu 0.0 -Gamma 0.2 -J 5.2 -Y 1.0 -theta 1.0 -N 100 -simType aval -tTotal 12000 -tTrans 3000 -outputFile output/glexc_aval_G0.2_J5.2_Y1_N100000.txt -nNeuSpikingData 100000'.split(' ')
     #sys.argv = 'GLNetEI.py -mu 0.0 -Gamma 0.2 -J 10.0 -g 1.5 -Y 1.0 -theta 1.0 -N 1000 -simType adapt -p 0.8 -tTotal 10000 -tTrans 3000 -tauT 500.0 -tauW 500.0 -uT 0.1 -uW 0.1 -A 30.0 -outputFile run/output/glei_adapt_G0.2_g1.5_A30_tauW500_Y1_N1000.mat -nNeuSpikingData 1000'.split(' ')
@@ -70,9 +75,10 @@ def main():
 
 
     print("* Running simulation...")
+    simParam_numba,paramType_numba = GLNetEISimLib.convert_simParam_to_numba_dict(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
     start_time = time.monotonic()
     #rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(**simParam)
-    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(io.simParam_to_str_for_pythran(simParam),io.get_arg_types_dict(simParam))
+    rhoE,rhoI,spkData,excSynCurrent,inhSynCurrent,g_data,Y_data = RunSimulation(simParam_numba,paramType_numba)
     end_time = time.monotonic()
     print("* End of simulation... Total time: {}".format(datetime.timedelta(seconds=end_time - start_time)))
 
@@ -116,7 +122,7 @@ def main():
         matVars.update({"spkData":spkData})
         scipy.io.savemat(matFileName,matVars,appendmat=True,long_field_names=True,do_compression=True)
 
-    if simParam.writeOnRun:
+    if simParam.saveSpikingData and simParam.writeOnRun:
         print('-#-')
         print('spkFileName: %s'%simParam.spkFileName)
 

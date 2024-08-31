@@ -104,6 +104,7 @@ def get_sim_param_struct_for_pythran(args):
     s.pop(['noXE0Rand','noXI0Rand','nNeuSpikingData','tTotal','noForceActive'])
     if (s.simType == 'adapt') and (s.weightDynType == 'none'):
         s.weightDynType = 'simple'
+    assert s.K <= s.N, 'In random nets, the total number of inputs K must be K<=N (N = total number of neurons)'
     return s
 
 def fix_output_fileName_phasetrans_simulation(outputFileName):

@@ -7,7 +7,7 @@ import argparse
 import datetime
 import scipy.io
 import modules.ioGLNet as io
-import modules.GLNetEISimLib as GLNetEISimLib
+import modules.GLNetEISimLib_numba as GLNetEISimLib
 # import matplotlib.pyplot as plt
 
 def main():

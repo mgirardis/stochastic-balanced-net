@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
-import argparse
-import numpy
+import sys
 import time
+import numpy
+import argparse
 import warnings
-import modules.ioGLNet as io
 import datetime
 import scipy.io
 import scipy.signal
+import modules.ioGLNet as io
 import modules.GLNetEISimLib_numba as GLNetEISimLib
-import sys
 # import matplotlib.pyplot as plt
 
 def main():

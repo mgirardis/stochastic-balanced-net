@@ -8,7 +8,7 @@ import modules.ioGLNet as io
 import datetime
 import scipy.io
 import scipy.signal
-import modules.GLNetEISimLib as GLNetEISimLib
+import modules.GLNetEISimLib_numba as GLNetEISimLib
 import sys
 # import matplotlib.pyplot as plt
 

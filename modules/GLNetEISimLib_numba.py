@@ -959,10 +959,10 @@ def str2float(text):
         if exp_number is None:
             exp_number = 0
         number, sep_pos, valid = str2float_helper(text[:-exp_pos-1])
-        result = number / 10.0 ** (sep_pos - exp_number) if valid else None
+        result = number / 10.0 ** (sep_pos - exp_number) if valid else 0.0
     else:
         number, sep_pos, valid = str2float_helper(text)
-        result = number / 10.0 ** sep_pos if valid else None
+        result = number / 10.0 ** sep_pos if valid else 0.0
     return result
 
 

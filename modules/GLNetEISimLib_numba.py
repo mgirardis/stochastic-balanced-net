@@ -1,7 +1,7 @@
 import math
 import numpy
 import random
-from numba import njit,jit,types
+from numba import njit,types
 from numba.typed import Dict
 
 def convert_simParam_to_numba_dict(simParam_dict,paramType_dict):
@@ -816,17 +816,17 @@ def weightAdapt_increase(W,A,tauWinv,uW,rhoE,rhoI):
 ####################################
 """
 
-@jit(nopython=True)
+@njit
 def my_exp(x): #definimos essa função para evitar o erro de overflow
     return math.exp(x) if x < 709.782712893384 else numpy.inf
 
 #pythran export multvecelem(float list, float list)
-@jit(nopython=True)
+@njit
 def multvecelem(x,y):
     return [x[i]*yy for i,yy in enumerate(y)]
 
 #pythran export PoissonProcess_firingprob(float)
-@jit(nopython=True)
+@njit
 def PoissonProcess_firingprob(r):
     return 1.0-my_exp(-r) # probability of firing is constant
 
@@ -904,7 +904,7 @@ def str2int(s):
     return result
 
 
-@jit(nopython=True)
+@njit
 def str2float_helper(text):
     sep = ord(".")
     c_min = ord("0")
